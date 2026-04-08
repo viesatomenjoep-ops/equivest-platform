@@ -8,7 +8,8 @@
   --font-serif: "Quicksand Variable", sans-serif;
   --font-sans: "Quicksand Variable", sans-serif;
   
-  --shadow-premium: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  --shadow-premium: 0 20px 40px -15px rgba(2, 12, 27, 0.4);
+  --shadow-gold: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
 }
 
 @layer base {
@@ -34,6 +35,28 @@
 }
 
 .glass-header {
-  @apply bg-white sticky top-0 z-50;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  @apply bg-white/95 backdrop-blur-md sticky top-0 z-50;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 }
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for a more professional feel */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }

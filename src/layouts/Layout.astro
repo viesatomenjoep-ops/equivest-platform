@@ -40,5 +40,59 @@ const {
 	</head>
 	<body class="bg-white text-primary selection:bg-accent selection:text-white">
 		<slot />
+
+		<!-- Lenis Smooth Scroll -->
+		<script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+		<script is:inline>
+			// Initialize Lenis
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				direction: 'vertical',
+				gestureDirection: 'vertical',
+				smooth: true,
+				mouseMultiplier: 1,
+				smoothTouch: false,
+				touchMultiplier: 2,
+				infinite: false,
+			});
+
+			function raf(time) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			// Scroll Reveal Logic
+			function initReveal() {
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.1
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+						}
+					});
+				}, observerOptions);
+
+				const revealElements = document.querySelectorAll('.reveal');
+				revealElements.forEach(el => observer.observe(el));
+			}
+
+			// Run on initial load
+			initReveal();
+
+			// Run on Astro View Transitions swap
+			document.addEventListener('astro:after-swap', () => {
+				initReveal();
+				// Reset Lenis scroll position or orientation if needed
+				lenis.scrollTo(0, { immediate: true });
+			});
+		</script>
 	</body>
 </html>

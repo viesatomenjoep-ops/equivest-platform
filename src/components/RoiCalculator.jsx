@@ -101,7 +101,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
               type="range" 
               min="15000" 
               max="1000000" 
-              step="1000"
+              step="5000"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"

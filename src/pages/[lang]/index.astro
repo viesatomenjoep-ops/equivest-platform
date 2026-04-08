@@ -40,15 +40,15 @@ const t = useTranslations(lang);
 					<span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
 					<span class="text-[10px] font-bold uppercase tracking-[0.2em]">{t('hero.subtitle')}</span>
 				</div>
-				<h1 class="text-5xl md:text-8xl font-serif leading-[1.1] tracking-tight">
+				<h1 class="text-5xl md:text-8xl font-serif leading-[1.1] tracking-tight reveal reveal-up delay-100">
 					{t('hero.title').split(' ').map((word, i) => (
 						i === 2 ? <span class="text-accent italic">{word} </span> : word + ' '
 					))}
 				</h1>
-				<p class="text-xl md:text-2xl font-light text-white/80 max-w-2xl mx-auto leading-relaxed">
+				<p class="text-xl md:text-2xl font-light text-white/80 max-w-2xl mx-auto leading-relaxed reveal reveal-up delay-200">
 					Securing high-yield returns through the acquisition of world-class equestrian talent.
 				</p>
-				<div class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+				<div class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-up delay-300">
 					<a href="#portfolio" class="bg-accent text-primary px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-2xl">
 						View Portfolio
 					</a>
@@ -65,15 +65,21 @@ const t = useTranslations(lang);
 			</div>
 		</section>
 
-		<About />
+		<div class="reveal reveal-up">
+			<About />
+		</div>
 		
-		<section id="roi" class="py-24 bg-white">
+		<section id="roi" class="py-24 bg-white reveal reveal-up">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<RoiCalculator lang={lang} client:load />
 			</div>
 		</section>
 
-		<PortfolioGallery />
-		<Contact />
+		<div class="reveal reveal-up">
+			<PortfolioGallery />
+		</div>
+		<div class="reveal reveal-up">
+			<Contact />
+		</div>
 	</main>
 </Layout>
