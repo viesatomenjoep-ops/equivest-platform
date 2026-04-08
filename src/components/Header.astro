@@ -1,6 +1,8 @@
 ---
 import { languages } from '../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+import logoImg from '../../public/images/logo.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,108 +17,112 @@ const navItems = [
 
 <header class="glass-header border-b border-gray-100">
   <div class="max-width-site px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
+    <div class="flex justify-between items-center h-24">
       <!-- Left: Brand (Logo + Text) -->
       <a href={`/${lang}/`} class="flex items-center space-x-3 group relative z-[110]">
-        <img 
-          src="/images/logo.png" 
+        <Image 
+          src={logoImg} 
           alt="Equivest Logo" 
-          class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
+          width={64}
+          class="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110"
         />
         <div class="flex flex-col">
-          <span class="text-xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
-          <span class="text-[7px] font-bold tracking-[0.3em] text-accent uppercase mt-0.5 hidden sm:block">Elite Investments</span>
+          <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
+          <span class="text-[8px] font-bold tracking-[0.3em] text-accent uppercase mt-1 hidden sm:block">Elite Investments</span>
         </div>
       </a>
 
       <!-- Right: Navigation & Utilities -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center space-x-8">
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-8">
+        <nav class="hidden lg:flex items-center space-x-8">
           {navItems.map(item => (
-            <a href={item.href} class="text-[10px] font-bold tracking-[0.15em] hover:text-accent transition-colors uppercase text-primary/70 hover:text-accent">
+            <a href={item.href} class="text-[10px] font-bold tracking-widest hover:text-accent transition-colors uppercase">
               {item.label}
             </a>
           ))}
         </nav>
 
-        <!-- Search & Language (Desktop) -->
-        <div class="hidden lg:flex items-center gap-3 border-l border-gray-200 pl-6">
-          <!-- Search Bar -->
-          <div class="relative group">
-            <input 
-              type="text" 
-              placeholder={t('nav.search') || 'Search...'} 
-              class="bg-gray-50 border border-gray-100 rounded-full py-2 px-4 text-[10px] focus:ring-1 focus:ring-accent focus:bg-white focus:border-accent/30 transition-all w-36 outline-none placeholder:text-primary/30"
-            />
-            <svg class="w-3 h-3 absolute right-3 top-2.5 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-
-          <!-- Language Switcher -->
-          <div class="flex items-center gap-1 ml-1">
-            {Object.entries(languages).map(([l, _]) => (
-              <a 
-                href={`/${l}/`} 
-                class={`text-[10px] font-bold uppercase tracking-tighter w-7 h-7 flex items-center justify-center rounded-full transition-all ${lang === l ? 'bg-primary text-accent' : 'text-primary/30 hover:text-accent hover:bg-gray-50'}`}
-              >
-                {l}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <!-- Mobile menu button -->
-        <div class="lg:hidden flex items-center relative z-[110]">
-           <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
-              <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
-                 <path class="menu-path-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        <!-- Utilities -->
+        <div class="flex items-center space-x-4">
+          <!-- Search & Language (Desktop/Tablet) -->
+          <div class="hidden md:flex items-center space-x-4">
+            <!-- Search Bar -->
+            <div class="relative group">
+              <input 
+                type="text" 
+                placeholder={t('nav.search') || 'Search...'} 
+                class="bg-bg-subtle border border-transparent rounded-full py-2 px-4 text-[10px] focus:ring-1 focus:ring-accent focus:bg-white transition-all w-32 lg:w-40 outline-none placeholder:text-primary/40"
+              />
+              <svg class="w-3 h-3 absolute right-3 top-2.5 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-           </button>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center border-l border-gray-100 ml-4 pl-4 space-x-1">
+              {Object.entries(languages).map(([l, _]) => (
+                <a 
+                  href={`/${l}/`} 
+                  class={`text-[10px] font-bold uppercase tracking-tighter w-7 h-7 flex items-center justify-center rounded-full transition-all ${lang === l ? 'bg-primary text-accent' : 'text-primary/40 hover:text-accent hover:bg-bg-subtle'}`}
+                >
+                  {l}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden lg:flex items-center relative z-[110]">
+             <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                   <path class="menu-path-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+             </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out lg:hidden flex flex-col pt-28 px-8 pb-32 overflow-y-auto h-screen w-full">
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full">
     <!-- Mobile Search -->
-    <div class="relative mb-8">
+    <div class="relative mb-8 mt-4">
       <input 
         type="text" 
         placeholder={t('nav.search') || 'Search showjumpers...'} 
-        class="w-full bg-gray-50 border border-gray-100 rounded-2xl py-4 px-6 text-sm focus:ring-2 focus:ring-accent outline-none"
+        class="w-full bg-bg-subtle border-none rounded-xl py-4 px-6 text-sm focus:ring-2 focus:ring-accent outline-none"
       />
-      <svg class="w-5 h-5 absolute right-5 top-4 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 absolute right-5 top-4 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
     </div>
 
     <!-- Mobile Nav Links -->
-    <nav class="flex flex-col space-y-6">
+    <nav class="flex flex-col space-y-5">
       {navItems.map(item => (
         <a href={item.href} class="text-2xl font-serif font-bold text-primary hover:text-accent transition-colors flex justify-between items-center group">
           {item.label}
-          <svg class="w-5 h-5 text-primary/20 group-hover:text-accent group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+          <svg class="w-5 h-5 opacity-0 -translate-x-4 transition-all group-hover:opacity-100 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       ))}
     </nav>
 
     <!-- Mobile Language Selection -->
-    <div class="mt-auto pb-6 pt-8 border-t border-gray-100">
-      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/30 mb-4">Select Language</p>
-      <div class="grid grid-cols-4 gap-3">
+    <div class="mt-12 pb-10 pt-10 border-t border-gray-100">
+      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 mb-6">Select Language</p>
+      <div class="grid grid-cols-2 gap-4">
         {Object.entries(languages).map(([l, name]) => (
           <a 
             href={`/${l}/`} 
-            class={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${lang === l ? 'border-accent bg-accent/5 text-primary' : 'border-gray-100 text-primary/50 hover:border-accent/40'}`}
+            class={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${lang === l ? 'border-accent bg-accent/5 text-primary' : 'border-gray-100 text-primary/60 hover:border-accent/40'}`}
           >
-            <span class="text-sm font-bold uppercase">{l}</span>
-            <span class="text-[9px] opacity-50 font-medium">{name}</span>
+            <span class="text-sm font-bold uppercase mb-1">{l}</span>
+            <span class="text-[10px] opacity-60 font-medium">{name}</span>
           </a>
         ))}
       </div>
@@ -126,9 +132,8 @@ const navItems = [
 
 <style>
   .glass-header {
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
   }
 
   .max-width-site {

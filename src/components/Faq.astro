@@ -1,0 +1,84 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqs = {
+  en: [
+    { q: "What is the minimum investment?", a: "The minimum investment starting threshold is €15,000 for standard portfolio syndicates, and €25,000 for premium selection." },
+    { q: "How are returns generated?", a: "Returns are generated through the training, competing, and eventual sale of the showjumper at a higher valuation." },
+    { q: "How long is the investment period?", a: "Typically, investment cycles run between 18 to 36 months depending on the horse's age and development curve." },
+    { q: "Do I get to see the horse compete?", a: "Yes, investors are provided VIP access to competitions, regular video updates, and stable visits by appointment." }
+  ],
+  nl: [
+    { q: "Wat is de minimale investering?", a: "De minimale investering begint bij € 15.000 voor standaard portfolio syndicaten en € 25.000 voor premium selecties." },
+    { q: "Hoe worden rendementen behaald?", a: "Rendementen worden gerealiseerd door training, deelname aan competities en de uiteindelijke verkoop van het springpaard tegen een hogere waardering." },
+    { q: "Hoe lang loopt de investering?", a: "Gemiddeld duurt een investeringscyclus 18 tot 36 maanden, afhankelijk van de leeftijd en ontwikkeling van het paard." },
+    { q: "Kan ik het paard op wedstrijden bezoeken?", a: "Ja, investeerders krijgen VIP-toegang tot evenementen, regelmatige video updates en stallbezoeken op afspraak." }
+  ],
+  de: [
+    { q: "Wie hoch ist die Mindestinvestition?", a: "Die Mindestinvestition beginnt bei 15.000 € für Standard-Portfoliosyndikate und 25.000 € für die Premium-Auswahl." },
+    { q: "Wie werden Renditen erzielt?", a: "Renditen werden durch das Training, die Teilnahme an Turnieren und den eventuellen Verkauf des Springpferdes zu einer höheren Bewertung erzielt." },
+    { q: "Wie lange ist der Anlagezeitraum?", a: "In der Regel dauern Investitionszyklen zwischen 18 und 36 Monaten, je nach Alter und Entwicklung des Pferdes." },
+    { q: "Kann ich das Pferd bei Turnieren sehen?", a: "Ja, Investoren erhalten VIP-Zugang zu Turnieren, regelmäßige Video-Updates und Stallbesichtigungen nach Vereinbarung." }
+  ],
+  es: [
+    { q: "¿Cuál es la inversión mínima?", a: "La inversión mínima es de 15.000 € para sindicatos de cartera estándar y 25.000 € para la selección premium." },
+    { q: "¿Cómo se generan los rendimientos?", a: "Los rendimientos se generan a través del entrenamiento, la competencia y la eventual venta del caballo de salto a una mayor valoración." },
+    { q: "¿Cuánto dura el período de inversión?", a: "Por lo general, los ciclos de inversión duran entre 18 y 36 meses, dependiendo de la edad y el desarrollo del caballo." },
+    { q: "¿Puedo ver al caballo competir?", a: "Sí, los inversores tienen acceso VIP a las competiciones, actualizaciones en video y visitas a los establos con cita previa." }
+  ]
+};
+
+const currentFaqs = faqs[lang] || faqs.en;
+
+const titleMap = {
+  en: "Frequently Asked Questions",
+  nl: "Veelgestelde Vragen",
+  de: "Häufig Gestellte Fragen",
+  es: "Preguntas Frecuentes"
+};
+---
+
+<section id="faq" class="py-12 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-serif text-primary leading-tight mb-4">
+        {titleMap[lang] || titleMap.en}
+      </h2>
+      <p class="text-primary/60">Everything you need to know about the Equivest Platform.</p>
+    </div>
+
+    <div class="space-y-4">
+      {currentFaqs.map((faq, index) => (
+        <details class="group border border-gray-100 rounded-xl bg-white overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-bg-subtle transition-colors focus:outline-none">
+            <span class="text-lg font-bold text-primary">{faq.q}</span>
+            <span class="text-primary/40 group-open:rotate-180 transition-transform duration-300">
+              <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+            </span>
+          </summary>
+          <div class="p-6 pt-0 text-primary/70 leading-relaxed font-light">
+            <p>{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] summary ~ * {
+    animation: sweep .5s ease-in-out;
+  }
+
+  @keyframes sweep {
+    0%    {opacity: 0; transform: translateY(-10px)}
+    100%  {opacity: 1; transform: translateY(0)}
+  }
+</style>
