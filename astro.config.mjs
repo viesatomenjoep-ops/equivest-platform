@@ -18,4 +18,7 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+  image: {
+    domains: ['images.unsplash.com'],
+  },
 });
