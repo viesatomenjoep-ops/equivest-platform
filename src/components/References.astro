@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const horses = await getCollection('portfolio');
+const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
+---
+
+{soldHorses.length > 0 && (
+  <section id="references" class="py-12 md:py-24 bg-white relative overflow-hidden border-t-4 border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div class="space-y-4 max-w-2xl">
+          <span class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] block">Past Successes</span>
+          <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
+            Acquired & Sold
+          </h2>
+          <p class="text-primary/60 text-lg font-light leading-relaxed">
+             A record of absolute excellence. These elite athletes have been successfully placed with international riders and syndicated networks.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
+        {soldHorses.map((horse) => (
+          <div class="horse-card bg-gray-50 group overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full grayscale-[30%] hover:grayscale-0 transition-all duration-700 relative">
+            <div class="aspect-[16/10] overflow-hidden relative">
+              {typeof horse.data.image === 'string' ? (
+                <Image 
+                  src={horse.data.image} 
+                  alt={horse.data.title} 
+                  inferSize={true}
+                  class="w-full h-full object-cover"
+                />
+              ) : (
+                <Image 
+                  src={horse.data.image} 
+                  alt={horse.data.title} 
+                  class="w-full h-full object-cover"
+                />
+              )}
+              
+              <div class="absolute inset-0 bg-primary/40 flex items-center justify-center">
+                 <div class="border-2 border-accent text-accent px-8 py-3 bg-primary/90 text-sm font-bold uppercase tracking-[0.4em] transform -rotate-12 shadow-2xl backdrop-blur-sm">
+                    Acquired
+                 </div>
+              </div>
+            </div>
+            
+            <div class="p-8 flex-grow flex flex-col">
+              <h3 class="text-2xl font-serif text-primary mb-3">{horse.data.title}</h3>
+              <p class="text-primary/50 text-sm font-light line-clamp-2">
+                {horse.data.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

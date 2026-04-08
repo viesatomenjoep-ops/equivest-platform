@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import About from '../../components/About.astro';
 import PortfolioGallery from '../../components/PortfolioGallery.astro';
+import References from '../../components/References.astro';
 import RoiCalculator from '../../components/RoiCalculator.jsx';
 import Contact from '../../components/Contact.astro';
 import Faq from '../../components/Faq.astro';
@@ -81,6 +82,10 @@ const t = useTranslations(lang);
 
 		<div class="reveal reveal-up">
 			<PortfolioGallery />
+		</div>
+		
+		<div class="reveal reveal-up">
+			<References />
 		</div>
 
 		<div class="reveal reveal-up">
