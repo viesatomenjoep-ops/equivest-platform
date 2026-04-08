@@ -7,7 +7,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
     en: {
       title: 'Investment ROI Calculator',
       inputLabel: 'Amount to Invest',
-      minLabel: 'Min: €25.000',
+      minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
       year1: 'Year 1',
       year2: 'Year 2',
@@ -19,7 +19,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
     nl: {
       title: 'ROI Calculator',
       inputLabel: 'Investeringsbedrag',
-      minLabel: 'Min: €25.000',
+      minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
       year1: 'Jaar 1',
       year2: 'Jaar 2',
@@ -31,7 +31,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
     de: {
       title: 'ROI-Rechner',
       inputLabel: 'Investitionsbetrag',
-      minLabel: 'Min: €25.000',
+      minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
       year1: 'Jahr 1',
       year2: 'Jahr 2',
@@ -43,7 +43,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
     es: {
       title: 'Calculadora de ROI',
       inputLabel: 'Monto de Inversión',
-      minLabel: 'Min: €25.000',
+      minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
       year1: 'Año 1',
       year2: 'Año 2',
@@ -99,7 +99,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
           <div className="relative h-1.5 bg-white/10 rounded-full group mb-4">
             <input 
               type="range" 
-              min="25000" 
+              min="15000" 
               max="1000000" 
               step="1000"
               value={amount}
@@ -108,7 +108,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
             />
             <div 
               className="absolute top-0 left-0 h-full bg-accent rounded-full"
-              style={{ width: `${Math.min(((amount - 25000) / 975000) * 100, 100)}%` }}
+              style={{ width: `${Math.min(((amount - 15000) / 985000) * 100, 100)}%` }}
             >
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)] rounded-full scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none border-2 border-accent"></div>
             </div>
