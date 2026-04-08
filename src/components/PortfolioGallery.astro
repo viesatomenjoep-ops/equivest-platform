@@ -34,12 +34,20 @@ const allHorses = horses.sort((a, b) => (b.data.featured ? 1 : -1));
       {allHorses.map((horse) => (
         <div class="horse-card bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow duration-500 border border-gray-100 flex flex-col h-full" data-level={horse.data.specs?.level}>
           <div class="aspect-[16/10] overflow-hidden relative">
-            <Image 
-              src={horse.data.image} 
-              alt={horse.data.title} 
-              inferSize={true}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
+            {typeof horse.data.image === 'string' ? (
+              <Image 
+                src={horse.data.image} 
+                alt={horse.data.title} 
+                inferSize={true}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            ) : (
+              <Image 
+                src={horse.data.image} 
+                alt={horse.data.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            )}
             {horse.data.featured && (
               <div class="absolute top-4 left-4 bg-primary text-accent text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-xl">
                  Prime Selection

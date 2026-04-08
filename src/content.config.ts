@@ -3,10 +3,10 @@ import { glob } from 'astro/loaders';
 
 const portfolio = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/portfolio" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),
+    image: z.union([image(), z.string()]),
     price_range: z.string().optional(),
     youtube_url: z.string().optional(),
     featured: z.boolean().default(false),

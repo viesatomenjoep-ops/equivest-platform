@@ -8,6 +8,7 @@ import Contact from '../../components/Contact.astro';
 import Faq from '../../components/Faq.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/hero.png';
 
 export function getStaticPaths() {
   return [
@@ -30,9 +31,8 @@ const t = useTranslations(lang);
 		<section class="relative h-[90vh] flex items-center justify-center overflow-hidden premium-gradient text-white">
 			<div class="absolute inset-0 opacity-40">
 				<Image 
-					src="/images/hero.png" 
+					src={heroImg} 
 					alt="Elite Jumper"
-					inferSize={true}
 					loading="eager"
 					class="w-full h-full object-cover object-top"
 				/>
