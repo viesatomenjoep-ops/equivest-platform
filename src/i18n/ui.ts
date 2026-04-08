@@ -27,6 +27,7 @@ export const ui = {
     'roi.min_investment': 'Minimum Investment: €25,000',
     'contact.whatsapp': 'Chat via WhatsApp',
     'contact.email': 'Send an Email',
+    'contact.apg': '(on the premises of APG Stables)',
   },
   nl: {
     'nav.home': 'Home',
@@ -47,6 +48,7 @@ export const ui = {
     'roi.min_investment': 'Minimale Investering: €25.000',
     'contact.whatsapp': 'Chat via WhatsApp',
     'contact.email': 'Email ons',
+    'contact.apg': '(op het terrein van APG Stables)',
   },
   de: {
     'nav.home': 'Startseite',
@@ -67,6 +69,7 @@ export const ui = {
     'roi.min_investment': 'Mindestinvestition: €25.000',
     'contact.whatsapp': 'Per WhatsApp chatten',
     'contact.email': 'E-Mail senden',
+    'contact.apg': '(auf dem Gelände der APG Stables)',
   },
   es: {
     'nav.home': 'Inicio',
@@ -87,5 +90,6 @@ export const ui = {
     'roi.min_investment': 'Inversión Mínima: €25.000',
     'contact.whatsapp': 'Chat por WhatsApp',
     'contact.email': 'Enviar un correo',
+    'contact.apg': '(en las instalaciones de APG Stables)',
   },
 } as const;
