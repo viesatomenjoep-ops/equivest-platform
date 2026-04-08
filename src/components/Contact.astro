@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import Logo from './Logo.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -55,8 +54,11 @@ const email = "equivestbv@gmail.com";
 
     <div class="mt-24 pt-8 border-t border-white/5">
        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div class="scale-75 origin-left brightness-0 invert">
-            <Logo />
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-accent flex items-center justify-center rounded-sm">
+              <span class="text-primary font-serif font-bold text-sm">E</span>
+            </div>
+            <span class="text-lg font-serif font-bold tracking-tight text-white uppercase italic">Equivest</span>
           </div>
           <p class="text-white/30 text-[10px] uppercase tracking-widest">© 2026 Equivest Portfolio Management. All Rights Reserved.</p>
        </div>
