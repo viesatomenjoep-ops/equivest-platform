@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import About from '../../components/About.astro';
+import VideoPresentation from '../../components/VideoPresentation.astro';
 import PortfolioGallery from '../../components/PortfolioGallery.astro';
 import References from '../../components/References.astro';
 import RoiCalculator from '../../components/RoiCalculator.jsx';
@@ -79,6 +80,10 @@ const t = useTranslations(lang);
 				<RoiCalculator lang={lang} client:load />
 			</div>
 		</section>
+
+		<div class="reveal reveal-up">
+			<VideoPresentation />
+		</div>
 
 		<div class="reveal reveal-up">
 			<PortfolioGallery />

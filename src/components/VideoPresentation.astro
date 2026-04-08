@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="bg-primary py-24 relative overflow-hidden reveal reveal-up">
+  <!-- Subtle decorative background patterns -->
+  <div class="absolute inset-0 pointer-events-none opacity-5">
+    <div class="w-full h-px bg-white absolute top-1/4"></div>
+    <div class="w-px h-full bg-white absolute left-1/4"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col items-center text-center space-y-6 mb-12">
+      <span class="text-accent text-[10px] font-bold uppercase tracking-[0.4em] block">
+        Elite Performance
+      </span>
+      <h2 class="text-3xl md:text-5xl font-serif text-white max-w-2xl leading-tight">
+        Experience World-Class Showjumping In Action
+      </h2>
+    </div>
+
+    <!-- Theatrical Video Container -->
+    <div class="relative w-full aspect-video mx-auto max-w-5xl rounded-2xl shadow-2xl overflow-hidden gold-border bg-black group">
+      <!-- Glow effect behind the video -->
+      <div class="absolute -inset-1 bg-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 hidden md:block z-0"></div>
+      
+      <iframe 
+        class="relative z-10 w-full h-full object-cover"
+        src="https://www.youtube.com/embed/_cCHewe-EiY?rel=0&modestbranding=1&autohide=1&controls=1&showinfo=0" 
+        title="Equivest Showcase" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
