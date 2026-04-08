@@ -21,12 +21,14 @@ const navItems = [
     <div class="flex justify-between items-center h-24">
       <!-- Left: Brand (Logo + Text) -->
       <a href={`/${lang}/`} class="flex items-center space-x-3 group relative z-[110]">
-        <Image 
-          src={logoImg} 
-          alt="Equivest Logo" 
-          width={256}
-          class="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110"
-        />
+        <div id="logo-spinner" class="origin-center transition-transform duration-75 ease-out">
+          <Image 
+            src={logoImg} 
+            alt="Equivest Logo" 
+            width={256}
+            class="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
         <div class="flex flex-col">
           <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
           <span class="text-[8px] font-bold tracking-[0.3em] text-accent uppercase mt-1 hidden sm:block">Elite Investments</span>
@@ -168,9 +170,31 @@ const navItems = [
     });
   }
 
+  function initScrollRotate() {
+    const spinner = document.getElementById('logo-spinner');
+    if (!spinner) return;
+    
+    const win = window as any;
+    
+    // Clean up any old listeners if this runs multiple times
+    win.removeEventListener('scroll', win._logoScrollHandler);
+    
+    win._logoScrollHandler = () => {
+      // 0.2 degrees per pixel scrolled = smooth rotation
+      const rotation = window.scrollY * 0.2;
+      spinner.style.transform = `rotate(${rotation}deg)`;
+    };
+    
+    window.addEventListener('scroll', win._logoScrollHandler, { passive: true });
+  }
+
   // Load on initial navigation
   initMenu();
+  initScrollRotate();
 
-  // Load on View Transitions swap (if enabled later)
-  document.addEventListener('astro:after-swap', initMenu);
+  // Load on View Transitions swap
+  document.addEventListener('astro:after-swap', () => {
+     initMenu();
+     initScrollRotate();
+  });
 </script>
