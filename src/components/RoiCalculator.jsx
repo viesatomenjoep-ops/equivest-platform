@@ -144,11 +144,16 @@ const RoiCalculator = ({ lang = 'en' }) => {
           <p className="text-white/30 text-[10px] max-w-sm italic leading-relaxed">
             * Calculations are based on professional benchmarks for the trade and sport of 5-star Grand Prix jumpers. Actual results may vary.
           </p>
-          <a href="#contact" className="w-full md:w-auto bg-accent text-primary px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-xl text-center">
+          <a href="#contact" className="w-full md:w-auto bg-accent text-primary px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-xl text-center relative z-20">
             {t.cta}
           </a>
         </div>
       </div>
+
+      {/* Interactive Subtle Scroll to Top Logo */}
+      <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="absolute bottom-6 left-12 z-0 w-48 h-48 opacity-[0.04] hover:opacity-[0.15] transition-all duration-700 cursor-pointer focus:outline-none hidden md:block">
+        <img src="/images/logo.png" alt="Scroll to top" className="w-full h-full object-contain brightness-0 invert drop-shadow-2xl" />
+      </button>
     </div>
   );
 };
