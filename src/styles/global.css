@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0A192F;
+  --color-accent: #D4AF37;
+  --color-accent-gold: #D4AF37;
+  --color-bg-subtle: #F3F4F6;
+  --font-serif: "Quicksand Variable", sans-serif;
+  --font-sans: "Quicksand Variable", sans-serif;
+  
+  --shadow-premium: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-primary font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+}
+
+.gold-border {
+  border: 1px solid #D4AF37;
+}
+
+.glass-header {
+  @apply bg-white/90 backdrop-blur-md sticky top-0 z-50;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}

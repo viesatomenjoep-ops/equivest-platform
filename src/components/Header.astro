@@ -1,0 +1,70 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+  { href: `/${lang}/#about`, label: t('nav.about') },
+  { href: `/${lang}/#portfolio`, label: t('nav.portfolio') },
+  { href: `/${lang}/#roi`, label: t('nav.roi') },
+  { href: `/${lang}/#contact`, label: t('nav.contact') },
+];
+---
+
+<header class="glass-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <a href={`/${lang}/`} class="flex items-center space-x-2 group">
+        <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-sm transition-transform group-hover:scale-110">
+          <span class="text-accent font-serif font-bold text-xl">E</span>
+        </div>
+        <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase">Equivest</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {navItems.map(item => (
+          <a href={item.href} class="text-sm font-semibold tracking-wide hover:text-accent transition-colors uppercase">
+            {item.label}
+          </a>
+        ))}
+        
+        <!-- Search Bar (Visual) -->
+        <div class="relative group ml-4">
+          <input 
+            type="text" 
+            placeholder="Search showjumpers..." 
+            class="bg-bg-subtle border-none rounded-sm py-2 px-4 text-xs focus:ring-1 focus:ring-accent transition-all w-40 group-hover:w-64 outline-none placeholder:italic"
+          />
+          <svg class="w-4 h-4 absolute right-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+
+        <!-- Language Switcher -->
+        <div class="flex items-center space-x-1 border-l border-gray-100 ml-4 pl-4">
+          {Object.entries(languages).map(([l, _]) => (
+            <a 
+              href={`/${l}/`} 
+              class={`text-[10px] font-bold uppercase tracking-tighter px-2 py-1 rounded transition-all ${lang === l ? 'bg-primary text-accent' : 'text-primary/60 hover:text-accent'}`}
+            >
+              {l}
+            </a>
+          ))}
+        </div>
+      </nav>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+         <button class="text-primary hover:text-accent p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 6h16M4 18h16" />
+            </svg>
+         </button>
+      </div>
+    </div>
+  </div>
+</header>

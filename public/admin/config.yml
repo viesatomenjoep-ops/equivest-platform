@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/portfolio"
+public_folder: "/images/portfolio"
+
+collections:
+  - name: "portfolio"
+    label: "Showjumpers"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Main Image", name: "image", widget: "image" }
+      - { label: "YouTube URL", name: "youtube_url", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - label: "Specifications"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Age", name: "age", widget: "number" }
+          - { label: "Gender", name: "gender", widget: "string" }
+          - { label: "Height", name: "height", widget: "string" }
+          - { label: "Level", name: "level", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }

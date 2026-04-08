@@ -1,0 +1,44 @@
+---
+import "@fontsource-variable/quicksand";
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	lang: string;
+	description?: string;
+}
+
+const { 
+  title, 
+  lang, 
+  description = "Equivest - Premium investment platform for elite showjumpers from the Netherlands, Germany, and Belgium." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO -->
+		<title>{title} | Equivest</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Equivest" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+	</head>
+	<body class="bg-white text-primary selection:bg-accent selection:text-white">
+		<slot />
+	</body>
+</html>
