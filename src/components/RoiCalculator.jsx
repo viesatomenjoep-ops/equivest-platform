@@ -8,45 +8,49 @@ const RoiCalculator = ({ lang = 'en' }) => {
       title: 'Investment ROI Calculator',
       inputLabel: 'Amount to Invest',
       minLabel: 'Min: €25.000',
-      maxLabel: 'Max: €500.000+',
+      maxLabel: 'Max: €1.000.000+',
       year1: 'Year 1',
       year2: 'Year 2',
       year3: 'Year 3',
-      range: 'Projected Profit Range',
+      range: 'Projected Profit',
       cta: 'Request Investment Plan',
+      potential: 'Potential',
     },
     nl: {
       title: 'ROI Calculator',
       inputLabel: 'Investeringsbedrag',
       minLabel: 'Min: €25.000',
-      maxLabel: 'Max: €500.000+',
+      maxLabel: 'Max: €1.000.000+',
       year1: 'Jaar 1',
       year2: 'Jaar 2',
       year3: 'Jaar 3',
-      range: 'Verwachte Winstmarge',
+      range: 'Verwachte Winst',
       cta: 'Plan Aanvragen',
+      potential: 'Potentieel',
     },
     de: {
       title: 'ROI-Rechner',
       inputLabel: 'Investitionsbetrag',
       minLabel: 'Min: €25.000',
-      maxLabel: 'Max: €500.000+',
+      maxLabel: 'Max: €1.000.000+',
       year1: 'Jahr 1',
       year2: 'Jahr 2',
       year3: 'Jahr 3',
-      range: 'Erwartete Gewinnspanne',
+      range: 'Erwarteter Gewinn',
       cta: 'Investitionsplan Anfordern',
+      potential: 'Potenzial',
     },
     es: {
       title: 'Calculadora de ROI',
       inputLabel: 'Monto de Inversión',
       minLabel: 'Min: €25.000',
-      maxLabel: 'Max: €500.000+',
+      maxLabel: 'Max: €1.000.000+',
       year1: 'Año 1',
       year2: 'Año 2',
       year3: 'Año 3',
-      range: 'Margen de Beneficio Proyectado',
+      range: 'Beneficio Proyectado',
       cta: 'Solicitar Plan de Inversión',
+      potential: 'Potencial',
     }
   };
 
@@ -64,69 +68,83 @@ const RoiCalculator = ({ lang = 'en' }) => {
     maximumFractionDigits: 0,
   });
 
+  const handleInputChange = (e) => {
+    const val = e.target.value.replace(/[^0-9]/g, '');
+    const numVal = val === '' ? 0 : parseInt(val, 10);
+    setAmount(Math.min(numVal, 10000000)); // Cap at 10M for realism
+  };
+
   return (
-    <div className="bg-primary p-8 md:p-16 shadow-premium border-l-[12px] border-accent relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-3xl"></div>
+    <div className="bg-primary p-8 md:p-12 shadow-2xl border-l-[12px] border-accent relative overflow-hidden rounded-r-2xl">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[100px]"></div>
       
       <div className="relative z-10">
-        <h3 className="text-3xl md:text-4xl font-serif text-white mb-12">{t.title}</h3>
-        
-        <div className="mb-16">
-          <div className="flex justify-between items-end mb-6">
-            <div className="space-y-1">
-              <label className="text-accent text-xs font-bold uppercase tracking-[0.2em]">{t.inputLabel}</label>
-              <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">{t.minLabel} — {t.maxLabel}</p>
-            </div>
-            <div className="text-4xl md:text-5xl font-serif text-white tabular-nums border-b border-white/20 pb-2">
-              {formatter.format(amount)}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <h3 className="text-3xl md:text-4xl font-serif text-white">{t.title}</h3>
+          <div className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 flex flex-col items-end group focus-within:border-accent/40 transition-colors">
+            <label className="text-accent/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-1">{t.inputLabel}</label>
+            <div className="flex items-center">
+              <span className="text-white/40 text-2xl md:text-3xl font-serif mr-1">€</span>
+              <input 
+                type="text" 
+                value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
+                onChange={handleInputChange}
+                className="bg-transparent border-none text-white text-2xl md:text-3xl font-serif tabular-nums outline-none w-32 md:w-48 text-right p-0 focus:ring-0"
+              />
             </div>
           </div>
-          
-          <div className="relative h-2 bg-white/10 rounded-full group">
+        </div>
+        
+        <div className="mb-16 px-2">
+          <div className="relative h-1.5 bg-white/10 rounded-full group mb-4">
             <input 
               type="range" 
               min="25000" 
               max="1000000" 
-              step="5000"
+              step="1000"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"
             />
             <div 
-              className="absolute top-0 left-0 h-full bg-accent rounded-full transition-all duration-150"
+              className="absolute top-0 left-0 h-full bg-accent rounded-full"
               style={{ width: `${Math.min(((amount - 25000) / 975000) * 100, 100)}%` }}
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white shadow-xl rounded-full scale-100 group-hover:scale-125 transition-transform duration-300 pointer-events-none"></div>
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)] rounded-full scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none border-2 border-accent"></div>
             </div>
+          </div>
+          <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-white/30">
+            <span>{t.minLabel}</span>
+            <span>{t.maxLabel}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {results.map((res, idx) => (
-            <div key={idx} className="bg-white/5 border border-white/10 p-8 transform transition-transform hover:-translate-y-2 group">
-              <span className="text-accent text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block opacity-80">{res.year}</span>
-              <div className="space-y-2">
-                <span className="block text-white/50 text-[10px] font-bold uppercase tracking-widest">{t.range}</span>
-                <div className="text-2xl font-serif text-white leading-none">
-                  {formatter.format(amount * res.min)}
-                </div>
-                <div className="text-lg text-accent/80 font-serif translate-x-2">
-                   to {formatter.format(amount * res.max)}
-                </div>
+            <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/[0.08] transition-all hover:-translate-y-1">
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-accent text-[10px] font-bold uppercase tracking-[0.3em]">{res.year}</span>
+                <span className="bg-accent/10 text-accent px-2 py-1 rounded text-[9px] font-bold uppercase tracking-wider">
+                  +{(res.max * 100).toFixed(0)}% {t.potential}
+                </span>
               </div>
-              <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-accent font-serif text-xl">+{(res.max * 100).toFixed(0)}%</span>
-                <span className="text-white/30 text-[10px] font-bold uppercase tracking-tighter">Potential</span>
+              <div className="space-y-1">
+                <span className="block text-white/40 text-[9px] font-bold uppercase tracking-widest">{t.range}</span>
+                <div className="text-xl md:text-2xl font-serif text-white">
+                  {formatter.format(amount * res.min)}
+                  <span className="mx-2 text-white/20 font-sans text-sm">—</span>
+                  {formatter.format(amount * res.max)}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/10">
-          <p className="text-white/40 text-[11px] max-w-md italic tracking-wide leading-relaxed">
-            * Calculations are based on professional benchmarks for the trade and sport of 5-star Grand Prix jumpers. Actual results may vary per project.
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/10">
+          <p className="text-white/30 text-[10px] max-w-sm italic leading-relaxed">
+            * Calculations are based on professional benchmarks for the trade and sport of 5-star Grand Prix jumpers. Actual results may vary.
           </p>
-          <a href="#contact" className="bg-accent text-primary px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-xl">
+          <a href="#contact" className="w-full md:w-auto bg-accent text-primary px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-xl text-center">
             {t.cta}
           </a>
         </div>
