@@ -26,8 +26,8 @@ const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featur
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
-        {soldHorses.map((horse) => (
-          <div class="horse-card bg-gray-50 group overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full grayscale-[30%] hover:grayscale-0 transition-all duration-700 relative">
+        {soldHorses.map((horse, index) => (
+          <div class="horse-card reveal reveal-scale bg-gray-50 group overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full grayscale-[30%] hover:grayscale-0 transition-all relative" style={`transition-duration: 1200ms; transition-delay: ${index * 150}ms`}>
             <div class="aspect-[16/10] overflow-hidden relative">
               {typeof horse.data.image === 'string' ? (
                 <Image 
