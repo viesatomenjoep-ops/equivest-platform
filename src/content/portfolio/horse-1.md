@@ -2,6 +2,7 @@
 title: "Victoria"
 description: "4 jaar oude Pony"
 image: "../../assets/images/Victoria.png"
+youtube_url: "https://www.youtube.com/watch?v=_cCHewe-EiY"
 featured: true
 specs:
   age: 4
