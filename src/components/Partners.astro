@@ -1,0 +1,53 @@
+---
+const partners = [
+  "@petrieshowstables",
+  "@swansonhorses",
+  "@nomoregrayarea36",
+  "@cbhjumpltd",
+  "@kardel_global_equine",
+  "@apg",
+  "@chesterfiels_ltd"
+];
+
+// Duplicate the array to create a seamless infinite loop
+const sliderItems = [...partners, ...partners];
+---
+
+<section class="py-16 md:py-24 bg-white overflow-hidden border-t border-b border-gray-50 flex items-center h-full">
+  <div class="w-full flex items-center justify-between relative pl-4 md:pl-12">
+    
+    <!-- Static 'Supported by' Label -->
+    <div class="absolute left-0 top-0 bottom-0 z-20 flex items-center justify-center bg-white pr-8 pl-4 lg:pl-16 shadow-[20px_0_30px_-5px_rgba(255,255,255,1)] md:shadow-[40px_0_40px_-5px_rgba(255,255,255,1)] border-r border-gray-100">
+      <span class="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-primary whitespace-nowrap">
+        Supported By
+      </span>
+    </div>
+
+    <!-- Infinite Scrolling Marquee -->
+    <div class="relative w-full overflow-hidden flex items-center ml-32 md:ml-64">
+      <!-- Gradient Fades (Left & Right) for smooth clipping -->
+      <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 hidden md:block"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+      <!-- Marquee Wrapper -->
+      <div class="animate-marquee flex items-center space-x-12 md:space-x-24 px-12 z-0">
+        {sliderItems.map((partner) => {
+          // Determine URL safely by removing the preceding @ symbol for instagram link
+          const handle = partner.replace('@', '');
+          return (
+            <a 
+              href={`https://instagram.com/${handle}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="group flex items-center transition-transform hover:scale-110"
+            >
+              <h3 class="text-2xl md:text-4xl font-serif text-primary/40 group-hover:text-accent transition-colors duration-300">
+                {partner}
+              </h3>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

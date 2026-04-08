@@ -1,0 +1,114 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const reviews = [
+  {
+    author: "Equestrian Ventures LLC",
+    location: "United States",
+    text: "Incredible transparency and absolute top-tier horses. Equivest is changing the game.",
+    rating: 5,
+    date: "2 days ago"
+  },
+  {
+    author: "J. v.d. Berg",
+    location: "Netherlands",
+    text: "Highest professionalism we've seen in the sport. The ROI on our Youngster syndicate exceeded all expectations.",
+    rating: 5,
+    date: "1 week ago"
+  },
+  {
+    author: "Kardel Global Equine",
+    location: "United Kingdom",
+    text: "A flawless acquisition process from trial to stable. Simply the best.",
+    rating: 5,
+    date: "3 weeks ago"
+  },
+  {
+    author: "C. Swanson",
+    location: "Germany",
+    text: "The team at Equivest has an exceptional eye for talent. Our Grand Prix prospect is performing brilliantly on the global stage.",
+    rating: 5,
+    date: "1 month ago"
+  },
+  {
+    author: "High Jump Syndicate",
+    location: "Belgium",
+    text: "Unmatched expertise in the European market. True elite investments.",
+    rating: 5,
+    date: "2 months ago"
+  }
+];
+---
+
+<section class="py-24 bg-bg-subtle border-t border-gray-100 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div class="space-y-4 max-w-2xl reveal reveal-left">
+        <span class="text-accent text-xs font-bold uppercase tracking-[0.3em] block">Trust & Verification</span>
+        <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
+          Client Experiences
+        </h2>
+      </div>
+      <div class="flex items-center space-x-3 mt-6 md:mt-0 reveal reveal-up delay-200">
+        <!-- Minimalist Trustpilot Identity -->
+        <span class="text-primary/60 text-sm font-bold uppercase tracking-widest">Excellent</span>
+        <div class="flex space-x-1">
+          {[...Array(5)].map(() => (
+            <div class="w-8 h-8 bg-[#00b67a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+          ))}
+        </div>
+        <span class="text-primary/40 font-bold ml-2 hidden sm:block">Trustpilot</span>
+      </div>
+    </div>
+
+    <!-- Horizontal Scrollable Container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory pb-12 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 space-x-6 hide-scrollbar reveal reveal-up delay-300 relative">
+      
+      {reviews.map((review, i) => (
+        <div class="min-w-[320px] md:min-w-[400px] bg-white p-8 md:p-10 shadow-sm border border-gray-100 snap-center rounded-sm hover:shadow-premium transition-shadow group flex flex-col justify-between">
+          <div>
+             <div class="flex space-x-1 mb-6">
+                {[...Array(review.rating)].map(() => (
+                  <div class="w-6 h-6 bg-[#00b67a] flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                ))}
+             </div>
+             
+             <h3 class="font-serif text-xl md:text-2xl text-primary mb-4 leading-tight group-hover:text-accent transition-colors">
+               "{review.text}"
+             </h3>
+          </div>
+          
+          <div class="mt-8 border-t border-gray-50 pt-6">
+             <div class="flex items-center justify-between">
+                <div>
+                   <p class="font-bold text-primary tracking-wide">{review.author}</p>
+                   <p class="text-xs text-primary/40 uppercase tracking-widest mt-1">{review.location}</p>
+                </div>
+                <span class="text-xs text-primary/30 font-medium">{review.date}</span>
+             </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
