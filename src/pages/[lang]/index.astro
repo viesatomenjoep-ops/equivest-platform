@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import About from '../../components/About.astro';
 import VideoShowcase from '../../components/VideoShowcase.astro';
-import PortfolioGallery from '../../components/PortfolioGallery.astro';
+import PrimeSelection from '../../components/PrimeSelection.astro';
 import References from '../../components/References.astro';
 import Partners from '../../components/Partners.astro';
 import Reviews from '../../components/Reviews.astro';
@@ -57,7 +57,7 @@ const t = useTranslations(lang);
 					Securing high-yield returns through the acquisition of world-class equestrian talent.
 				</p>
 				<div class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-up delay-300">
-					<a href="#portfolio" class="bg-accent text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl">
+					<a href={`/${lang}/portfolio`} class="bg-accent text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl">
 						View Portfolio
 					</a>
 					<a href="#roi" class="px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] text-white border border-white/30 hover:bg-white/10 transition-all">
@@ -88,7 +88,7 @@ const t = useTranslations(lang);
 		</div>
 
 		<div class="reveal reveal-up">
-			<PortfolioGallery />
+			<PrimeSelection />
 		</div>
 		
 		<div class="reveal reveal-up">
