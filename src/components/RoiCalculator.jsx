@@ -107,14 +107,10 @@ const RoiCalculator = ({ lang = 'en' }) => {
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"
             />
             <div 
-              className="absolute top-0 left-0 h-full bg-accent rounded-full"
+              className="absolute top-0 left-0 h-full bg-accent rounded-full transition-all duration-500 ease-out"
               style={{ width: `${Math.min(((amount - 15000) / 985000) * 100, 100)}%` }}
             >
-              <img 
-                src="/images/logo.png" 
-                alt="Slider thumb" 
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]" 
-              />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-6 h-6 bg-white shadow-[0_0_20px_rgba(255,255,255,0.6)] rounded-full scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none border-2 border-accent"></div>
             </div>
           </div>
           <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-white/30">
