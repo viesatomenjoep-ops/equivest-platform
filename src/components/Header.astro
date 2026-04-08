@@ -1,6 +1,7 @@
 ---
 import { languages } from '../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Logo from './Logo.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -17,11 +18,8 @@ const navItems = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <a href={`/${lang}/`} class="flex items-center space-x-2 group">
-        <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-sm transition-transform group-hover:scale-110">
-          <span class="text-accent font-serif font-bold text-xl">E</span>
-        </div>
-        <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase">Equivest</span>
+      <a href={`/${lang}/`} class="hover:opacity-90 transition-opacity">
+        <Logo />
       </a>
 
       <!-- Desktop Navigation -->
