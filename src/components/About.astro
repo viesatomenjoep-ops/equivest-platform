@@ -5,54 +5,54 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section id="about" class="py-24 bg-white relative overflow-hidden">
+<section id="about" class="py-24 md:py-32 bg-white relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
       <div class="space-y-8">
-        <div class="inline-block px-4 py-1.5 bg-bg-subtle border-l-4 border-accent">
-          <span class="text-xs font-bold uppercase tracking-widest text-primary/60">Legacy of Excellence</span>
+        <div class="inline-block px-4 py-1.5 bg-gray-50 border-l-4 border-accent rounded-r-lg">
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/50">Legacy of Excellence</span>
         </div>
         <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
           {t('about.title')}
         </h2>
-        <div class="space-y-6 text-lg text-primary/80 leading-relaxed font-light">
+        <div class="space-y-6 text-base md:text-lg text-primary/70 leading-relaxed font-light">
           <p>
             {t('about.content')}
           </p>
           <div class="flex flex-col sm:flex-row gap-8 pt-8 border-t border-gray-100">
-             <div>
-                <span class="block text-4xl font-serif text-accent">30+</span>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary/60">Years of Experience</span>
+             <div class="space-y-1">
+                <span class="block text-3xl md:text-4xl font-serif text-accent">30+</span>
+                <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-primary/40">Years of Experience</span>
              </div>
-             <div>
-                <span class="block text-4xl font-serif text-accent">5-Star</span>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary/60">Grand Prix Pedigree</span>
+             <div class="space-y-1">
+                <span class="block text-3xl md:text-4xl font-serif text-accent">5-Star</span>
+                <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-primary/40">Grand Prix Pedigree</span>
              </div>
-             <div>
-                <span class="block text-4xl font-serif text-accent">NL | DE | BE</span>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary/60">Key Markets</span>
+             <div class="space-y-1">
+                <span class="block text-3xl md:text-4xl font-serif text-accent">NL | DE | BE</span>
+                <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-primary/40">Key Markets</span>
              </div>
           </div>
         </div>
       </div>
       
       <div class="relative group">
-        <div class="absolute inset-0 bg-accent translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700"></div>
-        <div class="aspect-[4/5] bg-gray-200 overflow-hidden shadow-premium">
+        <div class="absolute inset-0 bg-accent/20 translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700 rounded-2xl"></div>
+        <div class="aspect-[4/5] bg-gray-200 overflow-hidden shadow-premium rounded-2xl">
            <img 
             src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=2071&auto=format&fit=crop" 
             alt="Elite Showjumper" 
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
            />
         </div>
-        <div class="absolute bottom-12 -left-8 bg-primary p-8 shadow-premium max-w-[240px] transform transition-transform group-hover:-translate-y-2">
-           <p class="text-white text-lg font-serif italic mb-2">"Exclusivity in Every Leap."</p>
-           <div class="w-12 h-0.5 bg-accent"></div>
+        <div class="absolute bottom-8 -left-4 md:bottom-12 md:-left-8 bg-primary p-6 md:p-8 shadow-premium max-w-[220px] rounded-xl transform transition-transform group-hover:-translate-y-2">
+           <p class="text-white text-base md:text-lg font-serif italic mb-2">"Exclusivity in Every Leap."</p>
+           <div class="w-12 h-0.5 bg-accent rounded-full"></div>
         </div>
       </div>
     </div>
   </div>
   
   <!-- Subtle Background Element -->
-  <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full blur-[100px] -z-10"></div>
 </section>

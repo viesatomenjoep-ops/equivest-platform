@@ -75,8 +75,8 @@ const RoiCalculator = ({ lang = 'en' }) => {
   };
 
   return (
-    <div className="bg-primary p-8 md:p-12 shadow-2xl border-l-[12px] border-accent relative overflow-hidden rounded-r-2xl">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[100px]"></div>
+    <div className="bg-primary p-8 md:p-12 shadow-2xl border-l-[6px] border-accent relative overflow-hidden rounded-2xl">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[120px]"></div>
       
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">

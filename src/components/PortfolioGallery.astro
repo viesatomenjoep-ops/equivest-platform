@@ -10,26 +10,23 @@ const featuredHorses = horses.filter(h => h.data.featured).slice(0, 3);
 const allHorses = horses.sort((a, b) => (b.data.featured ? 1 : -1));
 ---
 
-<section id="portfolio" class="py-24 bg-bg-subtle">
+<section id="portfolio" class="py-24 md:py-32 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
       <div class="space-y-4 max-w-2xl">
-        <span class="text-accent text-xs font-bold uppercase tracking-[0.3em] block">Our Collection</span>
+        <span class="text-accent text-[10px] font-bold uppercase tracking-[0.3em] block">Our Collection</span>
         <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
           {t('portfolio.title')}
         </h2>
-        <p class="text-primary/60 text-lg font-light leading-relaxed">
-           Explore our selection of elite showjumpers from the finest breeding lines in Europe. Each horse is hand-picked for investment potential.
+        <p class="text-primary/50 text-base md:text-lg font-light leading-relaxed">
+           Explore our selection of elite showjumpers from the finest breeding lines in Europe.
         </p>
-      </div>
-      <div class="flex gap-4">
-         <span class="text-primary/40 text-xs font-bold uppercase tracking-widest border-b border-primary/10 pb-2">Verified Performance</span>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {allHorses.map((horse) => (
-        <div class="bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow duration-500 border border-gray-100 flex flex-col h-full">
+        <div class="bg-white group overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col h-full hover:-translate-y-1">
           <div class="aspect-[16/10] overflow-hidden relative">
             <img 
               src={horse.data.image} 
@@ -37,49 +34,49 @@ const allHorses = horses.sort((a, b) => (b.data.featured ? 1 : -1));
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             {horse.data.featured && (
-              <div class="absolute top-4 left-4 bg-primary text-accent text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-xl">
+              <div class="absolute top-4 left-4 bg-primary text-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-lg">
                  Prime Selection
               </div>
             )}
             
             <!-- YouTube Overlay -->
             {horse.data.youtube_url && (
-              <div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                 <div class="w-12 h-12 bg-white flex items-center justify-center rounded-full text-primary scale-90 group-hover:scale-100 transition-transform">
+              <div class="absolute inset-0 bg-primary/30 backdrop-blur-[2px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                 <div class="w-14 h-14 bg-white flex items-center justify-center rounded-full text-primary scale-90 group-hover:scale-100 transition-transform shadow-lg">
                     <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                  </div>
               </div>
             )}
           </div>
           
-          <div class="p-8 flex-grow flex flex-col">
-            <h3 class="text-2xl font-serif text-primary mb-3 group-hover:text-accent transition-colors">{horse.data.title}</h3>
-            <p class="text-primary/70 text-sm font-light mb-6 line-clamp-2">
+          <div class="p-6 md:p-8 flex-grow flex flex-col">
+            <h3 class="text-xl md:text-2xl font-serif text-primary mb-3 group-hover:text-accent transition-colors">{horse.data.title}</h3>
+            <p class="text-primary/60 text-sm font-light mb-6 line-clamp-2">
               {horse.data.description}
             </p>
             
             <div class="mt-auto grid grid-cols-2 gap-y-4 border-t border-gray-50 pt-6">
               <div class="space-y-1">
-                <span class="text-[9px] uppercase tracking-widest text-primary/40 font-bold block">Age</span>
+                <span class="text-[8px] uppercase tracking-widest text-primary/30 font-bold block">Age</span>
                 <span class="text-sm font-serif text-primary">{horse.data.specs?.age} Years</span>
               </div>
               <div class="space-y-1">
-                <span class="text-[9px] uppercase tracking-widest text-primary/40 font-bold block">Level</span>
+                <span class="text-[8px] uppercase tracking-widest text-primary/30 font-bold block">Level</span>
                 <span class="text-sm font-serif text-primary">{horse.data.specs?.level}</span>
               </div>
               <div class="space-y-1">
-                <span class="text-[9px] uppercase tracking-widest text-primary/40 font-bold block">Gender</span>
+                <span class="text-[8px] uppercase tracking-widest text-primary/30 font-bold block">Gender</span>
                 <span class="text-sm font-serif text-primary">{horse.data.specs?.gender}</span>
               </div>
               <div class="space-y-1">
-                <span class="text-[9px] uppercase tracking-widest text-primary/40 font-bold block">Height</span>
+                <span class="text-[8px] uppercase tracking-widest text-primary/30 font-bold block">Height</span>
                 <span class="text-sm font-serif text-primary">{horse.data.specs?.height}</span>
               </div>
             </div>
           </div>
           
-          <div class="border-t border-gray-100 p-4">
-             <a href={`/${lang}/contact`} class="block w-full text-center py-3 text-[11px] font-bold uppercase tracking-[0.2em] bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/60">
+          <div class="border-t border-gray-50 p-4">
+             <a href={`/${lang}/contact`} class="block w-full text-center py-3 text-[10px] font-bold uppercase tracking-[0.2em] bg-gray-50 hover:bg-primary hover:text-white transition-all text-primary/50 rounded-xl">
                 Inquire Details
              </a>
           </div>
