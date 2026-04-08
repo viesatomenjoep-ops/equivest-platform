@@ -13,28 +13,35 @@ const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featur
 {soldHorses.length > 0 && (
   <section id="references" class="py-12 md:py-24 bg-white relative overflow-hidden border-t-4 border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row justify-between items-start mb-16 gap-12">
-        <div class="space-y-4 max-w-2xl">
-          <span class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] block">Past Successes</span>
-          <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
-            Recent Results & References
-          </h2>
-          <p class="text-primary/60 text-lg font-light leading-relaxed">
-             A record of absolute excellence. These elite athletes have been successfully placed with international riders and syndicated networks.
-          </p>
-        </div>
-        
-        <!-- Embedded Instagram Reel -->
-        <div class="w-full max-w-[420px] mx-auto lg:mx-0 flex-shrink-0 bg-white p-2 shadow-premium border border-gray-100 rounded-xl overflow-hidden reveal reveal-up">
-           <iframe 
-             src="https://www.instagram.com/p/DWuMkF0CYL_/embed" 
-             width="100%" 
-             frameborder="0" 
-             scrolling="no" 
-             allowtransparency="true" 
-             class="w-full h-[600px] rounded-lg">
-           </iframe>
-        </div>
+      <div class="text-center mb-16 space-y-4 max-w-2xl mx-auto">
+        <span class="text-primary/40 text-xs font-bold uppercase tracking-[0.3em] block">Past Successes</span>
+        <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
+          Recent Results & References
+        </h2>
+        <p class="text-primary/60 text-lg font-light leading-relaxed">
+           A record of absolute excellence. These elite athletes have been successfully placed with international riders and syndicated networks.
+        </p>
+      </div>
+
+      <!-- Instagram Highlights Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        {[
+          'DWuMkF0CYL_',
+          'DVoJ-2rDuFR',
+          'DUwJutMkift',
+          'DU-u5JCjsUO'
+        ].map((id, index) => (
+          <div class={`bg-white p-2 shadow-premium border border-gray-100 rounded-xl overflow-hidden reveal reveal-up`} style={`transition-delay: ${index * 150}ms`}>
+             <iframe 
+               src={`https://www.instagram.com/p/${id}/embed`} 
+               width="100%" 
+               frameborder="0" 
+               scrolling="no" 
+               allowtransparency="true" 
+               class="w-full h-[580px] rounded-lg">
+             </iframe>
+          </div>
+        ))}
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
