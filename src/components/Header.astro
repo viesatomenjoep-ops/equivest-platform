@@ -38,7 +38,7 @@ const navItems = [
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-8">
           {navItems.map(item => (
-            <a href={item.href} class="text-[10px] font-bold tracking-widest hover:text-accent transition-colors uppercase">
+            <a href={item.href} class="text-[15px] font-bold tracking-widest hover:text-accent transition-colors uppercase">
               {item.label}
             </a>
           ))}
@@ -53,7 +53,7 @@ const navItems = [
               {Object.entries(languages).map(([l, _]) => (
                 <a 
                   href={`/${l}/`} 
-                  class={`text-[10px] font-bold uppercase tracking-tighter w-7 h-7 flex items-center justify-center rounded-full transition-all ${lang === l ? 'bg-primary text-accent' : 'text-primary/40 hover:text-accent hover:bg-bg-subtle'}`}
+                  class={`text-[15px] font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? 'bg-primary text-accent' : 'text-primary/40 hover:text-accent hover:bg-bg-subtle'}`}
                 >
                   {l}
                 </a>
