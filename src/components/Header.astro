@@ -46,10 +46,11 @@ const navItems = [
 
       <!-- DESKTOP CENTER: Navigation -->
       <div class="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-[110]">
-        <nav class="flex items-center space-x-5">
+        <nav class="flex items-center space-x-5 relative" id="desktop-nav-container">
+          <div id="nav-indicator" class="absolute -bottom-2 left-0 h-[3px] bg-primary transition-all duration-300 ease-in-out opacity-0 pointer-events-none drop-shadow-md"></div>
           {
             navItems.map((item) => (
-              <a href={item.href} class="text-base font-bold tracking-widest hover:text-accent transition-colors uppercase whitespace-nowrap">
+              <a href={item.href} class="desktop-nav-item text-base font-bold tracking-widest hover:text-accent transition-colors uppercase whitespace-nowrap">
                 {item.label}
               </a>
             ))
@@ -236,13 +237,85 @@ const navItems = [
     });
   }
 
+  function initScrollSpy() {
+    const navItems = document.querySelectorAll('.desktop-nav-item');
+    const indicator = document.getElementById('nav-indicator');
+    if (!indicator || !navItems.length) return;
+
+    const updateIndicator = (item: any) => {
+      if (!item) {
+        indicator.style.opacity = '0';
+        return;
+      }
+      indicator.style.opacity = '1';
+      indicator.style.left = `${item.offsetLeft}px`;
+      indicator.style.width = `${item.offsetWidth}px`;
+    };
+
+    // 1. Check if we are on a dedicated subpage (e.g. /portfolio or /premium)
+    const currentPath = window.location.pathname.replace(/\/$/, ""); 
+    
+    const subpageMatch = Array.from(navItems).find(item => {
+      const url = new URL((item as HTMLAnchorElement).href, window.location.origin);
+      const isHome = url.pathname === '/' || /^\/[a-z]{2}\/?$/.test(url.pathname);
+      return !isHome && url.pathname.replace(/\/$/, "") === currentPath;
+    });
+
+    if (subpageMatch) {
+       // Timeout ensures layout has rendered so offsetWidth is correct
+       setTimeout(() => updateIndicator(subpageMatch), 100);
+       return; 
+    }
+
+    // 2. We are on the homepage. Setup scrollspy for hash links.
+    const sections = Array.from(navItems)
+      .map(item => {
+        const url = new URL((item as HTMLAnchorElement).href, window.location.origin);
+        if (!url.hash) return null;
+        const target = document.querySelector(url.hash);
+        return target ? { item, target } : null;
+      })
+      .filter(Boolean);
+
+    if (sections.length === 0) return;
+
+    const visibleSections = new Map();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        visibleSections.set(entry.target, entry.isIntersecting);
+      });
+
+      const visibleArray = sections.filter((s: any) => visibleSections.get(s.target));
+      
+      if (visibleArray.length > 0) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            updateIndicator(visibleArray[visibleArray.length - 1]?.item);
+        } else {
+            updateIndicator(visibleArray[0]?.item);
+        }
+      } else if (window.scrollY < 100) {
+        updateIndicator(null);
+      }
+    }, { rootMargin: '-20% 0px -40% 0px' });
+
+    sections.forEach((s: any) => observer.observe(s.target));
+    
+    window.addEventListener('resize', () => {
+       const active = sections.find((s: any) => visibleSections.get(s.target))?.item;
+       if (active) updateIndicator(active);
+    });
+  }
+
   // Load on initial navigation
   initMenu();
   initScrollRotate();
+  initScrollSpy();
 
   // Load on View Transitions swap
   document.addEventListener("astro:after-swap", () => {
     initMenu();
     initScrollRotate();
+    initScrollSpy();
   });
 </script>
