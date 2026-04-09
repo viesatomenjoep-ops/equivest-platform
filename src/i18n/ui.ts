@@ -28,6 +28,9 @@ export const ui = {
     'contact.whatsapp': 'Chat via WhatsApp',
     'contact.email': 'Send an Email',
     'contact.apg': '(on the premises of APG Stables)',
+    'news.title': 'Latest Industry News',
+    'news.read_more': 'Read More',
+    'news.tag': 'Market Insight',
   },
   nl: {
     'nav.home': 'Home',
@@ -49,6 +52,9 @@ export const ui = {
     'contact.whatsapp': 'Chat via WhatsApp',
     'contact.email': 'Email ons',
     'contact.apg': '(op het terrein van APG Stables)',
+    'news.title': 'Laatste Nieuws',
+    'news.read_more': 'Lees Meer',
+    'news.tag': 'Marktinformatie',
   },
   de: {
     'nav.home': 'Startseite',
@@ -70,6 +76,9 @@ export const ui = {
     'contact.whatsapp': 'Per WhatsApp chatten',
     'contact.email': 'E-Mail senden',
     'contact.apg': '(auf dem Gelände der APG Stables)',
+    'news.title': 'Aktuelle Branchen-News',
+    'news.read_more': 'Mehr lesen',
+    'news.tag': 'Markteinblicke',
   },
   es: {
     'nav.home': 'Inicio',
@@ -91,5 +100,8 @@ export const ui = {
     'contact.whatsapp': 'Chat por WhatsApp',
     'contact.email': 'Enviar un correo',
     'contact.apg': '(en las instalaciones de APG Stables)',
+    'news.title': 'Últimas Noticias de la Industria',
+    'news.read_more': 'Leer Más',
+    'news.tag': 'Visión del Mercado',
   },
 } as const;

@@ -8,6 +8,7 @@ import References from '../../components/References.astro';
 import Partners from '../../components/Partners.astro';
 import Reviews from '../../components/Reviews.astro';
 import RoiCalculator from '../../components/RoiCalculator.jsx';
+import News from '../../components/News.astro';
 import Contact from '../../components/Contact.astro';
 import Faq from '../../components/Faq.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
@@ -15,7 +16,6 @@ import { Image } from 'astro:assets';
 import heroImg from '../../assets/images/hero.png';
 
 export function getStaticPaths() {
-  return [
     { params: { lang: 'en' } },
     { params: { lang: 'nl' } },
     { params: { lang: 'de' } },
@@ -85,6 +85,10 @@ const t = useTranslations(lang);
 
 		<div class="reveal reveal-up">
 			<VideoShowcase />
+		</div>
+
+		<div class="reveal reveal-up">
+			<News lang={lang} />
 		</div>
 
 		<div class="reveal reveal-up">
