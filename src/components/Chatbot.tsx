@@ -184,6 +184,12 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
 
     if (inputMode === 'email') {
       setInputMode('none');
+
+      // Trigger user's mail client to send the invitation request to equivestbv@gmail.com
+      const subject = encodeURIComponent("Investment Meeting Request - Equivest");
+      const body = encodeURIComponent(`Hello,\n\nI would like to schedule an investment meeting.\nMy contact email is: ${val}\n\nPlease reach out to me.\n\nThank you.`);
+      window.location.href = `mailto:equivestbv@gmail.com?subject=${subject}&body=${body}`;
+
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
