@@ -19,7 +19,7 @@ const featuredHorses = horses.filter(h => h.data.featured && !h.data.sold).slice
         <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
           Elite Investments
         </h2>
-        <p class="text-primary/60 text-xl font-light leading-relaxed">
+        <p class="text-primary/90 text-xl font-medium leading-relaxed">
            A teaser of our absolute top-tier showjumpers. Hand-picked for outstanding investment potential.
         </p>
       </div>
@@ -49,7 +49,7 @@ const featuredHorses = horses.filter(h => h.data.featured && !h.data.sold).slice
               />
             )}
             
-            <div class="absolute top-4 left-4 bg-primary text-accent text-base font-bold uppercase tracking-widest px-3 py-1 shadow-xl">
+            <div class="absolute top-4 left-4 bg-primary text-accent text-lg font-bold uppercase tracking-widest px-3 py-1 shadow-xl">
                Prime Selection
             </div>
             
@@ -68,32 +68,32 @@ const featuredHorses = horses.filter(h => h.data.featured && !h.data.sold).slice
               <img src="/images/logo.png" alt="Equivest" class="w-16 h-16 object-contain brightness-0" />
               <h3 class="text-2xl font-serif text-primary group-hover:text-accent transition-colors">{horse.data.title}</h3>
             </div>
-            <p class="text-primary/70 text-base font-light mb-6 line-clamp-2">
+            <p class="text-primary/70 text-lg font-medium mb-6 line-clamp-2">
               {horse.data.description}
             </p>
             
             <div class="mt-auto grid grid-cols-2 gap-y-4 border-t border-gray-50 pt-6">
               <div class="space-y-1">
-                <span class="text-base uppercase tracking-widest text-primary/40 font-bold block">Age</span>
-                <span class="text-base font-serif text-primary">{horse.data.specs?.age} Years</span>
+                <span class="text-lg uppercase tracking-widest text-primary/70 font-bold block">Age</span>
+                <span class="text-lg font-serif text-primary">{horse.data.specs?.age} Years</span>
               </div>
               <div class="space-y-1">
-                <span class="text-base uppercase tracking-widest text-primary/40 font-bold block">Level</span>
-                <span class="text-base font-serif text-primary">{horse.data.specs?.level}</span>
+                <span class="text-lg uppercase tracking-widest text-primary/70 font-bold block">Level</span>
+                <span class="text-lg font-serif text-primary">{horse.data.specs?.level}</span>
               </div>
               <div class="space-y-1">
-                <span class="text-base uppercase tracking-widest text-primary/40 font-bold block">Gender</span>
-                <span class="text-base font-serif text-primary">{horse.data.specs?.gender}</span>
+                <span class="text-lg uppercase tracking-widest text-primary/70 font-bold block">Gender</span>
+                <span class="text-lg font-serif text-primary">{horse.data.specs?.gender}</span>
               </div>
               <div class="space-y-1">
-                <span class="text-base uppercase tracking-widest text-primary/40 font-bold block">Height</span>
-                <span class="text-base font-serif text-primary">{horse.data.specs?.height}</span>
+                <span class="text-lg uppercase tracking-widest text-primary/70 font-bold block">Height</span>
+                <span class="text-lg font-serif text-primary">{horse.data.specs?.height}</span>
               </div>
             </div>
           </div>
           
           <div class="border-t border-gray-100 p-4">
-             <a href={`/${lang}/contact`} class="block w-full text-center py-3 text-lg font-bold uppercase tracking-[0.2em] bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/60">
+             <a href={`/${lang}/contact`} class="block w-full text-center py-3 text-lg font-bold uppercase tracking-[0.2em] bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                 Inquire Details
              </a>
           </div>

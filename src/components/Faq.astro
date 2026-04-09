@@ -47,7 +47,7 @@ const titleMap = {
       <h2 class="text-3xl md:text-5xl font-serif text-primary leading-tight mb-4">
         {titleMap[lang] || titleMap.en}
       </h2>
-      <p class="text-primary/60">Everything you need to know about the Equivest Platform.</p>
+      <p class="text-primary/90">Everything you need to know about the Equivest Platform.</p>
     </div>
 
     <div class="space-y-4">
@@ -55,11 +55,11 @@ const titleMap = {
         <details class="group border border-gray-100 rounded-xl bg-white overflow-hidden [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-bg-subtle transition-colors focus:outline-none">
             <span class="text-xl font-bold text-primary">{faq.q}</span>
-            <span class="text-primary/40 group-open:rotate-180 transition-transform duration-300">
+            <span class="text-primary/70 group-open:rotate-180 transition-transform duration-300">
               <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
             </span>
           </summary>
-          <div class="p-6 pt-0 text-primary/70 leading-relaxed font-light">
+          <div class="p-6 pt-0 text-primary/70 leading-relaxed font-medium">
             <p>{faq.a}</p>
           </div>
         </details>

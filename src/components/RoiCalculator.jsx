@@ -86,9 +86,9 @@ const RoiCalculator = ({ lang = 'en' }) => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <h3 className="text-3xl md:text-4xl font-serif text-white">{t.title}</h3>
           <div className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 flex flex-col items-end group focus-within:border-accent/40 transition-colors">
-            <label className="text-accent/60 text-base font-bold uppercase tracking-[0.2em] mb-1">{t.inputLabel}</label>
+            <label className="text-accent/90 text-lg font-bold uppercase tracking-[0.2em] mb-1">{t.inputLabel}</label>
             <div className="flex items-center">
-              <span className="text-white/40 text-2xl md:text-3xl font-serif mr-1">€</span>
+              <span className="text-white/70 text-2xl md:text-3xl font-serif mr-1">€</span>
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
@@ -117,7 +117,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-6 h-6 bg-white shadow-[0_0_20px_rgba(255,255,255,0.6)] rounded-full scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none border-2 border-accent"></div>
             </div>
           </div>
-          <div className="flex justify-between text-base font-bold uppercase tracking-widest text-white/30">
+          <div className="flex justify-between text-lg font-bold uppercase tracking-widest text-white/60">
             <span>{t.minLabel}</span>
             <span>{t.maxLabel}</span>
           </div>
@@ -127,25 +127,25 @@ const RoiCalculator = ({ lang = 'en' }) => {
           {results.map((res, idx) => (
             <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/[0.08] transition-all hover:-translate-y-1">
               <div className="flex justify-between items-center mb-6">
-                <span className="text-accent text-base font-bold uppercase tracking-[0.3em]">{res.year}</span>
-                <span className="bg-accent/10 text-accent px-2 py-1 rounded text-base font-bold uppercase tracking-wider">
+                <span className="text-accent text-lg font-bold uppercase tracking-[0.3em]">{res.year}</span>
+                <span className="bg-accent/10 text-accent px-2 py-1 rounded text-lg font-bold uppercase tracking-wider">
                   +{(res.max * 100).toFixed(0)}% {t.potential}
                 </span>
               </div>
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="block text-white/40 text-base font-bold uppercase tracking-widest">{t.range}</span>
+                  <span className="block text-white/70 text-lg font-bold uppercase tracking-widest">{t.range}</span>
                   <div className="text-2xl md:text-2xl font-serif text-white">
                     {formatter.format(amount * res.min)}
-                    <span className="mx-2 text-white/20 font-sans text-base">—</span>
+                    <span className="mx-2 text-white/20 font-sans text-lg">—</span>
                     {formatter.format(amount * res.max)}
                   </div>
                 </div>
                 <div className="space-y-1 pt-4 border-t border-white/10">
-                  <span className="block text-accent/80 text-base font-bold uppercase tracking-widest">{t.totalReturn}</span>
+                  <span className="block text-accent/80 text-lg font-bold uppercase tracking-widest">{t.totalReturn}</span>
                   <div className="text-xl md:text-2xl font-serif text-accent">
                     {formatter.format(amount + (amount * res.min))}
-                    <span className="mx-2 text-accent/40 font-sans text-base">—</span>
+                    <span className="mx-2 text-accent/80 font-sans text-lg">—</span>
                     {formatter.format(amount + (amount * res.max))}
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
         </div>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/10">
-          <p className="text-white/30 text-base max-w-sm italic leading-relaxed">
+          <p className="text-white/60 text-lg max-w-sm italic leading-relaxed">
             * Calculations are based on professional benchmarks for the trade and sport of 5-star Grand Prix jumpers. Actual results may vary.
           </p>
           <a href="#contact" className="w-full md:w-auto bg-accent text-white px-10 py-5 text-xl font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-xl text-center relative z-20">

@@ -227,7 +227,7 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
           {/* Header */}
           <div className="flex items-center justify-between bg-primary p-4 text-white">
             <div className="flex items-center space-x-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-base font-bold">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-lg font-bold">
                 E
               </div>
               <span className="font-semibold tracking-wide">Equivest Assistant</span>
@@ -251,7 +251,7 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
                       : 'bg-gray-100 text-primary rounded-bl-sm border border-gray-200'
                   }`}
                 >
-                  <p className="text-base leading-relaxed">{msg.text}</p>
+                  <p className="text-lg leading-relaxed">{msg.text}</p>
                 </div>
                 
                 {/* Options if provided by bot */}
@@ -261,7 +261,7 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
                       <button
                         key={i}
                         onClick={() => handleOptionClick(opt.action, opt.label)}
-                        className="rounded-full border border-accent/30 bg-white px-4 py-1.5 text-base text-accent transition-colors hover:bg-accent hover:text-white"
+                        className="rounded-full border border-accent/30 bg-white px-4 py-1.5 text-lg text-accent transition-colors hover:bg-accent hover:text-white"
                       >
                         {opt.label}
                       </button>
@@ -281,13 +281,13 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder={t.placeholder}
-                className="w-full rounded-full border border-gray-300 bg-gray-50 py-2.5 pl-4 pr-12 text-base text-primary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                className="w-full rounded-full border border-gray-300 bg-gray-50 py-2.5 pl-4 pr-12 text-lg text-primary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 autoComplete="off"
               />
               <button
                 type="submit"
                 disabled={!inputValue.trim()}
-                className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white transition-opacity disabled:opacity-50"
+                className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white transition-opacity disabled:opacity-80"
                 aria-label={t.send}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
