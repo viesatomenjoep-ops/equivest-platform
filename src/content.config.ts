@@ -10,6 +10,7 @@ const portfolio = defineCollection({
     price_range: z.string().optional(),
     youtube_url: z.string().optional(),
     featured: z.boolean().default(false),
+    premium: z.boolean().default(false),
     sold: z.boolean().default(false),
     specs: z.object({
       age: z.number(),
