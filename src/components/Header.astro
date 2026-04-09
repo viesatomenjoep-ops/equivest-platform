@@ -1,34 +1,44 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { Image } from 'astro:assets';
-import logoImg from '../../public/images/logo.png';
+import { languages } from "../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
+import logoImg from "../../public/images/logo.png";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navItems = [
-  { href: `/${lang}/#about`, label: t('nav.about') },
-  { href: `/${lang}/portfolio`, label: t('nav.portfolio') },
-  { href: `/${lang}/#references`, label: t('nav.references') },
-  { href: `/${lang}/#roi`, label: t('nav.roi') },
-  { href: `/${lang}/#contact`, label: t('nav.contact') },
+  { href: `/${lang}/#about`, label: t("nav.about") },
+  { href: `/${lang}/portfolio`, label: t("nav.portfolio") },
+  { href: `/${lang}/#references`, label: t("nav.references") },
+  { href: `/${lang}/#roi`, label: t("nav.roi") },
+  { href: `/${lang}/#contact`, label: t("nav.contact") },
 ];
 ---
 
 <header class="glass-header border-b border-gray-100">
   <div class="max-width-site px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-24 relative">
-      
-      <!-- Left: Navigation & Utilities -->
-      <div class="flex items-center space-x-8">
+    <div class="flex justify-between items-center h-24 relative w-full">
+      <!-- Left: Brand Text -->
+      <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0 z-[110]">
+        <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
+        <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1992</span>
+      </a>
+
+      <!-- Center: Navigation & Utilities -->
+      <div class="flex flex-1 justify-center lg:justify-end items-center px-4 md:px-8 z-[110]">
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-8">
-          {navItems.map(item => (
-            <a href={item.href} class="text-[15px] font-bold tracking-widest hover:text-accent transition-colors uppercase">
-              {item.label}
-            </a>
-          ))}
+        <nav class="hidden lg:flex items-center space-x-8 mr-8">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class="text-[15px] font-bold tracking-widest hover:text-accent transition-colors uppercase"
+              >
+                {item.label}
+              </a>
+            ))
+          }
         </nav>
 
         <!-- Utilities -->
@@ -36,78 +46,120 @@ const navItems = [
           <!-- Search & Language (Desktop/Tablet) -->
           <div class="hidden md:flex items-center space-x-4">
             <!-- Language Switcher -->
-            <div class="flex items-center border-l border-gray-100 ml-4 pl-4 space-x-1">
-              {Object.entries(languages).map(([l, _]) => (
-                <a 
-                  href={`/${l}/`} 
-                  class={`text-[15px] font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? 'bg-primary text-white' : 'text-primary/40 hover:text-accent hover:bg-bg-subtle'}`}
-                >
-                  {l}
-                </a>
-              ))}
+            <div class="flex items-center border-l border-gray-100 pl-4 space-x-1">
+              {
+                Object.entries(languages).map(([l, _]) => (
+                  <a
+                    href={`/${l}/`}
+                    class={`text-[15px] font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? "bg-primary text-white" : "text-primary/40 hover:text-accent hover:bg-bg-subtle"}`}
+                  >
+                    {l}
+                  </a>
+                ))
+              }
             </div>
           </div>
 
           <!-- Mobile menu button -->
-          <div class="md:hidden lg:flex items-center relative z-[110]">
-             <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
-                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                   <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                   <path class="menu-path-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-             </button>
+          <div class="md:hidden lg:flex items-center relative mr-4 md:mr-8">
+            <button
+              id="menu-btn"
+              class="text-primary hover:text-accent p-2 transition-colors focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <svg
+                id="menu-icon"
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  class="menu-path-open"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 8h16M4 16h16"></path>
+                <path
+                  class="menu-path-close hidden"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Right: Brand Logo + Text -->
-      <div class="flex items-center space-x-4 z-[110]">
-        <a href={`/${lang}/`} class="group relative block">
-          <div id="logo-spinner" class="origin-center transition-transform duration-500 ease-out flex items-center justify-center">
-            <Image 
-              src={logoImg} 
-              alt="Equivest Logo" 
-              width={256}
-              class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </a>
-        
-        <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0">
-          <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
-          <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1995</span>
-        </a>
-      </div>
+      <!-- Right: Brand Logo -->
+      <a href={`/${lang}/`} class="group relative block z-[110] ml-auto lg:ml-0">
+        <div
+          id="logo-spinner"
+          class="origin-center transition-transform duration-500 ease-out flex items-center justify-center"
+        >
+          <Image
+            src={logoImg}
+            alt="Equivest Logo"
+            width={256}
+            class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      </a>
     </div>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full">
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full"
+  >
     <!-- Mobile Nav Links -->
     <nav class="flex flex-col space-y-5">
-      {navItems.map(item => (
-        <a href={item.href} class="text-2xl font-serif font-bold text-primary hover:text-accent transition-colors flex justify-between items-center group">
-          {item.label}
-          <svg class="w-5 h-5 opacity-0 -translate-x-4 transition-all group-hover:opacity-100 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      ))}
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-2xl font-serif font-bold text-primary hover:text-accent transition-colors flex justify-between items-center group"
+          >
+            {item.label}
+            <svg
+              class="w-5 h-5 opacity-0 -translate-x-4 transition-all group-hover:opacity-100 group-hover:translate-x-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        ))
+      }
     </nav>
 
     <!-- Mobile Language Selection -->
     <div class="mt-12 pb-10 pt-10 border-t border-gray-100">
-      <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 mb-6">Select Language</p>
+      <p
+        class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 mb-6"
+      >
+        Select Language
+      </p>
       <div class="grid grid-cols-2 gap-4">
-        {Object.entries(languages).map(([l, name]) => (
-          <a 
-            href={`/${l}/`} 
-            class={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${lang === l ? 'border-accent bg-accent/5 text-primary' : 'border-gray-100 text-primary/60 hover:border-accent/40'}`}
-          >
-            <span class="text-sm font-bold uppercase mb-1">{l}</span>
-            <span class="text-[10px] opacity-60 font-medium">{name}</span>
-          </a>
-        ))}
+        {
+          Object.entries(languages).map(([l, name]) => (
+            <a
+              href={`/${l}/`}
+              class={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${lang === l ? "border-accent bg-accent/5 text-primary" : "border-gray-100 text-primary/60 hover:border-accent/40"}`}
+            >
+              <span class="text-sm font-bold uppercase mb-1">{l}</span>
+              <span class="text-[10px] opacity-60 font-medium">{name}</span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -134,62 +186,64 @@ const navItems = [
 
 <script>
   function initMenu() {
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const openIcon = document.querySelector('.menu-path-open');
-    const closeIcon = document.querySelector('.menu-path-close');
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openIcon = document.querySelector(".menu-path-open");
+    const closeIcon = document.querySelector(".menu-path-close");
 
     if (!menuBtn || !mobileMenu) return;
 
     const toggleMenu = (show: boolean) => {
       if (show) {
-        mobileMenu.classList.remove('translate-x-full');
-        mobileMenu.classList.add('translate-x-0');
-        openIcon?.classList.add('hidden');
-        closeIcon?.classList.remove('hidden');
-        document.body.classList.add('menu-open');
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+        openIcon?.classList.add("hidden");
+        closeIcon?.classList.remove("hidden");
+        document.body.classList.add("menu-open");
       } else {
-        mobileMenu.classList.add('translate-x-full');
-        mobileMenu.classList.remove('translate-x-0');
-        openIcon?.classList.remove('hidden');
-        closeIcon?.classList.add('hidden');
-        document.body.classList.remove('menu-open');
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+        openIcon?.classList.remove("hidden");
+        closeIcon?.classList.add("hidden");
+        document.body.classList.remove("menu-open");
       }
     };
 
-    menuBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('translate-x-0');
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.contains("translate-x-0");
       toggleMenu(!isOpen);
     });
 
     // Close menu on link click
-    const navLinks = mobileMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
+    const navLinks = mobileMenu.querySelectorAll("a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => toggleMenu(false));
     });
 
     // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') toggleMenu(false);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleMenu(false);
     });
   }
 
   function initScrollRotate() {
-    const spinner = document.getElementById('logo-spinner');
+    const spinner = document.getElementById("logo-spinner");
     if (!spinner) return;
-    
+
     const win = window as any;
-    
+
     // Clean up any old listeners if this runs multiple times
-    win.removeEventListener('scroll', win._logoScrollHandler);
-    
+    win.removeEventListener("scroll", win._logoScrollHandler);
+
     win._logoScrollHandler = () => {
       // 0.2 degrees per pixel scrolled = smooth rotation
       const rotation = window.scrollY * 0.2;
       spinner.style.transform = `rotate(${rotation}deg)`;
     };
-    
-    window.addEventListener('scroll', win._logoScrollHandler, { passive: true });
+
+    window.addEventListener("scroll", win._logoScrollHandler, {
+      passive: true,
+    });
   }
 
   // Load on initial navigation
@@ -197,8 +251,8 @@ const navItems = [
   initScrollRotate();
 
   // Load on View Transitions swap
-  document.addEventListener('astro:after-swap', () => {
-     initMenu();
-     initScrollRotate();
+  document.addEventListener("astro:after-swap", () => {
+    initMenu();
+    initScrollRotate();
   });
 </script>
