@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import About from '../../components/About.astro';
 import VideoShowcase from '../../components/VideoShowcase.astro';
-import PrimeSelection from '../../components/PrimeSelection.astro';
+import PortfolioGallery from '../../components/PortfolioGallery.astro';
+import PremiumSection from '../../components/PremiumSection.astro';
 import References from '../../components/References.astro';
 import Partners from '../../components/Partners.astro';
 import Reviews from '../../components/Reviews.astro';
@@ -58,7 +59,7 @@ const t = useTranslations(lang);
 					Securing high-yield returns through the acquisition of world-class equestrian talent.
 				</p>
 				<div class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-up delay-300">
-					<a href={`/${lang}/portfolio`} class="bg-accent text-white px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl">
+					<a href="#portfolio" class="bg-accent text-white px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl">
 						View Portfolio
 					</a>
 					<a href="#roi" class="px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] text-white border border-white/30 hover:bg-white/10 transition-all">
@@ -78,24 +79,18 @@ const t = useTranslations(lang);
 			<About />
 		</div>
 		
-		<section id="roi" class="py-24 bg-white reveal reveal-up">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<RoiCalculator lang={lang} client:load />
+		<section id="portfolio" class="reveal reveal-up bg-bg-subtle">
+			<div class="pt-24 pb-8 text-center border-t border-gray-100 px-4">
+				<span class="text-accent text-lg font-bold uppercase tracking-[0.4em] mb-4 block">Full Database</span>
+				<h2 class="text-4xl md:text-5xl font-serif text-primary">Public <span class="text-accent italic">Collection</span></h2>
 			</div>
+			<PortfolioGallery />
 		</section>
 
 		<div class="reveal reveal-up">
-			<VideoShowcase />
+			<PremiumSection />
 		</div>
 
-		<div class="reveal reveal-up">
-			<News lang={lang} />
-		</div>
-
-		<div class="reveal reveal-up">
-			<PrimeSelection />
-		</div>
-		
 		<div class="reveal reveal-up">
 			<References />
 		</div>
@@ -106,6 +101,26 @@ const t = useTranslations(lang);
 
 		<div class="reveal reveal-up">
 			<Reviews />
+		</div>
+
+		<section id="roi" class="py-24 bg-white reveal reveal-up border-t-4 border-gray-100">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center mb-16 space-y-4 max-w-2xl mx-auto">
+					<span class="text-primary/70 text-xl font-bold uppercase tracking-[0.3em] block">Invest</span>
+					<h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
+					  ROI Calculator
+					</h2>
+				</div>
+				<RoiCalculator lang={lang} client:load />
+			</div>
+		</section>
+
+		<div class="reveal reveal-up">
+			<VideoShowcase />
+		</div>
+
+		<div class="reveal reveal-up">
+			<News lang={lang} />
 		</div>
 
 		<div class="reveal reveal-up">

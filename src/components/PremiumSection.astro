@@ -1,0 +1,183 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allHorses = await getCollection('portfolio');
+const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
+---
+
+<section id="premium" class="bg-bg-subtle relative border-t border-gray-100">
+	<!-- THE LOCK SCREEN (Visible by default) -->
+	<div id="premium-lock" class="absolute inset-0 z-[50] bg-white flex flex-col items-center justify-center min-h-screen px-4">
+		<div class="max-w-md w-full space-y-8 text-center reveal reveal-up">
+			<img src="/images/logo.png" alt="Equivest Premium" class="w-20 h-20 md:w-24 md:h-24 mx-auto object-contain brightness-0" />
+			<h2 class="text-4xl md:text-5xl font-serif text-primary">VIP Access</h2>
+			<p class="text-primary/70 text-lg">Please enter your exclusive access code to view our private collection.</p>
+			
+			<form id="premium-form" class="mt-8 space-y-6">
+				<div>
+					<input 
+						type="password" 
+						id="access-code"
+						required
+						class="w-full bg-bg-subtle border border-primary/20 p-4 text-center text-xl tracking-[0.2em] font-bold text-primary focus:outline-none focus:border-accent transition-colors"
+						placeholder="ENTER CODE"
+					/>
+					<p id="error-msg" class="text-red-500 mt-3 text-sm font-bold uppercase tracking-widest hidden">Invalid Access Code</p>
+				</div>
+				<button type="submit" class="w-full bg-primary text-white font-bold uppercase tracking-[0.2em] py-4 hover:bg-accent transition-colors">
+					Unlock Collection
+				</button>
+			</form>
+			
+			<p class="text-sm text-primary/50 mt-8">To request access, please contact your Equivest representative.</p>
+		</div>
+	</div>
+
+	<!-- THE PREMIUM CONTENT (Hidden by default) -->
+	<div id="premium-content" class="hidden opacity-0 transition-opacity duration-1000 min-h-screen pb-24">
+		<div class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-primary/5">
+			<div class="max-w-3xl space-y-6 reveal reveal-up">
+				<span class="text-accent text-xl font-bold uppercase tracking-[0.4em]">Unlocked</span>
+				<h2 class="text-5xl md:text-7xl font-serif text-primary leading-tight">
+					Private <span class="text-accent italic">Collection</span>
+				</h2>
+				<p class="text-xl font-medium text-primary/90 leading-relaxed max-w-2xl">
+					Welcome to the exclusive environment. These assets are only available to vetted partners and elite clients.
+				</p>
+			</div>
+		</div>
+
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+			{premiumHorses.length === 0 ? (
+				<div class="text-center py-20 border border-primary/10 bg-white">
+					<p class="text-2xl font-serif text-primary">No exclusive listings available at this moment.</p>
+				</div>
+			) : (
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+				{premiumHorses.map((horse, index) => (
+					<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2">
+						<div class="aspect-[16/10] overflow-hidden relative">
+							{typeof horse.data.image === 'string' ? (
+							<Image 
+								src={horse.data.image} 
+								alt={horse.data.title} 
+								inferSize={true}
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+							) : (
+							<Image 
+								src={horse.data.image} 
+								alt={horse.data.title} 
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+							)}
+							<div class="absolute top-4 left-4 bg-primary text-white text-lg font-bold uppercase tracking-widest px-4 py-2 shadow-xl flex items-center gap-2">
+								<svg class="w-4 h-4 fill-accent" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+								Exclusive
+							</div>
+							{horse.data.youtube_url && (
+							<a href={horse.data.youtube_url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+								<div class="w-16 h-16 bg-white flex items-center justify-center rounded-full text-primary scale-90 group-hover:scale-100 transition-transform">
+									<svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+								</div>
+							</a>
+							)}
+						</div>
+						
+						<div class="p-8 flex-grow flex flex-col">
+							<h3 class="text-3xl font-serif text-primary group-hover:text-accent transition-colors mb-4">{horse.data.title}</h3>
+							<p class="text-primary/70 text-lg font-medium mb-8">
+							{horse.data.description}
+							</p>
+							
+							<div class="mt-auto grid grid-cols-2 gap-y-6 border-t border-gray-100 pt-6 bg-bg-subtle -mx-8 px-8 pb-8">
+							<div class="space-y-1">
+								<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Age</span>
+								<span class="text-xl font-serif text-primary">{horse.data.specs?.age} Years</span>
+							</div>
+							<div class="space-y-1">
+								<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Level</span>
+								<span class="text-xl font-serif text-primary">{horse.data.specs?.level}</span>
+							</div>
+							<div class="space-y-1">
+								<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Gender</span>
+								<span class="text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
+							</div>
+							<div class="space-y-1">
+								<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Height</span>
+								<span class="text-xl font-serif text-primary">{horse.data.specs?.height}</span>
+							</div>
+							</div>
+							
+							<div class="pt-6">
+								<a href={`/${lang}/#contact`} class="block w-full text-center py-4 text-xl font-bold uppercase tracking-[0.2em] bg-accent text-white hover:bg-primary transition-all">
+									Express Interest
+								</a>
+							</div>
+						</div>
+					</div>
+				))}
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<script>
+	const form = document.getElementById('premium-form');
+	const lockScreen = document.getElementById('premium-lock');
+	const content = document.getElementById('premium-content');
+	const input = document.getElementById('access-code') as HTMLInputElement;
+	const errorMsg = document.getElementById('error-msg');
+
+	// Valid access codes
+	const VALID_CODES = ['111192'];
+
+	if (form && lockScreen && content && input && errorMsg) {
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const code = input.value.trim().toUpperCase();
+
+			if (VALID_CODES.includes(code)) {
+				// Success unlock
+				errorMsg.classList.add('hidden');
+				lockScreen.classList.add('hidden');
+				
+				content.classList.remove('hidden');
+				// Let block render before opacity transition
+				setTimeout(() => {
+					content.classList.remove('opacity-0');
+				}, 50);
+
+				// Re-initialize reveals
+				if (typeof (window as any).initReveal === 'function') {
+					(window as any).initReveal();
+				}
+			} else {
+				// Reject
+				errorMsg.classList.remove('hidden');
+				input.classList.add('border-red-500');
+				input.value = '';
+				form.classList.add('animate-shake');
+				setTimeout(() => form.classList.remove('animate-shake'), 500);
+			}
+		});
+	}
+</script>
+
+<style>
+	.animate-shake {
+		animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+	}
+	@keyframes shake {
+		10%, 90% { transform: translate3d(-1px, 0, 0); }
+		20%, 80% { transform: translate3d(2px, 0, 0); }
+		30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+		40%, 60% { transform: translate3d(4px, 0, 0); }
+	}
+</style>
