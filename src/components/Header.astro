@@ -18,94 +18,79 @@ const navItems = [
 
 <header class="glass-header border-b border-gray-100">
   <div class="max-width-site px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-24 relative w-full">
-      <!-- Left: Brand Text -->
-      <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0 z-[110]">
+    <div class="flex items-center justify-between h-24 relative w-full">
+      <!-- MOBILE: Centered Logo + Text (Hidden on lg desktop) -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center space-x-4 z-[110] lg:hidden">
+        <a href={`/${lang}/`} class="group relative block">
+          <div class="logo-spinner origin-center transition-transform duration-500 ease-out flex items-center justify-center">
+            <Image
+              src={logoImg}
+              alt="Equivest Logo"
+              width={256}
+              class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
+            />
+          </div>
+        </a>
+        <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0">
+          <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
+          <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1995</span>
+        </a>
+      </div>
+
+      <!-- DESKTOP LEFT: Brand Text (Hidden on mobile) -->
+      <a href={`/${lang}/`} class="hidden lg:flex flex-col text-left justify-center items-start shrink-0 z-[110]">
         <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
         <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1992</span>
       </a>
 
-      <!-- Center: Navigation & Utilities -->
-      <div class="flex flex-1 justify-center lg:justify-end items-center px-4 md:px-8 z-[110]">
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-8 mr-8">
+      <!-- DESKTOP CENTER: Navigation -->
+      <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-[110]">
+        <nav class="flex items-center space-x-8">
           {
             navItems.map((item) => (
-              <a
-                href={item.href}
-                class="text-[15px] font-bold tracking-widest hover:text-accent transition-colors uppercase"
-              >
+              <a href={item.href} class="text-[15px] font-bold tracking-widest hover:text-accent transition-colors uppercase">
                 {item.label}
               </a>
             ))
           }
         </nav>
-
-        <!-- Utilities -->
-        <div class="flex items-center space-x-4">
-          <!-- Search & Language (Desktop/Tablet) -->
-          <div class="hidden md:flex items-center space-x-4">
-            <!-- Language Switcher -->
-            <div class="flex items-center border-l border-gray-100 pl-4 space-x-1">
-              {
-                Object.entries(languages).map(([l, _]) => (
-                  <a
-                    href={`/${l}/`}
-                    class={`text-[15px] font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? "bg-primary text-white" : "text-primary/40 hover:text-accent hover:bg-bg-subtle"}`}
-                  >
-                    {l}
-                  </a>
-                ))
-              }
-            </div>
-          </div>
-
-          <!-- Mobile menu button -->
-          <div class="md:hidden lg:flex items-center relative mr-4 md:mr-8">
-            <button
-              id="menu-btn"
-              class="text-primary hover:text-accent p-2 transition-colors focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg
-                id="menu-icon"
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  class="menu-path-open"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 8h16M4 16h16"></path>
-                <path
-                  class="menu-path-close hidden"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
 
-      <!-- Right: Brand Logo -->
-      <a href={`/${lang}/`} class="group relative block z-[110] ml-auto lg:ml-0">
-        <div
-          id="logo-spinner"
-          class="origin-center transition-transform duration-500 ease-out flex items-center justify-center"
-        >
-          <Image
-            src={logoImg}
-            alt="Equivest Logo"
-            width={256}
-            class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
-          />
+      <!-- RIGHT: Utilities & Logo -->
+      <div class="flex items-center space-x-4 ml-auto z-[110]">
+        <!-- Desktop/Tablet Language Switcher -->
+        <div class="hidden md:flex items-center space-x-4">
+          <div class="flex items-center lg:border-r border-gray-100 lg:pr-4 space-x-1">
+            {
+              Object.entries(languages).map(([l, _]) => (
+                <a
+                  href={`/${l}/`}
+                  class={`text-[15px] font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? "bg-primary text-white" : "text-primary/40 hover:text-accent hover:bg-bg-subtle"}`}
+                >
+                  {l}
+                </a>
+              ))
+            }
+          </div>
         </div>
-      </a>
+
+        <!-- Mobile menu button -->
+        <div class="lg:hidden flex items-center relative">
+          <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
+            <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
+              <path class="menu-path-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- DESKTOP RIGHT: Logo (Hidden on mobile) -->
+        <a href={`/${lang}/`} class="hidden lg:block group relative block z-[110]">
+          <div class="logo-spinner origin-center transition-transform duration-500 ease-out flex items-center justify-center">
+            <Image src={logoImg} alt="Equivest Logo" width={256} class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110" />
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -227,18 +212,22 @@ const navItems = [
   }
 
   function initScrollRotate() {
-    const spinner = document.getElementById("logo-spinner");
-    if (!spinner) return;
+    const spinners = document.querySelectorAll(".logo-spinner");
+    if (!spinners.length) return;
 
     const win = window as any;
 
     // Clean up any old listeners if this runs multiple times
-    win.removeEventListener("scroll", win._logoScrollHandler);
+    if (win._logoScrollHandler) {
+      win.removeEventListener("scroll", win._logoScrollHandler);
+    }
 
     win._logoScrollHandler = () => {
       // 0.2 degrees per pixel scrolled = smooth rotation
       const rotation = window.scrollY * 0.2;
-      spinner.style.transform = `rotate(${rotation}deg)`;
+      spinners.forEach((spinner: any) => {
+        spinner.style.transform = `rotate(${rotation}deg)`;
+      });
     };
 
     window.addEventListener("scroll", win._logoScrollHandler, {
