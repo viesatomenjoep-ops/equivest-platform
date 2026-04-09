@@ -166,7 +166,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
 
       {/* Interactive Subtle Scroll to Top Logo */}
       <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="absolute bottom-6 left-12 z-0 w-16 h-16 opacity-[0.04] hover:opacity-[0.15] transition-all duration-700 cursor-pointer focus:outline-none hidden md:block">
-        <img src="/images/logo.png" alt="Scroll to top" className="w-full h-full object-contain brightness-0 invert drop-shadow-2xl" />
+        <img src="/images/logo.png" alt="Scroll to top" className="w-full h-full object-contain brightness-0 invert drop-shadow-2xl animate-slow-spin" />
       </button>
     </div>
   );
