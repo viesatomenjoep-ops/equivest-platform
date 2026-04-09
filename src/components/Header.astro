@@ -18,29 +18,10 @@ const navItems = [
 
 <header class="glass-header border-b border-gray-100">
   <div class="max-width-site px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center h-24 relative">
+    <div class="flex items-center justify-between h-24 relative">
       
-      <!-- Brand Logo + Text: Centered -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center space-x-4 z-[110]">
-        <a href={`/${lang}/`} class="group relative block">
-          <div id="logo-spinner" class="origin-center transition-transform duration-500 ease-out flex items-center justify-center">
-            <Image 
-              src={logoImg} 
-              alt="Equivest Logo" 
-              width={256}
-              class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        </a>
-        
-        <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0">
-          <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
-          <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1995</span>
-        </a>
-      </div>
-
-      <!-- Right: Navigation & Utilities -->
-      <div class="flex items-center space-x-8 ml-auto">
+      <!-- Left: Navigation & Utilities -->
+      <div class="flex items-center space-x-8">
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-8">
           {navItems.map(item => (
@@ -77,6 +58,25 @@ const navItems = [
              </button>
           </div>
         </div>
+      </div>
+
+      <!-- Right: Brand Logo + Text -->
+      <div class="flex items-center space-x-4 z-[110]">
+        <a href={`/${lang}/`} class="group relative block">
+          <div id="logo-spinner" class="origin-center transition-transform duration-500 ease-out flex items-center justify-center">
+            <Image 
+              src={logoImg} 
+              alt="Equivest Logo" 
+              width={256}
+              class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110"
+            />
+          </div>
+        </a>
+        
+        <a href={`/${lang}/`} class="flex flex-col text-left justify-center items-start shrink-0">
+          <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
+          <span class="text-[8px] font-bold tracking-[0.3em] text-primary/60 uppercase mt-1">Since 1995</span>
+        </a>
       </div>
     </div>
   </div>
