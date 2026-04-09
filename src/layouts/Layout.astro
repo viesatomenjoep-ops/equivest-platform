@@ -21,7 +21,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 ---
 
 <!doctype html>
-<html lang={lang} class="overflow-x-hidden w-full">
+<html lang={lang} class="scroll-smooth w-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,7 +44,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 	</head>
-	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-hidden w-full relative">
+	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip w-full relative">
 		<slot />
 		
 		<Chatbot client:load lang={botLang} />
