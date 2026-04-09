@@ -46,7 +46,7 @@ const navItems = [
 
       <!-- DESKTOP CENTER: Navigation -->
       <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-[110]">
-        <nav class="flex items-center space-x-8">
+        <nav class="flex items-center space-x-5">
           {
             navItems.map((item) => (
               <a href={item.href} class="text-base font-bold tracking-widest hover:text-accent transition-colors uppercase whitespace-nowrap">
@@ -101,7 +101,7 @@ const navItems = [
     class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full"
   >
     <!-- Mobile Nav Links -->
-    <nav class="flex flex-col space-y-5">
+    <nav class="flex flex-col space-y-3">
       {
         navItems.map((item) => (
           <a
@@ -134,7 +134,7 @@ const navItems = [
       >
         Select Language
       </p>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-2 gap-3">
         {
           Object.entries(languages).map(([l, name]) => (
             <a
