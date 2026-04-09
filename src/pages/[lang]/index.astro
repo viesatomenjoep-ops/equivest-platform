@@ -16,6 +16,7 @@ import { Image } from 'astro:assets';
 import heroImg from '../../assets/images/hero.png';
 
 export function getStaticPaths() {
+  return [
     { params: { lang: 'en' } },
     { params: { lang: 'nl' } },
     { params: { lang: 'de' } },
