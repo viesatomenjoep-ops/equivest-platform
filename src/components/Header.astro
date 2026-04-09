@@ -20,8 +20,8 @@ const navItems = [
 <header class="glass-header border-b border-gray-100 fixed w-full top-0 left-0 z-[1000]">
   <div class="max-width-site px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-24 relative w-full">
-      <!-- MOBILE: Left Logo + Text (Hidden on lg desktop) -->
-      <div class="flex items-center space-x-4 z-[110] lg:hidden">
+      <!-- MOBILE: Left Logo + Text (Hidden on xl desktop) -->
+      <div class="flex items-center space-x-4 z-[110] xl:hidden">
         <a href={`/${lang}/`} class="group relative block">
           <div class="logo-spinner origin-center transition-transform duration-500 ease-out flex items-center justify-center">
             <Image
@@ -38,14 +38,14 @@ const navItems = [
         </a>
       </div>
 
-      <!-- DESKTOP LEFT: Brand Text (Hidden on mobile) -->
-      <a href={`/${lang}/`} class="hidden lg:flex flex-col text-left justify-center shrink-0 z-[110]">
+      <!-- DESKTOP LEFT: Brand Text (Hidden on mobile & tablet) -->
+      <a href={`/${lang}/`} class="hidden xl:flex flex-col text-left justify-center shrink-0 z-[110]">
         <span class="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equivest</span>
         <span class="text-[10px] font-bold tracking-[0.3em] text-primary/90 uppercase mt-1 self-end">Since 1992</span>
       </a>
 
       <!-- DESKTOP CENTER: Navigation -->
-      <div class="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-[110]">
+      <div class="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-[110]">
         <nav class="flex items-center space-x-5">
           {
             navItems.map((item) => (
@@ -60,8 +60,8 @@ const navItems = [
       <!-- RIGHT: Utilities & Logo -->
       <div class="flex items-center space-x-4 ml-auto z-[110]">
         <!-- Desktop/Tablet Language Switcher -->
-        <div class="hidden md:flex items-center space-x-4">
-          <div class="flex items-center lg:border-r border-gray-100 lg:pr-4 space-x-1">
+        <div class="hidden xl:flex items-center space-x-4">
+          <div class="flex items-center xl:border-r border-gray-100 xl:pr-4 space-x-1">
             {
               Object.entries(languages).map(([l, _]) => (
                 <a
@@ -75,8 +75,8 @@ const navItems = [
           </div>
         </div>
 
-        <!-- Mobile menu button -->
-        <div class="lg:hidden flex items-center relative">
+        <!-- Mobile & Tablet menu button -->
+        <div class="xl:hidden flex items-center relative">
           <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
             <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
@@ -85,8 +85,8 @@ const navItems = [
           </button>
         </div>
 
-        <!-- DESKTOP RIGHT: Logo (Hidden on mobile) -->
-        <a href={`/${lang}/`} class="hidden lg:block group relative block z-[110]">
+        <!-- DESKTOP RIGHT: Logo (Hidden on mobile & tablet) -->
+        <a href={`/${lang}/`} class="hidden xl:block group relative block z-[110]">
           <div class="logo-spinner origin-center transition-transform duration-500 ease-out flex items-center justify-center">
             <Image src={logoImg} alt="Equivest Logo" width={256} class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110" />
           </div>
@@ -98,7 +98,7 @@ const navItems = [
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out md:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full"
+    class="fixed inset-0 bg-white z-[100] translate-x-full transition-transform duration-500 ease-in-out xl:hidden flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full"
   >
     <!-- Mobile Nav Links -->
     <nav class="flex flex-col space-y-3">
