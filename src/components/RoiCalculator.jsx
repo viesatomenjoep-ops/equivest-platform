@@ -13,6 +13,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
       year2: 'Year 2',
       year3: 'Year 3',
       range: 'Projected Profit',
+      totalReturn: 'Total Return (Incl. Inv.)',
       cta: 'Request Investment Plan',
       potential: 'Potential',
     },
@@ -25,6 +26,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
       year2: 'Jaar 2',
       year3: 'Jaar 3',
       range: 'Verwachte Winst',
+      totalReturn: 'Totale Opbrengst (Incl. Inleg)',
       cta: 'Plan Aanvragen',
       potential: 'Potentieel',
     },
@@ -37,6 +39,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
       year2: 'Jahr 2',
       year3: 'Jahr 3',
       range: 'Erwarteter Gewinn',
+      totalReturn: 'Gesamtertrag (Inkl. Investition)',
       cta: 'Investitionsplan Anfordern',
       potential: 'Potenzial',
     },
@@ -49,6 +52,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
       year2: 'Año 2',
       year3: 'Año 3',
       range: 'Beneficio Proyectado',
+      totalReturn: 'Retorno Total (Incl. Inv.)',
       cta: 'Solicitar Plan de Inversión',
       potential: 'Potencial',
     }
@@ -128,12 +132,22 @@ const RoiCalculator = ({ lang = 'en' }) => {
                   +{(res.max * 100).toFixed(0)}% {t.potential}
                 </span>
               </div>
-              <div className="space-y-1">
-                <span className="block text-white/40 text-[9px] font-bold uppercase tracking-widest">{t.range}</span>
-                <div className="text-xl md:text-2xl font-serif text-white">
-                  {formatter.format(amount * res.min)}
-                  <span className="mx-2 text-white/20 font-sans text-sm">—</span>
-                  {formatter.format(amount * res.max)}
+              <div className="space-y-6">
+                <div className="space-y-1">
+                  <span className="block text-white/40 text-[9px] font-bold uppercase tracking-widest">{t.range}</span>
+                  <div className="text-xl md:text-2xl font-serif text-white">
+                    {formatter.format(amount * res.min)}
+                    <span className="mx-2 text-white/20 font-sans text-sm">—</span>
+                    {formatter.format(amount * res.max)}
+                  </div>
+                </div>
+                <div className="space-y-1 pt-4 border-t border-white/10">
+                  <span className="block text-accent/80 text-[9px] font-bold uppercase tracking-widest">{t.totalReturn}</span>
+                  <div className="text-lg md:text-xl font-serif text-accent">
+                    {formatter.format(amount + (amount * res.min))}
+                    <span className="mx-2 text-accent/40 font-sans text-sm">—</span>
+                    {formatter.format(amount + (amount * res.max))}
+                  </div>
                 </div>
               </div>
             </div>
