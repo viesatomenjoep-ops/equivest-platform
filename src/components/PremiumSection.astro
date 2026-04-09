@@ -12,7 +12,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 
 <section id="premium" class="bg-bg-subtle relative border-t border-gray-100">
 	<!-- THE LOCK SCREEN (Visible by default) -->
-	<div id="premium-lock" class="absolute inset-0 z-[50] bg-white flex flex-col items-center justify-center min-h-screen px-4">
+	<div id="premium-lock" class="flex flex-col items-center justify-center min-h-[80vh] px-4 w-full bg-white relative z-[50]">
 		<div class="max-w-md w-full space-y-8 text-center reveal reveal-up">
 			<img src="/images/logo.png" alt="Equivest Premium" class="w-20 h-20 md:w-24 md:h-24 mx-auto object-contain brightness-0" />
 			<h2 class="text-4xl md:text-5xl font-serif text-primary">VIP Access</h2>
