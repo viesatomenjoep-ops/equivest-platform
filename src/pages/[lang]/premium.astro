@@ -92,10 +92,6 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
 								)}
-								<div class="absolute top-4 left-4 bg-primary text-white text-lg font-bold uppercase tracking-widest px-4 py-2 shadow-xl flex items-center gap-2">
-									<svg class="w-4 h-4 fill-accent" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-									Exclusive
-								</div>
 								<!-- YouTube Overlay -->
 								{horse.data.youtube_url && (
 								<a href={horse.data.youtube_url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -156,7 +152,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 	const errorMsg = document.getElementById('error-msg');
 
 	// Valid access codes (hardcoded for simple soft gate)
-	const VALID_CODES = ['111192'];
+	const VALID_CODES = ['1111'];
 
 	if (form && lockScreen && content && input && errorMsg) {
 		form.addEventListener('submit', (e) => {
