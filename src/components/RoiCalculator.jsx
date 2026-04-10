@@ -10,9 +10,12 @@ const RoiCalculator = ({ lang = 'en' }) => {
       inputLabel: 'Amount to Invest',
       minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
-      year1: 'Year 1',
-      year2: 'Year 2',
-      year3: 'Year 3',
+      year1: '3-6 Months',
+      year2: '6-12 Months',
+      year3: '12-36 Months',
+      shortTerm: 'Short Term Investment',
+      mediumTerm: 'Medium Term Project',
+      longTerm: 'Long Term Investment',
       range: 'Projected Profit',
       totalReturn: 'Total Return (Incl. Inv.)',
       cta: 'Request Investment Plan',
@@ -23,9 +26,12 @@ const RoiCalculator = ({ lang = 'en' }) => {
       inputLabel: 'Investeringsbedrag',
       minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
-      year1: 'Jaar 1',
-      year2: 'Jaar 2',
-      year3: 'Jaar 3',
+      year1: '3-6 Maanden',
+      year2: '6-12 Maanden',
+      year3: '12-36 Maanden',
+      shortTerm: 'Korte Termijn Investering',
+      mediumTerm: 'Middellange Termijn Project',
+      longTerm: 'Lange Termijn Investering',
       range: 'Verwachte Winst',
       totalReturn: 'Totale Opbrengst (Incl. Inleg)',
       cta: 'Plan Aanvragen',
@@ -36,9 +42,12 @@ const RoiCalculator = ({ lang = 'en' }) => {
       inputLabel: 'Investitionsbetrag',
       minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
-      year1: 'Jahr 1',
-      year2: 'Jahr 2',
-      year3: 'Jahr 3',
+      year1: '3-6 Monate',
+      year2: '6-12 Monate',
+      year3: '12-36 Monate',
+      shortTerm: 'Kurzfristige Investition',
+      mediumTerm: 'Mittelfristiges Projekt',
+      longTerm: 'Langfristige Investition',
       range: 'Erwarteter Gewinn',
       totalReturn: 'Gesamtertrag (Inkl. Investition)',
       cta: 'Investitionsplan Anfordern',
@@ -49,9 +58,12 @@ const RoiCalculator = ({ lang = 'en' }) => {
       inputLabel: 'Monto de Inversión',
       minLabel: 'Min: €15.000',
       maxLabel: 'Max: €1.000.000+',
-      year1: 'Año 1',
-      year2: 'Año 2',
-      year3: 'Año 3',
+      year1: '3-6 Meses',
+      year2: '6-12 Meses',
+      year3: '12-36 Meses',
+      shortTerm: 'Inversión a Corto Plazo',
+      mediumTerm: 'Proyecto a Medio Plazo',
+      longTerm: 'Inversión a Largo Plazo',
       range: 'Beneficio Proyectado',
       totalReturn: 'Retorno Total (Incl. Inv.)',
       cta: 'Solicitar Plan de Inversión',
@@ -62,9 +74,9 @@ const RoiCalculator = ({ lang = 'en' }) => {
   const t = translations[lang] || translations.en;
 
   const results = useMemo(() => [
-    { year: t.year1, min: 0.3, max: 0.75 },
-    { year: t.year2, min: 0.5, max: 1.5 },
-    { year: t.year3, min: 0.75, max: 3.0 },
+    { year: t.year1, label: t.shortTerm, min: 0.3, max: 0.75 },
+    { year: t.year2, label: t.mediumTerm, min: 0.5, max: 1.5 },
+    { year: t.year3, label: t.longTerm, min: 0.75, max: 3.0 },
   ], [t]);
 
   const formatter = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-US', {
@@ -145,8 +157,11 @@ const RoiCalculator = ({ lang = 'en' }) => {
               <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
                 <div className="flex justify-between items-center mb-8">
-                  <span className="text-accent text-xl font-bold uppercase tracking-[0.3em]">{res.year} Projection</span>
-                  <span className="bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-lg text-lg font-bold uppercase tracking-wider">
+                  <div>
+                    <span className="text-accent text-xl font-bold uppercase tracking-[0.3em] block">{res.year} Projection</span>
+                    <span className="text-white/60 text-sm font-bold uppercase tracking-widest mt-1 block">{res.label}</span>
+                  </div>
+                  <span className="bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-lg text-lg font-bold uppercase tracking-wider text-center flex items-center">
                     +{(res.max * 100).toFixed(0)}% {t.potential}
                   </span>
                 </div>
