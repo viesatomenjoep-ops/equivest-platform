@@ -43,7 +43,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 		</div>
 
 		<!-- THE PREMIUM CONTENT (Blurred by default) -->
-		<div id="premium-content" class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto opacity-30 select-none pointer-events-none transition-all duration-1000">
+		<div id="premium-content" class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto opacity-30 select-none pointer-events-none transition-all duration-1000 h-[500px] overflow-hidden">
 			<div class="max-w-3xl space-y-4 reveal reveal-up mb-12">
 				<span class="text-accent text-xl font-bold uppercase tracking-[0.4em]">Unlocked</span>
 				<h2 class="text-4xl md:text-6xl font-serif text-primary leading-tight">
@@ -151,7 +151,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 				}, 700);
 				
 				// Un-blur and enable content
-				content.classList.remove('opacity-30', 'pointer-events-none');
+				content.classList.remove('opacity-30', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
 				content.classList.add('opacity-100');
 
 				// Re-initialize reveals
