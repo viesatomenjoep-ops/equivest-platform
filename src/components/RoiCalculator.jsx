@@ -130,7 +130,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] rounded-full scale-100 group-hover:scale-125 pointer-events-none border-2 border-accent"></div>
             </div>
           </div>
-          <div className="flex justify-between text-lg font-bold uppercase tracking-widest text-white/60">
+          <div className="flex justify-between text-base md:text-lg lg:text-2xl font-serif text-white/80">
             <span>{t.minLabel}</span>
             <span>{t.maxLabel}</span>
           </div>
@@ -160,7 +160,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
                     <button
                       key={idx}
                       onClick={() => setActiveYear(idx)}
-                      className={`flex-1 py-1.5 px-2 md:py-2.5 md:px-3 lg:px-4 rounded-md lg:rounded-lg text-xs md:text-sm lg:text-base font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
+                      className={`flex-1 py-2 px-3 md:py-3 md:px-6 lg:px-8 rounded-lg lg:rounded-xl text-sm md:text-base lg:text-xl font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
                     >
                       {r.year}
                     </button>
@@ -171,9 +171,9 @@ const RoiCalculator = ({ lang = 'en' }) => {
                 <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-3 lg:p-5 gap-2 lg:gap-3">
                   <div className="text-center md:text-left">
                     <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.range} (Net Profit)</span>
-                    <div className="text-xs md:text-sm lg:text-lg font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
+                    <div className="text-base md:text-lg lg:text-3xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
                       <span>+{formatter.format(amount * res.min)}</span>
-                      <span className="mx-2 text-accent/40 font-sans text-xs md:text-sm lg:text-lg">—</span>
+                      <span className="mx-2 text-accent/40 font-sans text-sm md:text-base lg:text-xl">—</span>
                       <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
