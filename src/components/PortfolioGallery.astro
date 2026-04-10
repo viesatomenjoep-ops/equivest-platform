@@ -14,7 +14,7 @@ const allHorsesWithContent = await Promise.all(
   allHorses.map(async (horse) => {
     const { Content } = await render(horse);
     return {
-      slug: horse.slug,
+      slug: horse.id,
       data: horse.data,
       category: horse.data.category || '',
       Content
@@ -66,8 +66,8 @@ const allHorsesWithContent = await Promise.all(
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
         {allHorsesWithContent.map((horse, index) => (
-          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`openModal('${horse.slug}')`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
-            <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`openModal('${horse.slug}')`}>
+          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`openModal('${horse.id}')`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
+            <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`openModal('${horse.id}')`}>
               {typeof horse.data.image === 'string' ? (
                 <img 
                   src={horse.data.image} 
@@ -85,7 +85,7 @@ const allHorsesWithContent = await Promise.all(
         </div>
         
         <div class="p-8 flex-grow flex flex-col">
-          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`openModal('${horse.slug}')`}>
+          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`openModal('${horse.id}')`}>
             <img src="/images/logo.png" alt="Equivest" class="w-16 h-16 object-contain brightness-0" />
             <h3 class="text-2xl font-serif text-primary group-hover:text-accent transition-colors">{horse.data.title}</h3>
           </div>
@@ -135,12 +135,12 @@ const allHorsesWithContent = await Promise.all(
                   <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                   <span class="text-sm font-bold uppercase tracking-widest">Video</span>
                </span>
-               <button onclick={`openModal('${horse.slug}')`} class="w-full text-center py-5 text-base font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+               <button onclick={`openModal('${horse.id}')`} class="w-full text-center py-5 text-base font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                   Plan
                </button>
              </>
            ) : (
-             <button onclick={`openModal('${horse.slug}')`} class="col-span-2 w-full text-center py-5 text-base font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+             <button onclick={`openModal('${horse.id}')`} class="col-span-2 w-full text-center py-5 text-base font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                 Investment Plan
              </button>
            )}
@@ -153,12 +153,12 @@ const allHorsesWithContent = await Promise.all(
     {allHorsesWithContent.map((horse) => {
       const Content = horse.Content;
       return (
-      <div id={`modal-${horse.slug}`} class="fixed inset-0 z-[1000] hidden items-center justify-center opacity-0 transition-opacity duration-500">
-        <div class="absolute inset-0 bg-primary/95 backdrop-blur-md" onclick={`closeModal('${horse.slug}')`}></div>
+      <div id={`modal-${horse.id}`} class="fixed inset-0 z-[1000] hidden items-center justify-center opacity-0 transition-opacity duration-500">
+        <div class="absolute inset-0 bg-primary/95 backdrop-blur-md" onclick={`closeModal('${horse.id}')`}></div>
         
         <div class="relative bg-white w-[95%] max-w-6xl h-[90vh] flex flex-col md:flex-row shadow-2xl scale-95 transition-transform duration-500 delay-100 modal-dialog overflow-hidden">
            <!-- Close -->
-           <button onclick={`closeModal('${horse.slug}')`} class="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/80 backdrop-blur-sm hover:bg-accent text-primary hover:text-white transition-colors border border-primary/10 rounded-full flex items-center justify-center shadow-lg">
+           <button onclick={`closeModal('${horse.id}')`} class="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/80 backdrop-blur-sm hover:bg-accent text-primary hover:text-white transition-colors border border-primary/10 rounded-full flex items-center justify-center shadow-lg">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
            </button>
            
