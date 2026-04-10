@@ -2,6 +2,8 @@
 title: "Night Blue de la Roque"
 description: "Chaccoon blue x Odermus R - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png"
+premium: true
+youtube_url: "https://www.youtube.com/watch?v=F3aOq0M9l8g"
 featured: true
 category: "Jumpers"
 specs:

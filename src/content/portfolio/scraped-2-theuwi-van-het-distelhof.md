@@ -2,6 +2,8 @@
 title: "Theuwi van het Distelhof"
 description: "Emerald x Indoctro - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/theuwi-11-high.jpg"
+premium: true
+youtube_url: "https://www.youtube.com/watch?v=z1Nv366EASI"
 featured: true
 category: "Jumpers"
 specs:

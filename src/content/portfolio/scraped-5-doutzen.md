@@ -2,6 +2,8 @@
 title: "Doutzen"
 description: "Dominator x Cancare - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/image-high-z73l26.png"
+premium: true
+youtube_url: "https://www.youtube.com/watch?v=tM1dcN3SCSA"
 featured: true
 category: "Jumpers"
 specs:

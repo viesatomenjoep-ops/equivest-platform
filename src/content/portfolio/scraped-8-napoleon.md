@@ -2,6 +2,8 @@
 title: "Napoleon"
 description: "Nixon x Cancara - Stallion, grey"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/napoleon-nixon-x-high.jpg"
+premium: true
+youtube_url: "https://www.youtube.com/watch?v=csWf_w9F4_k"
 featured: true
 category: "Jumpers"
 specs:
