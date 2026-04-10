@@ -32,7 +32,7 @@ const featuredHorses = horses.filter(h => h.data.featured && !h.data.sold).slice
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
       {featuredHorses.map((horse, index) => (
-        <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-duration: 1200ms; transition-delay: ${index * 150}ms`}>
+        <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${index * 75}ms`}>
           <div class="aspect-[16/10] overflow-hidden relative">
             {typeof horse.data.image === 'string' ? (
               <Image 
