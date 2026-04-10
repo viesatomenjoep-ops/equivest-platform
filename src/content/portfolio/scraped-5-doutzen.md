@@ -10,15 +10,15 @@ specs:
   age: 6
   gender: "Mare"
   height: "TBD"
-  level: "Prospect"
+  level: "1.30m - 1.35m Developing"
 ---
 
-An exceptional 6-year-old mare currently developing brilliantly at Prospect level. With significant scope and an incredibly modern type, this young athlete offers massive upside for the American market as they step up into the larger divisions.
+A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite American hunter/jumper circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 48.500** |
-| **Expected Sale Price** *(3-6 Mos)* | € 67.900 |
-| **Expected Sale Price** *(6-12 Mos)* | € 89.725 |
-| **Expected Sale Price** *(12-36 Mos)* | € 118.825 |
+| **Asset Purchase Price** | **€ 92.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 119.600 |
+| **Expected Sale Price** *(6-12 Mos)* | € 151.800 |
+| **Expected Sale Price** *(12-36 Mos)* | € 193.200 |

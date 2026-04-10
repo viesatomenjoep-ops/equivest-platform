@@ -10,15 +10,15 @@ specs:
   age: 7
   gender: "Mare"
   height: "TBD"
-  level: "Prospect"
+  level: "1.30m - 1.35m Developing"
 ---
 
-A proven 7-year-old mare competing securely at Prospect. Representing prime athletic maturity, this asset is a highly liquid turnkey investment ready for immediate syndication or lease in the highly competitive US circuit.
+A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite American hunter/jumper circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 36.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 46.800 |
-| **Expected Sale Price** *(6-12 Mos)* | € 57.600 |
-| **Expected Sale Price** *(12-36 Mos)* | € 70.200 |
+| **Asset Purchase Price** | **€ 100.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 130.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 165.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 210.000 |

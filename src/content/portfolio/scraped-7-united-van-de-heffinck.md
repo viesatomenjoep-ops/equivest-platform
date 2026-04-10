@@ -10,15 +10,15 @@ specs:
   age: 6
   gender: "Stallion"
   height: "TBD"
-  level: "Prospect"
+  level: "1.30m - 1.35m Developing"
 ---
 
-An exceptional 6-year-old stallion currently developing brilliantly at Prospect level. With significant scope and an incredibly modern type, this young athlete offers massive upside for the American market as they step up into the larger divisions.
+A spectacular 1.30m - 1.35m Developing stallion entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite American hunter/jumper circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 56.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 78.400 |
-| **Expected Sale Price** *(6-12 Mos)* | € 103.600 |
-| **Expected Sale Price** *(12-36 Mos)* | € 137.200 |
+| **Asset Purchase Price** | **€ 88.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 114.400 |
+| **Expected Sale Price** *(6-12 Mos)* | € 145.200 |
+| **Expected Sale Price** *(12-36 Mos)* | € 184.800 |
