@@ -13,7 +13,7 @@ specs:
   level: "1.10m - 1.20m YH"
 ---
 
-A fiercely competitive 5-year-old stallion comfortably jumping 1.10m - 1.20m YH. Showcasing massive scope and an amateur-friendly brain, highly liquid asset.
+A jaw-dropping grey stallion by the highly sought-after Nixon van 't Meulenhof, supplemented by Cancara. Napoleon commands attention the moment he enters the ring. He boasts an incredibly elastic jump, opening up his hindquarters with effortless ease. His commercial appeal as a stunning grey stallion with this specific technique makes him an extremely lucrative short-to-medium term investment.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

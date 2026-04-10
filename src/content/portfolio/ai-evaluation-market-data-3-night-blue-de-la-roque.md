@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+Directly descending from the rising star sire Chaccoon Blue, accented by the proven reflexes of Odermus R. Night Blue de la Roque is a modern, light-footed mare with an explosive takeoff and razor-sharp front leg technique. She is highly blooded, sensitive but incredibly brave, perfectly suited for a competitive professional or an ambitious young rider looking to step up.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

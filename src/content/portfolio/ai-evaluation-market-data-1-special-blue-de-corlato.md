@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+An exceptional mare combining the immense scope of Zirocco Blue VDL with the ultra-careful reflexes of I'm Special de Muze. This genetic powerhouse demonstrates an incredible willingness to work and possesses the natural balance required for top-tier international tracks. Her modern type and elastic jump make her a prime candidate for the elite American hunter/jumper circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

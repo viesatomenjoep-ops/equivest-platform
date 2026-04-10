@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing stallion entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+An officially Approved BWP stallion uniting the blood of the world's #1 sire, Chacco Blue, with the proven Heffinck maternal lines. United is not just a sport horse; he is a dual-purpose asset generating immense stallion value. With jaw-dropping technique, unlimited scope, and an incredibly cooperative stallion character, his syndication and resale potential are mathematically unmatched.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

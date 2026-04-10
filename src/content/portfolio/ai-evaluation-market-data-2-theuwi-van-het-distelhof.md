@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+A striking mare carrying the highly coveted Emerald bloodlines, crossed with the legendary foundation sire Indoctro. Theuwi exhibits extraordinary scope combined with a highly intelligent, amateur-friendly brain. She has a huge active stride and natural bascule, positioning her as a top-tier investment for clients seeking turnkey reliability in the 1.45m divisions.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

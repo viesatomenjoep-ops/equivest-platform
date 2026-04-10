@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+Standing at an elegant 170cm, this mare's pedigree is a breeder’s dream: I'm Special de Muze crossed with the legendary For Pleasure. She combines the carefulness of her sire with the unmatched competitive drive of her damsire. Extremely rideable with a massive, ground-covering canter, she is the ultimate high-liquid asset for the competitive junior/amateur leagues.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+A magnificent daughter of the powerhouse Dominator 2000 Z out of a Cancara mother line. Doutzen brings undeniable physical presence and sheer power to the ring. Every jump demonstrates limitless scope and raw athletic ability. Given her size and frame, she is developing beautifully into a true Grand Prix prospect that will dominate the big rings.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

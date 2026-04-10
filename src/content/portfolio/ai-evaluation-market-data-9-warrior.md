@@ -13,7 +13,7 @@ specs:
   level: "1.00m Young Jumper"
 ---
 
-An ultra-talented 4-year-old stallion showing jaw-dropping technique. Featuring world-class genetics and an incredibly modern type, offering massive upside.
+A spectacular young stallion blending the modern sensation Ermitage Kalone with the immortal Casall. Warrior is the epitome of the modern showjumper: hyper-athletic, ultra-careful, and incredibly quick off the ground. As one of the most exciting young stallions on the market, his early trajectory points straight to the 1.60m Grand Prix rings, offering massive ROI for early-stage investors.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

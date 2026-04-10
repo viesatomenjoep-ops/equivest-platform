@@ -13,7 +13,7 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite circuit.
+Bred by the prestigious Paul Schockemöhle (PS) operation, Stakkazara merges the endless scope of Stakkatol with the legendary carefulness of Balou du Rouet. This mare is an absolute rubber ball off the ground. With spectacular technique and a brave, forward-thinking mentality, she represents one of the most exciting developing talents for the global premium market.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
