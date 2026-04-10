@@ -160,7 +160,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
                     <button
                       key={idx}
                       onClick={() => setActiveYear(idx)}
-                      className={`flex-1 py-2 px-3 md:py-3 md:px-6 lg:px-8 rounded-lg lg:rounded-xl text-sm md:text-base lg:text-xl font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
+                      className={`flex-1 py-1.5 px-3 md:py-2.5 md:px-5 lg:px-6 rounded-lg lg:rounded-xl text-xs md:text-sm lg:text-lg font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
                     >
                       {r.year}
                     </button>
