@@ -60,12 +60,7 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 )}
-                {horse.data.featured && (
-                  <div class="absolute top-4 left-4 bg-primary text-accent text-lg font-bold uppercase tracking-widest px-3 py-1 shadow-xl">
-                     Prime Selection
-                  </div>
-                )}
-                
+
                 <!-- YouTube Overlay -->
                 {horse.data.youtube_url && (
                   <div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
