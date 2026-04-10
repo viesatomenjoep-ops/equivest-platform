@@ -12,6 +12,7 @@ const portfolio = defineCollection({
     featured: z.boolean().default(false),
     premium: z.boolean().default(false),
     sold: z.boolean().default(false),
+    category: z.string().optional(),
     specs: z.object({
       age: z.number(),
       gender: z.string(),

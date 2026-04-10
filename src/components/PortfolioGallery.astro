@@ -25,8 +25,9 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
       </div>
       <div class="flex flex-wrap gap-4 mt-6 md:mt-0">
          <button class="filter-btn active text-primary font-bold uppercase tracking-widest border-b border-primary pb-2 text-lg md:text-xl transition-colors" data-filter="all">All</button>
-         <button class="filter-btn text-primary/70 hover:text-primary font-bold uppercase tracking-widest border-b border-primary/10 hover:border-primary/50 pb-2 text-lg md:text-xl transition-colors" data-filter="Grand Prix">Grand Prix</button>
-         <button class="filter-btn text-primary/70 hover:text-primary font-bold uppercase tracking-widest border-b border-primary/10 hover:border-primary/50 pb-2 text-lg md:text-xl transition-colors" data-filter="Youngster">Youngster</button>
+         <button class="filter-btn text-primary/70 hover:text-primary font-bold uppercase tracking-widest border-b border-primary/10 hover:border-primary/50 pb-2 text-lg md:text-xl transition-colors" data-filter="Hunters">Hunters</button>
+         <button class="filter-btn text-primary/70 hover:text-primary font-bold uppercase tracking-widest border-b border-primary/10 hover:border-primary/50 pb-2 text-lg md:text-xl transition-colors" data-filter="Jumpers">Jumpers</button>
+         <button class="filter-btn text-primary/70 hover:text-primary font-bold uppercase tracking-widest border-b border-primary/10 hover:border-primary/50 pb-2 text-lg md:text-xl transition-colors" data-filter="Pony's">Pony's</button>
       </div>
     </div>
 
@@ -43,7 +44,7 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
       ) : (
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {allHorses.map((horse, index) => (
-            <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${index * 75}ms`} data-level={horse.data.specs?.level}>
+            <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${index * 75}ms`} data-category={horse.data.category || ''}>
               <div class="aspect-[16/10] overflow-hidden relative">
                 {typeof horse.data.image === 'string' ? (
                   <Image 
@@ -142,9 +143,9 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
           if (filterValue === 'all') {
             (card as HTMLElement).style.display = 'flex';
           } else {
-            const level = card.getAttribute('data-level') || '';
+            const category = card.getAttribute('data-category') || '';
             // Simple string matching for now
-            if (level.includes(filterValue!)) {
+            if (category.includes(filterValue!)) {
               (card as HTMLElement).style.display = 'flex';
             } else {
               (card as HTMLElement).style.display = 'none';
