@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+import exclusivityLeapImg from '../assets/images/exclusivity-in-every-leap.png';
 ---
 
 <section id="about" class="py-12 md:py-24 bg-white relative overflow-hidden">
@@ -47,9 +49,8 @@ const t = useTranslations(lang);
         <div class="absolute inset-0 bg-accent translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700"></div>
         <div class="aspect-[4/5] bg-gray-200 overflow-hidden shadow-premium">
            <Image 
-            src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=2071&auto=format&fit=crop" 
+            src={exclusivityLeapImg} 
             alt="Elite Showjumper" 
-            inferSize={true}
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
            />
         </div>
