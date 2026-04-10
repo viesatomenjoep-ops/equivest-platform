@@ -16,9 +16,9 @@ specs:
 A highly competitive 7-year old mare, showing significant potential for the American hunter and equitation markets. Displays excellent technique over fences and a professional mind.
 
 ### Financial Prospectus
-| Data Point | Cost / Return |
+| Metrics | Expected Valuation |
 | :--- | :--- |
-| **Capital Required** *(All-in Acquisition & Logistics)* | **€ 101.350** |
-| **Expected Short Term Return** *(3-6 Mos)* | + € 32.939 |
-| **Expected Medium Term Return** *(6-12 Mos)* | + € 55.743 |
-| **Expected Long Term Return** *(12-36 Mos)* | + € 96.282 |
+| **Initial Asset Acquisition Price** | **€ 50.000** |
+| **Short Term Sale Value** *(3-6 Mos)* | € 66.250 |
+| **Medium Term Sale Value** *(6-12 Mos)* | € 77.500 |
+| **Long Term Sale Value** *(12-36 Mos)* | € 97.500 |

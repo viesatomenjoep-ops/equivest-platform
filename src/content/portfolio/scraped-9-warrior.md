@@ -16,9 +16,9 @@ specs:
 A highly competitive 4-year old stallion, showing significant potential for the American hunter and equitation markets. Displays excellent technique over fences and a professional mind.
 
 ### Financial Prospectus
-| Data Point | Cost / Return |
+| Metrics | Expected Valuation |
 | :--- | :--- |
-| **Capital Required** *(All-in Acquisition & Logistics)* | **€ 61.350** |
-| **Expected Short Term Return** *(3-6 Mos)* | + € 19.939 |
-| **Expected Medium Term Return** *(6-12 Mos)* | + € 33.742 |
-| **Expected Long Term Return** *(12-36 Mos)* | + € 58.282 |
+| **Initial Asset Acquisition Price** | **€ 85.000** |
+| **Short Term Sale Value** *(3-6 Mos)* | € 112.625 |
+| **Medium Term Sale Value** *(6-12 Mos)* | € 131.750 |
+| **Long Term Sale Value** *(12-36 Mos)* | € 165.750 |
