@@ -10,8 +10,8 @@ specs:
   age: 6
   gender: "Stallion"
   height: "TBD"
-  purchase_price: "€ 237.000"
-  target_sale: "€ 487.000"
+  purchase_price: "€ 450.000"
+  target_sale: "€ 1.200.000"
   level: "1.30m - 1.35m Developing"
 ---
 
@@ -20,7 +20,7 @@ An officially Approved BWP stallion uniting the blood of the world's #1 sire, Ch
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 237.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 316.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 367.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 487.000 |
+| **Asset Purchase Price** | **€ 450.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 580.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 790.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 1.200.000 |

@@ -10,8 +10,8 @@ specs:
   age: 6
   gender: "Mare"
   height: "1.70m"
-  purchase_price: "€ 174.000"
-  target_sale: "€ 339.000"
+  purchase_price: "€ 165.000"
+  target_sale: "€ 280.000"
   level: "1.30m - 1.35m Developing"
 ---
 
@@ -20,7 +20,7 @@ Standing at an elegant 170cm, this mare's pedigree is a breeder’s dream: I'm S
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 174.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 209.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 266.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 339.000 |
+| **Asset Purchase Price** | **€ 165.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 195.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 235.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 280.000 |

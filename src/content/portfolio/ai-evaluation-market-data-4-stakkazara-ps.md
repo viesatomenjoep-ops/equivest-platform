@@ -10,8 +10,8 @@ specs:
   age: 7
   gender: "Mare"
   height: "TBD"
-  purchase_price: "€ 134.000"
-  target_sale: "€ 252.000"
+  purchase_price: "€ 280.000"
+  target_sale: "€ 550.000"
   level: "1.30m - 1.35m Developing"
 ---
 
@@ -20,7 +20,7 @@ Bred by the prestigious Paul Schockemöhle (PS) operation, Stakkazara merges the
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 134.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 166.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 206.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 252.000 |
+| **Asset Purchase Price** | **€ 280.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 340.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 425.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 550.000 |

@@ -10,8 +10,8 @@ specs:
   age: 7
   gender: "Mare"
   height: "TBD"
-  purchase_price: "€ 201.000"
-  target_sale: "€ 401.000"
+  purchase_price: "€ 225.000"
+  target_sale: "€ 415.000"
   level: "1.30m - 1.35m Developing"
 ---
 
@@ -20,7 +20,7 @@ A striking mare carrying the highly coveted Emerald bloodlines, crossed with the
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 201.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 250.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 334.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 401.000 |
+| **Asset Purchase Price** | **€ 225.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 265.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 310.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 415.000 |

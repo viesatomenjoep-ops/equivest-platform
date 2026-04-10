@@ -10,8 +10,8 @@ specs:
   age: 4
   gender: "Stallion"
   height: "TBD"
-  purchase_price: "€ 74.000"
-  target_sale: "€ 199.000"
+  purchase_price: "€ 240.000"
+  target_sale: "€ 600.000"
   level: "1.00m Young Jumper"
 ---
 
@@ -20,7 +20,7 @@ A spectacular young stallion blending the modern sensation Ermitage Kalone with 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 74.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 99.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 131.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 199.000 |
+| **Asset Purchase Price** | **€ 240.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 315.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 420.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 600.000 |

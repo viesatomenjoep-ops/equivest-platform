@@ -10,8 +10,8 @@ specs:
   age: 5
   gender: "Stallion"
   height: "TBD"
-  purchase_price: "€ 110.000"
-  target_sale: "€ 250.000"
+  purchase_price: "€ 180.000"
+  target_sale: "€ 390.000"
   level: "1.10m - 1.20m YH"
 ---
 
@@ -20,7 +20,7 @@ A jaw-dropping grey stallion by the highly sought-after Nixon van 't Meulenhof, 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 110.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 151.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 204.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 250.000 |
+| **Asset Purchase Price** | **€ 180.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 225.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 285.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 390.000 |
