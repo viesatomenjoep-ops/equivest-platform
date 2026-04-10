@@ -165,21 +165,23 @@ const RoiCalculator = ({ lang = 'en' }) => {
                     +{(res.max * 100).toFixed(0)}% {t.potential}
                   </span>
                 </div>
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <span className="block text-accent/80 text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
-                    <div className="text-3xl md:text-5xl font-serif text-white flex flex-wrap items-center">
+                <div className="space-y-6 md:space-y-8">
+                  <div className="space-y-2">
+                    <span className="block text-white/60 text-xs md:text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
+                    <div className="text-2xl md:text-3xl font-serif text-white/90 flex flex-wrap items-center">
                       <span>{formatter.format(amount + (amount * res.min))}</span>
-                      <span className="mx-2 md:mx-3 text-white/20 font-sans text-2xl md:text-4xl">—</span>
+                      <span className="mx-2 md:mx-3 text-white/20 font-sans text-xl">—</span>
                       <span>{formatter.format(amount + (amount * res.max))}</span>
                     </div>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/10 gap-4">
-                    <span className="text-white/60 text-sm font-bold uppercase tracking-widest">{t.range}</span>
-                    <div className="text-xl md:text-2xl font-serif text-accent font-bold flex flex-wrap items-center">
-                      <span>+{formatter.format(amount * res.min)}</span>
-                      <span className="mx-2 text-accent/50 font-sans">—</span>
-                      <span>+{formatter.format(amount * res.max)}</span>
+                  
+                  <div className="pt-6 md:pt-8 border-t border-accent/20">
+                    <span className="block text-accent text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-3">{t.range}</span>
+                    <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-accent flex flex-wrap items-center drop-shadow-2xl bg-accent/10 p-5 md:p-8 rounded-2xl border border-accent/30 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 rounded-2xl animate-pulse" style={{ animationDuration: '3s' }} />
+                      <span className="relative z-10">+{formatter.format(amount * res.min)}</span>
+                      <span className="relative z-10 mx-2 md:mx-4 text-accent/40 font-sans text-3xl md:text-5xl">—</span>
+                      <span className="relative z-10">+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
                 </div>
