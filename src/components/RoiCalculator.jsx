@@ -132,21 +132,19 @@ const RoiCalculator = ({ lang = 'en' }) => {
                   +{(res.max * 100).toFixed(0)}% {t.potential}
                 </span>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div className="space-y-1">
-                  <span className="block text-white/70 text-lg font-bold uppercase tracking-widest">{t.range}</span>
-                  <div className="text-2xl md:text-2xl font-serif text-white">
-                    {formatter.format(amount * res.min)}
-                    <span className="mx-2 text-white/20 font-sans text-lg">—</span>
-                    {formatter.format(amount * res.max)}
+                  <span className="block text-accent/80 text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
+                  <div className="text-3xl md:text-4xl font-serif text-white">
+                    {formatter.format(amount + (amount * res.min))}
+                    <span className="mx-2 text-white/20 font-sans text-2xl">—</span>
+                    {formatter.format(amount + (amount * res.max))}
                   </div>
                 </div>
-                <div className="space-y-1 pt-4 border-t border-white/10">
-                  <span className="block text-accent/80 text-lg font-bold uppercase tracking-widest">{t.totalReturn}</span>
-                  <div className="text-xl md:text-2xl font-serif text-accent">
-                    {formatter.format(amount + (amount * res.min))}
-                    <span className="mx-2 text-accent/80 font-sans text-lg">—</span>
-                    {formatter.format(amount + (amount * res.max))}
+                <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between pt-4 border-t border-white/10 gap-2">
+                  <span className="text-white/60 text-sm font-bold uppercase tracking-widest">{t.range}</span>
+                  <div className="text-lg font-serif text-accent font-bold">
+                    +{formatter.format(amount * res.min)} <span className="mx-1 text-accent/50 font-sans">—</span> +{formatter.format(amount * res.max)}
                   </div>
                 </div>
               </div>
