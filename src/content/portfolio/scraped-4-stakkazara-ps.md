@@ -13,12 +13,12 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite American hunter/jumper circuit.
+A spectacular 1.30m - 1.35m Developing mare entering its prime development phase. At 7 years old, it demonstrates the physical maturity and scope required for the elite circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 103.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 133.900 |
-| **Expected Sale Price** *(6-12 Mos)* | € 169.950 |
-| **Expected Sale Price** *(12-36 Mos)* | € 216.300 |
+| **Asset Purchase Price** | **€ 127.500** |
+| **Expected Sale Price** *(3-6 Mos)* | € 171.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 209.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 238.000 |

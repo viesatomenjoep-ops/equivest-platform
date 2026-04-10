@@ -13,12 +13,12 @@ specs:
   level: "1.30m - 1.35m Developing"
 ---
 
-A spectacular 1.30m - 1.35m Developing stallion entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite American hunter/jumper circuit.
+A spectacular 1.30m - 1.35m Developing stallion entering its prime development phase. At 6 years old, it demonstrates the physical maturity and scope required for the elite circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 88.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 114.400 |
-| **Expected Sale Price** *(6-12 Mos)* | € 145.200 |
-| **Expected Sale Price** *(12-36 Mos)* | € 184.800 |
+| **Asset Purchase Price** | **€ 242.500** |
+| **Expected Sale Price** *(3-6 Mos)* | € 299.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 380.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 500.000 |

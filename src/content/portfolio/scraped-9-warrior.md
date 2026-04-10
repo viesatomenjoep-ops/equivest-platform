@@ -13,12 +13,12 @@ specs:
   level: "1.00m Young Jumper"
 ---
 
-An ultra-talented 4-year-old stallion showing jaw-dropping technique in the free-jumping chute. Projected to dominate the young horse classes.
+An ultra-talented 4-year-old stallion showing jaw-dropping technique. Featuring world-class genetics and an incredibly modern type, offering massive upside.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 43.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 60.200 |
-| **Expected Sale Price** *(6-12 Mos)* | € 81.700 |
-| **Expected Sale Price** *(12-36 Mos)* | € 111.800 |
+| **Asset Purchase Price** | **€ 60.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 90.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 103.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 153.000 |

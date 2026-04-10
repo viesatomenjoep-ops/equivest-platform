@@ -13,12 +13,12 @@ specs:
   level: "1.10m - 1.20m YH"
 ---
 
-A carefully produced 5-year-old stallion comfortably jumping 1.10m - 1.20m YH. Showcasing massive scope and an amateur-friendly brain, making this a highly liquid asset.
+A fiercely competitive 5-year-old stallion comfortably jumping 1.10m - 1.20m YH. Showcasing massive scope and an amateur-friendly brain, highly liquid asset.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 56.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 75.600 |
-| **Expected Sale Price** *(6-12 Mos)* | € 98.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 134.400 |
+| **Asset Purchase Price** | **€ 95.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 128.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 159.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 209.000 |
