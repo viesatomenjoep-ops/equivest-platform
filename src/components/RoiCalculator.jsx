@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 
 const RoiCalculator = ({ lang = 'en' }) => {
   const [amount, setAmount] = useState(100000);
+  const [activeYear, setActiveYear] = useState(0);
 
   const translations = {
     en: {
@@ -123,33 +124,51 @@ const RoiCalculator = ({ lang = 'en' }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {results.map((res, idx) => (
-            <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-xl hover:bg-white/[0.08] transition-all hover:-translate-y-1">
-              <div className="flex justify-between items-center mb-6">
-                <span className="text-accent text-lg font-bold uppercase tracking-[0.3em]">{res.year}</span>
-                <span className="bg-accent/10 text-accent px-2 py-1 rounded text-lg font-bold uppercase tracking-wider">
-                  +{(res.max * 100).toFixed(0)}% {t.potential}
-                </span>
-              </div>
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  <span className="block text-accent/80 text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
-                  <div className="text-3xl md:text-4xl font-serif text-white">
-                    {formatter.format(amount + (amount * res.min))}
-                    <span className="mx-2 text-white/20 font-sans text-2xl">—</span>
-                    {formatter.format(amount + (amount * res.max))}
+        <div className="max-w-3xl mx-auto">
+          {/* Toggle buttons for Years */}
+          <div className="flex bg-white/5 border border-white/10 rounded-2xl p-2 mb-8">
+            {results.map((res, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveYear(idx)}
+                className={`flex-1 py-3 px-4 rounded-xl text-lg font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
+              >
+                {res.year}
+              </button>
+            ))}
+          </div>
+
+          {/* Selected Year Results */}
+          {(() => {
+            const res = results[activeYear];
+            return (
+              <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
+                <div className="flex justify-between items-center mb-8">
+                  <span className="text-accent text-xl font-bold uppercase tracking-[0.3em]">{res.year} Projection</span>
+                  <span className="bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-lg text-lg font-bold uppercase tracking-wider">
+                    +{(res.max * 100).toFixed(0)}% {t.potential}
+                  </span>
+                </div>
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <span className="block text-accent/80 text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
+                    <div className="text-4xl md:text-5xl font-serif text-white">
+                      {formatter.format(amount + (amount * res.min))}
+                      <span className="mx-3 text-white/20 font-sans text-3xl md:text-4xl">—</span>
+                      {formatter.format(amount + (amount * res.max))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/10 gap-2">
+                    <span className="text-white/60 text-sm font-bold uppercase tracking-widest">{t.range}</span>
+                    <div className="text-xl md:text-2xl font-serif text-accent font-bold">
+                      +{formatter.format(amount * res.min)} <span className="mx-2 text-accent/50 font-sans">—</span> +{formatter.format(amount * res.max)}
+                    </div>
                   </div>
                 </div>
-                <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between pt-4 border-t border-white/10 gap-2">
-                  <span className="text-white/60 text-sm font-bold uppercase tracking-widest">{t.range}</span>
-                  <div className="text-lg font-serif text-accent font-bold">
-                    +{formatter.format(amount * res.min)} <span className="mx-1 text-accent/50 font-sans">—</span> +{formatter.format(amount * res.max)}
-                  </div>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })()}
         </div>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/10">
