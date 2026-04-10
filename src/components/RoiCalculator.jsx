@@ -121,7 +121,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
               step="5000"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30 touch-none"
             />
             <div 
               className="absolute top-0 left-0 h-full bg-accent rounded-full"
@@ -130,7 +130,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] rounded-full scale-100 group-hover:scale-125 pointer-events-none border-2 border-accent"></div>
             </div>
           </div>
-          <div className="flex justify-between text-base md:text-lg lg:text-2xl font-serif text-white/80">
+          <div className="flex justify-between text-base md:text-lg lg:text-2xl font-serif text-white/80 tabular-nums">
             <span>{t.minLabel}</span>
             <span>{t.maxLabel}</span>
           </div>
@@ -147,7 +147,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
                 {/* 1. TOTAL RETURN HERO */}
                 <div className="text-center space-y-2 pb-8 border-b border-white/10">
                   <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
-                  <div className="text-base md:text-lg lg:text-2xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg">
+                  <div className="text-base md:text-lg lg:text-2xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg tabular-nums">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
                     <span className="mx-2 md:mx-4 text-white/20 font-sans text-xs md:text-sm lg:text-lg lg:text-3xl">—</span>
                     <span>{formatter.format(amount + (amount * res.max))}</span>
