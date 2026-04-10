@@ -50,6 +50,7 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
                   <img 
                     src={horse.data.image} 
                     alt={horse.data.title} 
+                    onerror="this.onerror=null; this.src='/images/logo.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 ) : (
