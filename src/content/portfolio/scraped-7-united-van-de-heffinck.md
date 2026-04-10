@@ -18,7 +18,7 @@ A highly competitive 6-year old stallion, showing significant potential for the 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Initial Asset Acquisition Price** | **€ 50.000** |
-| **Short Term Sale Value** *(3-6 Mos)* | € 66.250 |
-| **Medium Term Sale Value** *(6-12 Mos)* | € 77.500 |
-| **Long Term Sale Value** *(12-36 Mos)* | € 97.500 |
+| **Asset Purchase Price** | **€ 50.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 66.250 |
+| **Expected Sale Price** *(6-12 Mos)* | € 77.500 |
+| **Expected Sale Price** *(12-36 Mos)* | € 97.500 |

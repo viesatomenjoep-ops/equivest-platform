@@ -18,7 +18,7 @@ A highly competitive 7-year old mare, showing significant potential for the Amer
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Initial Asset Acquisition Price** | **€ 25.000** |
-| **Short Term Sale Value** *(3-6 Mos)* | € 33.125 |
-| **Medium Term Sale Value** *(6-12 Mos)* | € 38.750 |
-| **Long Term Sale Value** *(12-36 Mos)* | € 48.750 |
+| **Asset Purchase Price** | **€ 25.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 33.125 |
+| **Expected Sale Price** *(6-12 Mos)* | € 38.750 |
+| **Expected Sale Price** *(12-36 Mos)* | € 48.750 |
