@@ -266,16 +266,12 @@ const allHorsesWithContent = await Promise.all(
     });
   }
 
-  // Lock logic
-  const form = document.getElementById('portfolio-form');
-  const lockScreen = document.getElementById('portfolio-lock');
-  const content = document.getElementById('portfolio-content');
-  const input = document.getElementById('portfolio-code') as HTMLInputElement;
-  const errorMsg = document.getElementById('portfolio-error');
-
   const VALID_CODES = ['1111'];
 
   function unlockPortfolio(immediate = false) {
+    const lockScreen = document.getElementById('portfolio-lock');
+    const content = document.getElementById('portfolio-content');
+
     if (!lockScreen || !content) return;
     
     if (immediate) {
@@ -287,7 +283,7 @@ const allHorsesWithContent = await Promise.all(
        }, 700);
     }
     
-    content.classList.remove('opacity-10', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
+    content.classList.remove('opacity-10', 'opacity-30', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
     content.classList.add('opacity-100');
 
     if (typeof (window as any).initReveal === 'function') {
@@ -301,7 +297,13 @@ const allHorsesWithContent = await Promise.all(
        return;
     }
 
-    if (form && lockScreen && content && input && errorMsg) {
+    const form = document.getElementById('portfolio-form');
+    const input = document.getElementById('portfolio-code') as HTMLInputElement;
+    const errorMsg = document.getElementById('portfolio-error');
+
+    if (form && input && errorMsg) {
+      // Remove old listeners by cloning to be safe (though on swap it's a new node anyway)
+      
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const code = input.value.trim().toUpperCase();
@@ -321,11 +323,11 @@ const allHorsesWithContent = await Promise.all(
     }
   }
 
-  initGalleryFilters();
+  if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
   initLock();
   
   document.addEventListener('astro:after-swap', () => {
-      initGalleryFilters();
+      if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
       initLock();
   });
 </script>

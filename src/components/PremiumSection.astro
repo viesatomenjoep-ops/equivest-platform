@@ -126,48 +126,70 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 </section>
 
 <script>
-	const form = document.getElementById('premium-form');
-	const lockScreen = document.getElementById('premium-lock');
-	const content = document.getElementById('premium-content');
-	const input = document.getElementById('access-code') as HTMLInputElement;
-	const errorMsg = document.getElementById('error-msg');
+	const VALID_CODES = ['2222', '3109', '4444'];
 
-	// Valid access codes
-	const VALID_CODES = ['1111'];
+  function unlockPortfolio(immediate = false) {
+    const lockScreen = document.getElementById('premium-lock');
+    const content = document.getElementById('premium-content');
 
-	if (form && lockScreen && content && input && errorMsg) {
-		form.addEventListener('submit', (e) => {
-			e.preventDefault();
-			const code = input.value.trim().toUpperCase();
+    if (!lockScreen || !content) return;
+    
+    if (immediate) {
+       lockScreen.classList.add('hidden');
+    } else {
+       lockScreen.classList.add('opacity-0', 'pointer-events-none');
+       setTimeout(() => {
+         lockScreen.classList.add('hidden');
+       }, 700);
+    }
+    
+    content.classList.remove('opacity-10', 'opacity-30', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
+    content.classList.add('opacity-100');
 
-			if (VALID_CODES.includes(code)) {
-				// Success unlock
-				errorMsg.classList.add('hidden');
-				
-				// Hide lock overlay smoothly
-				lockScreen.classList.add('opacity-0', 'pointer-events-none');
-				setTimeout(() => {
-					lockScreen.classList.add('hidden');
-				}, 700);
-				
-				// Un-blur and enable content
-				content.classList.remove('opacity-30', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
-				content.classList.add('opacity-100');
+    if (typeof (window as any).initReveal === 'function') {
+      (window as any).initReveal();
+    }
+  }
 
-				// Re-initialize reveals
-				if (typeof (window as any).initReveal === 'function') {
-					(window as any).initReveal();
-				}
-			} else {
-				// Reject
-				errorMsg.classList.remove('hidden');
-				input.classList.add('border-red-500');
-				input.value = '';
-				form.classList.add('animate-shake');
-				setTimeout(() => form.classList.remove('animate-shake'), 500);
-			}
-		});
-	}
+  function initLock() {
+    if (localStorage.getItem('equivest_unlocked') === 'true') {
+       unlockPortfolio(true);
+       return;
+    }
+
+    const form = document.getElementById('premium-form');
+    const input = document.getElementById('access-code') as HTMLInputElement;
+    const errorMsg = document.getElementById('error-msg');
+
+    if (form && input && errorMsg) {
+      // Remove old listeners by cloning to be safe (though on swap it's a new node anyway)
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const code = input.value.trim().toUpperCase();
+
+        if (VALID_CODES.includes(code)) {
+          errorMsg.classList.add('hidden');
+          localStorage.setItem('equivest_unlocked', 'true');
+          unlockPortfolio();
+        } else {
+          errorMsg.classList.remove('hidden');
+          input.classList.add('border-red-500');
+          input.value = '';
+          form.classList.add('animate-shake');
+          setTimeout(() => form.classList.remove('animate-shake'), 500);
+        }
+      });
+    }
+  }
+
+  if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
+  initLock();
+  
+  document.addEventListener('astro:after-swap', () => {
+      if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
+      initLock();
+  });
 </script>
 
 <style>
