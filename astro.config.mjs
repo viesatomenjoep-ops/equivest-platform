@@ -19,6 +19,6 @@ export default defineConfig({
     },
   },
   image: {
-    domains: ['images.unsplash.com'],
+    domains: ['images.unsplash.com', 'primary.jwwb.nl'],
   },
 });
