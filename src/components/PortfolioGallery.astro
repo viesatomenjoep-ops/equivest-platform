@@ -14,7 +14,7 @@ const allHorsesWithContent = await Promise.all(
   allHorses.map(async (horse) => {
     const { Content } = await render(horse);
     return {
-      slug: horse.id,
+      id: horse.id,
       data: horse.data,
       category: horse.data.category || '',
       Content
