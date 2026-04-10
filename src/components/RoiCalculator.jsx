@@ -98,10 +98,10 @@ const RoiCalculator = ({ lang = 'en' }) => {
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <h3 className="text-3xl md:text-4xl font-serif text-white">{t.title}</h3>
-          <div className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 flex flex-col items-end group focus-within:border-accent/40 transition-colors">
-            <label className="text-accent/90 text-lg font-bold uppercase tracking-[0.2em] mb-1">{t.inputLabel}</label>
-            <div className="flex items-center">
-              <span className="text-white/70 text-2xl md:text-3xl font-serif mr-1">€</span>
+          <div className="bg-white/5 border border-white/10 rounded-2xl px-4 py-4 md:px-6 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
+            <label className="text-accent/90 text-sm md:text-lg font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">{t.inputLabel}</label>
+            <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
+              <span className="text-white/70 text-2xl md:text-3xl font-serif mr-2">€</span>
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
@@ -138,7 +138,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
 
         <div className="max-w-3xl mx-auto">
           {/* Toggle buttons for Years */}
-          <div className="flex bg-white/5 border border-white/10 rounded-2xl p-2 mb-8">
+          <div className="flex flex-col sm:flex-row bg-white/5 border border-white/10 rounded-2xl p-2 mb-8 gap-2">
             {results.map((res, idx) => (
               <button
                 key={idx}
@@ -156,28 +156,30 @@ const RoiCalculator = ({ lang = 'en' }) => {
             return (
               <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
-                <div className="flex justify-between items-center mb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                   <div>
-                    <span className="text-accent text-xl font-bold uppercase tracking-[0.3em] block">{res.year} Projection</span>
-                    <span className="text-white/60 text-sm font-bold uppercase tracking-widest mt-1 block">{res.label}</span>
+                    <span className="text-accent text-lg md:text-xl font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] block">{res.year} Projection</span>
+                    <span className="text-white/60 text-xs md:text-sm font-bold uppercase tracking-widest mt-1 block">{res.label}</span>
                   </div>
-                  <span className="bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-lg text-lg font-bold uppercase tracking-wider text-center flex items-center">
+                  <span className="bg-accent/10 border border-accent/20 text-accent px-3 py-2 md:px-4 rounded-lg text-sm md:text-lg font-bold uppercase tracking-wider text-center flex items-center">
                     +{(res.max * 100).toFixed(0)}% {t.potential}
                   </span>
                 </div>
                 <div className="space-y-6">
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <span className="block text-accent/80 text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
-                    <div className="text-4xl md:text-5xl font-serif text-white">
-                      {formatter.format(amount + (amount * res.min))}
-                      <span className="mx-3 text-white/20 font-sans text-3xl md:text-4xl">—</span>
-                      {formatter.format(amount + (amount * res.max))}
+                    <div className="text-3xl md:text-5xl font-serif text-white flex flex-wrap items-center">
+                      <span>{formatter.format(amount + (amount * res.min))}</span>
+                      <span className="mx-2 md:mx-3 text-white/20 font-sans text-2xl md:text-4xl">—</span>
+                      <span>{formatter.format(amount + (amount * res.max))}</span>
                     </div>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/10 gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/10 gap-4">
                     <span className="text-white/60 text-sm font-bold uppercase tracking-widest">{t.range}</span>
-                    <div className="text-xl md:text-2xl font-serif text-accent font-bold">
-                      +{formatter.format(amount * res.min)} <span className="mx-2 text-accent/50 font-sans">—</span> +{formatter.format(amount * res.max)}
+                    <div className="text-xl md:text-2xl font-serif text-accent font-bold flex flex-wrap items-center">
+                      <span>+{formatter.format(amount * res.min)}</span>
+                      <span className="mx-2 text-accent/50 font-sans">—</span>
+                      <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
                 </div>
