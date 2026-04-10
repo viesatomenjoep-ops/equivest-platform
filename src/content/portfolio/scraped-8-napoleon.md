@@ -18,7 +18,7 @@ A fiercely competitive 5-year-old stallion comfortably jumping 1.10m - 1.20m YH.
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 95.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 128.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 159.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 209.000 |
+| **Asset Purchase Price** | **€ 110.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 151.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 204.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 250.000 |

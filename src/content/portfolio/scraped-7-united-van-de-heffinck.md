@@ -18,7 +18,7 @@ A spectacular 1.30m - 1.35m Developing stallion entering its prime development p
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 242.500** |
-| **Expected Sale Price** *(3-6 Mos)* | € 299.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 380.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 500.000 |
+| **Asset Purchase Price** | **€ 237.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 316.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 367.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 487.000 |

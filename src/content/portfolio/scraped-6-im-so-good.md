@@ -18,7 +18,7 @@ A spectacular 1.30m - 1.35m Developing mare entering its prime development phase
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 182.500** |
-| **Expected Sale Price** *(3-6 Mos)* | € 223.000 |
-| **Expected Sale Price** *(6-12 Mos)* | € 273.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 358.000 |
+| **Asset Purchase Price** | **€ 174.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 209.000 |
+| **Expected Sale Price** *(6-12 Mos)* | € 266.000 |
+| **Expected Sale Price** *(12-36 Mos)* | € 339.000 |
