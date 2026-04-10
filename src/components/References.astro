@@ -49,10 +49,9 @@ const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featur
           <div class="horse-card reveal reveal-scale bg-gray-50 group overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full grayscale-[30%] hover:grayscale-0 transition-all relative" style={`transition-duration: 1200ms; transition-delay: ${index * 150}ms`}>
             <div class="aspect-[16/10] overflow-hidden relative">
               {typeof horse.data.image === 'string' ? (
-                <Image 
+                <img 
                   src={horse.data.image} 
                   alt={horse.data.title} 
-                  inferSize={true}
                   class="w-full h-full object-cover"
                 />
               ) : (

@@ -79,10 +79,9 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 						<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2">
 							<div class="aspect-[16/10] overflow-hidden relative">
 								{typeof horse.data.image === 'string' ? (
-								<Image 
+								<img 
 									src={horse.data.image} 
 									alt={horse.data.title} 
-									inferSize={true}
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
 								) : (

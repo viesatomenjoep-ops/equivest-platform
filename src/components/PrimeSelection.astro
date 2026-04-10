@@ -35,10 +35,9 @@ const featuredHorses = horses.filter(h => h.data.featured && !h.data.sold).slice
         <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${(index % 3) * 75}ms`}>
           <div class="aspect-[16/10] overflow-hidden relative">
             {typeof horse.data.image === 'string' ? (
-              <Image 
+              <img 
                 src={horse.data.image} 
                 alt={horse.data.title} 
-                inferSize={true}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             ) : (
