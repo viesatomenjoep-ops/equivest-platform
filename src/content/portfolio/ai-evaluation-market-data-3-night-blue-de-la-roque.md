@@ -14,8 +14,17 @@ specs:
   target_sale: "€ 275.000"
   level: "1.30m - 1.35m Developing"
 ---
+### Executive Summary
+Directly descending from the rising star sire Chaccoon Blue, accented by the proven reflexes of Odermus R, Night Blue de la Roque is a high-octane sporting asset. This 7-year-old mare is highly blooded, sensitive, and incredibly brave—the exact blueprint of a modern top-level sport horse.
 
-Directly descending from the rising star sire Chaccoon Blue, accented by the proven reflexes of Odermus R. Night Blue de la Roque is a modern, light-footed mare with an explosive takeoff and razor-sharp front leg technique. She is highly blooded, sensitive but incredibly brave, perfectly suited for a competitive professional or an ambitious young rider looking to step up.
+### Market Positioning
+She is positioned specifically for the competitive professional or a highly ambitious young rider looking to step into the speed classes and 1.40m ranking Grand Prixs. Her light-footed nature and sharp front-leg technique make her a literal time-saving machine against the clock.
+
+### Value Trajectory
+The primary value jump will occur within the next 6-9 months as she consolidates her CSI1* and CSI2* record. The current demand for fast, modern, blood-type mares is vastly outpacing supply, specifically in the European and Middle Eastern circuits.
+
+### Target Exit Strategy
+Direct sale during the Mediterranean Equestrian Tour or Sunshine Tour to a professional stable requiring an ultra-competitive speed and 1.45m asset.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
