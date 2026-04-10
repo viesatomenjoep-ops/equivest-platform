@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { Image } from 'astro:assets';
 
@@ -9,6 +9,18 @@ const t = useTranslations(lang);
 const horses = await getCollection('portfolio');
 const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premium ? 1 : -1));
 
+
+const allHorsesWithContent = await Promise.all(
+  allHorses.map(async (horse) => {
+    const { Content } = await render(horse);
+    return {
+      slug: horse.slug,
+      data: horse.data,
+      category: horse.data.category || '',
+      Content
+    };
+  })
+);
 ---
 
 <section id="portfolio" class="py-12 md:py-24 bg-bg-subtle relative overflow-hidden">
@@ -63,8 +75,8 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-        {allHorses.map((horse, index) => (
-          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.data.category || ''}>
+        {allHorsesWithContent.map((horse, index) => (
+          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
             <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`openModal('${horse.slug}')`}>
               {typeof horse.data.image === 'string' ? (
                 <img 
@@ -129,13 +141,12 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
            )}
         </div>
       </div>
-      );
-    })}
+    ))}
     </div>
     
     <!-- MODALS -->
-    {await Promise.all(allHorses.map(async (horse) => {
-      const { Content } = await horse.render();
+    {allHorsesWithContent.map((horse) => {
+      const Content = horse.Content;
       return (
       <div id={`modal-${horse.slug}`} class="fixed inset-0 z-[1000] hidden items-center justify-center opacity-0 transition-opacity duration-500">
         <div class="absolute inset-0 bg-primary/95 backdrop-blur-md" onclick={`closeModal('${horse.slug}')`}></div>
@@ -200,7 +211,7 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
         </div>
       </div>
       );
-    }))}
+    })}
 
     </div> <!-- END PORTFOLIO CONTENT -->
   </div>
