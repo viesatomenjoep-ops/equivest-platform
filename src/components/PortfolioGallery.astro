@@ -8,6 +8,13 @@ const t = useTranslations(lang);
 
 const horses = await getCollection('portfolio');
 const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premium ? 1 : -1));
+
+const allHorsesWithContent = await Promise.all(
+  allHorses.map(async (horse) => {
+    const { Content } = await horse.render();
+    return { ...horse, Content };
+  })
+);
 ---
 
 <section id="portfolio" class="py-12 md:py-24 bg-bg-subtle relative overflow-hidden">
@@ -62,9 +69,9 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-        {allHorses.map((horse, index) => (
+        {allHorsesWithContent.map((horse, index) => (
           <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.data.category || ''}>
-            <div class="aspect-[16/10] overflow-hidden relative">
+            <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`openModal('${horse.slug}')`}>
               {typeof horse.data.image === 'string' ? (
                 <img 
                   src={horse.data.image} 
@@ -79,19 +86,10 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               )}
-
-              <!-- YouTube Overlay -->
-              {horse.data.youtube_url && (
-                <a href={horse.data.youtube_url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div class="w-12 h-12 bg-white flex items-center justify-center rounded-full text-primary scale-90 group-hover:scale-100 transition-transform">
-                  <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-               </div>
-            </a>
-          )}
         </div>
         
         <div class="p-8 flex-grow flex flex-col">
-          <div class="flex items-center space-x-3 mb-3">
+          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`openModal('${horse.slug}')`}>
             <img src="/images/logo.png" alt="Equivest" class="w-16 h-16 object-contain brightness-0" />
             <h3 class="text-2xl font-serif text-primary group-hover:text-accent transition-colors">{horse.data.title}</h3>
           </div>
@@ -119,15 +117,93 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
           </div>
         </div>
         
-        <div class="border-t border-gray-100 p-4">
-           <a href="https://wa.me/15613010984" target="_blank" class="block w-full text-center py-3 text-lg font-bold uppercase tracking-[0.2em] bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
-              Inquire Details
-           </a>
+        <div class="border-t border-gray-100 grid grid-cols-2">
+           {horse.data.youtube_url ? (
+             <>
+               <a href={horse.data.youtube_url} target="_blank" class="flex items-center justify-center gap-2 py-4 bg-red-600/10 text-red-600 hover:bg-red-600 hover:text-white transition-colors border-r border-gray-100">
+                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  <span class="text-sm font-bold uppercase tracking-widest">Video</span>
+               </a>
+               <button onclick={`openModal('${horse.slug}')`} class="w-full text-center py-4 text-sm font-bold uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+                  Plan
+               </button>
+             </>
+           ) : (
+             <button onclick={`openModal('${horse.slug}')`} class="col-span-2 w-full text-center py-4 text-sm font-bold uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+                Investment Plan
+             </button>
+           )}
         </div>
       </div>
     ))}
     </div>
     
+    <!-- MODALS -->
+    {allHorsesWithContent.map((horse) => (
+      <div id={`modal-${horse.slug}`} class="fixed inset-0 z-[1000] hidden items-center justify-center opacity-0 transition-opacity duration-500">
+        <div class="absolute inset-0 bg-primary/95 backdrop-blur-md" onclick={`closeModal('${horse.slug}')`}></div>
+        
+        <div class="relative bg-white w-[95%] max-w-6xl h-[90vh] flex flex-col md:flex-row shadow-2xl scale-95 transition-transform duration-500 delay-100 modal-dialog overflow-hidden">
+           <!-- Close -->
+           <button onclick={`closeModal('${horse.slug}')`} class="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/80 backdrop-blur-sm hover:bg-accent text-primary hover:text-white transition-colors border border-primary/10 rounded-full flex items-center justify-center shadow-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+           </button>
+           
+           <!-- Left: Image -->
+           <div class="w-full md:w-2/5 h-64 md:h-full relative shrink-0">
+             {typeof horse.data.image === 'string' ? (
+                <img src={horse.data.image} class="w-full h-full object-cover" />
+             ) : (
+                <Image src={horse.data.image} alt={horse.data.title} class="w-full h-full object-cover" />
+             )}
+             {horse.data.youtube_url && (
+                <a href={horse.data.youtube_url} target="_blank" class="absolute bottom-6 left-6 px-6 py-4 bg-red-600 text-white font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-colors shadow-2xl">
+                   <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                   Play Video
+                </a>
+             )}
+           </div>
+           
+           <!-- Right: Content -->
+           <div class="w-full md:w-3/5 p-8 md:p-14 overflow-y-auto bg-bg-subtle relative">
+              <div class="max-w-2xl mx-auto">
+                  <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-3 block">Investment Prospectus</span>
+                  <h2 class="text-4xl md:text-5xl font-serif text-primary mb-10">{horse.data.title}</h2>
+                  
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12 pb-10 border-b border-primary/10">
+                    <div class="space-y-2">
+                      <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Age</span>
+                      <span class="text-xl font-serif text-primary">{horse.data.specs?.age} Years</span>
+                    </div>
+                    <div class="space-y-2">
+                      <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Level</span>
+                      <span class="text-xl font-serif text-primary">{horse.data.specs?.level}</span>
+                    </div>
+                    <div class="space-y-2">
+                      <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Gender</span>
+                      <span class="text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
+                    </div>
+                    <div class="space-y-2">
+                      <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Height</span>
+                      <span class="text-xl font-serif text-primary">{horse.data.specs?.height}</span>
+                    </div>
+                  </div>
+
+                  <div class="prose prose-lg prose-primary max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-strong:text-primary/90">
+                      <horse.Content />
+                  </div>
+                  
+                  <div class="mt-16 pt-10 border-t border-primary/10 flex flex-col sm:flex-row gap-4">
+                     <a href="https://wa.me/15613010984" target="_blank" class="text-center px-10 py-5 bg-accent text-white uppercase font-bold tracking-widest hover:bg-primary transition-colors shadow-xl w-full">
+                        Secure Investment
+                     </a>
+                  </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    ))}
+
     </div> <!-- END PORTFOLIO CONTENT -->
   </div>
 
@@ -137,6 +213,35 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
 </section>
 
 <script>
+  (window as any).openModal = function(slug: string) {
+     const modal = document.getElementById('modal-' + slug);
+     const dialog = modal?.querySelector('.modal-dialog');
+     if (modal && dialog) {
+        modal.classList.remove('hidden');
+        void modal.offsetWidth; // trigger reflow
+        modal.classList.remove('opacity-0');
+        dialog.classList.remove('scale-95');
+        dialog.classList.add('scale-100');
+        document.body.style.overflow = 'hidden';
+     }
+  };
+
+  (window as any).closeModal = function(slug: string) {
+     const modal = document.getElementById('modal-' + slug);
+     const dialog = modal?.querySelector('.modal-dialog');
+     if (modal && dialog) {
+        modal.classList.add('opacity-0');
+        if(dialog) {
+            dialog.classList.remove('scale-100');
+            dialog.classList.add('scale-95');
+        }
+        setTimeout(() => {
+           modal.classList.add('hidden');
+           document.body.style.overflow = '';
+        }, 500);
+     }
+  };
+
   function initGalleryFilters() {
     const filters = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.horse-card');
