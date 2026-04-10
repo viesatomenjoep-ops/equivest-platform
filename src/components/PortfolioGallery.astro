@@ -158,7 +158,7 @@ const allHorsesWithContent = await Promise.all(
            </button>
            
            <!-- Left: Image -->
-           <div class="w-full md:w-2/5 h-64 md:h-full relative shrink-0">
+           <div class="w-full md:w-2/5 h-48 md:h-full relative shrink-0">
              {typeof horse.data.image === 'string' ? (
                 <img src={horse.data.image} class="w-full h-full object-cover" />
              ) : (
@@ -173,27 +173,27 @@ const allHorsesWithContent = await Promise.all(
            </div>
            
            <!-- Right: Content -->
-           <div class="w-full md:w-3/5 p-8 md:p-14 overflow-y-auto bg-bg-subtle relative">
+           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative">
               <div class="max-w-2xl mx-auto">
                   <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-3 block">Investment Prospectus</span>
-                  <h2 class="text-4xl md:text-5xl font-serif text-primary mb-10">{horse.data.title}</h2>
+                  <h2 class="text-2xl md:text-5xl font-serif text-primary mb-6 md:mb-10">{horse.data.title}</h2>
                   
-                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12 pb-10 border-b border-primary/10">
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-6 mb-6 pb-6 md:mb-12 md:pb-10 border-b border-primary/10">
                     <div class="space-y-2">
                       <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Age</span>
-                      <span class="text-xl font-serif text-primary">{horse.data.specs?.age} Years</span>
+                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.age} Years</span>
                     </div>
                     <div class="space-y-2">
                       <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Level</span>
-                      <span class="text-xl font-serif text-primary">{horse.data.specs?.level}</span>
+                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.level}</span>
                     </div>
                     <div class="space-y-2">
                       <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Gender</span>
-                      <span class="text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
+                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
                     </div>
                     <div class="space-y-2">
                       <span class="text-xs uppercase tracking-widest text-primary/50 font-bold block">Height</span>
-                      <span class="text-xl font-serif text-primary">{horse.data.specs?.height}</span>
+                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.height}</span>
                     </div>
                   </div>
 
@@ -201,8 +201,8 @@ const allHorsesWithContent = await Promise.all(
                       <Content />
                   </div>
                   
-                  <div class="mt-16 pt-10 border-t border-primary/10 flex flex-col sm:flex-row gap-4">
-                     <a href="https://wa.me/15613010984" target="_blank" class="text-center px-10 py-5 bg-accent text-white uppercase font-bold tracking-widest hover:bg-primary transition-colors shadow-xl w-full">
+                  <div class="mt-8 pt-6 md:mt-16 md:pt-10 border-t border-primary/10 flex flex-col sm:flex-row gap-4">
+                     <a href="https://wa.me/15613010984" target="_blank" class="text-center px-6 py-4 md:px-10 md:py-5 bg-accent text-white uppercase font-bold text-sm md:text-base tracking-widest hover:bg-primary transition-colors shadow-xl w-full">
                         Secure Investment
                      </a>
                   </div>

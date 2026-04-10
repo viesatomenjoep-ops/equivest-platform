@@ -12,7 +12,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 
 <section id="premium" class="bg-bg-subtle relative border-t border-gray-100">
 	<!-- THE PREMIUM CONTENT WRAPPER -->
-	<div class="relative min-h-[60vh] py-16">
+	<div class="relative min-h-[60vh] py-8 md:py-16">
 		
 		<!-- THE LOCK SCREEN OVERLAY -->
 		<div id="premium-lock" class="absolute inset-0 z-[50] flex flex-col items-center justify-start bg-white/95 w-full transition-all duration-700 px-4">
@@ -55,7 +55,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 			</div>
 
 			{premiumHorses.length === 0 ? (
-				<div class="text-center py-20 border border-primary/10 bg-white">
+				<div class="text-center py-10 md:py-20 border border-primary/10 bg-white">
 					<p class="text-2xl font-serif text-primary">No exclusive listings available at this moment.</p>
 				</div>
 			) : (
