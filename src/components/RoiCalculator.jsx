@@ -147,9 +147,9 @@ const RoiCalculator = ({ lang = 'en' }) => {
                 {/* 1. TOTAL RETURN HERO */}
                 <div className="text-center space-y-2 pb-8 border-b border-white/10">
                   <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
-                  <div className="text-4xl md:text-5xl lg:text-7xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
-                    <span className="mx-2 md:mx-4 text-white/20 font-sans text-3xl md:text-5xl">—</span>
+                    <span className="mx-2 md:mx-4 text-white/20 font-sans text-xl md:text-3xl">—</span>
                     <span>{formatter.format(amount + (amount * res.max))}</span>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
                     <button
                       key={idx}
                       onClick={() => setActiveYear(idx)}
-                      className={`flex-1 py-3 px-2 md:px-4 rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
+                      className={`flex-1 py-3 px-2 md:px-4 rounded-xl text-base md:text-lg lg:text-xl font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
                     >
                       {r.year}
                     </button>
@@ -171,9 +171,9 @@ const RoiCalculator = ({ lang = 'en' }) => {
                 <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 gap-4">
                   <div className="text-center md:text-left">
                     <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.range} (Net Profit)</span>
-                    <div className="text-2xl md:text-3xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
+                    <div className="text-base md:text-lg lg:text-xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
                       <span>+{formatter.format(amount * res.min)}</span>
-                      <span className="mx-2 text-accent/40 font-sans">—</span>
+                      <span className="mx-2 text-accent/40 font-sans text-lg md:text-xl">—</span>
                       <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
