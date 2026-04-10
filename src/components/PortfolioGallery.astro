@@ -25,7 +25,7 @@ const allHorsesWithContent = await Promise.all(
 
 <section id="portfolio" class="py-12 md:py-24 bg-bg-subtle relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-8">
       <div class="space-y-4 max-w-2xl">
         <span class="text-accent text-xl font-bold uppercase tracking-[0.3em] block">Our Collection</span>
         <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
@@ -163,12 +163,6 @@ const allHorsesWithContent = await Promise.all(
                 <img src={horse.data.image} class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/images/logo.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
              ) : (
                 <Image src={horse.data.image} alt={horse.data.title} class="w-full h-full object-cover" />
-             )}
-             {horse.data.youtube_url && (
-                <span title="Video Coming Soon" class="absolute bottom-6 left-6 px-6 py-4 bg-red-600/50 text-white cursor-not-allowed font-bold uppercase tracking-widest flex items-center gap-3 shadow-2xl">
-                   <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                   Play Video
-                </span>
              )}
            </div>
            
