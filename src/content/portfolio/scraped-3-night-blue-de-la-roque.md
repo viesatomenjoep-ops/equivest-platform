@@ -13,12 +13,12 @@ specs:
   level: "Prospect"
 ---
 
-A highly competitive 7-year old mare, showing significant potential for the American hunter and equitation markets. Displays excellent technique over fences and a professional mind.
+A proven 7-year-old mare competing securely at Prospect. Representing prime athletic maturity, this asset is a highly liquid turnkey investment ready for immediate syndication or lease in the highly competitive US circuit.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 50.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 66.250 |
-| **Expected Sale Price** *(6-12 Mos)* | € 77.500 |
-| **Expected Sale Price** *(12-36 Mos)* | € 97.500 |
+| **Asset Purchase Price** | **€ 36.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 46.800 |
+| **Expected Sale Price** *(6-12 Mos)* | € 57.600 |
+| **Expected Sale Price** *(12-36 Mos)* | € 70.200 |

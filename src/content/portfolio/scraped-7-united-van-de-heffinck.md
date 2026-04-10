@@ -13,12 +13,12 @@ specs:
   level: "Prospect"
 ---
 
-A highly competitive 6-year old stallion, showing significant potential for the American hunter and equitation markets. Displays excellent technique over fences and a professional mind.
+An exceptional 6-year-old stallion currently developing brilliantly at Prospect level. With significant scope and an incredibly modern type, this young athlete offers massive upside for the American market as they step up into the larger divisions.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
 | :--- | :--- |
-| **Asset Purchase Price** | **€ 50.000** |
-| **Expected Sale Price** *(3-6 Mos)* | € 66.250 |
-| **Expected Sale Price** *(6-12 Mos)* | € 77.500 |
-| **Expected Sale Price** *(12-36 Mos)* | € 97.500 |
+| **Asset Purchase Price** | **€ 56.000** |
+| **Expected Sale Price** *(3-6 Mos)* | € 78.400 |
+| **Expected Sale Price** *(6-12 Mos)* | € 103.600 |
+| **Expected Sale Price** *(12-36 Mos)* | € 137.200 |
