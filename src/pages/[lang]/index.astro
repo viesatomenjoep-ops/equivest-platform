@@ -1,76 +1,124 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import About from '../../components/About.astro';
-import VideoShowcase from '../../components/VideoShowcase.astro';
-import PortfolioGallery from '../../components/PortfolioGallery.astro';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import About from "../../components/About.astro";
+import VideoShowcase from "../../components/VideoShowcase.astro";
+import PortfolioGallery from "../../components/PortfolioGallery.astro";
 
-import References from '../../components/References.astro';
-import Partners from '../../components/Partners.astro';
-import Reviews from '../../components/Reviews.astro';
-import RoiCalculator from '../../components/RoiCalculator.jsx';
-import News from '../../components/News.astro';
-import Contact from '../../components/Contact.astro';
-import Faq from '../../components/Faq.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import { Image } from 'astro:assets';
-import heroImg from '../../assets/images/hero.png';
+import References from "../../components/References.astro";
+import Partners from "../../components/Partners.astro";
+import Reviews from "../../components/Reviews.astro";
+import RoiCalculator from "../../components/RoiCalculator.jsx";
+import News from "../../components/News.astro";
+import Contact from "../../components/Contact.astro";
+import Faq from "../../components/Faq.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/hero.png";
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'en' } },
-    { params: { lang: 'nl' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'es' } },
-  ];
+	return [
+		{ params: { lang: "en" } },
+		{ params: { lang: "nl" } },
+		{ params: { lang: "de" } },
+		{ params: { lang: "es" } },
+	];
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('hero.title')} lang={lang}>
+<Layout title={t("hero.title")} lang={lang}>
 	<Header />
-	
+
 	<main>
 		<!-- Hero Section -->
-		<section class="relative h-[90vh] flex items-center justify-center overflow-hidden premium-gradient text-white">
+		<section
+			class="relative h-[90vh] flex items-center justify-center overflow-hidden premium-gradient text-white"
+		>
 			<div class="absolute inset-0 opacity-90">
-				<Image 
-					src={heroImg} 
+				<Image
+					src={heroImg}
 					alt="Elite Jumper"
 					loading="eager"
 					class="w-full h-full object-cover object-top"
 				/>
-				<div class="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/20 to-primary/90"></div>
-			</div>
-			
-			<div class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-8">
-				<div class="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-4">
-					<span class="w-2 h-2 bg-accent-light rounded-full animate-pulse"></span>
-					<span class="text-lg font-bold uppercase tracking-[0.2em] text-white">{t('hero.subtitle')}</span>
+				<div
+					class="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/20 to-primary/90"
+				>
 				</div>
-				<h1 class="text-5xl md:text-8xl font-serif text-white leading-[1.1] tracking-tight reveal reveal-up delay-100">
-					{t('hero.title').split(' ').map((word, i) => (
-						i === 2 ? <span class="text-accent-light italic">{word} </span> : word + ' '
-					))}
+			</div>
+
+			<div
+				class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-8"
+			>
+				<div
+					class="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-4"
+				>
+					<span
+						class="w-2 h-2 bg-accent-light rounded-full animate-pulse"
+					></span>
+					<span
+						class="text-lg font-bold uppercase tracking-[0.2em] text-white"
+						>{t("hero.subtitle")}</span
+					>
+				</div>
+				<h1
+					class="text-5xl md:text-8xl font-serif text-white leading-[1.1] tracking-tight reveal reveal-up delay-100"
+				>
+					{
+						t("hero.title")
+							.split(" ")
+							.map((word, i) =>
+								i === 2 ? (
+									<span class="text-accent-light italic">
+										{word}{" "}
+									</span>
+								) : (
+									word + " "
+								),
+							)
+					}
 				</h1>
-				<p class="text-2xl md:text-2xl font-medium text-white/80 max-w-2xl mx-auto leading-relaxed reveal reveal-up delay-200">
-					Securing high-yield returns through the acquisition of world-class equestrian talent.
+				<p
+					class="text-2xl md:text-2xl font-medium text-white/80 max-w-2xl mx-auto leading-relaxed reveal reveal-up delay-200"
+				>
+					Securing high-yield returns through the acquisition of
+					world-class equestrian talent.
 				</p>
-				<div class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-up delay-300">
-					<a href="#portfolio" class="bg-accent text-white px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl">
+				<div
+					class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal reveal-up delay-300"
+				>
+					<a
+						href="#portfolio"
+						class="bg-accent text-white px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] hover:bg-primary-light hover:text-white hover:scale-105 transition-all shadow-2xl"
+					>
 						View Portfolio
 					</a>
-					<a href="#roi" class="px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] text-white border border-white/30 hover:bg-white/10 transition-all">
-						{t('nav.roi')}
+					<a
+						href="#roi"
+						class="px-10 py-5 text-lg font-bold uppercase tracking-[0.2em] text-white border border-white/30 hover:bg-white/10 transition-all"
+					>
+						{t("nav.roi")}
 					</a>
 				</div>
 			</div>
-			
-			<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+
+			<div
+				class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-70"
+			>
+				<svg
+					class="w-6 h-6"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
 				</svg>
 			</div>
 		</section>
@@ -78,21 +126,26 @@ const t = useTranslations(lang);
 		<div class="reveal reveal-up">
 			<About />
 		</div>
-		
+
 		<section id="portfolio" class="bg-bg-subtle">
-			<div class="pt-24 pb-8 text-center border-t border-gray-100 px-4 reveal reveal-up">
-				<span class="text-accent text-lg font-bold uppercase tracking-[0.4em] mb-4 block">Full Database</span>
-				<h2 class="text-4xl md:text-5xl font-serif text-primary">Public <span class="text-accent italic">Collection</span></h2>
+			<div
+				class="pt-24 pb-8 text-center border-t border-gray-100 px-4 reveal reveal-up"
+			>
+				<span
+					class="text-accent text-lg font-bold uppercase tracking-[0.4em] mb-4 block"
+					>Full Database</span
+				>
+				<h2 class="text-4xl md:text-5xl font-serif text-primary">
+					Public <span class="text-accent italic">Collection</span>
+				</h2>
 			</div>
 			<PortfolioGallery />
 		</section>
 
-
-
 		<div class="reveal reveal-up">
 			<References />
 		</div>
-		
+
 		<div class="reveal reveal-up">
 			<Partners />
 		</div>
@@ -101,7 +154,10 @@ const t = useTranslations(lang);
 			<Reviews />
 		</div>
 
-		<section id="roi" class="py-12 md:py-16 bg-white reveal reveal-up border-t-4 border-gray-100 scroll-mt-32 md:scroll-mt-48">
+		<section
+			id="roi"
+			class="py-12 md:py-16 bg-white reveal reveal-up border-t-4 border-gray-100 scroll-mt-32 md:scroll-mt-48"
+		>
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<RoiCalculator lang={lang} client:load />
 			</div>
