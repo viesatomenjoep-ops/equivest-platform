@@ -23,8 +23,18 @@ This horse possesses the exact athletic benchmarks required by the highly liquid
 **Pedigree Valuation:**
 Backed by elite European genetics, the risk profile is significantly lowered. The proven sire lineage guarantees baseline secondary market value for syndication or an end-user sale.
 
-**Projected Timeline & ROI:**
-- **Short Term (3-6 Months):** Stabilization and professional training regime. Targeted ROI base: +30%
-- **Medium Term (6-12 Months):** Competition results and international video promotion. Projected ROI: +50% - +150%
-- **Long Term (12-36 Months):** Campaigning at elite levels and successful liquidation. Expected exit multiple: 1.75x - 3.0x.
+**Financial Investment Plan & Projected ROI:**
 
+*Initial Asset Valuation (Base):* **€ 35.000**
+    
+- **Short Term (3-6 Months) - Training & Stabilization:**
+  - Expected Exit Value: € 43.750 — € 49.000
+  - Projected Net Profit: **+€ 8.750 — +€ 14.000**
+  
+- **Medium Term (6-12 Months) - Competition & Promotion:**
+  - Expected Exit Value: € 49.000 — € 59.500
+  - Projected Net Profit: **+€ 14.000 — +€ 24.500**
+  
+- **Long Term (12-36 Months) - Elite Campaign & Liquidation:**
+  - Expected Exit Value: € 59.500 — € 77.000
+  - Projected Net Profit: **+€ 24.500 — +€ 42.000**
