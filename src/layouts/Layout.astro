@@ -43,6 +43,12 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
+		
+		<noscript>
+			<style>
+				.reveal { opacity: 1 !important; transform: none !important; }
+			</style>
+		</noscript>
 	</head>
 	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip w-full relative">
 		<slot />
@@ -52,22 +58,35 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<script is:inline>
 			// Scroll Reveal Logic
 			function initReveal() {
-				const observerOptions = {
-					root: null,
-					rootMargin: '100px 0px',
-					threshold: 0
-				};
-
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('active');
-						}
-					});
-				}, observerOptions);
-
 				const revealElements = document.querySelectorAll('.reveal');
-				revealElements.forEach(el => observer.observe(el));
+				
+				if (!('IntersectionObserver' in window)) {
+					revealElements.forEach(el => el.classList.add('active'));
+					return;
+				}
+
+				try {
+					const observerOptions = {
+						root: null,
+						rootMargin: '100px',
+						threshold: 0
+					};
+
+					const observer = new IntersectionObserver((entries) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('active');
+								// Optional: optimize by unobserving once revealed
+								// observer.unobserve(entry.target);
+							}
+						});
+					}, observerOptions);
+
+					revealElements.forEach(el => observer.observe(el));
+				} catch (e) {
+					console.warn('IntersectionObserver failed, falling back to instant reveal', e);
+					revealElements.forEach(el => el.classList.add('active'));
+				}
 			}
 
 			// Run on initial load
