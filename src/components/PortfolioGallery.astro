@@ -280,7 +280,32 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
 
   const VALID_CODES = ['1111'];
 
+  function unlockPortfolio(immediate = false) {
+    if (!lockScreen || !content) return;
+    
+    if (immediate) {
+       lockScreen.classList.add('hidden');
+    } else {
+       lockScreen.classList.add('opacity-0', 'pointer-events-none');
+       setTimeout(() => {
+         lockScreen.classList.add('hidden');
+       }, 700);
+    }
+    
+    content.classList.remove('opacity-10', 'pointer-events-none');
+    content.classList.add('opacity-100');
+
+    if (typeof (window as any).initReveal === 'function') {
+      (window as any).initReveal();
+    }
+  }
+
   function initLock() {
+    if (localStorage.getItem('equivest_unlocked') === 'true') {
+       unlockPortfolio(true);
+       return;
+    }
+
     if (form && lockScreen && content && input && errorMsg) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -288,18 +313,8 @@ const allHorses = horses.filter(h => !h.data.sold).sort((a, b) => (b.data.premiu
 
         if (VALID_CODES.includes(code)) {
           errorMsg.classList.add('hidden');
-          
-          lockScreen.classList.add('opacity-0', 'pointer-events-none');
-          setTimeout(() => {
-            lockScreen.classList.add('hidden');
-          }, 700);
-          
-          content.classList.remove('opacity-10', 'pointer-events-none');
-          content.classList.add('opacity-100');
-
-          if (typeof (window as any).initReveal === 'function') {
-            (window as any).initReveal();
-          }
+          localStorage.setItem('equivest_unlocked', 'true');
+          unlockPortfolio();
         } else {
           errorMsg.classList.remove('hidden');
           input.classList.add('border-red-500');
