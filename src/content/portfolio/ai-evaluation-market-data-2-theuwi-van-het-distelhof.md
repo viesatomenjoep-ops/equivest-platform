@@ -14,17 +14,7 @@ specs:
   target_sale: "€ 415.000"
   level: "1.30m - 1.35m Developing"
 ---
-### Executive Summary
-Theuwi van het Distelhof is a spectacular 7-year-old mare carrying the highly coveted Emerald bloodlines, crossed with the legendary foundation sire Indoctro. She represents a highly secure, high-yield investment model focused on the professional 1.45m sporting divisions.
-
-### Market Positioning
-Theuwi exhibits extraordinary scope combined with a highly intelligent, cooperative brain. Professional riders consistently seek horses with a massive active stride and natural bascule that can step directly into the CSI2* and CSI3* ranking classes. She is physically mature and mentally prepared for the upper echelons of the sport.
-
-### Value Trajectory
-Her trajectory is sharply focused on achieving FEI ranking points. The value-add will be generated purely through her transition strictly into the 1.45m international classes over the next 12 months. Horses confirming at this height with Emerald bloodlines see an immediate 50-80% market premium.
-
-### Target Exit Strategy
-Target sale to an ambitious international rider or a syndicate looking for an immediate points-gathering asset. Expected exit window is 12-18 months.
+Theuwi is a spectacular 7-year-old mare by Emerald out of an Indoctro dam. Currently successfully navigating the 1.40m sections, she represents a turnkey investment for the professional rings. With an acquisition cost of € 225.000, her immense stride and natural bascule provide a seamless transition to ranking classes, pushing her financial trajectory toward the € 415.000 target sale bracket within 12-18 months.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |

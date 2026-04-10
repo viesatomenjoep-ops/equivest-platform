@@ -14,17 +14,7 @@ specs:
   target_sale: "€ 750.000"
   level: "1.30m - 1.35m Developing"
 ---
-### Executive Summary
-Doutzen is a magnificent daughter of the powerhouse Dominator 2000 Z out of a Cancara mother line. She brings undeniable physical presence, immense frame, and raw athletic power to the ring, marking her as a legitimate Grand Prix prospect.
-
-### Market Positioning
-Large, powerful mares with unlimited scope are the backbone of CSI5* sport. At 6 years old, Doutzen has the physical capacity that simply cannot be manufactured. She is positioned as a long-term development asset aimed specifically at the highest echelon of showjumping (1.60m).
-
-### Value Trajectory
-This is a high-yield, medium-to-long-term development strategy. The value inflection point occurs when she jumps her first 1.45m-1.50m tracks at age 8. The mathematical jump in valuation for a Dominator mare confirming at 1.50m is typically in the hundreds of thousands of euros.
-
-### Target Exit Strategy
-Targeting a syndicate, a top 100 FEI rider, or an Olympic program looking to secure 1.60m horsepower. Optimal exit at age 8-9.
+At 6 years old, Doutzen (Dominator 2000 Z x Cancare) commands the ring with undeniable physical presence and sheer power. She is steadily gaining experience in the 1.25m - 1.30m Young Horse divisions. This mare is a legitimate long-term 1.60m Grand Prix prospect. Acquired for € 315.000, her raw athletic capacity provides the foundation to target an elite professional sale around € 750.000 as she matures.
 
 ### Financial Prospectus
 | Metrics | Expected Valuation |
