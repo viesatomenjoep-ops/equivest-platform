@@ -54,8 +54,8 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 			function initReveal() {
 				const observerOptions = {
 					root: null,
-					rootMargin: '0px',
-					threshold: 0.1
+					rootMargin: '100px 0px',
+					threshold: 0
 				};
 
 				const observer = new IntersectionObserver((entries) => {

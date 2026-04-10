@@ -44,7 +44,7 @@ const allHorses = horses.filter(h => !h.data.sold && !h.data.premium).sort((a, b
       ) : (
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {allHorses.map((horse, index) => (
-            <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${index * 75}ms`} data-category={horse.data.category || ''}>
+            <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full" style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.data.category || ''}>
               <div class="aspect-[16/10] overflow-hidden relative">
                 {typeof horse.data.image === 'string' ? (
                   <Image 
