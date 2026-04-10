@@ -112,7 +112,7 @@ const RoiCalculator = ({ lang = 'en' }) => {
           </div>
         </div>
         
-        <div className="mb-16 px-2 max-w-4xl mx-auto">
+        <div className="mb-8 px-2 max-w-4xl mx-auto">
           <div className="relative h-1 bg-white/10 rounded-full group mb-4">
             <input 
               type="range" 
@@ -136,55 +136,52 @@ const RoiCalculator = ({ lang = 'en' }) => {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Toggle buttons for Years */}
-          <div className="flex flex-col sm:flex-row bg-white/5 border border-white/10 rounded-2xl p-2 mb-8 gap-2">
-            {results.map((res, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveYear(idx)}
-                className={`flex-1 py-3 px-4 rounded-xl text-lg font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
-              >
-                {res.year}
-              </button>
-            ))}
-          </div>
-
-          {/* Selected Year Results */}
+        <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 p-6 md:p-10 rounded-3xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
+          
           {(() => {
             const res = results[activeYear];
             return (
-              <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                  <div>
-                    <span className="text-accent text-lg md:text-xl font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] block">{res.year} Projection</span>
-                    <span className="text-white/60 text-xs md:text-sm font-bold uppercase tracking-widest mt-1 block">{res.label}</span>
+              <div className="flex flex-col space-y-8">
+                
+                {/* 1. TOTAL RETURN HERO */}
+                <div className="text-center space-y-2 pb-8 border-b border-white/10">
+                  <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
+                  <div className="text-4xl md:text-5xl lg:text-7xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg">
+                    <span>{formatter.format(amount + (amount * res.min))}</span>
+                    <span className="mx-2 md:mx-4 text-white/20 font-sans text-3xl md:text-5xl">—</span>
+                    <span>{formatter.format(amount + (amount * res.max))}</span>
                   </div>
-                  <span className="bg-accent/10 border border-accent/20 text-accent px-3 py-2 md:px-4 rounded-lg text-sm md:text-lg font-bold uppercase tracking-wider text-center flex items-center">
+                </div>
+
+                {/* 2. TIMELINE SELECTORS */}
+                <div className="flex flex-col sm:flex-row bg-black/20 rounded-2xl p-2 gap-2 max-w-2xl mx-auto w-full">
+                  {results.map((r, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveYear(idx)}
+                      className={`flex-1 py-3 px-2 md:px-4 rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
+                    >
+                      {r.year}
+                    </button>
+                  ))}
+                </div>
+
+                {/* 3. NET PROFIT FOOTER */}
+                <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 gap-4">
+                  <div className="text-center md:text-left">
+                    <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.range} (Net Profit)</span>
+                    <div className="text-2xl md:text-3xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
+                      <span>+{formatter.format(amount * res.min)}</span>
+                      <span className="mx-2 text-accent/40 font-sans">—</span>
+                      <span>+{formatter.format(amount * res.max)}</span>
+                    </div>
+                  </div>
+                  <div className="bg-accent text-white px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider text-center shadow-lg">
                     +{(res.max * 100).toFixed(0)}% {t.potential}
-                  </span>
-                </div>
-                <div className="space-y-6 md:space-y-8">
-                  <div className="space-y-2">
-                    <span className="block text-white/60 text-xs md:text-sm font-bold uppercase tracking-widest">{t.totalReturn}</span>
-                    <div className="text-2xl md:text-3xl font-serif text-white/90 flex flex-wrap items-center">
-                      <span>{formatter.format(amount + (amount * res.min))}</span>
-                      <span className="mx-2 md:mx-3 text-white/20 font-sans text-xl">—</span>
-                      <span>{formatter.format(amount + (amount * res.max))}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="pt-6 md:pt-8 border-t border-accent/20">
-                    <span className="block text-accent text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-3">{t.range}</span>
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-accent flex flex-wrap items-center drop-shadow-2xl bg-accent/10 p-5 md:p-8 rounded-2xl border border-accent/30 relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 rounded-2xl animate-pulse" style={{ animationDuration: '3s' }} />
-                      <span className="relative z-10">+{formatter.format(amount * res.min)}</span>
-                      <span className="relative z-10 mx-2 md:mx-4 text-accent/40 font-sans text-3xl md:text-5xl">—</span>
-                      <span className="relative z-10">+{formatter.format(amount * res.max)}</span>
-                    </div>
                   </div>
                 </div>
+
               </div>
             );
           })()}
