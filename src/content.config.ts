@@ -17,6 +17,8 @@ const portfolio = defineCollection({
       age: z.number(),
       gender: z.string(),
       height: z.string(),
+      purchase_price: z.string().optional(),
+      target_sale: z.string().optional(),
       level: z.string(),
     }).optional(),
   }),
