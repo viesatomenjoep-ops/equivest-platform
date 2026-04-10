@@ -99,8 +99,8 @@ const RoiCalculator = ({ lang = 'en' }) => {
           </div>
         </div>
         
-        <div className="mb-16 px-2">
-          <div className="relative h-1.5 bg-white/10 rounded-full group mb-4">
+        <div className="mb-16 px-2 max-w-4xl mx-auto">
+          <div className="relative h-1 bg-white/10 rounded-full group mb-4">
             <input 
               type="range" 
               min="15000" 
@@ -111,10 +111,10 @@ const RoiCalculator = ({ lang = 'en' }) => {
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"
             />
             <div 
-              className="absolute top-0 left-0 h-full bg-accent rounded-full transition-all duration-500 ease-out"
+              className="absolute top-0 left-0 h-full bg-accent rounded-full"
               style={{ width: `${Math.min(((amount - 15000) / 985000) * 100, 100)}%` }}
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-6 h-6 bg-white shadow-[0_0_20px_rgba(255,255,255,0.6)] rounded-full scale-100 group-hover:scale-125 transition-transform duration-200 pointer-events-none border-2 border-accent"></div>
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] rounded-full scale-100 group-hover:scale-125 pointer-events-none border-2 border-accent"></div>
             </div>
           </div>
           <div className="flex justify-between text-lg font-bold uppercase tracking-widest text-white/60">
