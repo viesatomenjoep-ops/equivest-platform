@@ -25,16 +25,19 @@ Backed by elite European genetics, the risk profile is significantly lowered. Th
 
 **Financial Investment Plan & Projected ROI:**
 
-*Initial Asset Valuation (Base):* **€ 25.000**
-    
-- **Short Term (3-6 Months) - Training & Stabilization:**
-  - Expected Exit Value: € 31.250 — € 35.000
-  - Projected Net Profit: **+€ 6.250 — +€ 10.000**
-  
-- **Medium Term (6-12 Months) - Competition & Promotion:**
-  - Expected Exit Value: € 35.000 — € 42.500
-  - Projected Net Profit: **+€ 10.000 — +€ 17.500**
-  
-- **Long Term (12-36 Months) - Elite Campaign & Liquidation:**
-  - Expected Exit Value: € 42.500 — € 55.000
-  - Projected Net Profit: **+€ 17.500 — +€ 30.000**
+### Investment & Logistics Breakdown
+| Item | Projected Cost |
+| :--- | :--- |
+| **Asset Acquisition (Base Value)** | **€ 25.000** |
+| **Pre-Purchase Vetting & Insurance Base** | € 1.850 |
+| **Export Logistics (EU to USA, Flight & Quarantine)** | € 14.500 |
+| **Total Initial Capital Required** | **€ 41.350** |
+
+### Projected Return on Investment (Timeline)
+*(Calculated exclusively on Total Capital Required)*
+
+| Phase / Duration | Expected Gross Exit | Projected Net Profit Margin |
+| :--- | :--- | :--- |
+| **Short Term** (3 - 6 Months) | € 51.688 — € 57.890 | **+€ 10.338 — +€ 16.540** |
+| **Medium Term** (6 - 12 Months) | € 57.890 — € 70.295 | **+€ 16.540 — +€ 28.945** |
+| **Long Term** (12 - 36 Months) | € 70.295 — € 90.970 | **+€ 28.945 — +€ 49.620** |
