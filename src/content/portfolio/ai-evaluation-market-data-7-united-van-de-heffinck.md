@@ -10,6 +10,8 @@ specs:
   age: 6
   gender: "Stallion"
   height: "TBD"
+  purchase_price: "€ 237.000"
+  target_sale: "€ 487.000"
   level: "1.30m - 1.35m Developing"
 ---
 

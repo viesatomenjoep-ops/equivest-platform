@@ -10,6 +10,8 @@ specs:
   age: 4
   gender: "Stallion"
   height: "TBD"
+  purchase_price: "€ 74.000"
+  target_sale: "€ 199.000"
   level: "1.00m Young Jumper"
 ---
 

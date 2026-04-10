@@ -10,6 +10,8 @@ specs:
   age: 6
   gender: "Mare"
   height: "1.70m"
+  purchase_price: "€ 174.000"
+  target_sale: "€ 339.000"
   level: "1.30m - 1.35m Developing"
 ---
 
