@@ -916,3 +916,5 @@ Error: Transform failed with 1 error:
 00:13:00 [200] /en/portfolio 22ms
 00:14:22 [watch] src/components/PortfolioGallery.astro
 00:14:22 [200] /en/portfolio 16ms
+00:17:08 [watch] src/components/PortfolioGallery.astro
+00:17:09 [200] /en/portfolio 20ms

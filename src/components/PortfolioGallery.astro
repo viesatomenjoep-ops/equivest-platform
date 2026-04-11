@@ -176,9 +176,9 @@ const allHorsesWithContent = await Promise.all(
            <!-- Left: Image -->
            <div class="w-full md:w-2/5 h-48 md:h-full relative shrink-0">
              {typeof horse.data.image === 'string' ? (
-                <img src={horse.data.image} class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
+                <img src={horse.data.image} class="w-full h-full object-cover" loading="eager" decoding="sync" onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
              ) : (
-                <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+                <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" decoding="sync" class="w-full h-full object-cover" />
              )}
            </div>
            
@@ -271,7 +271,7 @@ const allHorsesWithContent = await Promise.all(
      const modal = document.getElementById('modal-' + slug);
      const dialog = modal?.querySelector('.modal-dialog');
      if (modal && dialog) {
-        modal.classList.remove('hidden');
+        modal.classList.replace('hidden', 'flex');
         void modal.offsetWidth; // trigger reflow
         modal.classList.remove('opacity-0');
         dialog.classList.remove('scale-95');
@@ -297,7 +297,7 @@ const allHorsesWithContent = await Promise.all(
             dialog.classList.add('scale-95');
         }
         setTimeout(() => {
-           modal.classList.add('hidden');
+           modal.classList.replace('flex', 'hidden');
            document.body.style.overflow = '';
            
            // Clear URL hash when closing manually
