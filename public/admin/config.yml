@@ -8,10 +8,16 @@ local_backend: true
 media_folder: "public/images/portfolio"
 public_folder: "/images/portfolio"
 
+i18n:
+  structure: multiple_folders
+  locales: [en, nl, de, es]
+  default_locale: en
+
 collections:
   - name: "portfolio"
     label: "Showjumpers"
     folder: "src/content/portfolio"
+    i18n: true
     create: true
     slug: "{{slug}}"
     fields:

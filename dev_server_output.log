@@ -679,3 +679,103 @@ Error: Transform failed with 1 error:
 23:21:33 [200] /en/portfolio 32ms
 23:23:56 [watch] /src/styles/global.css
 23:23:56 [200] /en/portfolio 10ms
+[vite] program reload
+23:25:14 [200] /en/portfolio 17ms
+[vite] program reload
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-4-stakkazara-ps.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-4-stakkazara-ps.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-5-doutzen.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-5-doutzen.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-6-im-so-good.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-6-im-so-good.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-8-napoleon.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-8-napoleon.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-9-warrior.md
+23:25:22 [glob-loader] Reloaded data from en/ai-evaluation-market-data-9-warrior.md
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+23:25:22 [200] /en/portfolio 377ms
+23:25:22 [200] /en/portfolio 377ms
+23:25:22 [200] /en/portfolio 27ms
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-1-special-blue-de-corlato.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-3-night-blue-de-la-roque.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-4-stakkazara-ps.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-5-doutzen.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-6-im-so-good.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-7-united-van-de-heffinck.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-8-napoleon.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-9-warrior.md
+23:28:01 [glob-loader] Reloaded data from nl/ai-evaluation-market-data-9-warrior.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-9-warrior.md
+23:28:01 [glob-loader] Reloaded data from de/ai-evaluation-market-data-9-warrior.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-9-warrior.md
+23:28:01 [glob-loader] Reloaded data from es/ai-evaluation-market-data-9-warrior.md
+23:28:02 [200] /en/portfolio 17ms
+23:28:38 [watch] /src/styles/global.css
+23:28:38 [200] /en/portfolio 28ms
+23:28:51 [watch] src/components/PortfolioGallery.astro
+23:28:51 [200] /en/portfolio 23ms
+23:29:55 [watch] src/components/PortfolioGallery.astro
+23:29:55 [200] /en/portfolio 40ms
+23:30:08 [watch] src/components/PortfolioGallery.astro
+23:30:08 [200] /en/portfolio 24ms
+[vite] program reload
+23:30:32 [200] /en/portfolio 40ms
+[vite] program reload
+23:31:30 [200] /en/portfolio 129ms
+23:31:38 [200] /en/portfolio 24ms
