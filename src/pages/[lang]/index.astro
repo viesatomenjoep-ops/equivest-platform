@@ -168,13 +168,13 @@ const t = useTranslations(lang);
 		
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
-			const maxScroll = document.documentElement.scrollHeight - window.innerHeight; // Full page scroll distance
+			// Constrain the progress bound to just the first viewport so the motion is visibly responsive
+			const maxScroll = window.innerHeight; 
 			
 			let progress = scrollY / (maxScroll || 1);
 			if (progress > 1) progress = 1;
 
 			// If the indicator is h-1/4, moving it by 300% puts it exactly at the bottom of the track.
-			// Let's multiply progress by 300 so it crawls the entire length of the track over the whole page.
 			indicator.style.transform = `translateY(${progress * 300}%)`;
 		};
 		
