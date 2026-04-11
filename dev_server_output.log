@@ -671,3 +671,5 @@ Error: Transform failed with 1 error:
 23:15:11 [200] /en/portfolio 8ms
 23:16:17 [watch] /src/styles/global.css
 23:16:17 [200] /en/portfolio 45ms
+23:18:54 [watch] /src/styles/global.css
+23:18:54 [200] /en/portfolio 17ms
