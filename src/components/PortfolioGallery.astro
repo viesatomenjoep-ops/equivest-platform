@@ -183,7 +183,7 @@ const allHorsesWithContent = await Promise.all(
            </div>
            
            <!-- Right: Content -->
-           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative">
+           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative" onscroll="const ind = this.querySelector('.indicator-dynamic'); if(ind) ind.style.transform = `translateY(${(this.scrollTop / (this.scrollHeight - this.clientHeight || 1)) * 100}%)`;">
               <div class="max-w-2xl mx-auto">
                   <div class="flex items-start justify-between mb-6 md:mb-10">
                       <div>
@@ -195,7 +195,7 @@ const allHorsesWithContent = await Promise.all(
                       <div class="md:hidden flex flex-col items-center justify-center shrink-0 ml-4 mt-2 opacity-60">
                          <span class="text-[7px] font-bold uppercase tracking-widest text-primary/70 mb-1">{t("ui.scroll")}</span>
                          <div class="w-[2px] h-6 bg-primary/10 relative overflow-hidden rounded-full">
-                            <div class="w-full h-1/2 bg-primary/60 absolute top-0 left-0 animate-scroll-line rounded-full"></div>
+                            <div class="w-full h-1/2 bg-primary/60 absolute top-0 left-0 rounded-full indicator-dynamic" style="will-change: transform;"></div>
                          </div>
                       </div>
                   </div>

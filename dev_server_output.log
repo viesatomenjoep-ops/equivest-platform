@@ -779,3 +779,12 @@ Error: Transform failed with 1 error:
 [vite] program reload
 23:31:30 [200] /en/portfolio 129ms
 23:31:38 [200] /en/portfolio 24ms
+23:32:29 [watch] /src/styles/global.css
+23:32:29 [200] /en/portfolio 8ms
+23:32:37 [watch] /src/styles/global.css
+23:32:37 [200] /en/portfolio 7ms
+23:32:55 [watch] src/components/PortfolioGallery.astro
+23:32:55 [200] /en/portfolio 32ms
+23:33:07 [watch] src/components/PortfolioGallery.astro
+23:33:07 [200] /en/portfolio 27ms
+23:33:15 [200] /en/portfolio 24ms

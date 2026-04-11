@@ -106,10 +106,10 @@ const t = useTranslations(lang);
 				</div>
 			</div>
 
-			<div class="relative z-10 flex flex-col items-center justify-end opacity-70 mt-12 md:mt-auto">
-				<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70 mb-3 block">Scroll</span>
+			<div class="relative z-10 flex flex-col items-center justify-end opacity-70 mt-12 md:mt-auto pb-4 md:pb-8">
+				<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70 mb-3 block">{t("ui.scroll")}</span>
 				<div class="w-[2px] h-12 bg-white/20 relative overflow-hidden rounded-full">
-					<div class="w-full h-1/2 bg-white/80 absolute top-0 left-0 animate-scroll-line rounded-full"></div>
+					<div id="hero-scroll-indicator" class="w-full h-1/2 bg-white/80 absolute top-0 left-0 rounded-full" style="will-change: transform;"></div>
 				</div>
 			</div>
 		</section>
@@ -160,3 +160,28 @@ const t = useTranslations(lang);
 		</div>
 	</div>
 </Layout>
+
+<script>
+	function initHeroScroll() {
+		const indicator = document.getElementById("hero-scroll-indicator");
+		if (!indicator) return;
+		
+		const handleScroll = () => {
+			const scrollY = window.scrollY;
+			const maxScroll = window.innerHeight * 0.8; // By the time they scroll 80% of screen height, it should be at bottom
+			
+			let progress = scrollY / (maxScroll || 1);
+			if (progress > 1) progress = 1;
+
+			// translateY(100%) moves it down exactly its own height (half the container)
+			indicator.style.transform = `translateY(${progress * 100}%)`;
+		};
+		
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll(); // init initial state
+	}
+	
+	// Fast load and view transition listener
+	initHeroScroll();
+	document.addEventListener('astro:after-swap', initHeroScroll);
+</script>
