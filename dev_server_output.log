@@ -914,3 +914,5 @@ Error: Transform failed with 1 error:
 00:10:23 [watch] /src/styles/global.css
 00:13:00 [watch] /src/styles/global.css
 00:13:00 [200] /en/portfolio 22ms
+00:14:22 [watch] src/components/PortfolioGallery.astro
+00:14:22 [200] /en/portfolio 16ms
