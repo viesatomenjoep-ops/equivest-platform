@@ -651,3 +651,5 @@ Error: Transform failed with 1 error:
 23:01:55 [200] /en/portfolio 3ms
 [vite] program reload
 23:02:06 [200] /en/portfolio 25ms
+23:04:22 [watch] /src/styles/global.css
+23:04:22 [200] /en/portfolio 4ms
