@@ -183,7 +183,7 @@ const allHorsesWithContent = await Promise.all(
            </div>
            
            <!-- Right: Content -->
-           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative" onscroll="const ind = this.querySelector('.indicator-dynamic'); if(ind) ind.style.transform = `translateY(${(this.scrollTop / (this.scrollHeight - this.clientHeight || 1)) * 100}%)`;">
+           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative modal-scroll-area">
               <div class="max-w-2xl mx-auto">
                   <div class="flex items-start justify-between mb-6 md:mb-10">
                       <div>
@@ -429,10 +429,27 @@ const allHorsesWithContent = await Promise.all(
   // Sync on initial load
   syncHashState();
   
+  function syncModalScrolls() {
+      document.querySelectorAll('.modal-scroll-area').forEach(area => {
+          area.addEventListener('scroll', (e) => {
+              const el = e.currentTarget as HTMLElement;
+              const ind = el.querySelector('.indicator-dynamic') as HTMLElement;
+              if (ind) {
+                  const maxScroll = el.scrollHeight - el.clientHeight || 1;
+                  let progress = el.scrollTop / maxScroll;
+                  if (progress > 1) progress = 1;
+                  ind.style.transform = `translateY(${progress * 100}%)`;
+              }
+          });
+      });
+  }
+  syncModalScrolls();
+  
   document.addEventListener('astro:after-swap', () => {
       if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
       initLock();
       syncHashState();
+      syncModalScrolls();
   });
 </script>
 

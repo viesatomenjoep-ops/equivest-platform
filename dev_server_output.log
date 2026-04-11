@@ -853,3 +853,9 @@ Error: Transform failed with 1 error:
 [vite] program reload
 [vite] program reload
 23:40:58 [200] /en/portfolio 21ms
+23:41:40 [watch] src/components/PortfolioGallery.astro
+23:41:40 [200] /en/portfolio 19ms
+23:41:53 [watch] src/components/PortfolioGallery.astro
+23:41:53 [200] /en/portfolio 20ms
+23:42:00 [watch] src/components/PortfolioGallery.astro
+23:42:00 [200] /en/portfolio 23ms
