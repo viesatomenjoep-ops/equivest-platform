@@ -404,3 +404,5 @@ ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platf
 21:34:47 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
 21:34:47 [watch] src/components/Chatbot.tsx
 [vite] program reload
+21:37:27 [watch] /src/styles/global.css
+21:37:27 [watch] /src/styles/global.css
