@@ -8,7 +8,7 @@ import PortfolioGallery from "../../components/PortfolioGallery.astro";
 import References from "../../components/References.astro";
 import Partners from "../../components/Partners.astro";
 import Reviews from "../../components/Reviews.astro";
-import RoiCalculator from "../../components/RoiCalculator.jsx";
+import RoiCalculatorTabs from "../../components/RoiCalculatorTabs.jsx";
 import News from "../../components/News.astro";
 import Contact from "../../components/Contact.astro";
 import Faq from "../../components/Faq.astro";
@@ -148,7 +148,7 @@ const t = useTranslations(lang);
 			class="pt-0 pb-12 md:pb-16 bg-white reveal reveal-up border-t-0 scroll-mt-24 md:scroll-mt-24"
 		>
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<RoiCalculator lang={lang} client:load />
+				<RoiCalculatorTabs lang={lang} client:load />
 			</div>
 		</section>
 
