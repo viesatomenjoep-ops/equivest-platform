@@ -27,6 +27,8 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<ClientRouter />
 		
 		<!-- SEO -->
@@ -53,7 +55,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip w-full relative">
 		<slot />
 		
-		<Chatbot client:load lang={botLang} />
+		<Chatbot client:idle lang={botLang} />
 
 		<script is:inline>
 			// Scroll Reveal Logic
