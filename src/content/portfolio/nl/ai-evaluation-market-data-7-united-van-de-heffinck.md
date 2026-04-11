@@ -6,14 +6,14 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/united-23
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=MJvIKM0_lYY"
 featured: true
-category: "Jumpers"
+category: "Springpaarden"
 specs:
   age: 6
   gender: "Hengst"
   height: "TBD"
   purchase_price: "€ 450.000"
   target_sale: "€ 1.200.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Ontwikkeling"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=1672C43D122064D2B8C015CBE3E106C"
 

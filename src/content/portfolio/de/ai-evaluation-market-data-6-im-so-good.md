@@ -6,14 +6,14 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-h
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=X-ao6UGnQ9Q"
 featured: true
-category: "Jumpers"
+category: "Springpferde"
 specs:
   age: 6
   gender: "Stute"
   height: "1.70m"
   purchase_price: "€ 165.000"
   target_sale: "€ 280.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Entwicklung"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=D445D18FBFE9A9A4A58254881B340E7B"
 

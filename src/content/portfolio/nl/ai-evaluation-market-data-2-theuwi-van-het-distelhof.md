@@ -6,14 +6,14 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/theuwi-11
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=z1Nv366EASI"
 featured: true
-category: "Jumpers"
+category: "Springpaarden"
 specs:
   age: 7
   gender: "Merrie"
   height: "TBD"
   purchase_price: "€ 225.000"
   target_sale: "€ 415.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Ontwikkeling"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=1CFF3B45A18B405FB168B7CFB1349131"
 

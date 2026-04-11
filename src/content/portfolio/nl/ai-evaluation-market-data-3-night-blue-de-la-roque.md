@@ -6,14 +6,14 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-h
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=F3aOq0M9l8g"
 featured: true
-category: "Jumpers"
+category: "Springpaarden"
 specs:
   age: 7
   gender: "Merrie"
   height: "TBD"
   purchase_price: "€ 145.000"
   target_sale: "€ 275.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Ontwikkeling"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=EBF8624EC4328A857BF1157FFE0C8FAC"
 

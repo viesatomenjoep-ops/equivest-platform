@@ -6,19 +6,19 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-h
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=Q8yqokvkUhA"
 featured: true
-category: "Jumpers"
+category: "Caballos de Salto"
 specs:
   age: 7
   gender: "Yegua"
   height: "TBD"
   purchase_price: "€ 280.000"
   target_sale: "€ 550.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m En Desarrollo"
 documents:
   fei_data: ""
 
 ---
-Bred by the prestigious Paul Schockemöhle operation, this 7-year-old mare (Stakkatol x Balou du Rouet) is an absolute rubber ball off the ground. She is currently confirming her status in the 1.30m - 1.35m developing tracks. Entering the portfolio at € 280.000, her spectacular freakish technique and premium PS brand recognition mathematically project a high-margin exit strategy towards € 550.000.
+Obtenida mediante el programa histórico a manos de Paul Schockemöhle, esta formidable yegua de 7 años (Stakkatol x Balou du Rouet) ejecuta unas elevaciones increíbles con técnica desproporcional. Reafirmando el reconocimiento en pruebas 1.30m, la asignación y capital inicial estipulados a € 280.000 promueven estrategias alcistas que rentabilizan márgenes altos, aspirando lograr desinversiones cuantiosas situadas a € 550.000.
 
 ### Prospecto Financiero
 | Métricas | Valoración Esperada |

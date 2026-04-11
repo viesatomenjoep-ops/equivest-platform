@@ -6,19 +6,19 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/image-hig
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=tM1dcN3SCSA"
 featured: true
-category: "Jumpers"
+category: "Springpferde"
 specs:
   age: 6
   gender: "Stute"
   height: "TBD"
   purchase_price: "€ 315.000"
   target_sale: "€ 750.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Entwicklung"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=73CA825816AC84ED122AE1F42C038618"
 
 ---
-At 6 years old, Doutzen (Dominator 2000 Z x Cancare) commands the ring with undeniable physical presence and sheer power. She is steadily gaining experience in the 1.25m - 1.30m Young Horse divisions. This mare is a legitimate long-term 1.60m Grand Prix prospect. Acquired for € 315.000, her raw athletic capacity provides the foundation to target an elite professional sale around € 750.000 as she matures.
+Im Alter von 6 Jahren verankert Doutzen (Dominator 2000 Z x Cancare) unbestreitbare Relevanz im Parcour mit ihrer puristischen Kampfkraft. Rasante Erfahrungen baut sie auf dem 1.25m - 1.30m Elite Jungpferde-Niveau auf. Diese Stute positioniert sich geradewegs Richtung Grand Prix (1.60m). Angesetzt für € 315.000 rechnet man nach erfolgreicher Ausbildung mit Profitsteigender Verwertung bei Elite Auktionen für glatt € 750.000.
 
 ### Finanzielles Prospekt
 | Kennzahlen | Erwartete Bewertung |

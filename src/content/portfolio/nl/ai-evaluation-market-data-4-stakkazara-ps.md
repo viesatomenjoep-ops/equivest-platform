@@ -6,19 +6,19 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-h
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=Q8yqokvkUhA"
 featured: true
-category: "Jumpers"
+category: "Springpaarden"
 specs:
   age: 7
   gender: "Merrie"
   height: "TBD"
   purchase_price: "€ 280.000"
   target_sale: "€ 550.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m In Ontwikkeling"
 documents:
   fei_data: ""
 
 ---
-Bred by the prestigious Paul Schockemöhle operation, this 7-year-old mare (Stakkatol x Balou du Rouet) is an absolute rubber ball off the ground. She is currently confirming her status in the 1.30m - 1.35m developing tracks. Entering the portfolio at € 280.000, her spectacular freakish technique and premium PS brand recognition mathematically project a high-margin exit strategy towards € 550.000.
+Gefokt door het prestigieuze landgoed van Paul Schockemöhle, is deze 7-jarige merrie (Stakkatol x Balou du Rouet) werkelijk een rubberen bal van de grond. Momenteel bevestigt zij haar status in de 1.30m - 1.35m categorieën. Toegelaten tot het portfolio tegen € 280.000, projecteert haar zeldzaam spectaculaire techniek in combinatie met het premium PS merkrendement een verkoopstrategie rond de € 550.000.
 
 ### Financieel Prospectus
 | Statistieken | Verwachte Waardering |

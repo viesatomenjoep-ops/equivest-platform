@@ -6,7 +6,7 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/napoleon-
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=csWf_w9F4_k"
 featured: true
-category: "Jumpers"
+category: "Springpaarden"
 specs:
   age: 5
   gender: "Hengst"

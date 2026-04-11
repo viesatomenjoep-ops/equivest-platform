@@ -6,19 +6,19 @@ image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-h
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=JUZ3et_rlZ4"
 featured: true
-category: "Jumpers"
+category: "Caballos de Salto"
 specs:
   age: 7
   gender: "Yegua"
   height: "TBD"
   purchase_price: "€ 185.000"
   target_sale: "€ 350.000"
-  level: "1.30m - 1.35m Developing"
+  level: "1.30m - 1.35m En Desarrollo"
 documents:
   fei_data: "https://data.fei.org/Horse/Performance.aspx?p=965D84B5596D9F487D29C0A0D279DED6"
 
 ---
-As a developing 7-year-old mare (Zirocco Blue VDL x I'm Special de Muze) currently competing in the 1.30m - 1.35m division, Special Blue possesses the ultimate modern type for the elite American hunter/jumper circuit. Acquired at € 185.000, her value relies heavily on her extreme rideability and scope, pointing towards a target sale of € 350.000 as she masters the international amateur leagues.
+Como yegua en desarrollo de 7 años (Zirocco Blue VDL x I'm Special de Muze) que compite actualmente en la división de 1,30m - 1,35m, Special Blue posee el tipo de aspecto moderno por excelencia perfecto para el exigente circuito elite de Estados Unidos. Adquirida por un valor principal de € 185.000, el salto en valoración se apoya por completo a través de destrezas como la versatilidad de manejo, impulsando proyecciones hacia los € 350.000.
 
 ### Prospecto Financiero
 | Métricas | Valoración Esperada |
