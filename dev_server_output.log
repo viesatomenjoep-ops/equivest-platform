@@ -641,3 +641,13 @@ Error: Transform failed with 1 error:
 23:00:17 [200] /en/portfolio 4ms
 23:00:26 [watch] src/components/PortfolioGallery.astro
 23:00:26 [200] /en/portfolio 23ms
+23:01:25 [watch] /src/styles/global.css
+23:01:25 [watch] /src/styles/global.css
+23:01:25 [watch] src/components/PortfolioGallery.astro
+23:01:25 [200] /en/portfolio 21ms
+23:01:48 [watch] src/components/PortfolioGallery.astro
+23:01:48 [200] /en/portfolio 44ms
+23:01:55 [watch] /src/styles/global.css
+23:01:55 [200] /en/portfolio 3ms
+[vite] program reload
+23:02:06 [200] /en/portfolio 25ms

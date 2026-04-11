@@ -150,9 +150,10 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
   }, [data]);
 
   return (
-    <div className="bg-primary-light p-4 md:p-6 lg:p-8 shadow-2xl border-l-[12px] border-accent relative overflow-hidden text-white w-full max-w-6xl mx-auto rounded-r-2xl">
+    <div className="bg-primary p-6 md:p-10 shadow-2xl relative overflow-hidden text-white w-full max-w-7xl mx-auto rounded-none border-y border-white/10">
       {/* Decorative BG Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent-light/5 -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full blur-[80px] pointer-events-none"></div>
 
       <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8">
         
@@ -165,36 +166,36 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
 
           {/* MAIN ASSET METRICS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent/40 transition-colors gap-2 md:gap-0">
-              <label className="text-accent/90 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end mt-1 md:mt-0">
-                <span className="text-white/70 text-base md:text-lg mr-2 font-serif">{lang === 'en' ? '$' : '€'}</span>
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-white/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
             
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent/40 transition-colors gap-2 md:gap-0">
-              <label className="text-accent/90 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end mt-1 md:mt-0">
-                <span className="text-accent text-base md:text-lg mr-2 font-serif">{lang === 'en' ? '$' : '€'}</span>
-                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums border-none focus:ring-0" />
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-accent/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent/40 transition-colors gap-2 md:gap-0">
-              <label className="text-accent/90 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.duration}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end mt-1 md:mt-0">
-                <span className="text-white/70 text-base md:text-lg mr-2 font-serif">#</span>
-                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums border-none focus:ring-0" />
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.duration}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-white/50 text-base md:text-lg mr-2">#</span>
+                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent/40 transition-colors relative overflow-hidden gap-2 md:gap-0">
-              <div className="absolute left-0 top-0 w-1.5 h-full bg-accent"></div>
+            <div className="bg-accent/10 border border-accent/30 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors relative overflow-hidden gap-2 md:gap-0">
+              <div className="absolute left-0 top-0 w-1 h-full bg-accent"></div>
               <label className="text-accent text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] ml-0 md:ml-2 w-full md:w-1/2">{t.syndicateShare}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end mt-1 md:mt-0">
-                <span className="text-accent text-base md:text-lg mr-2 font-serif">%</span>
-                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums border-none focus:ring-0" />
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-accent/50 text-base md:text-lg mr-2">%</span>
+                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
           </div>
@@ -223,10 +224,9 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
         </div>
 
         {/* RIGHT COLUMN: The Result / P&L */}
-        <div className="xl:col-span-4 mt-4 xl:mt-0 flex flex-col justify-center">
-          <div className="bg-white/5 border border-white/10 p-5 md:p-8 rounded-xl lg:rounded-2xl relative overflow-hidden backdrop-blur-sm shadow-xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent-light/5 -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
-            <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
+        <div className="xl:col-span-4 mt-8 xl:mt-0 xl:pl-8 xl:border-l border-white/10 flex flex-col justify-center">
+          <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden backdrop-blur-sm">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 blur-2xl"></div>
             
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{t.yourFinancials}</h3>
             <p className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
@@ -247,15 +247,17 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
                 <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums">{formatter.format(calc.myTotalInvestment)}</span>
               </div>
               
-              <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-3 lg:p-5 gap-2 lg:gap-3 mt-4">
-                <div className="text-center md:text-left">
-                  <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.netProfit}</span>
-                  <div className={`text-xl md:text-2xl lg:text-3xl font-serif tabular-nums flex items-center justify-center md:justify-start ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
-                    <span>{calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}</span>
-                  </div>
-                </div>
-                <div className={`${calc.roiPercentage >= 0 ? 'bg-accent' : 'bg-red-500'} text-white px-2 py-1.5 rounded lg:rounded-md text-[10px] md:text-xs font-bold uppercase tracking-wider text-center shadow-lg w-auto whitespace-nowrap`}>
-                   {calc.myNetProfit >= 0 ? '+' : ''}{calc.roiPercentage.toFixed(1)}% {t.expectedRoi.split(' ')[0] || "ROI"}
+              <div className="flex flex-col pt-3">
+                <span className="text-white/80 font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-1">{t.netProfit}</span>
+                <span className={`text-4xl md:text-5xl font-serif font-bold tabular-nums ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                  {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
+                </span>
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-accent/20 text-center bg-white/5 rounded-lg border border-white/10 p-4">
+                <span className="block text-white/50 text-[10px] uppercase tracking-[0.3em] font-bold mb-2">{t.expectedRoi}</span>
+                <div className={`text-5xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
+                  {calc.roiPercentage.toFixed(1)}%
                 </div>
               </div>
             </div>
