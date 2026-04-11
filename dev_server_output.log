@@ -912,3 +912,5 @@ Error: Transform failed with 1 error:
 00:10:13 [200] /en/portfolio 28ms
 00:10:23 [watch] /src/styles/global.css
 00:10:23 [watch] /src/styles/global.css
+00:13:00 [watch] /src/styles/global.css
+00:13:00 [200] /en/portfolio 22ms
