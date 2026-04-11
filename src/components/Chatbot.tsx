@@ -94,17 +94,6 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
   const t = translations[lang] || translations['en'];
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const [isBrave, setIsBrave] = useState(false);
-
-  useEffect(() => {
-    // Detect Brave Browser asynchronously
-    if (navigator && (navigator as any).brave && (navigator as any).brave.isBrave) {
-      (navigator as any).brave.isBrave().then((res: boolean) => {
-        if (res) setIsBrave(true);
-      });
-    }
-  }, []);
-
   // Initialize the first message when chat is opened for the first time
   useEffect(() => {
     if (isOpen && messages.length === 0) {
@@ -216,9 +205,6 @@ export default function Chatbot({ lang = 'en' }: ChatbotProps) {
       }, 600);
     }
   };
-
-  // Disable entirely for Brave Browser
-  if (isBrave) return null;
 
   return (
     <>
