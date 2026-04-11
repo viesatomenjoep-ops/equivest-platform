@@ -207,7 +207,6 @@ const navItems = [
     // Auto-close on click link
     document.querySelectorAll(".mobile-nav-item").forEach((item) => {
       item.addEventListener("click", () => toggleMenu(false));
-      item.addEventListener("touchstart", () => toggleMenu(false), { passive: true });
     });
 
     // Close on escape key
