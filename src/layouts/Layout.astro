@@ -1,7 +1,6 @@
 ---
 import "@fontsource-variable/quicksand";
 import "../styles/global.css";
-import { ClientRouter } from 'astro:transitions';
 
 import Chatbot from "../components/Chatbot";
 
@@ -31,8 +30,6 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" />
-		
-		<ClientRouter />
 		
 		<!-- SEO -->
 		<title>{title} | Equivest</title>

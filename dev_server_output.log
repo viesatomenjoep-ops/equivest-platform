@@ -879,3 +879,12 @@ Error: Transform failed with 1 error:
 23:52:52 [200] /en/portfolio 25ms
 23:52:59 [watch] /src/styles/global.css
 23:52:59 [200] /en/portfolio 5ms
+23:54:42 [watch] /src/styles/global.css
+23:54:42 [200] /en/portfolio 47ms
+23:54:42 [ERROR] ClientRouter is not defined
+  Stack trace:
+    at eval (eval at runInlinedModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:29:2903)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+23:54:59 [watch] /src/styles/global.css
+23:54:59 [200] /en/portfolio 21ms
+23:54:59 [200] /en/portfolio 21ms
