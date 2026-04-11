@@ -71,23 +71,28 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 				}
 
 				try {
+					// Clean up previous observer if it exists
+					if (window.equivestObserver) {
+						window.equivestObserver.disconnect();
+					}
+
 					const observerOptions = {
 						root: null,
 						rootMargin: '100px',
 						threshold: 0
 					};
 
-					const observer = new IntersectionObserver((entries) => {
+					window.equivestObserver = new IntersectionObserver((entries, observer) => {
 						entries.forEach(entry => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add('active');
-								// Optional: optimize by unobserving once revealed
-								// observer.unobserve(entry.target);
+								// Critical memory optimization for Brave:
+								observer.unobserve(entry.target);
 							}
 						});
 					}, observerOptions);
 
-					revealElements.forEach(el => observer.observe(el));
+					revealElements.forEach(el => window.equivestObserver.observe(el));
 				} catch (e) {
 					console.warn('IntersectionObserver failed, falling back to instant reveal', e);
 					revealElements.forEach(el => el.classList.add('active'));
