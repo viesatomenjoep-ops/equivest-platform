@@ -152,8 +152,8 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
   return (
     <div className="bg-primary p-6 md:p-10 shadow-2xl relative overflow-hidden text-white w-full max-w-7xl mx-auto rounded-none border-y border-white/10">
       {/* Decorative BG Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none"></div>
 
       <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8">
         
@@ -225,8 +225,8 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
 
         {/* RIGHT COLUMN: The Result / P&L */}
         <div className="xl:col-span-4 mt-8 xl:mt-0 xl:pl-8 xl:border-l border-white/10 flex flex-col justify-center">
-          <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden backdrop-blur-sm">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 blur-2xl"></div>
+          <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20"></div>
             
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{t.yourFinancials}</h3>
             <p className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>

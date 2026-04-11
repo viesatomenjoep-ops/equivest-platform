@@ -871,3 +871,7 @@ Error: Transform failed with 1 error:
 23:50:10 [200] /en/portfolio 8ms
 23:50:20 [watch] src/components/PortfolioGallery.astro
 23:50:20 [200] /en/portfolio 27ms
+23:51:44 [watch] src/components/PortfolioGallery.astro
+23:51:44 [200] /en/portfolio 24ms
+23:51:57 [watch] /src/styles/global.css
+23:51:57 [200] /en/portfolio 7ms
