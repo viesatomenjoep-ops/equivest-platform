@@ -20,7 +20,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 ---
 
 <!doctype html>
-<html lang={lang} translate="no" class="scroll-smooth w-full max-w-[100vw] overflow-x-hidden">
+<html lang={lang} translate="no" class="scroll-smooth w-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,8 +52,10 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 			</style>
 		</noscript>
 	</head>
-	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-hidden w-full max-w-[100vw] relative">
-		<slot />
+	<body class="bg-white text-primary selection:bg-accent selection:text-white w-full relative">
+		<main class="w-full max-w-[100vw] overflow-x-hidden">
+			<slot />
+		</main>
 		
 		<Chatbot client:idle lang={botLang} />
 
