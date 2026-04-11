@@ -161,7 +161,7 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
         <div className="xl:col-span-8 flex flex-col space-y-8">
           <div>
             <span className="text-accent text-xs font-bold uppercase tracking-[0.3em] mb-2 block">{t.subtitle}</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight">{t.title}</h2>
+            <h2 className="text-base md:text-lg lg:text-2xl font-serif text-white">{t.title}</h2>
           </div>
 
           {/* MAIN ASSET METRICS */}
