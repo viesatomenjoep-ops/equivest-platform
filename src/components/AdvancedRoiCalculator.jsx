@@ -166,36 +166,36 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
 
           {/* MAIN ASSET METRICS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
-              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.purchase}</label>
-              <div className="flex items-center w-1/2 justify-end">
-                <span className="text-white/50 text-sm mr-2">{lang === 'en' ? '$' : '€'}</span>
-                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-right text-lg md:text-xl font-serif text-white outline-none w-full tabular-nums" />
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-white/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
             
-            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
-              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.expectedSale}</label>
-              <div className="flex items-center w-1/2 justify-end">
-                <span className="text-accent/50 text-sm mr-2">{lang === 'en' ? '$' : '€'}</span>
-                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-right text-lg md:text-xl font-serif text-accent outline-none w-full tabular-nums" />
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-accent/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
-              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.duration}</label>
-              <div className="flex items-center w-1/2 justify-end">
-                <span className="text-white/50 text-sm mr-2">#</span>
-                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-right text-lg font-serif text-white outline-none w-full tabular-nums" />
+            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
+              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.duration}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-white/50 text-base md:text-lg mr-2">#</span>
+                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-accent/10 border border-accent/30 p-4 flex items-center justify-between group focus-within:border-accent transition-colors relative overflow-hidden">
+            <div className="bg-accent/10 border border-accent/30 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors relative overflow-hidden gap-2 md:gap-0">
               <div className="absolute left-0 top-0 w-1 h-full bg-accent"></div>
-              <label className="text-accent text-[10px] font-bold uppercase tracking-[0.2em] ml-2 w-1/2">{t.syndicateShare}</label>
-              <div className="flex items-center w-1/2 justify-end">
-                <span className="text-accent/50 text-sm mr-2">%</span>
-                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-right text-lg font-serif text-white outline-none w-full tabular-nums" />
+              <label className="text-accent text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] ml-0 md:ml-2 w-full md:w-1/2">{t.syndicateShare}</label>
+              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+                <span className="text-accent/50 text-base md:text-lg mr-2">%</span>
+                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
           </div>
@@ -203,21 +203,21 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
           <div className="border-t border-white/10 pt-6">
             <h3 className="text-base font-serif mb-4 text-white/80">{t.monthlyOps}</h3>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.training}{t.mo}</label>
-                <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training}{t.mo}</label>
+                <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
-              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.vet}{t.mo}</label>
-                <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet}{t.mo}</label>
+                <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
-              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.shows}{t.mo}</label>
-                <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows}{t.mo}</label>
+                <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
-              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.insurance}</label>
-                <input type="number" step="0.1" name="insuranceRateYearly" value={data.insuranceRateYearly === 0 ? '' : data.insuranceRateYearly} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.insurance}</label>
+                <input type="number" step="0.1" name="insuranceRateYearly" value={data.insuranceRateYearly === 0 ? '' : data.insuranceRateYearly} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
             </div>
           </div>
@@ -228,28 +228,28 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
           <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden backdrop-blur-sm">
             <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 blur-2xl"></div>
             
-            <h3 className="text-lg font-serif text-white mb-1">{t.yourFinancials}</h3>
-            <p className="text-accent font-bold uppercase tracking-widest text-[10px] mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{t.yourFinancials}</h3>
+            <p className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
             
             <div className="space-y-4">
               <div className="flex justify-between items-end border-b border-white/10 pb-2">
-                <span className="text-white/60 text-xs font-medium uppercase tracking-widest">{t.yourPurchase}</span>
-                <span className="text-lg font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
+                <span className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-widest">{t.yourPurchase}</span>
+                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/10 pb-2">
-                <span className="text-white/60 text-xs font-medium uppercase tracking-widest">{t.yourTco}</span>
-                <span className="text-lg font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
+                <span className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-widest">{t.yourTco}</span>
+                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-3 mt-4">
-                <span className="text-white font-bold text-[11px] uppercase tracking-widest">{t.totalInvestment}</span>
-                <span className="text-xl font-serif text-white font-bold tabular-nums">{formatter.format(calc.myTotalInvestment)}</span>
+                <span className="text-white font-bold text-xs md:text-sm lg:text-base uppercase tracking-widest">{t.totalInvestment}</span>
+                <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums">{formatter.format(calc.myTotalInvestment)}</span>
               </div>
               
               <div className="flex flex-col pt-3">
-                <span className="text-white/80 font-bold uppercase tracking-wider text-[11px] mb-1">{t.netProfit}</span>
-                <span className={`text-4xl font-serif font-bold tabular-nums ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                <span className="text-white/80 font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-1">{t.netProfit}</span>
+                <span className={`text-4xl md:text-5xl font-serif font-bold tabular-nums ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
                   {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
                 </span>
               </div>

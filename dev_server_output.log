@@ -555,3 +555,5 @@ Error: Transform failed with 1 error:
 22:09:47 [200] /en/portfolio 17ms
 22:10:52 [watch] /src/styles/global.css
 22:10:52 [200] /en/portfolio 14ms
+22:12:19 [watch] /src/styles/global.css
+22:12:19 [200] /en/portfolio 17ms
