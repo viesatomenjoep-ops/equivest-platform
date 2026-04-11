@@ -109,7 +109,7 @@ const t = useTranslations(lang);
 			<div class="relative z-10 flex flex-col items-center justify-end opacity-70 mt-12 md:mt-auto pb-4 md:pb-8">
 				<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70 mb-3 block">{t("ui.scroll")}</span>
 				<div class="w-[2px] h-32 md:h-48 bg-white/20 relative overflow-hidden rounded-full mb-[-4rem] md:mb-[-6rem]">
-					<div id="hero-scroll-indicator" class="w-full h-1/4 bg-white/90 shadow-[0_0_10px_rgba(255,255,255,1)] absolute top-0 left-0 rounded-full" style="will-change: transform;"></div>
+					<div id="hero-scroll-indicator" class="w-full h-1/4 bg-white/90 shadow-[0_0_10px_rgba(255,255,255,1)] absolute top-0 left-0 rounded-full"></div>
 				</div>
 			</div>
 		</section>
@@ -166,6 +166,10 @@ const t = useTranslations(lang);
 		const indicator = document.getElementById("hero-scroll-indicator");
 		if (!indicator) return;
 		
+		// Map maxScroll once to prevent layout thrashing (reading innerHeight every frame)
+		let maxScroll = window.innerHeight;
+		window.addEventListener('resize', () => { maxScroll = window.innerHeight; }, { passive: true });
+		
 		// Clean up old listener to prevent memory leak crashes on view swapping
 		if ((window as any)._heroScrollHandler) {
 		    window.removeEventListener('scroll', (window as any)._heroScrollHandler);
@@ -176,8 +180,6 @@ const t = useTranslations(lang);
 		    if (!ticking) {
 		        window.requestAnimationFrame(() => {
         			const scrollY = window.scrollY;
-        			// Constrain the progress bound to just the first viewport so the motion is visibly responsive
-        			const maxScroll = window.innerHeight; 
         			
         			let progress = scrollY / (maxScroll || 1);
         			if (progress > 1) progress = 1;
