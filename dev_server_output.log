@@ -601,3 +601,7 @@ Error: Transform failed with 1 error:
 [vite] program reload
 22:31:53 [200] /en/portfolio 336ms
 22:31:53 [200] /en/portfolio 7ms
+22:33:42 [watch] src/components/PortfolioGallery.astro
+22:33:42 [200] /en/portfolio 23ms
+[vite] program reload
+22:33:58 [200] /en/portfolio 56ms
