@@ -22,7 +22,7 @@ const navItems = [
       <!-- MOBILE: Left Logo + Text (Hidden on xl desktop) -->
       <div class="flex items-center space-x-4 z-[110] xl:hidden">
         <a href={`/${lang}/`} class="group relative block">
-          <div class="logo-spinner origin-center flex items-center justify-center animate-spin" style="animation-duration: 8s;">
+          <div class="logo-spinner origin-center flex items-center justify-center">
             <Image
               src={logoImg}
               alt="Equivest Logo"
@@ -87,7 +87,7 @@ const navItems = [
 
         <!-- DESKTOP RIGHT: Logo (Hidden on mobile & tablet) -->
         <a href={`/${lang}/`} class="hidden xl:block group relative block z-[110]">
-          <div class="logo-spinner origin-center flex items-center justify-center animate-spin" style="animation-duration: 8s;">
+          <div class="logo-spinner origin-center flex items-center justify-center">
             <Image src={logoImg} alt="Equivest Logo" width={256} class="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110" />
           </div>
         </a>
@@ -216,6 +216,24 @@ const navItems = [
     });
   }
 
+  function initScrollRotate() {
+    const spinners = document.querySelectorAll(".logo-spinner");
+    if (!spinners.length) return;
+
+    let scrollFrame: any;
+    const handleScroll = () => {
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        const rotation = window.scrollY * 0.2;
+        spinners.forEach((spinner: any) => {
+          spinner.style.transform = `rotate(${rotation}deg)`;
+        });
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  }
+
   function initScrollSpy() {
     const navItems = document.querySelectorAll('.desktop-nav-item');
     const indicator = document.getElementById('nav-indicator');
@@ -247,11 +265,13 @@ const navItems = [
 
   // Load on initial navigation
   initMenu();
+  initScrollRotate();
   initScrollSpy();
 
   // Load on View Transitions swap
   document.addEventListener("astro:after-swap", () => {
     initMenu();
+    initScrollRotate();
     initScrollSpy();
   });
 </script>

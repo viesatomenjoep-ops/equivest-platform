@@ -410,3 +410,110 @@ ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platf
 21:43:20 [200] /en/portfolio 22ms
 21:43:45 [watch] src/components/Header.astro
 21:43:46 [200] /en/portfolio 23ms
+21:44:24 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
+21:44:24 [watch] src/components/Chatbot.tsx
+[vite] program reload
+21:44:24 [ERROR] [vite] Internal server error: /Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx: Missing semicolon. (97:16)
+
+   95 |         {
+   96 |           id: 'bot-1',
+>  97 |           sender: 'bot',
+      |                 ^
+   98 |           text: t.welcome,
+   99 |           options: [
+  100 |             { label: t.btnFaq, action: 'faq' },
+  Plugin: vite:react-babel
+  File: /Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx:97:16
+  95 |          {
+  96 |            id: 'bot-1',
+  97 |            sender: 'bot',
+     |                  ^
+  98 |            text: t.welcome,
+  99 |            options: [
+      at toParseError (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at TypeScriptParserMixin.raise (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/tokenizer/index.ts:1504:19)
+      at TypeScriptParserMixin.semicolon (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/util.ts:149:10)
+      at TypeScriptParserMixin.parseExpressionStatement (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1363:10)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:702:19)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:3220:20)
+      at TypeScriptParserMixin.parseStatementLike (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at TypeScriptParserMixin.parseStatement (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:462:17)
+      at TypeScriptParserMixin.parseLabeledStatement (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1349:16)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:695:19)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:3220:20)
+      at TypeScriptParserMixin.parseStatementLike (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at TypeScriptParserMixin.parseBlockBody (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at TypeScriptParserMixin.parseBlock (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:622:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:3220:20)
+      at TypeScriptParserMixin.parseStatementLike (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:482:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:431:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1444:16)
+      at TypeScriptParserMixin.parseBlockBody (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1417:10)
+      at TypeScriptParserMixin.parseBlock (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/statement.ts:1385:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:2621:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:2562:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:1850:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:1170:21)
+      at TypeScriptParserMixin.parseExprAtom (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/jsx/index.ts:583:22)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:742:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:683:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:3893:20)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:417:14)
+      at TypeScriptParserMixin.parseExprOps (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:429:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:384:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:301:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:3764:22)
+      at callback (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:257:12)
+      at TypeScriptParserMixin.allowInAnd (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:3197:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:256:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:3311:17)
+      at TypeScriptParserMixin.parseExprListItem (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:2793:18)
+      at TypeScriptParserMixin.parseCallExpressionArguments (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:1042:14)
+      at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:922:29)
+      at TypeScriptParserMixin.parseSubscript (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:804:19)
+      at TypeScriptParserMixin.parseSubscript (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/plugins/typescript/index.ts:2809:20)
+      at TypeScriptParserMixin.parseSubscripts (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:763:19)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:748:17)
+      at TypeScriptParserMixin.parseUpdate (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:721:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/tomvanbiene/Equivest Platform /node_modules/@babel/parser/src/parser/expression.ts:683:23)
+[vite] An error happened during full reload
+Transform failed with 1 error:
+/Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx:97:16: ERROR: Expected ";" but found ":"
+Error: Transform failed with 1 error:
+/Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx:97:16: ERROR: Expected ";" but found ":"
+    at failureErrorWithLog (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:1748:15)
+    at /Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:1017:50
+    at responseCallbacks.<computed> (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:884:9)
+    at handleIncomingPacket (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:939:12)
+    at Socket.readFromStdout (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:862:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[vite] An error happened during full reload
+Transform failed with 1 error:
+/Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx:97:16: ERROR: Expected ";" but found ":"
+Error: Transform failed with 1 error:
+/Users/tomvanbiene/Equivest Platform /src/components/Chatbot.tsx:97:16: ERROR: Expected ";" but found ":"
+    at failureErrorWithLog (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:1748:15)
+    at /Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:1017:50
+    at responseCallbacks.<computed> (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:884:9)
+    at handleIncomingPacket (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:939:12)
+    at Socket.readFromStdout (/Users/tomvanbiene/Equivest Platform /node_modules/esbuild/lib/main.js:862:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+21:44:33 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
+21:44:33 [watch] src/components/Chatbot.tsx
+21:44:33 [200] /en/portfolio 15ms
+21:44:45 [watch] src/components/Header.astro
+21:44:45 [200] /en/portfolio 30ms
+21:44:47 [watch] src/components/Header.astro
+21:44:47 [200] /en/portfolio 18ms
