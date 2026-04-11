@@ -792,3 +792,5 @@ Error: Transform failed with 1 error:
 23:34:11 [200] /en/portfolio 9ms
 23:35:51 [watch] /src/styles/global.css
 23:35:51 [200] /en/portfolio 5ms
+23:37:11 [watch] /src/styles/global.css
+23:37:11 [200] /en/portfolio 40ms
