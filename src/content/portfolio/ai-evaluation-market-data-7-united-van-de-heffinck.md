@@ -1,4 +1,5 @@
 ---
+
 title: "United van de Heffinck"
 description: "Chacco Bleu x Maquin van de Heffinck - Stallion (Approved BWP)"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/united-23-high.jpg"
@@ -13,6 +14,9 @@ specs:
   purchase_price: "€ 450.000"
   target_sale: "€ 1.200.000"
   level: "1.30m - 1.35m Developing"
+documents:
+  fei_data: "https://www.horsetelex.com/horses/search?name=United%20van%20de%20Heffinck"
+
 ---
 An officially Approved BWP Stallion uniting the legendary Chacco Blue blood with a Maquin van de Heffinck dam. At 6 years old and stepping into 1.25m - 1.30m Young Horse circuits, United is a phenomenal dual-purpose asset. His € 450.000 acquisition price reflects his immense stallion syndication potential, driving towards an astronomical € 1.200.000 target valuation through stud fees and CSI development.
 

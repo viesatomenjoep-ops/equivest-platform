@@ -1,4 +1,5 @@
 ---
+
 title: "Theuwi van het Distelhof"
 description: "Emerald x Indoctro - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/theuwi-11-high.jpg"
@@ -13,6 +14,9 @@ specs:
   purchase_price: "€ 225.000"
   target_sale: "€ 415.000"
   level: "1.30m - 1.35m Developing"
+documents:
+  fei_data: "https://www.horsetelex.com/horses/search?name=Theuwi%20van%20het%20Distelhof"
+
 ---
 Theuwi is a spectacular 7-year-old mare by Emerald out of an Indoctro dam. Currently successfully navigating the 1.40m sections, she represents a turnkey investment for the professional rings. With an acquisition cost of € 225.000, her immense stride and natural bascule provide a seamless transition to ranking classes, pushing her financial trajectory toward the € 415.000 target sale bracket within 12-18 months.
 

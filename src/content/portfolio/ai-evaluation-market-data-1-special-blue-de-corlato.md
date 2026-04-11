@@ -1,4 +1,5 @@
 ---
+
 title: "Special Blue de Corlato"
 description: "Zirocco Blue VDL x I'm Special de Muze - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png"
@@ -13,6 +14,9 @@ specs:
   purchase_price: "€ 185.000"
   target_sale: "€ 350.000"
   level: "1.30m - 1.35m Developing"
+documents:
+  fei_data: "https://www.horsetelex.com/horses/search?name=Special%20Blue%20de%20Corlato"
+
 ---
 As a developing 7-year-old mare (Zirocco Blue VDL x I'm Special de Muze) currently competing in the 1.30m - 1.35m division, Special Blue possesses the ultimate modern type for the elite American hunter/jumper circuit. Acquired at € 185.000, her value relies heavily on her extreme rideability and scope, pointing towards a target sale of € 350.000 as she masters the international amateur leagues.
 

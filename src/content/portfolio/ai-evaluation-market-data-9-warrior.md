@@ -1,4 +1,5 @@
 ---
+
 title: "Warrior"
 description: "Ermitage Kalone x Casall - Stallion"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png"
@@ -13,6 +14,9 @@ specs:
   purchase_price: "€ 240.000"
   target_sale: "€ 600.000"
   level: "1.00m Young Jumper"
+documents:
+  fei_data: "https://www.horsetelex.com/horses/search?name=Warrior"
+
 ---
 Blending the modern sensation Ermitage Kalone with the immortal Casall, Warrior is a spectacular 4-year-old stallion jumping the 1.00m Young Jumper courses. He embodies the purest definition of an early-stage, pure-growth asset. Secured at € 240.000, the immediate focus lies in stallion approvals, with an extremely lucrative path targeting a € 600.000 exit to a major Olympic string as his talent solidifies.
 
