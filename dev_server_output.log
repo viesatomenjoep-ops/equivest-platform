@@ -539,3 +539,9 @@ Error: Transform failed with 1 error:
 21:58:10 [200] /en/portfolio 19ms
 [vite] program reload
 21:58:19 [200] /en/portfolio 19ms
+22:00:48 [watch] src/components/PortfolioGallery.astro
+22:00:48 [200] /en/portfolio 28ms
+[vite] program reload
+22:00:50 [200] /en/portfolio 20ms
+22:01:25 [watch] src/components/Header.astro
+22:01:25 [200] /en/portfolio 22ms

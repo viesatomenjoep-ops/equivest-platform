@@ -333,7 +333,7 @@ const allHorsesWithContent = await Promise.all(
         const user = (document.getElementById('portfolio-user') as HTMLInputElement).value.trim();
         const code = input.value.trim();
 
-        if (user === 'Equivest 11' && code === '1111') {
+        if (user === 'Equivest11' && code === '1111') {
           errorMsg.classList.add('hidden');
           localStorage.setItem('equivest_v2_unlocked', 'true');
           unlockPortfolio();

@@ -50,8 +50,11 @@ const navItems = [
           <div id="nav-indicator" class="absolute -bottom-2 left-0 h-[3px] bg-primary transition-all duration-300 ease-in-out opacity-0 pointer-events-none drop-shadow-md"></div>
           {
             navItems.map((item) => (
-              <a href={item.href} data-astro-prefetch="hover" class="desktop-nav-item text-base font-bold tracking-widest hover:text-accent transition-colors uppercase whitespace-nowrap">
-                {item.label}
+              <a
+                href={item.href}
+                class={`desktop-nav-item text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-accent transition-colors py-2 relative`}
+              >
+                <span class={item.label === 'Login' ? 'auth-link-text text-accent' : ''}>{item.label}</span>
               </a>
             ))
           }
@@ -109,7 +112,7 @@ const navItems = [
             href={item.href}
             class="mobile-nav-item text-[22px] font-serif font-bold text-primary hover:text-accent transition-colors flex justify-between items-center group"
           >
-            {item.label}
+            <span class={item.label === 'Login' ? 'auth-link-text text-accent font-sans' : ''}>{item.label}</span>
             <svg
               class="w-5 h-5 opacity-0 -translate-x-4 transition-all group-hover:opacity-100 group-hover:translate-x-0"
               fill="none"
@@ -263,15 +266,35 @@ const navItems = [
     }
   }
 
-  // Load on initial navigation
+  // Load Auth State
+  function initAuthState() {
+    const isUnlocked = localStorage.getItem('equivest_v2_unlocked') === 'true';
+    document.querySelectorAll('.auth-link-text').forEach((el) => {
+      if (isUnlocked) {
+        el.textContent = 'Log out (Equivest11)';
+        const parentAnchor = el.closest('a');
+        if (parentAnchor) {
+            parentAnchor.href = '#';
+            parentAnchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('equivest_v2_unlocked');
+                window.location.reload();
+            });
+        }
+      }
+    });
+  }
+
   initMenu();
   initScrollRotate();
   initScrollSpy();
+  initAuthState();
 
   // Load on View Transitions swap
   document.addEventListener("astro:after-swap", () => {
     initMenu();
     initScrollRotate();
     initScrollSpy();
+    initAuthState();
   });
 </script>
