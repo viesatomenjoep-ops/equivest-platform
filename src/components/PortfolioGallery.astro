@@ -239,7 +239,7 @@ const allHorsesWithContent = await Promise.all(
                              <span class="text-[10px] font-bold uppercase tracking-widest text-primary text-center">Passport Scan</span>
                           </a>
 
-                          <a href={horse.data.documents?.fei_data || "#contact"} target={horse.data.documents?.fei_data ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-5 transition-all group rounded-xl ${horse.data.documents?.fei_data ? 'bg-green-50 border-2 border-green-500 hover:bg-green-100 hover:shadow-xl' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.fei_data ? "View Data" : "Request Document"}>
+                          <a href={horse.data.documents?.fei_data || "#contact"} target="_self" class={`flex flex-col items-center justify-center p-5 transition-all group rounded-xl ${horse.data.documents?.fei_data ? 'bg-green-50 border-2 border-green-500 hover:bg-green-100 hover:shadow-xl' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.fei_data ? "View Data" : "Request Document"}>
                              <svg class={`w-8 h-8 mb-3 transition-colors ${horse.data.documents?.fei_data ? 'text-green-600 group-hover:text-green-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
                              <span class={`text-[10px] font-bold uppercase tracking-widest text-center transition-colors ${horse.data.documents?.fei_data ? 'text-green-700' : 'text-primary'}`}>FEI / Lifescore</span>
                           </a>
@@ -277,6 +277,13 @@ const allHorsesWithContent = await Promise.all(
         dialog.classList.remove('scale-95');
         dialog.classList.add('scale-100');
         document.body.style.overflow = 'hidden';
+        
+        // Update URL state for native back-button functionality
+        if (history.pushState) {
+            history.pushState(null, '', '#' + slug);
+        } else {
+            window.location.hash = '#' + slug;
+        }
      }
   };
 
@@ -292,6 +299,15 @@ const allHorsesWithContent = await Promise.all(
         setTimeout(() => {
            modal.classList.add('hidden');
            document.body.style.overflow = '';
+           
+           // Clear URL hash when closing manually
+           if (window.location.hash === '#' + slug) {
+               if (history.pushState) {
+                   history.pushState(null, '', window.location.pathname + window.location.search);
+               } else {
+                   window.location.hash = '';
+               }
+           }
         }, 500);
      }
   };
@@ -389,9 +405,34 @@ const allHorsesWithContent = await Promise.all(
   if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
   initLock();
   
+  function syncHashState() {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+          const m = document.getElementById('modal-' + hash);
+          if (m && m.classList.contains('hidden')) {
+              // Open modal if it exists natively in HTML
+              (window as any).openModal(hash);
+          }
+      } else {
+          // If returning to roots, close active modals
+          document.querySelectorAll('[id^="modal-"]').forEach(m => {
+              if (!m.classList.contains('hidden')) {
+                  (window as any).closeModal(m.id.replace('modal-', ''));
+              }
+          });
+      }
+  }
+
+  // Bind to native history changes (Back/Forward arrows)
+  window.addEventListener('hashchange', syncHashState);
+  
+  // Sync on initial load
+  syncHashState();
+  
   document.addEventListener('astro:after-swap', () => {
       if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
       initLock();
+      syncHashState();
   });
 </script>
 
