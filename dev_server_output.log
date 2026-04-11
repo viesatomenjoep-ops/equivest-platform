@@ -898,3 +898,5 @@ Error: Transform failed with 1 error:
 00:01:02 [200] /en/portfolio 19ms
 00:02:51 [watch] /src/styles/global.css
 00:02:52 [200] /en/portfolio 26ms
+00:05:31 [watch] /src/styles/global.css
+00:05:31 [watch] /src/styles/global.css
