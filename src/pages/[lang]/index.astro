@@ -35,9 +35,9 @@ const t = useTranslations(lang);
 	<div id="site-wrapper">
 		<!-- Hero Section -->
 		<section
-			class="relative min-h-[90vh] flex flex-col items-center justify-between overflow-hidden premium-gradient text-white pt-24 pb-6"
+			class="relative min-h-[90vh] flex flex-col items-center justify-between premium-gradient text-white pt-24 pb-6"
 		>
-			<div class="absolute inset-0 opacity-90">
+			<div class="absolute inset-0 opacity-90 overflow-hidden">
 				<Image
 					src={heroImg}
 					alt="Elite Jumper"
@@ -108,8 +108,8 @@ const t = useTranslations(lang);
 
 			<div class="relative z-10 flex flex-col items-center justify-end opacity-70 mt-12 md:mt-auto pb-4 md:pb-8">
 				<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70 mb-3 block">{t("ui.scroll")}</span>
-				<div class="w-[2px] h-12 bg-white/20 relative overflow-hidden rounded-full">
-					<div id="hero-scroll-indicator" class="w-full h-1/2 bg-white/80 absolute top-0 left-0 rounded-full" style="will-change: transform;"></div>
+				<div class="w-[2px] h-32 md:h-48 bg-white/20 relative overflow-hidden rounded-full mb-[-4rem] md:mb-[-6rem]">
+					<div id="hero-scroll-indicator" class="w-full h-1/4 bg-white/90 shadow-[0_0_10px_rgba(255,255,255,1)] absolute top-0 left-0 rounded-full" style="will-change: transform;"></div>
 				</div>
 			</div>
 		</section>
@@ -168,13 +168,14 @@ const t = useTranslations(lang);
 		
 		const handleScroll = () => {
 			const scrollY = window.scrollY;
-			const maxScroll = window.innerHeight * 0.8; // By the time they scroll 80% of screen height, it should be at bottom
+			const maxScroll = document.documentElement.scrollHeight - window.innerHeight; // Full page scroll distance
 			
 			let progress = scrollY / (maxScroll || 1);
 			if (progress > 1) progress = 1;
 
-			// translateY(100%) moves it down exactly its own height (half the container)
-			indicator.style.transform = `translateY(${progress * 100}%)`;
+			// If the indicator is h-1/4, moving it by 300% puts it exactly at the bottom of the track.
+			// Let's multiply progress by 300 so it crawls the entire length of the track over the whole page.
+			indicator.style.transform = `translateY(${progress * 300}%)`;
 		};
 		
 		window.addEventListener('scroll', handleScroll, { passive: true });
