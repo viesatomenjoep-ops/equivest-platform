@@ -30,4 +30,13 @@ collections:
           - { label: "Gender", name: "gender", widget: "string" }
           - { label: "Height", name: "height", widget: "string" }
           - { label: "Level", name: "level", widget: "string" }
+      - label: "Horse Documents"
+        name: "documents"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Vet Check (PDF/URL)", name: "vet_check", widget: "file", required: false }
+          - { label: "X-Rays (Zip/Link)", name: "xrays", widget: "string", required: false }
+          - { label: "Passport (PDF/Image)", name: "passport", widget: "file", required: false }
+          - { label: "FEI Data / Lifescore (Link)", name: "fei_data", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

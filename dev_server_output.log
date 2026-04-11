@@ -557,3 +557,20 @@ Error: Transform failed with 1 error:
 22:10:52 [200] /en/portfolio 14ms
 22:12:19 [watch] /src/styles/global.css
 22:12:19 [200] /en/portfolio 17ms
+22:20:01 [watch] /src/styles/global.css
+22:20:01 [watch] /src/styles/global.css
+22:20:01 [watch] src/content.config.ts
+[vite] program reload
+22:20:01 [content] Syncing content
+22:20:01 [content] Content config changed
+22:20:01 [content] Clearing content store
+22:20:01 [200] /en/portfolio 23ms
+22:20:02 [content] Synced content
+22:20:02 [200] /en/portfolio 28ms
+[vite] program reload
+22:20:09 [200] /en/portfolio 21ms
+22:20:32 [watch] src/components/PortfolioGallery.astro
+22:20:32 [200] /en/portfolio 22ms
+[vite] program reload
+22:20:59 [200] /en/portfolio 36ms
+22:21:07 [200] /en/portfolio 28ms

@@ -21,6 +21,12 @@ const portfolio = defineCollection({
       target_sale: z.string().optional(),
       level: z.string(),
     }).optional(),
+    documents: z.object({
+      vet_check: z.string().optional(),
+      xrays: z.string().optional(),
+      passport: z.string().optional(),
+      fei_data: z.string().optional(),
+    }).optional(),
   }),
 });
 
