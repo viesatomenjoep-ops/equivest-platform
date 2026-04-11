@@ -25,13 +25,20 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 				<form id="premium-form" class="mt-8 space-y-4">
 					<div>
 						<input 
+							type="text" 
+							id="premium-user"
+							required
+							class="w-full bg-bg-subtle border border-primary/20 p-4 text-center tracking-[0.2em] font-bold text-primary focus:outline-none focus:border-accent transition-colors mb-4"
+							placeholder="USERNAME"
+						/>
+						<input 
 							type="password" 
 							id="access-code"
 							required
 							class="w-full bg-bg-subtle border border-primary/20 p-4 text-center tracking-[0.2em] font-bold text-primary focus:outline-none focus:border-accent transition-colors"
-							placeholder="ENTER CODE"
+							placeholder="PASSWORD"
 						/>
-						<p id="error-msg" class="text-red-500 mt-2 text-sm font-bold uppercase tracking-widest hidden">Invalid Access Code</p>
+						<p id="error-msg" class="text-red-500 mt-2 text-sm font-bold uppercase tracking-widest hidden">Invalid Credentials</p>
 					</div>
 					<button type="submit" class="w-full bg-primary text-white font-bold uppercase tracking-[0.2em] py-4 hover:bg-accent transition-colors">
 						Unlock Collection
@@ -183,15 +190,17 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
       
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const code = input.value.trim().toUpperCase();
+        const user = (document.getElementById('premium-user') as HTMLInputElement).value.trim();
+        const code = input.value.trim();
 
-        if (VALID_CODES.includes(code)) {
+        if (user === 'Equivest 11' && code === '1111') {
           errorMsg.classList.add('hidden');
           localStorage.setItem('equivest_unlocked', 'true');
           unlockPortfolio();
         } else {
           errorMsg.classList.remove('hidden');
           input.classList.add('border-red-500');
+          (document.getElementById('premium-user') as HTMLInputElement).classList.add('border-red-500');
           input.value = '';
           form.classList.add('animate-shake');
           setTimeout(() => form.classList.remove('animate-shake'), 500);

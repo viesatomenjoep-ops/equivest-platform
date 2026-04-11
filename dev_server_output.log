@@ -527,3 +527,9 @@ Error: Transform failed with 1 error:
 21:50:25 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
 21:50:25 [watch] src/components/Chatbot.tsx
 [vite] program reload
+21:52:59 [watch] src/components/Header.astro
+21:52:59 [200] /en/portfolio 24ms
+21:53:14 [watch] src/components/PortfolioGallery.astro
+21:53:14 [200] /en/portfolio 23ms
+[vite] program reload
+21:53:26 [200] /en/portfolio 19ms
