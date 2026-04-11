@@ -900,3 +900,7 @@ Error: Transform failed with 1 error:
 00:02:52 [200] /en/portfolio 26ms
 00:05:31 [watch] /src/styles/global.css
 00:05:31 [watch] /src/styles/global.css
+00:06:38 [watch] /src/styles/global.css
+00:06:38 [200] /en/portfolio 32ms
+00:06:45 [watch] /src/styles/global.css
+00:06:45 [watch] /src/styles/global.css
