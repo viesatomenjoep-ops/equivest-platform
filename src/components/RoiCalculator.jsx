@@ -1,208 +1,272 @@
 import React, { useState, useMemo } from 'react';
 
-const RoiCalculator = ({ lang = 'en' }) => {
-  const [amount, setAmount] = useState(100000);
-  const [activeYear, setActiveYear] = useState(0);
+const AdvancedRoiCalculator = ({ lang = 'en' }) => {
+  const [data, setData] = useState({
+    purchasePrice: 250000,
+    ownershipPercentage: 100,
+    monthsHeld: 24,
+    monthlyBoardingTraining: 2500,
+    monthlyVetFarrier: 500,
+    monthlyShowTransport: 1500,
+    insuranceRateYearly: 3.5,
+    expectedSalePrice: 400000,
+  });
 
   const translations = {
     en: {
-      title: 'Investment ROI Calculator',
-      inputLabel: 'Amount to Invest',
-      minLabel: 'Min: €15.000',
-      maxLabel: 'Max: €1.000.000+',
-      year1: '3-6 Months',
-      year2: '6-12 Months',
-      year3: '12-36 Months',
-      shortTerm: 'Short Term Investment',
-      mediumTerm: 'Medium Term Project',
-      longTerm: 'Long Term Investment',
-      range: 'Projected Profit',
-      totalReturn: 'Total Return (Incl. Inv.)',
-      cta: 'Request Investment Plan',
-      potential: 'Potential',
+      title: 'Syndicate TCO & ROI Calculator',
+      subtitle: 'Advanced Financial Modeling',
+      purchase: 'Acquisition',
+      syndicateShare: 'Syndicate Share',
+      duration: 'Duration',
+      expectedSale: 'Target Sale Value',
+      monthlyOps: 'Monthly Operational Assets (Target)',
+      training: 'Training & Boarding ($/',
+      vet: 'Vet & Farrier ($/',
+      shows: 'Shows & Logistics ($/',
+      insurance: 'Annual Insurance (%)',
+      yourFinancials: 'Your Investment Profile',
+      yourPurchase: 'Your Capital Acquisition',
+      yourTco: 'Your Operational TCO',
+      totalInvestment: 'Gross Capital Required',
+      netProfit: 'Net Profit Projection',
+      expectedRoi: 'Target Yield (ROI)',
+      mo: 'mo)',
+      months: 'months',
+      pct: '%'
     },
     nl: {
-      title: 'ROI Calculator',
-      inputLabel: 'Investeringsbedrag',
-      minLabel: 'Min: €15.000',
-      maxLabel: 'Max: €1.000.000+',
-      year1: '3-6 Maanden',
-      year2: '6-12 Maanden',
-      year3: '12-36 Maanden',
-      shortTerm: 'Korte Termijn Investering',
-      mediumTerm: 'Middellange Termijn Project',
-      longTerm: 'Lange Termijn Investering',
-      range: 'Verwachte Winst',
-      totalReturn: 'Totale Opbrengst (Incl. Inleg)',
-      cta: 'Plan Aanvragen',
-      potential: 'Potentieel',
+      title: 'Syndicaat TCO & ROI Calculator',
+      subtitle: 'Geavanceerd Financieel Model',
+      purchase: 'Aanschafwaarde',
+      syndicateShare: 'Syndicaat Aandeel',
+      duration: 'Looptijd (mnd)',
+      expectedSale: 'Verwachte Verkoop',
+      monthlyOps: 'Maandelijkse Operationele Kosten',
+      training: 'Training & Stalling (€/',
+      vet: 'Dierenarts & Smid (€/',
+      shows: 'Shows & Transport (€/',
+      insurance: 'Jaarlijkse Verzekering (%)',
+      yourFinancials: 'Jouw Financiële Profiel',
+      yourPurchase: 'Jouw Aanschafdeel',
+      yourTco: 'Jouw Operationele Kosten (TCO)',
+      totalInvestment: 'Totale Investering',
+      netProfit: 'Netto Winst (Geprojecteerd)',
+      expectedRoi: 'Verwachte Rendement (ROI)',
+      mo: 'mnd)',
+      months: 'maanden',
+      pct: '%'
     },
     de: {
-      title: 'ROI-Rechner',
-      inputLabel: 'Investitionsbetrag',
-      minLabel: 'Min: €15.000',
-      maxLabel: 'Max: €1.000.000+',
-      year1: '3-6 Monate',
-      year2: '6-12 Monate',
-      year3: '12-36 Monate',
-      shortTerm: 'Kurzfristige Investition',
-      mediumTerm: 'Mittelfristiges Projekt',
-      longTerm: 'Langfristige Investition',
-      range: 'Erwarteter Gewinn',
-      totalReturn: 'Gesamtertrag (Inkl. Investition)',
-      cta: 'Investitionsplan Anfordern',
-      potential: 'Potenzial',
+      title: 'Syndikat TCO & ROI-Rechner',
+      subtitle: 'Erweitertes Finanzmodell',
+      purchase: 'Anschaffungswert',
+      syndicateShare: 'Syndikatsanteil',
+      duration: 'Laufzeit',
+      expectedSale: 'Erwarteter Verkauf',
+      monthlyOps: 'Monatliche Betriebskosten',
+      training: 'Training & Unterbringung (€/',
+      vet: 'Tierarzt & Hufschmied (€/',
+      shows: 'Turniere & Transport (€/',
+      insurance: 'Jährliche Versicherung (%)',
+      yourFinancials: 'Ihr Finanzprofil',
+      yourPurchase: 'Ihr Kaufanteil',
+      yourTco: 'Ihre Betriebskosten (TCO)',
+      totalInvestment: 'Gesamtinvestition',
+      netProfit: 'Nettogewinn (Projiziert)',
+      expectedRoi: 'Erwartete Rendite (ROI)',
+      mo: 'mon)',
+      months: 'monate',
+      pct: '%'
     },
     es: {
-      title: 'Calculadora de ROI',
-      inputLabel: 'Monto de Inversión',
-      minLabel: 'Min: €15.000',
-      maxLabel: 'Max: €1.000.000+',
-      year1: '3-6 Meses',
-      year2: '6-12 Meses',
-      year3: '12-36 Meses',
-      shortTerm: 'Inversión a Corto Plazo',
-      mediumTerm: 'Proyecto a Medio Plazo',
-      longTerm: 'Inversión a Largo Plazo',
-      range: 'Beneficio Proyectado',
-      totalReturn: 'Retorno Total (Incl. Inv.)',
-      cta: 'Solicitar Plan de Inversión',
-      potential: 'Potencial',
+      title: 'Calculadora de TCO y ROI',
+      subtitle: 'Modelo Financiero Avanzado',
+      purchase: 'Adquisición',
+      syndicateShare: 'Participación',
+      duration: 'Duración',
+      expectedSale: 'Venta Esperada',
+      monthlyOps: 'Costos Operativos Mensuales',
+      training: 'Entrenamiento y Alojamiento (€/',
+      vet: 'Veterinario y Herrador (€/',
+      shows: 'Shows y Transporte (€/',
+      insurance: 'Seguro Anual (%)',
+      yourFinancials: 'Su Perfil Financiero',
+      yourPurchase: 'Su Parte de Compra',
+      yourTco: 'Sus Costos Operativos (TCO)',
+      totalInvestment: 'Inversión Total',
+      netProfit: 'Beneficio Neto',
+      expectedRoi: 'Rendimiento Esperado (ROI)',
+      mo: 'mes)',
+      months: 'meses',
+      pct: '%'
     }
   };
 
   const t = translations[lang] || translations.en;
-
-  const results = useMemo(() => [
-    { year: t.year1, label: t.shortTerm, min: 0.3, max: 0.75 },
-    { year: t.year2, label: t.mediumTerm, min: 0.5, max: 1.5 },
-    { year: t.year3, label: t.longTerm, min: 0.75, max: 3.0 },
-  ], [t]);
-
-  const formatter = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-US', {
+  
+  const formatter = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
     style: 'currency',
-    currency: 'EUR',
+    currency: lang === 'en' ? 'USD' : 'EUR',
     maximumFractionDigits: 0,
   });
 
-  const handleInputChange = (e) => {
-    const val = e.target.value.replace(/[^0-9]/g, '');
-    const numVal = val === '' ? 0 : parseInt(val, 10);
-    setAmount(Math.min(numVal, 10000000)); // Cap at 10M for realism
+  const handleChange = (e) => {
+    let val = parseFloat(e.target.value);
+    if (isNaN(val)) val = 0;
+    
+    // Safety caps
+    if (e.target.name === 'ownershipPercentage' && val > 100) val = 100;
+    if (e.target.name === 'ownershipPercentage' && val < 0) val = 0;
+    if (e.target.name === 'insuranceRateYearly' && val > 20) val = 20;
+
+    setData({ ...data, [e.target.name]: val });
   };
 
+  const calc = useMemo(() => {
+    const fraction = data.ownershipPercentage / 100;
+    const myPurchasePrice = data.purchasePrice * fraction;
+    
+    // TCO Formulas
+    const yearlyInsurance = (data.purchasePrice * (data.insuranceRateYearly / 100));
+    const totalInsurance = (yearlyInsurance / 12) * data.monthsHeld;
+    const monthlyTotalCost = data.monthlyBoardingTraining + data.monthlyVetFarrier + data.monthlyShowTransport;
+    const totalOperationalCosts = (monthlyTotalCost * data.monthsHeld) + totalInsurance;
+    
+    const myOperationalCosts = totalOperationalCosts * fraction;
+    const myTotalInvestment = myPurchasePrice + myOperationalCosts;
+    
+    const myExpectedReturn = data.expectedSalePrice * fraction;
+    const myNetProfit = myExpectedReturn - myTotalInvestment;
+    const roiPercentage = myTotalInvestment > 0 ? (myNetProfit / myTotalInvestment) * 100 : 0;
+
+    return { 
+      myPurchasePrice, 
+      myOperationalCosts, 
+      myTotalInvestment, 
+      myNetProfit, 
+      roiPercentage 
+    };
+  }, [data]);
+
   return (
-    <div className="bg-primary-light p-4 md:p-6 lg:p-8 shadow-2xl border-l-[12px] border-accent relative overflow-hidden rounded-r-2xl">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent-light/5 -translate-y-1/2 translate-x-1/2 rounded-full"></div>
-      
-      <div className="relative z-10">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5 lg:gap-4 lg:mb-8">
-          <h3 className="text-base md:text-lg lg:text-2xl font-serif text-white">{t.title}</h3>
-          <div className="bg-white/5 border border-white/10 rounded-2xl px-2 py-2 lg:px-4 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
-            <label className="text-accent/90 text-[10px] md:text-xs lg:text-base font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">{t.inputLabel}</label>
-            <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
-              <span className="text-white/70 text-lg md:text-xl lg:text-2xl font-serif mr-2">€</span>
-              <input 
-                type="text" 
-                value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
-                onChange={handleInputChange}
-                className="bg-transparent border-none text-white text-lg md:text-xl lg:text-2xl font-serif tabular-nums outline-none w-32 md:w-48 text-right p-0 focus:ring-0"
-              />
+    <div className="bg-primary p-6 md:p-10 shadow-2xl relative overflow-hidden text-white w-full max-w-7xl mx-auto rounded-none border-y border-white/10">
+      {/* Decorative BG Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full blur-[80px] pointer-events-none"></div>
+
+      <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8">
+        
+        {/* LEFT COLUMN: Input Modifiers */}
+        <div className="xl:col-span-8 flex flex-col space-y-8">
+          <div>
+            <span className="text-accent text-xs font-bold uppercase tracking-[0.3em] mb-2 block">{t.subtitle}</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight">{t.title}</h2>
+          </div>
+
+          {/* MAIN ASSET METRICS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
+              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.purchase}</label>
+              <div className="flex items-center w-1/2 justify-end">
+                <span className="text-white/50 text-sm mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-right text-lg md:text-xl font-serif text-white outline-none w-full tabular-nums" />
+              </div>
+            </div>
+            
+            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
+              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.expectedSale}</label>
+              <div className="flex items-center w-1/2 justify-end">
+                <span className="text-accent/50 text-sm mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-right text-lg md:text-xl font-serif text-accent outline-none w-full tabular-nums" />
+              </div>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-4 flex items-center justify-between group focus-within:border-accent transition-colors">
+              <label className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] w-1/2">{t.duration}</label>
+              <div className="flex items-center w-1/2 justify-end">
+                <span className="text-white/50 text-sm mr-2">#</span>
+                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-right text-lg font-serif text-white outline-none w-full tabular-nums" />
+              </div>
+            </div>
+
+            <div className="bg-accent/10 border border-accent/30 p-4 flex items-center justify-between group focus-within:border-accent transition-colors relative overflow-hidden">
+              <div className="absolute left-0 top-0 w-1 h-full bg-accent"></div>
+              <label className="text-accent text-[10px] font-bold uppercase tracking-[0.2em] ml-2 w-1/2">{t.syndicateShare}</label>
+              <div className="flex items-center w-1/2 justify-end">
+                <span className="text-accent/50 text-sm mr-2">%</span>
+                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-right text-lg font-serif text-white outline-none w-full tabular-nums" />
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-6">
+            <h3 className="text-base font-serif mb-4 text-white/80">{t.monthlyOps}</h3>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.training}{t.mo}</label>
+                <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              </div>
+              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.vet}{t.mo}</label>
+                <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              </div>
+              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.shows}{t.mo}</label>
+                <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              </div>
+              <div className="bg-white/5 border border-white/5 p-3 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
+                <label className="text-white/50 text-[9px] font-bold uppercase tracking-widest mb-2 leading-relaxed">{t.insurance}</label>
+                <input type="number" step="0.1" name="insuranceRateYearly" value={data.insuranceRateYearly === 0 ? '' : data.insuranceRateYearly} onChange={handleChange} className="bg-transparent text-left text-base font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN: The Result / P&L */}
+        <div className="xl:col-span-4 mt-8 xl:mt-0 xl:pl-8 xl:border-l border-white/10 flex flex-col justify-center">
+          <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden backdrop-blur-sm">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 blur-2xl"></div>
+            
+            <h3 className="text-lg font-serif text-white mb-1">{t.yourFinancials}</h3>
+            <p className="text-accent font-bold uppercase tracking-widest text-[10px] mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
+            
+            <div className="space-y-4">
+              <div className="flex justify-between items-end border-b border-white/10 pb-2">
+                <span className="text-white/60 text-xs font-medium uppercase tracking-widest">{t.yourPurchase}</span>
+                <span className="text-lg font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
+              </div>
+              
+              <div className="flex justify-between items-end border-b border-white/10 pb-2">
+                <span className="text-white/60 text-xs font-medium uppercase tracking-widest">{t.yourTco}</span>
+                <span className="text-lg font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
+              </div>
+              
+              <div className="flex justify-between items-end border-b border-white/30 pb-3 mt-4">
+                <span className="text-white font-bold text-[11px] uppercase tracking-widest">{t.totalInvestment}</span>
+                <span className="text-xl font-serif text-white font-bold tabular-nums">{formatter.format(calc.myTotalInvestment)}</span>
+              </div>
+              
+              <div className="flex flex-col pt-3">
+                <span className="text-white/80 font-bold uppercase tracking-wider text-[11px] mb-1">{t.netProfit}</span>
+                <span className={`text-4xl font-serif font-bold tabular-nums ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                  {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
+                </span>
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-accent/20 text-center bg-white/5 rounded-lg border border-white/10 p-4">
+                <span className="block text-white/50 text-[10px] uppercase tracking-[0.3em] font-bold mb-2">{t.expectedRoi}</span>
+                <div className={`text-5xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
+                  {calc.roiPercentage.toFixed(1)}%
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
-        <div className="mb-3 md:mb-5 px-2 max-w-4xl mx-auto">
-          <div className="relative h-1 bg-white/10 rounded-full group mb-4">
-            <input 
-              type="range" 
-              min="15000" 
-              max="1000000" 
-              step="5000"
-              value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30 touch-none"
-            />
-            <div 
-              className="absolute top-0 left-0 h-full bg-accent rounded-full"
-              style={{ width: `${Math.min(((amount - 15000) / 985000) * 100, 100)}%` }}
-            >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] rounded-full scale-100 group-hover:scale-125 pointer-events-none border-2 border-accent"></div>
-            </div>
-          </div>
-          <div className="flex justify-between text-base md:text-lg lg:text-2xl font-serif text-white/80 tabular-nums">
-            <span>{t.minLabel}</span>
-            <span>{t.maxLabel}</span>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 p-3 md:p-5 lg:p-8 rounded-xl lg:rounded-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-2 h-full bg-accent"></div>
-          
-          {(() => {
-            const res = results[activeYear];
-            return (
-              <div className="flex flex-col space-y-8">
-                
-                {/* 1. TOTAL RETURN HERO */}
-                <div className="text-center space-y-2 pb-8 border-b border-white/10">
-                  <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
-                  <div className="text-base md:text-lg lg:text-2xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg tabular-nums">
-                    <span>{formatter.format(amount + (amount * res.min))}</span>
-                    <span className="mx-2 md:mx-4 text-white/20 font-sans text-xs md:text-sm lg:text-lg lg:text-3xl">—</span>
-                    <span>{formatter.format(amount + (amount * res.max))}</span>
-                  </div>
-                </div>
-
-                {/* 2. TIMELINE SELECTORS */}
-                <div className="flex flex-col sm:flex-row bg-black/20 rounded-2xl p-2 gap-2 max-w-2xl mx-auto w-full">
-                  {results.map((r, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveYear(idx)}
-                      className={`flex-1 py-1.5 px-3 md:py-2.5 md:px-5 lg:px-6 rounded-lg lg:rounded-xl text-xs md:text-sm lg:text-lg font-bold uppercase tracking-widest transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg' : 'text-white/50 hover:text-white/80 hover:bg-white/5'}`}
-                    >
-                      {r.year}
-                    </button>
-                  ))}
-                </div>
-
-                {/* 3. NET PROFIT FOOTER */}
-                <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-3 lg:p-5 gap-2 lg:gap-3">
-                  <div className="text-center md:text-left">
-                    <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.range} (Net Profit)</span>
-                    <div className="text-base md:text-lg lg:text-3xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
-                      <span>+{formatter.format(amount * res.min)}</span>
-                      <span className="mx-2 text-accent/40 font-sans text-sm md:text-base lg:text-xl">—</span>
-                      <span>+{formatter.format(amount * res.max)}</span>
-                    </div>
-                  </div>
-                  <div className="bg-accent text-white px-2 py-1.5 rounded lg:rounded-md text-[10px] md:text-xs font-bold uppercase tracking-wider text-center shadow-lg">
-                    +{(res.max * 100).toFixed(0)}% {t.potential}
-                  </div>
-                </div>
-
-              </div>
-            );
-          })()}
-        </div>
-
-        <div className="mt-5 lg:mt-8 flex flex-col md:flex-row items-center justify-between gap-8 pt-3 lg:pt-5 border-t border-white/10">
-          <p className="text-white/60 text-lg max-w-sm italic leading-relaxed">
-            * Calculations are based on professional benchmarks for the trade and sport of 5-star Grand Prix jumpers. Actual results may vary.
-          </p>
-          <a href="#contact" className="w-full md:w-auto bg-accent text-white px-4 py-3 lg:px-8 lg:py-4 text-sm md:text-base lg:text-lg font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-xl text-center relative z-20">
-            {t.cta}
-          </a>
-        </div>
       </div>
-
-      {/* Interactive Subtle Scroll to Top Logo */}
-      <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="absolute bottom-6 left-12 z-0 w-16 h-16 opacity-[0.04] hover:opacity-[0.15] transition-all duration-700 cursor-pointer focus:outline-none hidden md:block">
-        <img src="/images/logo.webp" alt="Scroll to top" loading="lazy" width="64" height="64" className="w-full h-full object-contain brightness-0 invert animate-slow-spin" style={{willChange: 'transform'}} />
-      </button>
     </div>
   );
 };
 
-export default RoiCalculator;
+export default AdvancedRoiCalculator;
