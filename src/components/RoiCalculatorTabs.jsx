@@ -6,10 +6,10 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
   const [activeTab, setActiveTab] = useState('advanced');
 
   const translations = {
-    en: { simpleTab: 'Quick Profit Estimator', advancedTab: 'Advanced Syndicate TCO' },
-    nl: { simpleTab: 'Snelle Winstschatter', advancedTab: 'Geavanceerde TCO Simulator' },
-    de: { simpleTab: 'Schneller Gewinnschätzer', advancedTab: 'Erweiterter TCO-Simulator' },
-    es: { simpleTab: 'Estimador de Ganancias', advancedTab: 'Simulador TCO Avanzado' },
+    en: { simpleTab: 'Investment Profit Estimator', advancedTab: 'Advanced Syndicate TCO' },
+    nl: { simpleTab: 'Investerings Winstschatter', advancedTab: 'Geavanceerde TCO Simulator' },
+    de: { simpleTab: 'Investitionsgewinnschätzer', advancedTab: 'Erweiterter TCO-Simulator' },
+    es: { simpleTab: 'Estimador de Inversión', advancedTab: 'Simulador TCO Avanzado' },
   };
   
   const t = translations[lang] || translations.en;
