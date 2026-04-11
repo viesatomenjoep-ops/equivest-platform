@@ -659,3 +659,7 @@ Error: Transform failed with 1 error:
 23:08:29 [200] /en/portfolio 26ms
 23:09:22 [watch] src/components/PortfolioGallery.astro
 23:09:22 [200] /en/portfolio 54ms
+23:11:14 [watch] /src/styles/global.css
+23:11:14 [200] /en/portfolio 15ms
+23:11:31 [watch] /src/styles/global.css
+23:11:31 [200] /en/portfolio 7ms

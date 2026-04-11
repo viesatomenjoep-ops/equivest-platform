@@ -147,9 +147,10 @@ const SimpleRoiCalculator = ({ lang = 'en' }) => {
                 {/* 1. TOTAL RETURN HERO */}
                 <div className="text-center space-y-2 pb-8 border-b border-white/10">
                   <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
-                  <div className="text-base md:text-lg lg:text-2xl font-serif text-white flex flex-wrap justify-center items-center drop-shadow-lg tabular-nums">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 drop-shadow-lg tabular-nums leading-tight">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
-                    <span className="mx-2 md:mx-4 text-white/20 font-sans text-xs md:text-sm lg:text-lg lg:text-3xl">—</span>
+                    <span className="text-white/30 hidden md:block">—</span>
+                    <span className="text-white/30 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
                     <span>{formatter.format(amount + (amount * res.max))}</span>
                   </div>
                 </div>
@@ -168,12 +169,13 @@ const SimpleRoiCalculator = ({ lang = 'en' }) => {
                 </div>
 
                 {/* 3. NET PROFIT FOOTER */}
-                <div className="flex flex-col md:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-3 lg:p-5 gap-2 lg:gap-3">
-                  <div className="text-center md:text-left">
-                    <span className="block text-accent text-xs font-bold uppercase tracking-[0.2em] mb-1">{t.range} (Net Profit)</span>
-                    <div className="text-base md:text-lg lg:text-3xl font-serif text-accent flex flex-wrap items-center justify-center md:justify-start">
+                <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-4 lg:p-6 gap-4">
+                  <div className="text-center lg:text-left w-full">
+                    <span className="block text-accent text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-2">{t.range} (Net Profit)</span>
+                    <div className="text-xl md:text-2xl lg:text-3xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 tabular-nums">
                       <span>+{formatter.format(amount * res.min)}</span>
-                      <span className="mx-2 text-accent/40 font-sans text-sm md:text-base lg:text-xl">—</span>
+                      <span className="text-accent/40 hidden md:block">—</span>
+                      <span className="text-accent/40 block md:hidden text-sm italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
                       <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
