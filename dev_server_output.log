@@ -574,3 +574,8 @@ Error: Transform failed with 1 error:
 [vite] program reload
 22:20:59 [200] /en/portfolio 36ms
 22:21:07 [200] /en/portfolio 28ms
+22:24:37 [watch] src/components/PortfolioGallery.astro
+22:24:38 [200] /en/portfolio 23ms
+[vite] program reload
+22:25:08 [200] /en/portfolio 26ms
+22:25:17 [200] /en/portfolio 41ms
