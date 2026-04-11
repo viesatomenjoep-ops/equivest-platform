@@ -174,9 +174,9 @@ const allHorsesWithContent = await Promise.all(
            <!-- Left: Image -->
            <div class="w-full md:w-2/5 h-48 md:h-full relative shrink-0">
              {typeof horse.data.image === 'string' ? (
-                <img src={horse.data.image} class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
+                <img src={horse.data.image} class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
              ) : (
-                <Image src={horse.data.image} alt={horse.data.title} format="webp" class="w-full h-full object-cover" />
+                <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="lazy" decoding="async" class="w-full h-full object-cover" />
              )}
            </div>
            
