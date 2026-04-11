@@ -15,7 +15,7 @@ specs:
   target_sale: "€ 280.000"
   level: "1.30m - 1.35m Developing"
 documents:
-  fei_data: "https://www.horsetelex.com/horses/search?name=I'm%20SO%20GOOD"
+  fei_data: "https://data.fei.org/Horse/Performance.aspx?p=D445D18FBFE9A9A4A58254881B340E7B"
 
 ---
 Standing elegantly at 170cm, this 6-year-old mare combines the carefulness of I'm Special de Muze with the competitive drive of For Pleasure. Competing in the 1.25m - 1.30m Young Horse classes, her massive, ground-covering canter makes her a hyper-liquid asset. Valued at € 165.000 upon acquisition, she is molded perfectly for the lucrative amateur market, seeking a rapid turnaround to approximately € 280.000.

@@ -615,3 +615,23 @@ Error: Transform failed with 1 error:
 22:37:11 [200] /en/portfolio 24ms
 22:37:27 [watch] /src/styles/global.css
 22:37:27 [200] /en/portfolio 9ms
+[vite] program reload
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-1-special-blue-de-corlato.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-3-night-blue-de-la-roque.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-4-stakkazara-ps.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-5-doutzen.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-6-im-so-good.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-7-united-van-de-heffinck.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-8-napoleon.md
+22:58:22 [glob-loader] Reloaded data from ai-evaluation-market-data-9-warrior.md
+22:58:22 [200] /en/portfolio 23ms
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+22:58:23 [200] /en/portfolio 19ms

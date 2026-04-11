@@ -15,7 +15,7 @@ specs:
   target_sale: "€ 390.000"
   level: "1.10m - 1.20m YH"
 documents:
-  fei_data: "https://www.horsetelex.com/horses/search?name=Napoleon"
+  fei_data: ""
 
 ---
 A jaw-dropping 5-year-old grey stallion by Nixon van 't Meulenhof, supplemented by Cancara. He is a standout in the 1.10m - 1.20m Young Horse classes. His extreme elasticity and commercial stopping power as a spectacular grey stallion justify the € 180.000 entry point. Focused on the young horse championships, his trajectory allows for a massive ROI towards a € 390.000 target sale prior to his 7-year-old year.

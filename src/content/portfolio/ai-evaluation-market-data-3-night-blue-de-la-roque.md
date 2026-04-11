@@ -15,7 +15,7 @@ specs:
   target_sale: "€ 275.000"
   level: "1.30m - 1.35m Developing"
 documents:
-  fei_data: "https://www.horsetelex.com/horses/search?name=Night%20Blue%20de%20la%20Roque"
+  fei_data: "https://data.fei.org/Horse/Performance.aspx?p=EBF8624EC4328A857BF1157FFE0C8FAC"
 
 ---
 Directly descending from Chaccoon Blue and Odermus R, this 7-year-old mare is an explosive and highly competitive asset in the 1.30m - 1.35m developing classes. Her extreme blood and light-footed reflexes make her an ideal speed prospect. Secured at an entry valuation of € 145.000, she provides an aggressive and highly liquid path to a € 275.000 target sale for buyers seeking immediate 1.40m performance.
