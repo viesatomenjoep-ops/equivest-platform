@@ -52,10 +52,8 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 			</style>
 		</noscript>
 	</head>
-	<body class="bg-white text-primary selection:bg-accent selection:text-white w-full relative">
-		<main class="w-full overflow-x-hidden">
-			<slot />
-		</main>
+	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip overscroll-x-none relative">
+		<slot />
 		
 		<Chatbot client:idle lang={botLang} />
 

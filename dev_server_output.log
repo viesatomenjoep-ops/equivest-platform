@@ -906,3 +906,9 @@ Error: Transform failed with 1 error:
 00:06:45 [watch] /src/styles/global.css
 00:07:35 [watch] /src/styles/global.css
 00:07:35 [200] /en/portfolio 20ms
+00:09:55 [watch] /src/styles/global.css
+00:09:55 [watch] /src/styles/global.css
+00:10:13 [watch] /src/styles/global.css
+00:10:13 [200] /en/portfolio 28ms
+00:10:23 [watch] /src/styles/global.css
+00:10:23 [watch] /src/styles/global.css
