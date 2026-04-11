@@ -25,12 +25,12 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 <Layout title="Premium Access | Equivest Elite Investments" lang={lang}>
 	<Header />
 	
-	<main class="min-h-screen bg-bg-subtle relative pt-24">
+	<div id="main-content" class="min-h-screen bg-bg-subtle relative pt-24">
 		
 		<!-- THE LOCK SCREEN (Visible by default) -->
 		<div id="premium-lock" class="absolute inset-0 z-[100] bg-white flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] px-4">
 			<div class="max-w-md w-full space-y-8 text-center reveal reveal-up">
-				<img src="/images/logo.png" alt="Equivest Premium" class="w-24 h-24 mx-auto object-contain brightness-0" />
+				<img src="/images/logo.webp" alt="Equivest Premium" loading="lazy" width="96" height="96" class="w-24 h-24 mx-auto object-contain brightness-0" />
 				<h1 class="text-4xl font-serif text-primary">Premium Access</h1>
 				<p class="text-primary/70 text-lg">Please enter your exclusive access code to view our private collection.</p>
 				
@@ -141,7 +141,7 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 
 			<Contact />
 		</div>
-	</main>
+	</div>
 </Layout>
 
 <script>

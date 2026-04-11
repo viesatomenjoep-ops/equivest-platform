@@ -32,10 +32,10 @@ const t = useTranslations(lang);
 <Layout title={t("hero.title")} lang={lang}>
 	<Header />
 
-	<main>
+	<div id="site-wrapper">
 		<!-- Hero Section -->
 		<section
-			class="relative h-[90vh] flex items-center justify-center overflow-hidden premium-gradient text-white"
+			class="relative h-[90vh] flex items-center justify-center overflow-hidden premium-gradient text-white pt-24"
 		>
 			<div class="absolute inset-0 opacity-90">
 				<Image
@@ -54,7 +54,7 @@ const t = useTranslations(lang);
 				class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-8"
 			>
 				<div
-					class="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-4"
+					class="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full mb-4"
 				>
 					<span
 						class="w-2 h-2 bg-accent-light rounded-full animate-pulse"
@@ -167,5 +167,5 @@ const t = useTranslations(lang);
 		<div class="reveal reveal-up">
 			<Contact />
 		</div>
-	</main>
+	</div>
 </Layout>

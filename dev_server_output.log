@@ -1,0 +1,406 @@
+
+> equivest-platform@0.0.1 dev
+> astro dev
+
+[vite] connected.
+00:53:53 [types] Generated 0ms
+[vite] connected.
+00:53:53 [content] Syncing content
+00:53:53 [content] Astro config changed
+00:53:53 [content] Clearing content store
+00:53:53 [content] Synced content
+00:53:53 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v6.1.4 ready in 651 ms
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+00:53:53 watching for file changes...
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-1-special-blue-de-corlato.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-5-doutzen.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-8-napoleon.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-9-warrior.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-7-united-van-de-heffinck.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-6-im-so-good.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-4-stakkazara-ps.md
+00:56:12 [glob-loader] Reloaded data from ai-evaluation-market-data-3-night-blue-de-la-roque.md
+01:08:34 [200] /en/portfolio 29ms
+01:08:34 [vite] ✨ new dependencies optimized: astro/virtual-modules/transitions-router.js, astro/virtual-modules/transitions-types.js, astro/virtual-modules/transitions-events.js, astro/virtual-modules/transitions-swap-functions.js, astro/runtime/client/dev-toolbar/entrypoint.js
+01:08:34 [vite] ✨ optimized dependencies changed. reloading
+01:08:34 [200] /en/portfolio 18ms
+01:11:09 [200] /en/portfolio 11ms
+01:11:27 [200] /en/ 37ms
+01:11:30 [200] /nl/ 8ms
+01:11:30 [200] /de/ 6ms
+01:11:31 [200] /es/ 6ms
+01:11:41 [200] /en/portfolio 3ms
+01:11:53 [200] /en/ 10ms
+01:11:57 [200] /nl/ 8ms
+01:11:57 [200] /de/ 7ms
+01:11:58 [200] /es/ 5ms
+01:12:07 [200] /en/portfolio 7ms
+01:12:18 [200] /en/ 6ms
+01:12:22 [200] /nl/ 6ms
+01:12:22 [200] /de/ 6ms
+01:12:23 [200] /es/ 4ms
+01:12:35 [200] /en/portfolio 6ms
+01:12:41 [200] /en/ 8ms
+01:12:44 [200] /nl/ 8ms
+01:12:44 [200] /de/ 6ms
+01:12:45 [200] /es/ 7ms
+01:13:01 [200] /en/portfolio 4ms
+01:13:07 [200] /en/ 7ms
+01:13:10 [200] /nl/ 7ms
+01:13:10 [200] /de/ 7ms
+01:13:11 [200] /es/ 8ms
+[vite] program reload
+[vite] An error happened during full reload
+Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?
+Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?
+    at loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22663:33)
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-8-napoleon.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-2-theuwi-van-het-distelhof.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-1-special-blue-de-corlato.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-6-im-so-good.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-5-doutzen.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-9-warrior.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-7-united-van-de-heffinck.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-4-stakkazara-ps.md
+01:14:08 [glob-loader] Reloaded data from ai-evaluation-market-data-3-night-blue-de-la-roque.md
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+01:14:09 [200] /en/portfolio 582ms
+01:14:09 [200] /en/portfolio 10ms
+[vite] program reload
+01:14:18 [200] /en/portfolio 19ms
+01:14:52 [200] /en/portfolio 28ms
+08:24:33 [200] /en/portfolio 76ms
+[vite] program reload
+08:39:31 [200] /en/portfolio 25ms
+08:40:42 [200] /en/portfolio 21ms
+21:02:14 [watch] /src/styles/global.css
+21:02:14 [200] /en/portfolio 47ms
+[vite] program reload
+21:02:30 [watch] public/admin/index.html
+21:02:30 [200] /en/portfolio 20ms
+21:03:04 [200] /en/portfolio 3ms
+21:03:05 [200] /en/portfolio 11ms
+21:03:06 [200] /en/portfolio 8ms
+21:03:17 [watch] /src/styles/global.css
+21:03:17 [200] /en/portfolio 6ms
+21:03:37 [watch] /src/styles/global.css
+21:03:38 [200] /en/portfolio 5ms
+21:03:46 [200] /en/portfolio 7ms
+21:04:00 [watch] src/components/PortfolioGallery.astro
+21:04:00 [200] /en/portfolio 24ms
+[vite] program reload
+21:04:09 [200] /en/portfolio 22ms
+[vite] An error happened during full reload
+Could not find requested image `/Users/tomvanbiene/Equivest Platform /src/assets/images/hero.png`. Does it exist?
+ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platform /src/assets/images/hero.png`. Does it exist?
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    at async EnvironmentPluginContainer.load (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:28763:19)
+    at async loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22628:21)
+    at async fetchModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:33997:15)
+    at async handleInvoke (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25837:21)
+    at async EventEmitter.listenerForInvokeHandler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25892:13)
+21:04:23 [watch] src/components/Header.astro
+21:04:23 [200] /en/portfolio 22ms
+21:04:32 [watch] /src/styles/global.css
+21:04:32 [200] /en/portfolio 25ms
+21:05:04 [watch] /src/styles/global.css
+21:05:04 [200] /en/portfolio 8ms
+21:06:44 [200] /en/portfolio 6ms
+[vite] program reload
+21:10:53 [200] /en/portfolio 17ms
+21:11:27 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:11:46 [watch] /src/styles/global.css
+21:11:46 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:11:46 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:11:57 [watch] /src/styles/global.css
+21:11:57 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:11:57 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+[vite] program reload
+[vite] An error happened during full reload
+Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    at async EnvironmentPluginContainer.load (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:28763:19)
+    at async loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22628:21)
+    at async fetchModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:33997:15)
+    at async handleInvoke (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25837:21)
+    at async EventEmitter.listenerForInvokeHandler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25892:13)
+21:12:09 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+[vite] An error happened during full reload
+Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    at async EnvironmentPluginContainer.load (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:28763:19)
+    at async loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22628:21)
+    at async fetchModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:33997:15)
+    at async handleInvoke (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25837:21)
+    at async EventEmitter.listenerForInvokeHandler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25892:13)
+21:12:17 [watch] /src/styles/global.css
+21:12:17 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:17 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:19 [watch] /src/styles/global.css
+21:12:19 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:19 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+[vite] program reload
+[vite] An error happened during full reload
+Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    at async EnvironmentPluginContainer.load (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:28763:19)
+    at async loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22628:21)
+    at async fetchModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:33997:15)
+    at async handleInvoke (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25837:21)
+    at async EventEmitter.listenerForInvokeHandler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25892:13)
+21:12:27 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+[vite] An error happened during full reload
+Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    at async EnvironmentPluginContainer.load (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:28763:19)
+    at async loadAndTransform (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:22628:21)
+    at async fetchModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:33997:15)
+    at async handleInvoke (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25837:21)
+    at async EventEmitter.listenerForInvokeHandler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/chunks/config.js:25892:13)
+21:12:29 [watch] /src/styles/global.css
+21:12:29 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:29 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:43 [watch] src/components/PortfolioGallery.astro
+21:12:43 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:12:58 [watch] src/components/PortfolioGallery.astro
+21:12:58 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at LoadPluginContext.handler (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/assets/vite-plugin-assets.js:245:19)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:13:28 [ERROR] [ImageNotFound] Could not find requested image `/Users/tomvanbiene/Equivest Platform /public/images/logo.png`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /Users/tomvanbiene/Equivest Platform /node_modules/astro/dist/assets/vite-plugin-assets.js:245:19
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:13:38 [watch] src/components/Header.astro
+21:13:38 [200] /en/portfolio 19ms
+21:13:38 [200] /_image 112ms
+21:15:05 [watch] /src/styles/global.css
+21:15:05 [200] /en/portfolio 4ms
+21:15:07 [watch] /src/components/Header.astro?astro&type=style&index=0&lang.css
+21:15:07 [watch] src/components/Header.astro
+[vite] program reload
+21:15:14 [watch] /src/styles/global.css
+21:15:14 [200] /en/portfolio 28ms
+21:15:16 [watch] /src/styles/global.css
+21:15:16 [200] /en/portfolio 7ms
+21:15:27 [watch] /src/styles/global.css
+21:15:27 [watch] /src/styles/global.css
+21:15:28 [watch] src/components/PortfolioGallery.astro
+21:15:28 [200] /en/portfolio 22ms
+21:15:35 [watch] /src/styles/global.css
+21:15:35 [200] /en/portfolio 51ms
+21:17:43 [watch] /src/styles/global.css
+21:17:43 [200] /en/portfolio 17ms
+21:17:45 [watch] src/components/PortfolioGallery.astro
+21:17:45 [200] /en/portfolio 24ms
+21:17:59 [watch] src/components/Header.astro
+21:18:00 [200] /en/portfolio 35ms
+21:18:07 [watch] /src/styles/global.css
+21:18:07 [200] /en/portfolio 5ms
+21:19:23 [watch] /src/styles/global.css
+21:19:23 [200] /en/portfolio 46ms
+21:19:30 [watch] /src/styles/global.css
+21:19:30 [200] /en/portfolio 22ms
+21:21:48 [watch] /src/styles/global.css
+21:21:49 [200] /en/portfolio 69ms
+21:21:50 [watch] /src/styles/global.css
+21:21:50 [ERROR] [CompilerError] The closing frontmatter fence (---) is missing an opening fence
+  Hint:
+    Add --- at the beginning of your file before any import statements or code
+  Stack trace:
+    at handleCompileResultErrors (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/core/compile/compile.js:63:11)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:21:57 [watch] /src/styles/global.css
+21:21:57 [ERROR] [CompilerError] The closing frontmatter fence (---) is missing an opening fence
+  Hint:
+    Add --- at the beginning of your file before any import statements or code
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /src/layouts/Layout.astro:20:1
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:22:07 [watch] /src/styles/global.css
+21:22:07 [ERROR] [CompilerError] The closing frontmatter fence (---) is missing an opening fence
+  Hint:
+    Add --- at the beginning of your file before any import statements or code
+  Stack trace:
+    at handleCompileResultErrors (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/astro/dist/core/compile/compile.js:63:11)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:22:13 [ERROR] [CompilerError] The closing frontmatter fence (---) is missing an opening fence
+  Hint:
+    Add --- at the beginning of your file before any import statements or code
+  Stack trace:
+    at /Users/tomvanbiene/Equivest Platform /src/layouts/Layout.astro:20:1
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:22:23 [watch] /src/styles/global.css
+21:22:23 [200] /en/portfolio 26ms
+21:22:23 [200] /en/portfolio 25ms
+21:23:40 [watch] /src/styles/global.css
+21:23:40 [200] /en/portfolio 7ms
+21:23:42 [watch] /src/styles/global.css
+21:23:43 [200] /en/portfolio 4ms
+21:24:54 [watch] /src/styles/global.css
+21:24:55 [200] /en/portfolio 5ms
+21:24:56 [watch] /src/styles/global.css
+21:24:56 [200] /en/portfolio 4ms
+21:28:22 [watch] src/components/Header.astro
+21:28:22 [200] /en/portfolio 25ms
+21:28:24 [watch] src/components/Header.astro
+21:28:24 [200] /en/portfolio 20ms
+21:28:52 [watch] src/components/Header.astro
+21:28:52 [200] /en/portfolio 30ms
+21:28:59 [watch] src/components/Header.astro
+21:28:59 [200] /en/portfolio 21ms
+21:29:06 [watch] src/components/Header.astro
+21:29:06 [200] /en/portfolio 25ms
+21:29:08 [watch] src/components/Header.astro
+21:29:08 [200] /en/portfolio 17ms
+21:30:10 [watch] /src/styles/global.css
+21:30:10 [200] /en/portfolio 24ms
+[vite] program reload
+21:30:12 [200] /en/portfolio 15ms
+21:33:31 [watch] src/components/PortfolioGallery.astro
+21:33:31 [200] /en/portfolio 30ms
+21:33:32 [ERROR] [FailedToFetchRemoteImageDimensions] Failed to get the dimensions for https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png.
+  Hint:
+    Verify your remote image URL is accurate, and that you are not using `inferSize` with a file located in your `public/` folder.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-fetch-remote-image-dimensions/
+  Stack trace:
+    at inferRemoteSize (eval at runInlinedModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:44:11)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:33:38 [200] /en/portfolio 6ms
+21:33:38 [ERROR] [FailedToFetchRemoteImageDimensions] Failed to get the dimensions for https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png.
+  Hint:
+    Verify your remote image URL is accurate, and that you are not using `inferSize` with a file located in your `public/` folder.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/failed-to-fetch-remote-image-dimensions/
+  Stack trace:
+    at inferRemoteSize (eval at runInlinedModule (file:///Users/tomvanbiene/Equivest%20Platform%20/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:44:11)
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:33:54 [watch] src/components/PortfolioGallery.astro
+21:33:54 [200] /en/portfolio 27ms
+21:34:46 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
+21:34:46 [watch] src/components/Chatbot.tsx
+[vite] program reload
+21:34:47 [watch] /src/styles/global.css, /src/components/Chatbot.tsx
+21:34:47 [watch] src/components/Chatbot.tsx
+[vite] program reload

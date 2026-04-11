@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/quicksand";
 import "../styles/global.css";
 
@@ -21,15 +20,15 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth w-full">
+<html lang={lang} translate="no" class="scroll-smooth w-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="google" content="notranslate" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<ClientRouter />
 		
 		<!-- SEO -->
 		<title>{title} | Equivest</title>
@@ -52,7 +51,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 			</style>
 		</noscript>
 	</head>
-	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip w-full relative">
+	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-hidden w-full relative">
 		<slot />
 		
 		<Chatbot client:idle lang={botLang} />

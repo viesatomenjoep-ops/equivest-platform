@@ -119,8 +119,11 @@ const email = "equivestbv@gmail.com";
        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="flex items-center space-x-4">
              <img 
-               src="/images/logo.png" 
+               src="/images/logo.webp" 
                alt="Equivest Logo" 
+               loading="lazy"
+               width="48"
+               height="48"
                class="w-10 h-10 md:w-12 md:h-12 object-contain brightness-0 invert animate-[spin_15s_linear_infinite]" 
              />
              <div class="flex flex-col text-left">
@@ -135,6 +138,6 @@ const email = "equivestbv@gmail.com";
 
   <!-- Interactive Subtle Scroll to Top Logo -->
   <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute bottom-8 right-8 z-0 w-16 h-16 opacity-[0.03] hover:opacity-[0.10] transition-all duration-700 cursor-pointer focus:outline-none hidden sm:block">
-    <img src="/images/logo.png" alt="Scroll to top" class="w-full h-full object-contain brightness-0 invert" />
+    <img src="/images/logo.webp" alt="Scroll to top" width="64" height="64" loading="lazy" class="w-full h-full object-contain brightness-0 invert" />
   </button>
 </section>
