@@ -27,8 +27,7 @@ const allHorsesWithContent = await Promise.all(
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
-    <!-- THE LOCK SCREEN OVERLAY -->
-    <div id="portfolio-lock" class="absolute inset-0 z-[50] flex flex-col items-center justify-start bg-bg-subtle/95 w-full transition-all duration-700 pt-32 px-4">
+    <div id="portfolio-lock" class="absolute inset-0 z-[50] flex flex-col items-center justify-start bg-bg-subtle w-full transition-all duration-700 pt-32 px-4 backdrop-blur-md">
       <div class="max-w-md w-full space-y-6 md:space-y-8 text-center reveal reveal-up bg-white p-8 md:p-14 shadow-2xl border border-gray-100">
         <img src="/images/logo.webp" alt="Equivest Access" loading="lazy" width="80" height="80" class="w-16 h-16 md:w-20 md:h-20 mx-auto object-contain brightness-0 animate-slow-spin" />
         <h2 class="text-3xl md:text-4xl font-serif text-primary">Private Access</h2>
@@ -317,7 +316,7 @@ const allHorsesWithContent = await Promise.all(
   }
 
   function initLock() {
-    if (localStorage.getItem('equivest_unlocked') === 'true') {
+    if (localStorage.getItem('equivest_v2_unlocked') === 'true') {
        unlockPortfolio(true);
        return;
     }
@@ -336,7 +335,7 @@ const allHorsesWithContent = await Promise.all(
 
         if (user === 'Equivest 11' && code === '1111') {
           errorMsg.classList.add('hidden');
-          localStorage.setItem('equivest_unlocked', 'true');
+          localStorage.setItem('equivest_v2_unlocked', 'true');
           unlockPortfolio();
         } else {
           errorMsg.classList.remove('hidden');
