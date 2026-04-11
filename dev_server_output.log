@@ -579,3 +579,5 @@ Error: Transform failed with 1 error:
 [vite] program reload
 22:25:08 [200] /en/portfolio 26ms
 22:25:17 [200] /en/portfolio 41ms
+22:30:06 [watch] /src/styles/global.css
+22:30:06 [200] /en/portfolio 35ms
