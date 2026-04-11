@@ -406,3 +406,7 @@ ImageNotFound: Could not find requested image `/Users/tomvanbiene/Equivest Platf
 [vite] program reload
 21:37:27 [watch] /src/styles/global.css
 21:37:27 [watch] /src/styles/global.css
+21:43:20 [watch] src/components/Header.astro
+21:43:20 [200] /en/portfolio 22ms
+21:43:45 [watch] src/components/Header.astro
+21:43:46 [200] /en/portfolio 23ms

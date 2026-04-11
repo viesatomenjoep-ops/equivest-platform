@@ -78,7 +78,7 @@ const navItems = [
         <!-- Mobile & Tablet menu button -->
         <div class="xl:hidden flex items-center relative">
           <button id="menu-btn" class="text-primary hover:text-accent p-2 transition-colors focus:outline-none" aria-label="Toggle menu">
-            <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="menu-icon" class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path class="menu-path-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
               <path class="menu-path-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -194,15 +194,20 @@ const navItems = [
       }
     };
 
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("translate-x-0");
-      toggleMenu(!isOpen);
-    });
+    const isMenuOpen = () => mobileMenu.classList.contains("translate-x-0");
 
-    // Close menu on link click
-    const navLinks = mobileMenu.querySelectorAll("a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => toggleMenu(false));
+    const handleMenuClick = (e: Event) => {
+      e.preventDefault();
+      toggleMenu(!isMenuOpen());
+    };
+
+    menuBtn?.addEventListener("click", handleMenuClick);
+    menuBtn?.addEventListener("touchstart", handleMenuClick, { passive: false });
+    
+    // Auto-close on click link
+    document.querySelectorAll(".mobile-nav-item").forEach((item) => {
+      item.addEventListener("click", () => toggleMenu(false));
+      item.addEventListener("touchstart", () => toggleMenu(false), { passive: true });
     });
 
     // Close on escape key
