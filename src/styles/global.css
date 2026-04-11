@@ -95,3 +95,12 @@
 .animate-slow-spin {
   animation: slow-spin 45s linear infinite;
 }
+
+@keyframes mouse-scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(6px); opacity: 0; }
+}
+
+.animate-mouse-scroll {
+  animation: mouse-scroll 1.5s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+}

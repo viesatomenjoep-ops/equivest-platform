@@ -105,21 +105,11 @@ const t = useTranslations(lang);
 				</div>
 			</div>
 
-			<div
-				class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-70"
-			>
-				<svg
-					class="w-6 h-6"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-				</svg>
+			<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center opacity-70">
+				<div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-[2px] mb-2 bg-black/10 backdrop-blur-sm">
+					<div class="w-1.5 h-3 bg-white/70 rounded-full animate-mouse-scroll"></div>
+				</div>
+				<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70">Scroll</span>
 			</div>
 		</section>
 

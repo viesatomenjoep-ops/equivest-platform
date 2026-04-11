@@ -609,3 +609,9 @@ Error: Transform failed with 1 error:
 22:35:15 [200] /en/portfolio 22ms
 [vite] program reload
 22:35:31 [200] /en/portfolio 35ms
+22:36:57 [watch] /src/styles/global.css
+22:36:57 [watch] /src/styles/global.css
+22:37:11 [watch] src/components/PortfolioGallery.astro
+22:37:11 [200] /en/portfolio 24ms
+22:37:27 [watch] /src/styles/global.css
+22:37:27 [200] /en/portfolio 9ms

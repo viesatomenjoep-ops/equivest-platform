@@ -183,8 +183,20 @@ const allHorsesWithContent = await Promise.all(
            <!-- Right: Content -->
            <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative">
               <div class="max-w-2xl mx-auto">
-                  <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-3 block">Investment Prospectus</span>
-                  <h2 class="text-2xl md:text-5xl font-serif text-primary mb-6 md:mb-10">{horse.data.title}</h2>
+                  <div class="flex items-start justify-between mb-6 md:mb-10">
+                      <div>
+                         <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-3 block">Investment Prospectus</span>
+                         <h2 class="text-2xl md:text-5xl font-serif text-primary">{horse.data.title}</h2>
+                      </div>
+                      
+                      <!-- Mobile Scroll Hint -->
+                      <div class="md:hidden flex flex-col items-center justify-center shrink-0 ml-4 mt-2 opacity-60">
+                         <div class="w-5 h-8 border-2 border-primary/50 rounded-full flex justify-center p-[2px] mb-1">
+                            <div class="w-1 h-2 bg-primary/50 rounded-full animate-mouse-scroll"></div>
+                         </div>
+                         <span class="text-[8px] font-bold uppercase tracking-widest text-primary/70">Scroll</span>
+                      </div>
+                  </div>
                   
                   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-6 mb-6 pb-6 md:mb-12 md:pb-10 border-b border-primary/10">
                     <div class="space-y-2">
