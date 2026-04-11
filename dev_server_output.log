@@ -663,3 +663,5 @@ Error: Transform failed with 1 error:
 23:11:14 [200] /en/portfolio 15ms
 23:11:31 [watch] /src/styles/global.css
 23:11:31 [200] /en/portfolio 7ms
+23:13:29 [watch] /src/styles/global.css
+23:13:29 [200] /en/portfolio 11ms
