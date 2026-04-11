@@ -431,16 +431,30 @@ const allHorsesWithContent = await Promise.all(
   
   function syncModalScrolls() {
       document.querySelectorAll('.modal-scroll-area').forEach(area => {
-          area.addEventListener('scroll', (e) => {
-              const el = e.currentTarget as HTMLElement;
-              const ind = el.querySelector('.indicator-dynamic') as HTMLElement;
-              if (ind) {
-                  const maxScroll = el.scrollHeight - el.clientHeight || 1;
-                  let progress = el.scrollTop / maxScroll;
-                  if (progress > 1) progress = 1;
-                  ind.style.transform = `translateY(${progress * 100}%)`;
+          // Cleanup old listeners to prevent memory leaking crashes
+          if ((area as any)._modalScrollHandler) {
+              area.removeEventListener('scroll', (area as any)._modalScrollHandler);
+          }
+          
+          let ticking = false;
+          (area as any)._modalScrollHandler = (e: any) => {
+              if (!ticking) {
+                  window.requestAnimationFrame(() => {
+                      const el = e.currentTarget as HTMLElement;
+                      const ind = el.querySelector('.indicator-dynamic') as HTMLElement;
+                      if (ind) {
+                          const maxScroll = el.scrollHeight - el.clientHeight || 1;
+                          let progress = el.scrollTop / maxScroll;
+                          if (progress > 1) progress = 1;
+                          ind.style.transform = `translateY(${progress * 100}%)`;
+                      }
+                      ticking = false;
+                  });
+                  ticking = true;
               }
-          });
+          };
+          
+          area.addEventListener('scroll', (area as any)._modalScrollHandler, { passive: true });
       });
   }
   syncModalScrolls();
