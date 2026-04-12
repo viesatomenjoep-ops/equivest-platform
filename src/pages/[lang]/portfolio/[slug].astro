@@ -41,11 +41,11 @@ const t = useTranslations(lang);
             <div class="bg-white shadow-premium rounded-sm overflow-hidden flex flex-col lg:flex-row lg:items-start border border-primary/5">
                 
                <!-- Left: Hero Image (Sticky Editorial Layout) -->
-               <div class="w-full lg:w-2/5 h-[40vh] lg:h-[calc(100vh-6rem)] lg:sticky lg:top-24 relative shrink-0 overflow-hidden group">
+               <div class="w-full lg:w-2/5 lg:sticky lg:top-24 relative shrink-0 overflow-hidden group flex items-center justify-center bg-gray-50/50">
                  {typeof horse.data.image === 'string' ? (
-                    <img src={horse.data.image} alt={horse.data.title} class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="eager" />
+                    <img src={horse.data.image} alt={horse.data.title} class="w-full h-auto max-h-[85vh] object-contain transition-transform duration-1000 group-hover:scale-105" loading="eager" />
                  ) : (
-                    <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" class="w-full h-auto max-h-[85vh] object-contain transition-transform duration-1000 group-hover:scale-105" />
                  )}
                  <div class="absolute top-6 left-6">
                      <a href={`/${lang}/portfolio`} class="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 font-bold uppercase tracking-widest text-xs text-primary hover:bg-primary hover:text-white transition-colors shadow-lg cursor-pointer">
