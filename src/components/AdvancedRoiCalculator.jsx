@@ -40,7 +40,9 @@ function CurrencyDropdown({ currency, setCurrency, id }) {
 
 const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurrency, outputCurrency = 'EUR', setOutputCurrency, rates = {EUR:1, USD:1.1, GBP:0.85} }) => {
   const inputSymbol = inputCurrency === 'USD' ? '$' : inputCurrency === 'GBP' ? '£' : '€';
-  const conversionRate = rates[outputCurrency] / rates[inputCurrency];
+  
+  const [purchaseCurr, setPurchaseCurr] = useState(inputCurrency);
+  const [saleCurr, setSaleCurr] = useState('USD'); // Default sale to USD to show cross-currency power
   
   const [data, setData] = useState({
     purchasePrice: 250000,
@@ -171,29 +173,36 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
 
   const calc = useMemo(() => {
     const fraction = data.ownershipPercentage / 100;
-    const myPurchasePrice = data.purchasePrice * fraction;
     
-    const yearlyInsurance = (data.purchasePrice * (data.insuranceRateYearly / 100));
-    const totalInsurance = (yearlyInsurance / 12) * data.monthsHeld;
+    // Normalize properties to EUR base
+    const myPurchasePriceEUR = (data.purchasePrice * fraction) / rates[purchaseCurr];
+    
+    // Insurance is usually % of purchase price. Calculate it in purchaseCurr, then to EUR
+    const yearlyInsuranceEUR = (data.purchasePrice * (data.insuranceRateYearly / 100)) / rates[purchaseCurr];
+    const totalInsuranceEUR = (yearlyInsuranceEUR / 12) * data.monthsHeld;
+    
+    // Ops costs are assumed to be generated in 'inputCurrency'
     const monthlyTotalCost = data.monthlyBoardingTraining + data.monthlyVetFarrier + data.monthlyShowTransport;
-    const totalOperationalCosts = (monthlyTotalCost * data.monthsHeld) + totalInsurance;
+    const monthlyTotalCostEUR = monthlyTotalCost / rates[inputCurrency];
+    const totalOperationalCostsEUR = (monthlyTotalCostEUR * data.monthsHeld) + totalInsuranceEUR;
     
-    const myOperationalCosts = totalOperationalCosts * fraction;
-    const myTotalInvestment = myPurchasePrice + myOperationalCosts;
+    const myOperationalCostsEUR = totalOperationalCostsEUR * fraction;
+    const myTotalInvestmentEUR = myPurchasePriceEUR + myOperationalCostsEUR;
     
-    const myExpectedReturn = data.expectedSalePrice * fraction;
-    const myNetProfit = myExpectedReturn - myTotalInvestment;
-    const roiPercentage = myTotalInvestment > 0 ? (myNetProfit / myTotalInvestment) * 100 : 0;
+    const myExpectedReturnEUR = (data.expectedSalePrice * fraction) / rates[saleCurr];
+    const myNetProfitEUR = myExpectedReturnEUR - myTotalInvestmentEUR;
+    const roiPercentage = myTotalInvestmentEUR > 0 ? (myNetProfitEUR / myTotalInvestmentEUR) * 100 : 0;
 
     return { 
-      myPurchasePrice, 
-      myOperationalCosts, 
-      myTotalInvestment, 
-      myExpectedReturn,
-      myNetProfit, 
+      myPurchasePriceBase: myPurchasePriceEUR, 
+      myOperationalCostsBase: myOperationalCostsEUR, 
+      myTotalInvestmentBase: myTotalInvestmentEUR, 
+      myExpectedReturnBase: myExpectedReturnEUR,
+      myNetProfitBase: myNetProfitEUR, 
       roiPercentage 
     };
-  }, [data]);
+  }, [data, purchaseCurr, saleCurr, inputCurrency, rates]);
+
 
   return (
     <div className="bg-primary p-6 md:p-10 shadow-2xl relative overflow-hidden text-white w-full max-w-7xl mx-auto rounded-none border-y border-white/10">
@@ -212,16 +221,16 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
             <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.purchase}</label>
               <div className="flex items-center w-full justify-start mt-auto">
-                <CurrencyDropdown currency={inputCurrency} setCurrency={setInputCurrency} id="adv-drop-1" />
-                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
+                <CurrencyDropdown currency={purchaseCurr} setCurrency={setPurchaseCurr} id="adv-drop-1" />
+                <input type="number" name="purchasePrice" value={data.purchasePrice === 0 ? '' : data.purchasePrice} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
             
             <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.expectedSale}</label>
               <div className="flex items-center w-full justify-start mt-auto">
-                <CurrencyDropdown currency={inputCurrency} setCurrency={setInputCurrency} id="adv-drop-2" />
-                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-accent outline-none w-full tabular-nums" />
+                <CurrencyDropdown currency={saleCurr} setCurrency={setSaleCurr} id="adv-drop-2" />
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice === 0 ? '' : data.expectedSalePrice} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
 
@@ -276,23 +285,23 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
             <div className="space-y-4">
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourPurchase}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myPurchasePrice * conversionRate)}</span>
+                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myPurchasePriceBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourTco}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myOperationalCosts * conversionRate)}</span>
+                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myOperationalCostsBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-4 mt-4">
                 <span className="text-white font-bold text-[10px] md:text-[11px] uppercase tracking-[0.2em] flex items-center">{t.totalInvestment}</span>
-                <span className="text-lg md:text-xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-3" /> {formatOutput.format(calc.myTotalInvestment * conversionRate)}</span>
+                <span className="text-lg md:text-xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-3" /> {formatOutput.format(calc.myTotalInvestmentBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end pt-4">
                 <span className="text-white/80 font-bold uppercase tracking-[0.2em] text-[10px] md:text-[11px] mb-1 flex items-center">{t.netProfit}</span>
-                <span className={`text-xl md:text-2xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
-                  <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatOutput.format(calc.myNetProfit * conversionRate)}
+                <span className={`text-xl md:text-2xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfitBase >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                  <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-4" /> {calc.myNetProfitBase >= 0 ? '+' : ''}{formatOutput.format(calc.myNetProfitBase * rates[outputCurrency])}
                 </span>
               </div>
               
