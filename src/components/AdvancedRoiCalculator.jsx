@@ -201,36 +201,36 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
-              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+            <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
+              <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.purchase}</label>
+              <div className="flex items-center w-full justify-start mt-auto">
                 <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-1" />
-                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
+                <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
             
-            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
-              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
+            <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
+              <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.expectedSale}</label>
+              <div className="flex items-center w-full justify-start mt-auto">
                 <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-2" />
-                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
-              <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.duration}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-white/50 text-base md:text-lg mr-2">#</span>
-                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
+            <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
+              <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.duration}</label>
+              <div className="flex items-center w-full justify-start mt-auto">
+                <span className="text-white/50 text-xl font-serif mr-3">#</span>
+                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
 
-            <div className="bg-accent/10 border border-accent/30 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors relative overflow-hidden gap-2 md:gap-0">
+            <div className="bg-accent/10 border border-accent/30 p-5 flex flex-col items-start focus-within:border-accent transition-colors relative overflow-hidden gap-3">
               <div className="absolute left-0 top-0 w-1 h-full bg-accent"></div>
-              <label className="text-accent text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] ml-0 md:ml-2 w-full md:w-1/2">{t.syndicateShare}</label>
-              <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-accent/50 text-base md:text-lg mr-2">%</span>
-                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
+              <label className="text-accent text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full ml-1">{t.syndicateShare}</label>
+              <div className="flex items-center w-full justify-start mt-auto ml-1">
+                <span className="text-accent/50 text-xl font-serif mr-3">%</span>
+                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
           </div>
@@ -265,32 +265,32 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{t.yourFinancials}</h3>
             <p className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
             
-            <div className="space-y-4">
-              <div className="flex justify-between items-end border-b border-white/10 pb-2">
-                <span className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-widest">{t.yourPurchase}</span>
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
+            <div className="space-y-5">
+              <div className="flex justify-between items-end border-b border-white/10 pb-3">
+                <span className="text-white/60 text-[11px] md:text-xs font-bold uppercase tracking-[0.25em]">{t.yourPurchase}</span>
+                <span className="text-xl md:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
               </div>
               
-              <div className="flex justify-between items-end border-b border-white/10 pb-2">
-                <span className="text-white/60 text-xs md:text-sm font-medium uppercase tracking-widest">{t.yourTco}</span>
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
+              <div className="flex justify-between items-end border-b border-white/10 pb-3">
+                <span className="text-white/60 text-[11px] md:text-xs font-bold uppercase tracking-[0.25em]">{t.yourTco}</span>
+                <span className="text-xl md:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
               </div>
               
-              <div className="flex justify-between items-end border-b border-white/30 pb-3 mt-4">
-                <span className="text-white font-bold text-xs md:text-sm lg:text-base uppercase tracking-widest flex items-center">{t.totalInvestment}</span>
-                <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-3" /> {formatter.format(calc.myTotalInvestment)}</span>
+              <div className="flex justify-between items-end border-b border-white/30 pb-4 mt-5">
+                <span className="text-white font-bold text-[11px] md:text-sm uppercase tracking-[0.25em] flex items-center">{t.totalInvestment}</span>
+                <span className="text-2xl md:text-3xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-3" /> {formatter.format(calc.myTotalInvestment)}</span>
               </div>
               
-              <div className="flex justify-between items-end pt-3">
-                <span className="text-white/80 font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-1 flex items-center">{t.netProfit}</span>
-                <span className={`text-2xl md:text-3xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+              <div className="flex justify-between items-end pt-4">
+                <span className="text-white/80 font-bold uppercase tracking-[0.25em] text-[11px] md:text-sm mb-1 flex items-center">{t.netProfit}</span>
+                <span className={`text-3xl md:text-4xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
                   <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
                 </span>
               </div>
               
-              <div className="mt-6 pt-6 border-t border-accent/20 text-center bg-white/5 rounded-lg border border-white/10 p-4">
-                <span className="block text-white/50 text-[10px] uppercase tracking-[0.3em] font-bold mb-2">{t.expectedRoi}</span>
-                <div className={`text-5xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
+              <div className="mt-8 pt-6 border-t border-accent/20 text-center bg-white/5 rounded-xl border border-white/10 p-5">
+                <span className="block text-white/50 text-[11px] md:text-xs uppercase tracking-[0.3em] font-bold mb-3">{t.expectedRoi}</span>
+                <div className={`text-4xl md:text-5xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
                   {calc.roiPercentage.toFixed(1)}%
                 </div>
               </div>
