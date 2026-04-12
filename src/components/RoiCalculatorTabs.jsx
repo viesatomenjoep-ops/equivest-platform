@@ -4,6 +4,7 @@ import AdvancedRoiCalculator from './AdvancedRoiCalculator';
 
 export default function RoiCalculatorTabs({ lang = 'en' }) {
   const [activeTab, setActiveTab] = useState('advanced');
+  const [currency, setCurrency] = useState('EUR');
 
   const translations = {
     en: { simpleTab: 'Investment Profit Estimator', advancedTab: 'Advanced Syndicate TCO' },
@@ -30,10 +31,23 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
            <span className="text-center">{t.simpleTab}</span>
          </button>
       </div>
+      
+      {/* Currency Selector */}
+      <div className="flex bg-white/10 border border-primary/20 rounded-full p-1 mb-8 max-w-[240px] relative z-20">
+         {['EUR', 'USD', 'GBP'].map((code) => (
+           <button 
+             key={code}
+             onClick={() => setCurrency(code)}
+             className={`flex-1 py-2 text-xs font-bold transition-all duration-300 rounded-full ${currency === code ? 'bg-primary text-white shadow-md' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
+           >
+             {code === 'EUR' ? '€' : code === 'USD' ? '$' : '£'} {code}
+           </button>
+         ))}
+      </div>
 
       <div className="w-full animate-fade-in transition-all duration-500">
-        {activeTab === 'simple' && <SimpleRoiCalculator lang={lang} />}
-        {activeTab === 'advanced' && <AdvancedRoiCalculator lang={lang} />}
+        {activeTab === 'simple' && <SimpleRoiCalculator lang={lang} currency={currency} />}
+        {activeTab === 'advanced' && <AdvancedRoiCalculator lang={lang} currency={currency} />}
       </div>
     </div>
   );

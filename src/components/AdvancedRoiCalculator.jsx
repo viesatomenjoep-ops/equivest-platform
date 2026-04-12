@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 
-const AdvancedRoiCalculator = ({ lang = 'en' }) => {
+const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
+  const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [data, setData] = useState({
     purchasePrice: 250000,
     ownershipPercentage: 100,
@@ -107,7 +108,7 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
   
   const formatter = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
     style: 'currency',
-    currency: lang === 'en' ? 'USD' : 'EUR',
+    currency: currency,
     maximumFractionDigits: 0,
   });
 
@@ -169,7 +170,7 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-white/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <span className="text-white/50 text-base md:text-lg mr-2">{currencySymbol}</span>
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -177,7 +178,7 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-accent/50 text-base md:text-lg mr-2">{lang === 'en' ? '$' : '€'}</span>
+                <span className="text-accent/50 text-base md:text-lg mr-2">{currencySymbol}</span>
                 <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -204,15 +205,15 @@ const AdvancedRoiCalculator = ({ lang = 'en' }) => {
             <h3 className="text-base font-serif mb-4 text-white/80">{t.monthlyOps}</h3>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
                 <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
                 <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
                 <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">

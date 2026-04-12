@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 
-const SimpleRoiCalculator = ({ lang = 'en' }) => {
+const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
+  const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [amount, setAmount] = useState(100000);
   const [activeYear, setActiveYear] = useState(0);
 
@@ -79,9 +80,9 @@ const SimpleRoiCalculator = ({ lang = 'en' }) => {
     { year: t.year3, label: t.longTerm, min: 0.75, max: 3.0 },
   ], [t]);
 
-  const formatter = new Intl.NumberFormat(lang === 'nl' ? 'nl-NL' : 'en-US', {
+  const formatter = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
     style: 'currency',
-    currency: 'EUR',
+    currency: currency,
     maximumFractionDigits: 0,
   });
 
@@ -101,7 +102,7 @@ const SimpleRoiCalculator = ({ lang = 'en' }) => {
           <div className="bg-white/5 border border-white/10 rounded-2xl px-2 py-2 lg:px-4 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
             <label className="text-accent/90 text-[10px] md:text-xs lg:text-base font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">{t.inputLabel}</label>
             <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
-              <span className="text-white/70 text-lg md:text-xl lg:text-2xl font-serif mr-2">€</span>
+              <span className="text-white/70 text-lg md:text-xl lg:text-2xl font-serif mr-2">{currencySymbol}</span>
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
@@ -131,8 +132,8 @@ const SimpleRoiCalculator = ({ lang = 'en' }) => {
             </div>
           </div>
           <div className="flex justify-between text-base md:text-lg lg:text-2xl font-serif text-white/80 tabular-nums">
-            <span>{t.minLabel}</span>
-            <span>{t.maxLabel}</span>
+            <span>{t.minLabel.replace('€', currencySymbol)}</span>
+            <span>{t.maxLabel.replace('€', currencySymbol)}</span>
           </div>
         </div>
 
