@@ -17,19 +17,20 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="flex bg-white border border-primary/10 rounded-full p-2 mb-10 w-full max-w-3xl relative z-20 shadow-2xl overflow-hidden drop-shadow-xl">
-         <button 
-           onClick={() => setActiveTab('advanced')}
-           className={`w-1/2 py-3 px-2 sm:py-4 sm:px-4 rounded-full transition-all duration-300 font-bold uppercase tracking-widest sm:tracking-[0.2em] leading-tight flex items-center justify-center text-[clamp(10px,2vw,14px)] ${activeTab === 'advanced' ? 'bg-accent text-white shadow-lg scale-[1.02] sm:scale-105' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
-         >
-           <span className="text-center">{t.advancedTab}</span>
-         </button>
-         <button 
-           onClick={() => setActiveTab('simple')}
-           className={`w-1/2 py-3 px-2 sm:py-4 sm:px-4 rounded-full transition-all duration-300 font-bold uppercase tracking-widest sm:tracking-[0.2em] leading-tight flex items-center justify-center text-[clamp(10px,2vw,14px)] ${activeTab === 'simple' ? 'bg-primary text-white shadow-lg scale-[1.02] sm:scale-105' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
-         >
-           <span className="text-center">{t.simpleTab}</span>
-         </button>
+      <div className="relative mb-10 w-full max-w-lg mx-auto z-20 shadow-2xl rounded-full drop-shadow-xl group">
+        <select 
+          value={activeTab} 
+          onChange={(e) => setActiveTab(e.target.value)}
+          className="appearance-none w-full bg-white border border-primary/10 text-primary font-bold uppercase tracking-widest sm:tracking-[0.2em] py-4 px-6 md:py-5 md:px-8 rounded-full outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer text-xs md:text-sm text-center transition-all shadow-inner hover:bg-gray-50"
+        >
+          <option value="advanced" className="font-sans font-medium">{t.advancedTab}</option>
+          <option value="simple" className="font-sans font-medium">{t.simpleTab}</option>
+        </select>
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-accent group-hover:text-primary transition-colors">
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
       
       <div className="w-full animate-fade-in transition-all duration-500">
