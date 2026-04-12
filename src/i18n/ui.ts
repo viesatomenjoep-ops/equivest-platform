@@ -60,6 +60,8 @@ export const ui = {
     'team.desc1': 'With years of experience at international showjumping level, Heather oversees all training, competition, and sales strategy for the stable both in Europe and the USA. Known for a thoughtful approach to horse development, Heather focuses on long-term soundness and performance—both in and out of the ring. Every sales & sport horse is trained with clarity, honesty, and its long-term potential in mind.',
     'team.fact1': 'Believes, every horse has something special to teach us.',
     'team.role2': 'US Show Rider, Trainer, and Manager',
+    'team.name2': 'Tyler Petrie',
+    'team.desc2': 'Tyler plays a central role in all aspects of the US side of our program. She oversees training, competition planning & showing, and daily management of the stable. From young prospects to experienced competition horses, she helps ensure each horse is confident, consistent, and correctly prepared for trials and competitions. Her attention to detail helps present every horse accurately and professionally to riders and agents worldwide.',
     'ui.scroll': 'Scroll',
   },
   nl: {
