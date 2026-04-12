@@ -16,12 +16,12 @@ const email = "equivestbv@gmail.com";
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
     <div class="space-y-2 md:space-y-4 max-w-3xl mx-auto mb-3 md:mb-4 md:mb-10">
-      <span class="text-accent-light text-SM md:text-base font-bold uppercase tracking-[0.4em]">Investment Inquiry</span>
+      <span class="text-accent-light text-SM md:text-base font-bold uppercase tracking-[0.4em]">{t('contact.inquiry')}</span>
       <h2 class="text-2xl md:text-4xl font-serif leading-tight">
-        Connect with our <span class="italic text-accent-light">Elite</span> network
+        {t('contact.connect_pre')}<span class="italic text-accent-light">{t('contact.connect_elite')}</span>{t('contact.connect_post')}
       </h2>
       <p class="text-white/90 text-base md:text-lg font-medium leading-relaxed">
-        Ready to explore high-end investment opportunities in the world of showjumping? Our team is available for private consultations and personalized investment plans.
+        {t('contact.ready')}
       </p>
     </div>
 
@@ -138,6 +138,6 @@ const email = "equivestbv@gmail.com";
 
   <!-- Interactive Subtle Scroll to Top Logo -->
   <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute bottom-8 right-8 z-0 w-16 h-16 opacity-[0.03] hover:opacity-[0.10] transition-all duration-700 cursor-pointer focus:outline-none hidden sm:block">
-    <img src="/images/logo.webp" alt="Scroll to top" width="64" height="64" loading="lazy" class="w-full h-full object-contain brightness-0 invert" />
+    <img src="/images/logo.webp" alt={t('ui.scroll_top')} width="64" height="64" loading="lazy" class="w-full h-full object-contain brightness-0 invert" />
   </button>
 </section>
