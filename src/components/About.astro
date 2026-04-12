@@ -6,6 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 import exclusivityLeapImg from '../assets/images/exclusivity-in-every-leap.webp';
+import Team from './Team.astro';
 ---
 
 <section id="about" class="py-12 md:py-24 bg-white relative overflow-hidden">
@@ -60,6 +61,11 @@ import exclusivityLeapImg from '../assets/images/exclusivity-in-every-leap.webp'
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Internal Team Section mapped to follow About context -->
+  <div class="mt-8">
+    <Team />
   </div>
   
   <!-- Subtle Background Element -->
