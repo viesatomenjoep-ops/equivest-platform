@@ -1,5 +1,43 @@
 import React, { useState, useMemo } from 'react';
 
+function CurrencyDropdown({ currency, setCurrency, id }) {
+  const symbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
+  return (
+    <div className="relative inline-block z-[60] ml-2 mr-2">
+      <button 
+        type="button" 
+        onClick={(e) => {
+           e.preventDefault();
+           const el = document.getElementById(id);
+           if(el) el.classList.toggle('hidden');
+        }}
+        className="bg-transparent border-none text-accent hover:text-white text-base md:text-lg lg:text-xl font-serif cursor-pointer focus:ring-0 outline-none flex items-center bg-white/5 px-2 py-1 rounded border border-white/10"
+      >
+        {symbol}
+        <svg className="w-3 h-3 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+      </button>
+      
+      <div id={id} className="hidden absolute top-full left-0 md:right-0 mt-2 bg-white rounded-md shadow-2xl overflow-hidden z-[70] border border-gray-100 flex flex-col min-w-[80px]">
+        {['EUR', 'USD', 'GBP'].map(opt => (
+          <button 
+            key={opt}
+            type="button"
+            onClick={(e) => { 
+              e.preventDefault();
+              if(setCurrency) setCurrency(opt); 
+              document.getElementById(id).classList.add('hidden');
+            }} 
+            className={`px-4 py-2 text-left font-serif text-lg hover:bg-bg-subtle transition-colors flex items-center gap-2 ${currency === opt ? 'text-accent font-bold bg-accent/5' : 'text-primary'}`}
+          >
+            <span>{opt === 'EUR' ? '€' : opt === 'USD' ? '$' : '£'}</span>
+            <span className="text-[10px] font-sans font-bold uppercase tracking-widest opacity-50">{opt}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
   const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [data, setData] = useState({
@@ -52,7 +90,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
       yourPurchase: 'Jouw Aanschafdeel',
       yourTco: 'Jouw Operationele Kosten (TCO)',
       totalInvestment: 'Totale Investering',
-      netProfit: 'Netto Winst (Geprojecteerd)',
+      netProfit: 'Totale Opbrengst (Incl. Inleg)',
       expectedRoi: 'Verwachte Rendement (ROI)',
       mo: 'mnd)',
       months: 'maanden',
@@ -116,7 +154,6 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
     let val = parseFloat(e.target.value);
     if (isNaN(val)) val = 0;
     
-    // Safety caps
     if (e.target.name === 'ownershipPercentage' && val > 100) val = 100;
     if (e.target.name === 'ownershipPercentage' && val < 0) val = 0;
     if (e.target.name === 'insuranceRateYearly' && val > 20) val = 20;
@@ -128,7 +165,6 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
     const fraction = data.ownershipPercentage / 100;
     const myPurchasePrice = data.purchasePrice * fraction;
     
-    // TCO Formulas
     const yearlyInsurance = (data.purchasePrice * (data.insuranceRateYearly / 100));
     const totalInsurance = (yearlyInsurance / 12) * data.monthsHeld;
     const monthlyTotalCost = data.monthlyBoardingTraining + data.monthlyVetFarrier + data.monthlyShowTransport;
@@ -145,6 +181,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
       myPurchasePrice, 
       myOperationalCosts, 
       myTotalInvestment, 
+      myExpectedReturn,
       myNetProfit, 
       roiPercentage 
     };
@@ -152,56 +189,22 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
 
   return (
     <div className="bg-primary p-6 md:p-10 shadow-2xl relative overflow-hidden text-white w-full max-w-7xl mx-auto rounded-none border-y border-white/10">
-      {/* Decorative BG Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 -translate-y-1/2 translate-x-1/2 rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full pointer-events-none"></div>
 
       <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8">
         
-        {/* LEFT COLUMN: Input Modifiers */}
         <div className="xl:col-span-8 flex flex-col space-y-8">
           <div>
             <span className="text-accent text-xs font-bold uppercase tracking-[0.3em] mb-2 block">{t.subtitle}</span>
             <h2 className="text-base md:text-lg lg:text-2xl font-serif text-white">{t.title}</h2>
           </div>
 
-          {/* MAIN ASSET METRICS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <div className="relative inline-block mr-2 z-[60]">
-                  <button 
-                    type="button" 
-                    onClick={(e) => {
-                       e.preventDefault();
-                       const selector = document.getElementById('advanced-currency-dropdown');
-                       if(selector) selector.classList.toggle('hidden');
-                    }}
-                    className="bg-transparent border-none text-white/50 hover:text-white text-base md:text-lg font-serif cursor-pointer focus:ring-0 outline-none flex items-center"
-                  >
-                    {currencySymbol}
-                    <svg className="w-3 h-3 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  
-                  <div id="advanced-currency-dropdown" className="hidden absolute top-full left-0 mt-2 bg-white rounded-md shadow-2xl overflow-hidden z-[70] border border-gray-100 flex flex-col min-w-[80px]">
-                    {['EUR', 'USD', 'GBP'].map(opt => (
-                      <button 
-                        key={opt}
-                        type="button"
-                        onClick={(e) => { 
-                          e.preventDefault();
-                          if(setCurrency) setCurrency(opt); 
-                          document.getElementById('advanced-currency-dropdown').classList.add('hidden');
-                        }} 
-                        className={`px-4 py-2 text-left font-serif text-lg hover:bg-bg-subtle transition-colors flex items-center gap-2 ${currency === opt ? 'text-accent font-bold bg-accent/5' : 'text-primary'}`}
-                      >
-                        <span>{opt === 'EUR' ? '€' : opt === 'USD' ? '$' : '£'}</span>
-                        <span className="text-[10px] font-sans font-bold uppercase tracking-widest opacity-50">{opt}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-1" />
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -209,7 +212,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.expectedSale}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-accent/50 text-base md:text-lg mr-2">{currencySymbol}</span>
+                <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-2" />
                 <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -255,7 +258,6 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
           </div>
         </div>
 
-        {/* RIGHT COLUMN: The Result / P&L */}
         <div className="xl:col-span-4 mt-8 xl:mt-0 xl:pl-8 xl:border-l border-white/10 flex flex-col justify-center">
           <div className="bg-bg-subtle/40 p-6 md:p-8 border border-accent/20 shadow-[0_0_40px_rgba(212,175,55,0.05)] relative overflow-hidden">
             <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20"></div>
@@ -275,14 +277,14 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-3 mt-4">
-                <span className="text-white font-bold text-xs md:text-sm lg:text-base uppercase tracking-widest">{t.totalInvestment}</span>
-                <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums">{formatter.format(calc.myTotalInvestment)}</span>
+                <span className="text-white font-bold text-xs md:text-sm lg:text-base uppercase tracking-widest flex items-center">{t.totalInvestment}</span>
+                <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-3" /> {formatter.format(calc.myTotalInvestment)}</span>
               </div>
               
-              <div className="flex flex-col pt-3">
-                <span className="text-white/80 font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-1">{t.netProfit}</span>
-                <span className={`text-4xl md:text-5xl font-serif font-bold tabular-nums ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
-                  {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
+              <div className="flex justify-between items-end pt-3">
+                <span className="text-white/80 font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-1 flex items-center">{t.netProfit}</span>
+                <span className={`text-2xl md:text-3xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                  <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
                 </span>
               </div>
               

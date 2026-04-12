@@ -1,5 +1,43 @@
 import React, { useState, useMemo } from 'react';
 
+function CurrencyDropdown({ currency, setCurrency, id }) {
+  const symbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
+  return (
+    <div className="relative inline-block z-[60] ml-2 mr-2">
+      <button 
+        type="button" 
+        onClick={(e) => {
+           e.preventDefault();
+           const el = document.getElementById(id);
+           if(el) el.classList.toggle('hidden');
+        }}
+        className="bg-transparent border-none text-accent md:text-white/70 hover:text-white text-base md:text-lg lg:text-xl font-serif cursor-pointer focus:ring-0 outline-none flex items-center bg-white/5 md:bg-transparent px-2 py-1 md:py-0 rounded border border-white/10 md:border-transparent"
+      >
+        {symbol}
+        <svg className="w-3 h-3 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+      </button>
+      
+      <div id={id} className="hidden absolute top-full left-0 mt-2 bg-white rounded-md shadow-2xl overflow-hidden z-[70] border border-gray-100 flex flex-col min-w-[80px]">
+        {['EUR', 'USD', 'GBP'].map(opt => (
+          <button 
+            key={opt}
+            type="button"
+            onClick={(e) => { 
+              e.preventDefault();
+              if(setCurrency) setCurrency(opt); 
+              document.getElementById(id).classList.add('hidden');
+            }} 
+            className={`px-4 py-2 text-left font-serif text-lg hover:bg-bg-subtle transition-colors flex items-center gap-2 ${currency === opt ? 'text-accent font-bold bg-accent/5' : 'text-primary'}`}
+          >
+            <span>{opt === 'EUR' ? '€' : opt === 'USD' ? '$' : '£'}</span>
+            <span className="text-[10px] font-sans font-bold uppercase tracking-widest opacity-50">{opt}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
   const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [amount, setAmount] = useState(100000);
@@ -89,7 +127,7 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
   const handleInputChange = (e) => {
     const val = e.target.value.replace(/[^0-9]/g, '');
     const numVal = val === '' ? 0 : parseInt(val, 10);
-    setAmount(Math.min(numVal, 10000000)); // Cap at 10M for realism
+    setAmount(Math.min(numVal, 10000000));
   };
 
   return (
@@ -102,38 +140,7 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
           <div className="bg-white/5 border border-white/10 rounded-2xl px-2 py-2 lg:px-4 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
             <label className="text-accent/90 text-[10px] md:text-xs lg:text-base font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">{t.inputLabel}</label>
             <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
-              <div className="relative inline-block mr-2 z-[60]">
-                <button 
-                  type="button" 
-                  onClick={(e) => {
-                     e.preventDefault();
-                     const selector = document.getElementById('simple-currency-dropdown');
-                     if(selector) selector.classList.toggle('hidden');
-                  }}
-                  className="bg-transparent border-none text-white/70 hover:text-white text-lg md:text-xl lg:text-2xl font-serif cursor-pointer focus:ring-0 outline-none flex items-center"
-                >
-                  {currencySymbol}
-                  <svg className="w-3 h-3 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                </button>
-                
-                <div id="simple-currency-dropdown" className="hidden absolute top-full left-0 mt-2 bg-white rounded-md shadow-2xl overflow-hidden z-[70] border border-gray-100 flex flex-col min-w-[80px]">
-                  {['EUR', 'USD', 'GBP'].map(opt => (
-                    <button 
-                      key={opt}
-                      type="button"
-                      onClick={(e) => { 
-                        e.preventDefault();
-                        if(setCurrency) setCurrency(opt); 
-                        document.getElementById('simple-currency-dropdown').classList.add('hidden');
-                      }} 
-                      className={`px-4 py-2 text-left font-serif text-lg hover:bg-bg-subtle transition-colors flex items-center gap-2 ${currency === opt ? 'text-accent font-bold bg-accent/5' : 'text-primary'}`}
-                    >
-                      <span>{opt === 'EUR' ? '€' : opt === 'USD' ? '$' : '£'}</span>
-                      <span className="text-[10px] font-sans font-bold uppercase tracking-widest opacity-50">{opt}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-1" />
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
@@ -176,9 +183,8 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
             return (
               <div className="flex flex-col space-y-8">
                 
-                {/* 1. TOTAL RETURN HERO */}
                 <div className="text-center space-y-2 pb-8 border-b border-white/10">
-                  <span className="block text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em]">{t.totalReturn}</span>
+                  <span className="text-accent/80 text-sm md:text-base font-bold uppercase tracking-[0.3em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-2" /></span>
                   <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 drop-shadow-lg tabular-nums leading-tight">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
                     <span className="text-white/30 hidden md:block">—</span>
@@ -187,7 +193,6 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
                   </div>
                 </div>
 
-                {/* 2. TIMELINE SELECTORS */}
                 <div className="flex flex-col sm:flex-row bg-black/20 rounded-2xl p-2 gap-2 max-w-2xl mx-auto w-full">
                   {results.map((r, idx) => (
                     <button
@@ -200,10 +205,9 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
                   ))}
                 </div>
 
-                {/* 3. NET PROFIT FOOTER */}
                 <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-4 lg:p-6 gap-4">
                   <div className="text-center lg:text-left w-full">
-                    <span className="block text-accent text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-2">{t.range} (Net Profit)</span>
+                    <span className="text-accent text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-3" /></span>
                     <div className="text-xl md:text-2xl lg:text-3xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 tabular-nums">
                       <span>+{formatter.format(amount * res.min)}</span>
                       <span className="text-accent/40 hidden md:block">—</span>
@@ -231,7 +235,6 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
         </div>
       </div>
 
-      {/* Interactive Subtle Scroll to Top Logo */}
       <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="absolute bottom-6 left-12 z-0 w-16 h-16 opacity-[0.04] hover:opacity-[0.15] transition-all duration-700 cursor-pointer focus:outline-none hidden md:block">
         <img src="/images/logo.webp" alt="Scroll to top" loading="lazy" width="64" height="64" className="w-full h-full object-contain brightness-0 invert animate-slow-spin" style={{willChange: 'transform'}} />
       </button>
@@ -240,3 +243,4 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
 };
 
 export default SimpleRoiCalculator;
+
