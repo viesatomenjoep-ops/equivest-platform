@@ -32,22 +32,9 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
          </button>
       </div>
       
-      {/* Currency Selector */}
-      <div className="flex bg-white/10 border border-primary/20 rounded-full p-1 mb-8 max-w-[240px] relative z-20">
-         {['EUR', 'USD', 'GBP'].map((code) => (
-           <button 
-             key={code}
-             onClick={() => setCurrency(code)}
-             className={`flex-1 py-2 text-xs font-bold transition-all duration-300 rounded-full ${currency === code ? 'bg-primary text-white shadow-md' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
-           >
-             {code === 'EUR' ? '€' : code === 'USD' ? '$' : '£'} {code}
-           </button>
-         ))}
-      </div>
-
       <div className="w-full animate-fade-in transition-all duration-500">
-        {activeTab === 'simple' && <SimpleRoiCalculator lang={lang} currency={currency} />}
-        {activeTab === 'advanced' && <AdvancedRoiCalculator lang={lang} currency={currency} />}
+        {activeTab === 'simple' && <SimpleRoiCalculator lang={lang} currency={currency} setCurrency={setCurrency} />}
+        {activeTab === 'advanced' && <AdvancedRoiCalculator lang={lang} currency={currency} setCurrency={setCurrency} />}
       </div>
     </div>
   );

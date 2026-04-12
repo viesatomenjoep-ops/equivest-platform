@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
-const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
+const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
   const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [data, setData] = useState({
     purchasePrice: 250000,
@@ -170,7 +170,15 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <span className="text-white/50 text-base md:text-lg mr-2">{currencySymbol}</span>
+                <select 
+                  value={currency} 
+                  onChange={(e) => setCurrency && setCurrency(e.target.value)} 
+                  className="bg-transparent border-none text-white/50 hover:text-white text-base md:text-lg font-serif mr-2 cursor-pointer focus:ring-0 outline-none appearance-none"
+                >
+                  <option value="EUR" className="text-black bg-white">€</option>
+                  <option value="USD" className="text-black bg-white">$</option>
+                  <option value="GBP" className="text-black bg-white">£</option>
+                </select>
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>

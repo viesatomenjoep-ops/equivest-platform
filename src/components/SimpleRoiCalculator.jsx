@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
-const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
+const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
   const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const [amount, setAmount] = useState(100000);
   const [activeYear, setActiveYear] = useState(0);
@@ -102,7 +102,15 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR' }) => {
           <div className="bg-white/5 border border-white/10 rounded-2xl px-2 py-2 lg:px-4 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
             <label className="text-accent/90 text-[10px] md:text-xs lg:text-base font-bold uppercase tracking-[0.2em] mb-1 md:mb-2">{t.inputLabel}</label>
             <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
-              <span className="text-white/70 text-lg md:text-xl lg:text-2xl font-serif mr-2">{currencySymbol}</span>
+              <select 
+                value={currency} 
+                onChange={(e) => setCurrency && setCurrency(e.target.value)} 
+                className="bg-transparent border-none text-white/70 hover:text-white text-lg md:text-xl lg:text-2xl font-serif mr-2 cursor-pointer focus:ring-0 outline-none appearance-none"
+              >
+                <option value="EUR" className="text-black bg-white">€</option>
+                <option value="USD" className="text-black bg-white">$</option>
+                <option value="GBP" className="text-black bg-white">£</option>
+              </select>
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
