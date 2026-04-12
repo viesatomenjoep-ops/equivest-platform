@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import AboutModule from '../../components/About.astro';
+import Contact from '../../components/Contact.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'nl' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'es' } },
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="About Us | Equivest Elite Investments" lang={lang}>
+	<Header />
+	
+	<div id="main-content" class="min-h-screen bg-white">
+		<div class="pt-24 md:pt-32 reveal reveal-up delay-200">
+			<!-- pt-24 offsets the glass header height so content isn't hidden -->
+			<AboutModule />
+		</div>
+		
+		<div class="mt-24 reveal reveal-up">
+			<Contact />
+		</div>
+	</div>
+</Layout>

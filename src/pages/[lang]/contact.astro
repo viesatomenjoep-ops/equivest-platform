@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ContactModule from '../../components/Contact.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'nl' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'es' } },
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Contact | Equivest Elite Investments" lang={lang}>
+	<Header />
+	
+	<div id="main-content" class="min-h-screen bg-bg-light flex flex-col justify-between">
+		<div class="pt-24 md:pt-32 flex-grow reveal reveal-up delay-200">
+			<ContactModule />
+		</div>
+	</div>
+</Layout>
