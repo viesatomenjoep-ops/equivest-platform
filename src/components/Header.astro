@@ -53,7 +53,7 @@ const navItems = [
             navItems.map((item) => (
               <a
                 href={item.href}
-                class={`desktop-nav-item text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-accent transition-colors py-2 relative`}
+                class={`desktop-nav-item text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap text-primary hover:text-accent transition-colors py-2 relative`}
               >
                 <span class={item.label === 'Login' ? 'auth-link-text text-accent' : ''}>{item.label}</span>
               </a>

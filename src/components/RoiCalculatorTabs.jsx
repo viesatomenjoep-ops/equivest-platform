@@ -19,15 +19,15 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
       <div className="flex bg-white border border-primary/10 rounded-full p-2 mb-10 w-full max-w-3xl relative z-20 shadow-2xl overflow-hidden drop-shadow-xl">
          <button 
            onClick={() => setActiveTab('advanced')}
-           className={`flex-1 py-4 px-4 text-xs md:text-sm font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 ${activeTab === 'advanced' ? 'bg-accent text-white shadow-lg scale-105' : 'text-primary/50 hover:text-primary hover:bg-black/5'}`}
+           className={`w-1/2 py-3 px-2 sm:py-4 sm:px-4 rounded-full transition-all duration-300 font-bold uppercase tracking-widest sm:tracking-[0.2em] leading-tight flex items-center justify-center text-[clamp(10px,2vw,14px)] ${activeTab === 'advanced' ? 'bg-accent text-white shadow-lg scale-[1.02] sm:scale-105' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
          >
-           {t.advancedTab}
+           <span className="text-center">{t.advancedTab}</span>
          </button>
          <button 
            onClick={() => setActiveTab('simple')}
-           className={`flex-1 py-4 px-4 text-xs md:text-sm font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 ${activeTab === 'simple' ? 'bg-primary text-white shadow-lg scale-105' : 'text-primary/50 hover:text-primary hover:bg-black/5'}`}
+           className={`w-1/2 py-3 px-2 sm:py-4 sm:px-4 rounded-full transition-all duration-300 font-bold uppercase tracking-widest sm:tracking-[0.2em] leading-tight flex items-center justify-center text-[clamp(10px,2vw,14px)] ${activeTab === 'simple' ? 'bg-primary text-white shadow-lg scale-[1.02] sm:scale-105' : 'text-primary/60 hover:text-primary hover:bg-black/5'}`}
          >
-           {t.simpleTab}
+           <span className="text-center">{t.simpleTab}</span>
          </button>
       </div>
 
