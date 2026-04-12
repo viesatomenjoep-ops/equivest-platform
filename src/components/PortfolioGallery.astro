@@ -74,8 +74,8 @@ const allHorsesWithContent = await Promise.all(
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
         {allHorsesWithContent.map((horse, index) => (
-          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`openModal('${horse.id}')`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
-            <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`openModal('${horse.id}')`}>
+          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
+            <div class="aspect-[16/10] overflow-hidden relative cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`}>
               {typeof horse.data.image === 'string' ? (
                 <img 
                   src={horse.data.image} 
@@ -96,7 +96,7 @@ const allHorsesWithContent = await Promise.all(
         </div>
         
         <div class="p-5 md:p-6 flex-grow flex flex-col">
-          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`openModal('${horse.id}')`}>
+          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`}>
             <img src="/images/logo.webp" alt="Equivest" loading="lazy" width="64" height="64" class="w-10 h-10 object-contain brightness-0" />
             <h3 class="text-xl font-serif text-primary group-hover:text-accent transition-colors">{horse.data.title}</h3>
           </div>
@@ -146,118 +146,20 @@ const allHorsesWithContent = await Promise.all(
                   <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                   <span class="text-xs font-bold uppercase tracking-widest">Video</span>
                </span>
-               <button onclick={`openModal('${horse.id}')`} class="w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+               <a href={`/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}`}  class="w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                   Plan
-               </button>
+               </a>
              </>
            ) : (
-             <button onclick={`openModal('${horse.id}')`} class="col-span-2 w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
-                Investment Plan
-             </button>
+             <a href={`/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}`}  class="col-span-2 w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+                  Investment Plan
+               </a>
            )}
         </div>
       </div>
     ))}
     </div>
     
-    <!-- MODALS -->
-    {allHorsesWithContent.map((horse) => {
-      const Content = horse.Content;
-      return (
-      <div id={`modal-${horse.id}`} class="fixed inset-0 z-[1000] hidden items-center justify-center opacity-0 transition-opacity duration-500">
-        <div class="absolute inset-0 bg-primary/95" onclick={`closeModal('${horse.id}')`}></div>
-        
-        <div class="relative bg-white w-[95%] max-w-6xl max-h-[95svh] flex flex-col md:flex-row shadow-2xl scale-95 transition-transform duration-500 delay-100 modal-dialog overflow-hidden rounded-md">
-           <!-- Close -->
-           <button onclick={`closeModal('${horse.id}')`} class="absolute top-4 right-4 z-[60] w-12 h-12 bg-white/80 hover:bg-accent text-primary hover:text-white transition-colors border border-primary/10 rounded-full flex items-center justify-center shadow-lg">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-           </button>
-           
-           <!-- Left: Image -->
-           <div class="w-full md:w-2/5 h-48 md:h-full relative shrink-0">
-             {typeof horse.data.image === 'string' ? (
-                <img src={horse.data.image} class="w-full h-full object-cover" loading="eager" decoding="sync" onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';" />
-             ) : (
-                <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" decoding="sync" class="w-full h-full object-cover" />
-             )}
-           </div>
-           
-           <!-- Right: Content -->
-           <div class="w-full md:w-3/5 p-5 md:p-14 overflow-y-auto bg-bg-subtle relative modal-scroll-area flex-1 min-h-0">
-              <div class="max-w-2xl mx-auto">
-                  <div class="flex items-start justify-between mb-6 md:mb-10">
-                      <div>
-                         <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-3 block">{t("portfolio.prospectus")}</span>
-                         <h2 class="text-2xl md:text-5xl font-serif text-primary">{horse.data.title}</h2>
-                      </div>
-                      
-                      <!-- Mobile Scroll Hint -->
-                      <div class="md:hidden flex flex-col items-center justify-center shrink-0 ml-4 mt-2 opacity-60">
-                         <span class="text-[7px] font-bold uppercase tracking-widest text-primary/70 mb-1">{t("ui.scroll")}</span>
-                         <div class="w-[2px] h-6 bg-primary/10 relative overflow-hidden rounded-full">
-                            <div class="w-full h-1/2 bg-primary/60 absolute top-0 left-0 rounded-full indicator-dynamic"></div>
-                         </div>
-                      </div>
-                  </div>
-                  
-                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-6 mb-6 pb-6 md:mb-12 md:pb-10 border-b border-primary/10">
-                    <div class="space-y-2">
-                      <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.age")}</span>
-                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.age}</span>
-                    </div>
-                    <div class="space-y-2">
-                      <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.level")}</span>
-                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.level}</span>
-                    </div>
-                    <div class="space-y-2">
-                      <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.gender")}</span>
-                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
-                    </div>
-                    <div class="space-y-2">
-                      <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.height")}</span>
-                      <span class="text-sm md:text-xl font-serif text-primary">{horse.data.specs?.height}</span>
-                    </div>
-                  </div>
-
-                  <div class="prose prose-sm md:prose-base lg:prose-lg prose-primary max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-strong:text-primary/90 mb-10 break-words hyphens-auto">
-                      <Content />
-                  </div>                  <div class="mb-10">
-                       <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-4 block">{t("portfolio.docs")}</span>
-                       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                          <a href={horse.data.documents?.vet_check || "#contact"} target={horse.data.documents?.vet_check ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-5 bg-white border border-primary/10 transition-all group rounded-xl ${horse.data.documents?.vet_check ? 'hover:border-accent hover:shadow-xl' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.vet_check ? "View" : "Request Document"}>
-                             <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-3 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                             <span class="text-[10px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.vet_check")}</span>
-                          </a>
-
-                          <a href={horse.data.documents?.xrays || "#contact"} target={horse.data.documents?.xrays ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-5 bg-white border border-primary/10 transition-all group rounded-xl ${horse.data.documents?.xrays ? 'hover:border-accent hover:shadow-xl' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.xrays ? "View" : "Request Document"}>
-                             <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-3 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                             <span class="text-[10px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.xrays")}</span>
-                          </a>
-
-                          <a href={horse.data.documents?.passport || "#contact"} target={horse.data.documents?.passport ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-5 bg-white border border-primary/10 transition-all group rounded-xl ${horse.data.documents?.passport ? 'hover:border-accent hover:shadow-xl' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.passport ? "View" : "Request Document"}>
-                             <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-3 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
-                             <span class="text-[10px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.passport")}</span>
-                          </a>
-
-                          <a href={horse.data.documents?.fei_data || "#contact"} target="_self" class={`flex flex-col items-center justify-center p-5 transition-all group rounded-xl ${horse.data.documents?.fei_data ? 'bg-green-50 border-2 border-green-500 hover:bg-green-100 hover:shadow-xl' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.fei_data ? "View" : "Request Document"}>
-                             <svg class={`w-8 h-8 mb-3 transition-colors ${horse.data.documents?.fei_data ? 'text-green-600 group-hover:text-green-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                             <span class={`text-[10px] font-bold uppercase tracking-widest text-center transition-colors ${horse.data.documents?.fei_data ? 'text-green-700' : 'text-primary'}`}>{t("portfolio.fei")}</span>
-                          </a>
-                       </div>
-                    </div>
-                  
-                  <div class="mt-8 pt-6 md:mt-12 md:pt-10 border-t border-primary/10 flex flex-col sm:flex-row gap-4">
-                     <a href="https://wa.me/15613010984" target="_blank" class="text-center px-6 py-4 md:px-10 md:py-5 bg-accent text-white uppercase font-bold text-sm md:text-base tracking-widest hover:bg-primary transition-colors shadow-xl w-full rounded-sm">
-                        {t("portfolio.secure_investment")}
-                     </a>
-                  </div>
-              </div>
-           </div>
-        </div>
-      </div>
-      );
-    })}
-
     </div> <!-- END PORTFOLIO CONTENT -->
   </div>
 
@@ -267,51 +169,8 @@ const allHorsesWithContent = await Promise.all(
 </section>
 
 <script>
-  (window as any).openModal = function(slug: string) {
-     const modal = document.getElementById('modal-' + slug);
-     const dialog = modal?.querySelector('.modal-dialog');
-     if (modal && dialog) {
-        modal.classList.replace('hidden', 'flex');
-        void modal.offsetWidth; // trigger reflow
-        modal.classList.remove('opacity-0');
-        dialog.classList.remove('scale-95');
-        dialog.classList.add('scale-100');
-        document.body.style.overflow = 'hidden';
-        
-        // Update URL state for native back-button functionality
-        if (history.pushState) {
-            history.pushState(null, '', '#' + slug);
-        } else {
-            window.location.hash = '#' + slug;
-        }
-     }
-  };
-
-  (window as any).closeModal = function(slug: string) {
-     const modal = document.getElementById('modal-' + slug);
-     const dialog = modal?.querySelector('.modal-dialog');
-     if (modal && dialog) {
-        modal.classList.add('opacity-0');
-        if(dialog) {
-            dialog.classList.remove('scale-100');
-            dialog.classList.add('scale-95');
-        }
-        setTimeout(() => {
-           modal.classList.replace('flex', 'hidden');
-           document.body.style.overflow = '';
-           
-           // Clear URL hash when closing manually
-           if (window.location.hash === '#' + slug) {
-               if (history.pushState) {
-                   history.pushState(null, '', window.location.pathname + window.location.search);
-               } else {
-                   window.location.hash = '';
-               }
-           }
-        }, 500);
-     }
-  };
-
+  
+  
   function initGalleryFilters() {
     const filters = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.horse-card');
@@ -405,65 +264,12 @@ const allHorsesWithContent = await Promise.all(
   if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
   initLock();
   
-  function syncHashState() {
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-          const m = document.getElementById('modal-' + hash);
-          if (m && m.classList.contains('hidden')) {
-              // Open modal if it exists natively in HTML
-              (window as any).openModal(hash);
-          }
-      } else {
-          // If returning to roots, close active modals
-          document.querySelectorAll('[id^="modal-"]').forEach(m => {
-              if (!m.classList.contains('hidden')) {
-                  (window as any).closeModal(m.id.replace('modal-', ''));
-              }
-          });
-      }
-  }
-
-  // Bind to native history changes (Back/Forward arrows)
-  window.addEventListener('hashchange', syncHashState);
-  
-  // Sync on initial load
-  syncHashState();
-  
-  function syncModalScrolls() {
-      document.querySelectorAll('.modal-scroll-area').forEach(area => {
-          // Cleanup old listeners to prevent memory leaking crashes
-          if ((area as any)._modalScrollHandler) {
-              area.removeEventListener('scroll', (area as any)._modalScrollHandler);
-          }
-          
-          let ticking = false;
-          (area as any)._modalScrollHandler = (e: any) => {
-              if (!ticking) {
-                  window.requestAnimationFrame(() => {
-                      const el = e.currentTarget as HTMLElement;
-                      const ind = el.querySelector('.indicator-dynamic') as HTMLElement;
-                      if (ind) {
-                          const maxScroll = el.scrollHeight - el.clientHeight || 1;
-                          let progress = el.scrollTop / maxScroll;
-                          if (progress > 1) progress = 1;
-                          ind.style.transform = `translateY(${progress * 100}%)`;
-                      }
-                      ticking = false;
-                  });
-                  ticking = true;
-              }
-          };
-          
-          area.addEventListener('scroll', (area as any)._modalScrollHandler, { passive: true });
-      });
-  }
-  syncModalScrolls();
-  
+    
+    
   document.addEventListener('astro:after-swap', () => {
       if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
       initLock();
-      syncHashState();
-      syncModalScrolls();
+      
   });
 </script>
 
