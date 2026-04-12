@@ -185,7 +185,7 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
                 
                 <div className="text-center space-y-3 pb-10 border-b border-white/10">
                   <span className="text-accent/80 text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-2" /></span>
-                  <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-3 md:gap-5 drop-shadow-lg tabular-nums leading-tight">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 drop-shadow-lg tabular-nums leading-tight">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
                     <span className="text-white/30 hidden md:block">—</span>
                     <span className="text-white/30 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
