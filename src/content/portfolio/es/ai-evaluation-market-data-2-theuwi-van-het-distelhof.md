@@ -5,6 +5,7 @@ description: "Emerald x Indoctro - Yegua"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/theuwi-11-high.jpg"
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=z1Nv366EASI"
+horsetelex_url: "https://www.horsetelex.com/horses/pedigree/2092836/theuwi-van-het-distelhof"
 featured: true
 category: "Caballos de Salto"
 specs:
