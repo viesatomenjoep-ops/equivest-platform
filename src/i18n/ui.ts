@@ -101,6 +101,8 @@ export const ui = {
     'team.closing': 'Our team shares one goal: a commitment to producing and presenting quality horses capable of performing at the highest level of international showjumping with honesty and professionalism, creating successful partnerships on both sides of the Atlantic.',
     
     'ui.scroll': 'Scroll',
+    'cookie.message': 'We use essential cookies to ensure you get the best experience on our website.',
+    'cookie.accept': 'Accept',
     'ui.scroll_top': 'Scroll to top',
   },
   nl: {
