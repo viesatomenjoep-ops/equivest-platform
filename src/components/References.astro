@@ -10,7 +10,7 @@ const horses = await getCollection('portfolio');
 const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
 ---
 
-  <section id="references" class="py-12 md:py-24 bg-white relative overflow-hidden border-t-4 border-gray-100 scroll-mt-28 md:scroll-mt-32">
+  <section id="references" class="py-12 md:py-24 bg-white relative overflow-hidden border-t-4 border-gray-100 scroll-mt-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8 md:mb-16 space-y-4 max-w-2xl mx-auto">
         <span class="text-primary/70 text-xl font-bold uppercase tracking-[0.3em] block">Past Successes</span>
