@@ -83,19 +83,19 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
 					{premiumHorses.map((horse, index) => (
 						<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2 cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`}>
-							<div class="aspect-[16/10] overflow-hidden relative bg-gray-50/50 flex items-center justify-center">
+							<div class="aspect-[16/10] overflow-hidden relative">
 								{typeof horse.data.image === 'string' ? (
 								<img 
 									src={horse.data.image} 
 									alt={horse.data.title} 
 									onerror="this.onerror=null; this.src='/images/logo.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
-									class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
 								) : (
 								<Image 
 									src={horse.data.image} 
 									alt={horse.data.title} 
-									class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
 								)}
 								<!-- YouTube Overlay -->
