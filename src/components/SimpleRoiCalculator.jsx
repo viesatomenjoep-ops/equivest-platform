@@ -184,11 +184,11 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
               <div className="flex flex-col space-y-10">
                 
                 <div className="text-center space-y-3 pb-10 border-b border-white/10">
-                  <span className="text-accent/80 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-2" /></span>
-                  <div className="text-3xl md:text-4xl lg:text-5xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-3 drop-shadow-lg tabular-nums leading-tight">
+                  <span className="text-accent/80 text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-2" /></span>
+                  <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-3 md:gap-5 drop-shadow-lg tabular-nums leading-tight">
                     <span>{formatter.format(amount + (amount * res.min))}</span>
                     <span className="text-white/30 hidden md:block">—</span>
-                    <span className="text-white/30 block md:hidden text-base italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
+                    <span className="text-white/30 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
                     <span>{formatter.format(amount + (amount * res.max))}</span>
                   </div>
                 </div>
@@ -207,15 +207,15 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
 
                 <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 lg:p-10 gap-6">
                   <div className="text-center lg:text-left w-full">
-                    <span className="text-accent text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-3" /></span>
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-3 tabular-nums">
+                    <span className="text-accent text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-3" /></span>
+                    <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 tabular-nums">
                       <span>+{formatter.format(amount * res.min)}</span>
                       <span className="text-accent/40 hidden md:block">—</span>
-                      <span className="text-accent/40 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
+                      <span className="text-accent/40 block md:hidden text-xl italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
                       <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
-                  <div className="bg-accent text-white px-4 py-2.5 rounded-md text-[11px] md:text-xs font-bold uppercase tracking-[0.25em] text-center shadow-lg transform transition-transform hover:scale-105">
+                  <div className="bg-accent text-white px-5 py-3 lg:px-6 lg:py-4 rounded-md text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-center shadow-lg transform transition-transform hover:scale-105">
                     +{(res.max * 100).toFixed(0)}% {t.potential}
                   </div>
                 </div>
