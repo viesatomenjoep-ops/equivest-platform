@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SimpleRoiCalculator from './SimpleRoiCalculator';
 import AdvancedRoiCalculator from './AdvancedRoiCalculator';
 
 export default function RoiCalculatorTabs({ lang = 'en' }) {
   const [activeTab, setActiveTab] = useState('advanced');
-  const [currency, setCurrency] = useState('EUR');
+  const [inputCurrency, setInputCurrency] = useState('USD');
+  const [outputCurrency, setOutputCurrency] = useState('EUR');
+  const [rates, setRates] = useState({ EUR: 1, USD: 1.1, GBP: 0.85 });
+
+  useEffect(() => {
+    fetch('https://open.er-api.com/v6/latest/EUR')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.rates) {
+          setRates({
+            EUR: 1,
+            USD: data.rates.USD || 1.1,
+            GBP: data.rates.GBP || 0.85
+          });
+        }
+      })
+      .catch(err => console.error("Could not fetch exchange rates:", err));
+  }, []);
 
   const translations = {
     en: { simpleTab: 'Investment Profit Estimator', advancedTab: 'Advanced Syndicate TCO' },
@@ -14,6 +31,15 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
   };
   
   const t = translations[lang] || translations.en;
+
+  const calculatorProps = {
+    lang,
+    inputCurrency,
+    setInputCurrency,
+    outputCurrency,
+    setOutputCurrency,
+    rates
+  };
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -33,9 +59,9 @@ export default function RoiCalculatorTabs({ lang = 'en' }) {
         </div>
       </div>
       
-      <div className="w-full animate-fade-in transition-all duration-500">
-        {activeTab === 'simple' && <SimpleRoiCalculator lang={lang} currency={currency} setCurrency={setCurrency} />}
-        {activeTab === 'advanced' && <AdvancedRoiCalculator lang={lang} currency={currency} setCurrency={setCurrency} />}
+      <div className="w-full animate-fade-in transition-all duration-500 relative z-30">
+        {activeTab === 'simple' && <SimpleRoiCalculator {...calculatorProps} />}
+        {activeTab === 'advanced' && <AdvancedRoiCalculator {...calculatorProps} />}
       </div>
     </div>
   );

@@ -38,10 +38,14 @@ function CurrencyDropdown({ currency, setCurrency, id }) {
   )
 }
 
-const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
-  const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
+const SimpleRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurrency, outputCurrency = 'EUR', setOutputCurrency, rates = {EUR:1, USD:1.1, GBP:0.85} }) => {
+  const inputSymbol = inputCurrency === 'USD' ? '$' : inputCurrency === 'GBP' ? '£' : '€';
+  const outputSymbol = outputCurrency === 'USD' ? '$' : outputCurrency === 'GBP' ? '£' : '€';
+  
   const [amount, setAmount] = useState(100000);
   const [activeYear, setActiveYear] = useState(0);
+
+  const conversionRate = rates[outputCurrency] / rates[inputCurrency];
 
   const translations = {
     en: {
@@ -118,9 +122,9 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
     { year: t.year3, label: t.longTerm, min: 0.75, max: 3.0 },
   ], [t]);
 
-  const formatter = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
+  const formatOutput = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
     style: 'currency',
-    currency: currency,
+    currency: outputCurrency,
     maximumFractionDigits: 0,
   });
 
@@ -140,7 +144,7 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
           <div className="bg-white/5 border border-white/10 rounded-2xl px-4 py-3 lg:px-5 lg:py-4 flex flex-col items-start md:items-end group focus-within:border-accent/40 transition-colors w-full md:w-auto">
             <label className="text-accent/90 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] mb-1.5 md:mb-2">{t.inputLabel}</label>
             <div className="flex items-center w-full md:w-auto mt-2 md:mt-0">
-              <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-1" />
+              <CurrencyDropdown currency={inputCurrency} setCurrency={setInputCurrency} id="simple-drop-1" />
               <input 
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
@@ -170,8 +174,8 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
             </div>
           </div>
           <div className="flex justify-between text-[11px] md:text-sm font-bold uppercase tracking-widest text-white/50 tabular-nums">
-            <span>{t.minLabel.replace('€', currencySymbol)}</span>
-            <span>{t.maxLabel.replace('€', currencySymbol)}</span>
+            <span>{t.minLabel.replace('€', inputSymbol)}</span>
+            <span>{t.maxLabel.replace('€', inputSymbol)}</span>
           </div>
         </div>
 
@@ -184,12 +188,12 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
               <div className="flex flex-col space-y-10">
                 
                 <div className="text-center space-y-3 pb-10 border-b border-white/10">
-                  <span className="text-accent/80 text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-2" /></span>
+                  <span className="text-accent/80 text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="simple-drop-2" /></span>
                   <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 drop-shadow-lg tabular-nums leading-tight">
-                    <span>{formatter.format(amount + (amount * res.min))}</span>
+                    <span>{formatOutput.format((amount + (amount * res.min)) * conversionRate)}</span>
                     <span className="text-white/30 hidden md:block">—</span>
                     <span className="text-white/30 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
-                    <span>{formatter.format(amount + (amount * res.max))}</span>
+                    <span>{formatOutput.format((amount + (amount * res.max)) * conversionRate)}</span>
                   </div>
                 </div>
 
@@ -207,12 +211,12 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
 
                 <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 lg:p-10 gap-6">
                   <div className="text-center lg:text-left w-full">
-                    <span className="text-accent text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-3" /></span>
+                    <span className="text-accent text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="simple-drop-3" /></span>
                     <div className="text-xl md:text-2xl lg:text-3xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 md:gap-3 tabular-nums">
-                      <span>+{formatter.format(amount * res.min)}</span>
+                      <span>+{formatOutput.format((amount * res.min) * conversionRate)}</span>
                       <span className="text-accent/40 hidden md:block">—</span>
                       <span className="text-accent/40 block md:hidden text-base italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
-                      <span>+{formatter.format(amount * res.max)}</span>
+                      <span>+{formatOutput.format((amount * res.max) * conversionRate)}</span>
                     </div>
                   </div>
                   <div className="bg-accent text-white px-5 py-3 lg:px-6 lg:py-4 rounded-md text-xs md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-center shadow-lg transform transition-transform hover:scale-105">

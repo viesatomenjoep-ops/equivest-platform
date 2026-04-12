@@ -38,8 +38,10 @@ function CurrencyDropdown({ currency, setCurrency, id }) {
   )
 }
 
-const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => {
-  const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
+const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurrency, outputCurrency = 'EUR', setOutputCurrency, rates = {EUR:1, USD:1.1, GBP:0.85} }) => {
+  const inputSymbol = inputCurrency === 'USD' ? '$' : inputCurrency === 'GBP' ? '£' : '€';
+  const conversionRate = rates[outputCurrency] / rates[inputCurrency];
+  
   const [data, setData] = useState({
     purchasePrice: 250000,
     ownershipPercentage: 100,
@@ -144,9 +146,15 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
 
   const t = translations[lang] || translations.en;
   
-  const formatter = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
+  const formatInput = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
     style: 'currency',
-    currency: currency,
+    currency: inputCurrency,
+    maximumFractionDigits: 0,
+  });
+
+  const formatOutput = new Intl.NumberFormat(lang === 'nl' || lang === 'de' || lang === 'es' ? 'nl-NL' : 'en-US', {
+    style: 'currency',
+    currency: outputCurrency,
     maximumFractionDigits: 0,
   });
 
@@ -204,7 +212,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.purchase}</label>
               <div className="flex items-center w-full justify-start mt-auto">
-                <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-1" />
+                <CurrencyDropdown currency={inputCurrency} setCurrency={setInputCurrency} id="adv-drop-1" />
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -212,7 +220,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="bg-white/5 border border-white/10 p-5 flex flex-col items-start focus-within:border-accent transition-colors gap-3">
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.expectedSale}</label>
               <div className="flex items-center w-full justify-start mt-auto">
-                <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-2" />
+                <CurrencyDropdown currency={inputCurrency} setCurrency={setInputCurrency} id="adv-drop-2" />
                 <input type="number" name="expectedSalePrice" value={data.expectedSalePrice || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
@@ -239,15 +247,15 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <h3 className="text-base font-serif mb-4 text-white/80">{t.monthlyOps}</h3>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
                 <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
                 <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
-                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows.replace(/[€$£]/, currencySymbol)}{t.mo}</label>
+                <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
                 <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
@@ -268,23 +276,23 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="space-y-4">
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourPurchase}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
+                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myPurchasePrice * conversionRate)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourTco}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
+                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myOperationalCosts * conversionRate)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-4 mt-4">
                 <span className="text-white font-bold text-[10px] md:text-[11px] uppercase tracking-[0.2em] flex items-center">{t.totalInvestment}</span>
-                <span className="text-lg md:text-xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-3" /> {formatter.format(calc.myTotalInvestment)}</span>
+                <span className="text-lg md:text-xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-3" /> {formatOutput.format(calc.myTotalInvestment * conversionRate)}</span>
               </div>
               
               <div className="flex justify-between items-end pt-4">
                 <span className="text-white/80 font-bold uppercase tracking-[0.2em] text-[10px] md:text-[11px] mb-1 flex items-center">{t.netProfit}</span>
                 <span className={`text-xl md:text-2xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
-                  <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
+                  <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatOutput.format(calc.myNetProfit * conversionRate)}
                 </span>
               </div>
               
