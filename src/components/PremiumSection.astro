@@ -10,7 +10,7 @@ const allHorses = await getCollection('portfolio');
 const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold && h.id.startsWith(lang + '/'));
 ---
 
-<section id="premium" class="bg-bg-subtle relative border-t border-gray-100">
+<section id="premium" class="bg-bg-subtle relative border-t border-gray-100 scroll-mt-28 md:scroll-mt-32">
 	<!-- THE PREMIUM CONTENT WRAPPER -->
 	<div class="relative min-h-[60vh] py-8 md:py-16">
 		
