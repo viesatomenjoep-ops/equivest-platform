@@ -9,6 +9,7 @@ const portfolio = defineCollection({
     image: z.union([image(), z.string()]),
     price_range: z.string().optional(),
     youtube_url: z.string().optional(),
+    horsetelex_url: z.string().optional(),
     featured: z.boolean().default(false),
     premium: z.boolean().default(false),
     sold: z.boolean().default(false),

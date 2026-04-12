@@ -5,6 +5,7 @@ description: "Stakkatol x Balou du Rouet - Mare"
 image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png"
 premium: true
 youtube_url: "https://www.youtube.com/watch?v=Q8yqokvkUhA"
+horsetelex_url: "https://www.horsetelex.com/horses/pedigree/2678379/stakkazara ps"
 featured: true
 category: "Jumpers"
 specs:

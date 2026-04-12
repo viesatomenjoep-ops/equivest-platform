@@ -25,6 +25,7 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Main Image", name: "image", widget: "image" }
       - { label: "YouTube URL", name: "youtube_url", widget: "string", required: false }
+      - { label: "HorseTelex URL", name: "horsetelex_url", widget: "string", required: false }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Premium Access Only", name: "premium", widget: "boolean", default: false }
       - { label: "Category", name: "category", widget: "select", options: ["Hunters", "Jumpers", "Pony's", "Equitation"], required: false }
