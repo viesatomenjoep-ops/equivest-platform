@@ -263,17 +263,17 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20"></div>
             
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2">{t.yourFinancials}</h3>
-            <p className="text-accent font-bold uppercase tracking-widest text-[11px] md:text-xs lg:text-sm mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
+            <p className="text-accent font-bold uppercase tracking-widest text-[11px] md:text-xs mb-6">@ {data.ownershipPercentage}% Ownership | {data.monthsHeld} {t.months}</p>
             
             <div className="space-y-4">
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[11px] md:text-xs font-bold uppercase tracking-[0.2em]">{t.yourPurchase}</span>
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
+                <span className="text-xl md:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myPurchasePrice)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[11px] md:text-xs font-bold uppercase tracking-[0.2em]">{t.yourTco}</span>
-                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
+                <span className="text-xl md:text-2xl font-serif text-white tabular-nums">{formatter.format(calc.myOperationalCosts)}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-4 mt-4">
@@ -283,14 +283,14 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
               
               <div className="flex justify-between items-end pt-4">
                 <span className="text-white/80 font-bold uppercase tracking-[0.2em] text-[11px] md:text-xs mb-1 flex items-center">{t.netProfit}</span>
-                <span className={`text-2xl md:text-3xl lg:text-4xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                <span className={`text-2xl md:text-3xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfit >= 0 ? 'text-accent' : 'text-red-400'}`}>
                   <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="adv-drop-4" /> {calc.myNetProfit >= 0 ? '+' : ''}{formatter.format(calc.myNetProfit)}
                 </span>
               </div>
               
               <div className="mt-6 pt-5 border-t border-accent/20 text-center bg-white/5 rounded-xl border border-white/10 p-5">
                 <span className="block text-white/50 text-[11px] md:text-xs uppercase tracking-[0.25em] font-bold mb-2">{t.expectedRoi}</span>
-                <div className={`text-3xl md:text-4xl lg:text-5xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
+                <div className={`text-2xl md:text-3xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
                   {calc.roiPercentage.toFixed(1)}%
                 </div>
               </div>
