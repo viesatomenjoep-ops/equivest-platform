@@ -38,10 +38,10 @@ const t = useTranslations(lang);
 	
 	<main class="min-h-screen bg-bg-subtle pt-24 pb-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:mt-8">
-            <div class="bg-white shadow-premium rounded-sm overflow-hidden flex flex-col lg:flex-row border border-primary/5">
+            <div class="bg-white shadow-premium rounded-sm overflow-hidden flex flex-col lg:flex-row lg:items-start border border-primary/5">
                 
-               <!-- Left: Hero Image -->
-               <div class="w-full lg:w-2/5 h-[40vh] lg:h-auto relative shrink-0 overflow-hidden group">
+               <!-- Left: Hero Image (Sticky Editorial Layout) -->
+               <div class="w-full lg:w-2/5 h-[40vh] lg:h-[calc(100vh-6rem)] lg:sticky lg:top-24 relative shrink-0 overflow-hidden group">
                  {typeof horse.data.image === 'string' ? (
                     <img src={horse.data.image} alt={horse.data.title} class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="eager" />
                  ) : (
