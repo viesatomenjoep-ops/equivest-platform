@@ -11,6 +11,7 @@ export const ui = {
   en: {
     'nav.home': 'Home',
     'nav.about': 'About Us',
+    'nav.team': 'Team',
     'nav.portfolio': 'Portfolio',
     'nav.references': 'References',
     'nav.roi': 'ROI / TCO Calculators',
@@ -52,6 +53,13 @@ export const ui = {
     'premium.unlocked': 'Unlocked',
     'premium.private_collection': 'Private Collection',
     'premium.welcome': 'Welcome to the exclusive environment. These assets are only available to vetted partners and elite clients.',
+    'team.title': 'Meet Team Equivest',
+    'team.intro1': 'Excellence in sport and sales begins with exceptional care, correct training, and thoughtful preparation. Our stable is built on experience, precision, horsemanship, teamwork, and passion for the sport.',
+    'team.intro2': 'Behind every sale or successful round in the ring is a small, dedicated team committed to developing horses to the highest international standards. Our sales program is built on trust, transparency, and long-term vision. Based in both Europe and the USA, we develop and present quality sport horses for the international market.',
+    'team.role1': 'Director & Talent Scout',
+    'team.desc1': 'With years of experience at international showjumping level, Heather oversees all training, competition, and sales strategy for the stable both in Europe and the USA. Known for a thoughtful approach to horse development, Heather focuses on long-term soundness and performance—both in and out of the ring. Every sales & sport horse is trained with clarity, honesty, and its long-term potential in mind.',
+    'team.fact1': 'Believes, every horse has something special to teach us.',
+    'team.role2': 'US Show Rider, Trainer, and Manager',
     'ui.scroll': 'Scroll',
   },
   nl: {

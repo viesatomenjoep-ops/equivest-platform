@@ -1,0 +1,75 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Mock placeholders until real images are provided
+const mockImgHeather = "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=800&q=80";
+const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?w=800&q=80";
+---
+
+<section id="team" class="py-24 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+      <div class="max-w-2xl reveal reveal-up">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-primary mb-6 leading-tight">
+          {t("team.title")}
+        </h2>
+        <p class="text-lg md:text-xl text-primary/80 font-medium leading-relaxed">
+          {t("team.intro1")}
+        </p>
+        <p class="text-base text-primary/70 leading-relaxed mt-4">
+          {t("team.intro2")}
+        </p>
+      </div>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+      
+      <!-- Team Member 1 -->
+      <div class="group reveal reveal-up delay-100">
+        <div class="relative w-full aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm">
+          <img src={mockImgHeather} alt="Heather Field" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
+            <span class="text-2xl" title="USA">🇺🇸</span>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role1")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">Heather Field</h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc1")}
+          </p>
+          <p class="text-primary italic font-medium pt-2">
+            Fun fact: {t("team.fact1")}
+          </p>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="group reveal reveal-up delay-200">
+        <div class="relative w-full aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm">
+          <img src={mockImgRider} alt="US Show Rider" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
+            <span class="text-2xl" title="USA">🇺🇸</span>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role2")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">[Name Missing]</h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            [Text missing from the screenshot. Please provide the description for this team member.]
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

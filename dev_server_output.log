@@ -918,3 +918,14 @@ Error: Transform failed with 1 error:
 00:14:22 [200] /en/portfolio 16ms
 00:17:08 [watch] src/components/PortfolioGallery.astro
 00:17:09 [200] /en/portfolio 20ms
+00:20:06 [200] /en/portfolio 22ms
+08:13:18 [watch] /src/styles/global.css
+08:13:19 [200] /en/portfolio 30ms
+08:13:31 [watch] src/components/Header.astro
+08:13:31 [200] /en/portfolio 24ms
+08:13:37 [watch] /src/styles/global.css
+08:13:38 [200] /en/portfolio 43ms
+08:13:53 [watch] /src/styles/global.css
+08:13:54 [200] /en/portfolio 14ms
+08:14:06 [watch] /src/styles/global.css
+08:14:07 [200] /en/portfolio 5ms
