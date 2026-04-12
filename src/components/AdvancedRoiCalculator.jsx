@@ -170,15 +170,38 @@ const AdvancedRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) =
             <div className="bg-white/5 border border-white/10 p-4 flex flex-col md:flex-row items-start md:items-center justify-between group focus-within:border-accent transition-colors gap-2 md:gap-0">
               <label className="text-white/60 text-[10px] md:text-xs lg:text-sm font-bold uppercase tracking-[0.2em] w-full md:w-1/2">{t.purchase}</label>
               <div className="flex items-center w-full md:w-1/2 justify-start md:justify-end">
-                <select 
-                  value={currency} 
-                  onChange={(e) => setCurrency && setCurrency(e.target.value)} 
-                  className="bg-transparent border-none text-white/50 hover:text-white text-base md:text-lg font-serif mr-2 cursor-pointer focus:ring-0 outline-none appearance-none"
-                >
-                  <option value="EUR" className="text-black bg-white">€</option>
-                  <option value="USD" className="text-black bg-white">$</option>
-                  <option value="GBP" className="text-black bg-white">£</option>
-                </select>
+                <div className="relative inline-block mr-2 z-[60]">
+                  <button 
+                    type="button" 
+                    onClick={(e) => {
+                       e.preventDefault();
+                       const selector = document.getElementById('advanced-currency-dropdown');
+                       if(selector) selector.classList.toggle('hidden');
+                    }}
+                    className="bg-transparent border-none text-white/50 hover:text-white text-base md:text-lg font-serif cursor-pointer focus:ring-0 outline-none flex items-center"
+                  >
+                    {currencySymbol}
+                    <svg className="w-3 h-3 ml-1 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  
+                  <div id="advanced-currency-dropdown" className="hidden absolute top-full left-0 mt-2 bg-white rounded-md shadow-2xl overflow-hidden z-[70] border border-gray-100 flex flex-col min-w-[80px]">
+                    {['EUR', 'USD', 'GBP'].map(opt => (
+                      <button 
+                        key={opt}
+                        type="button"
+                        onClick={(e) => { 
+                          e.preventDefault();
+                          if(setCurrency) setCurrency(opt); 
+                          document.getElementById('advanced-currency-dropdown').classList.add('hidden');
+                        }} 
+                        className={`px-4 py-2 text-left font-serif text-lg hover:bg-bg-subtle transition-colors flex items-center gap-2 ${currency === opt ? 'text-accent font-bold bg-accent/5' : 'text-primary'}`}
+                      >
+                        <span>{opt === 'EUR' ? '€' : opt === 'USD' ? '$' : '£'}</span>
+                        <span className="text-[10px] font-sans font-bold uppercase tracking-widest opacity-50">{opt}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <input type="number" name="purchasePrice" value={data.purchasePrice || ''} onChange={handleChange} className="bg-transparent text-left md:text-right text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
