@@ -31,16 +31,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
       
       <!-- Team Member 1 -->
       <div class="group reveal reveal-up delay-100">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex flex-col items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex flex-col items-center justify-center">
           <img src="/images/Heather.jpeg" alt="Heather Field" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="USA">🇺🇸</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role1")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name1")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name1")}
+              <span class="text-2xl" title="USA">🇺🇸</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc1")}
@@ -53,16 +53,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
 
       <!-- Team Member 2 -->
       <div class="group reveal reveal-up delay-200">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Tyler.jpeg" alt="Tyler Petrie" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="USA">🇺🇸</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role2")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name2")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name2")}
+              <span class="text-2xl" title="USA">🇺🇸</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc2")}
@@ -72,16 +72,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
       
       <!-- Team Member 3 -->
       <div class="group reveal reveal-up delay-100">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Christelle.jpeg" alt="Christelle Littunen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="EU">🇪🇺</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role3")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name3")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name3")}
+              <span class="text-2xl" title="Finland">🇫🇮</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc3")}
@@ -94,16 +94,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
 
       <!-- Team Member 4 -->
       <div class="group reveal reveal-up delay-200">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Aurélie.jpeg" alt="Aurelie Mordefroy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="EU">🇪🇺</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role4")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name4")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name4")}
+              <span class="text-2xl" title="France">🇫🇷</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc4")}
@@ -116,16 +116,17 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
       
       <!-- Team Member 5 -->
       <div class="group reveal reveal-up delay-100">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Kyara.jpeg" alt="Kyara Murreli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="Global">🌎</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role5")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name5")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-2">
+              {t("team.name5")}
+              <span class="text-2xl ml-1" title="Italy">🇮🇹</span>
+              <span class="text-2xl" title="Belgium">🇧🇪</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc5")}
@@ -135,16 +136,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
 
       <!-- Team Member 6 -->
       <div class="group reveal reveal-up delay-200">
-        <div class="relative w-[60%] md:w-[40%] aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Evelyn.jpeg" alt="Eveline van Gruisen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="Global">🌎</span>
-          </div>
         </div>
         <div class="space-y-4">
           <div>
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role6")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name6")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name6")}
+              <span class="text-2xl" title="Belgium">🇧🇪</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc6")}
@@ -154,16 +155,16 @@ const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?
       
       <!-- Team Member 7 -->
       <div class="group reveal reveal-up delay-100 lg:col-span-2 max-w-2xl mx-auto w-full mt-8 border-t border-gray-100 pt-16">
-        <div class="relative w-[60%] md:w-[40%] mx-auto md:mx-0 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
+        <div class="relative w-1/2 mx-auto md:mx-0 aspect-[4/3] md:aspect-[16/9] mb-8 overflow-hidden rounded-sm bg-primary/5 flex items-center justify-center">
           <img src="/images/Tom.jpeg" alt="Tom van Biene" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute bottom-4 right-4 bg-white p-2 rounded-sm shadow-md flex items-center justify-center">
-            <span class="text-2xl" title="Global">🌎</span>
-          </div>
         </div>
         <div class="space-y-4 text-center md:text-left md:flex gap-12 items-center">
           <div class="shrink-0 mb-4 md:mb-0">
             <span class="text-accent text-sm font-bold uppercase tracking-[0.2em] block">{t("team.role7")}</span>
-            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1">{t("team.name7")}</h3>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center justify-center md:justify-start gap-3">
+              {t("team.name7")}
+              <span class="text-2xl" title="Netherlands">🇳🇱</span>
+            </h3>
           </div>
           <p class="text-primary/70 leading-relaxed text-base">
             {t("team.desc7")}
