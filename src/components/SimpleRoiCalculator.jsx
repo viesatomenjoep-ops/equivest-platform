@@ -208,10 +208,10 @@ const SimpleRoiCalculator = ({ lang = 'en', currency = 'EUR', setCurrency }) => 
                 <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 lg:p-10 gap-6">
                   <div className="text-center lg:text-left w-full">
                     <span className="text-accent text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={currency} setCurrency={setCurrency} id="simple-drop-3" /></span>
-                    <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 tabular-nums">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 md:gap-3 tabular-nums">
                       <span>+{formatter.format(amount * res.min)}</span>
                       <span className="text-accent/40 hidden md:block">—</span>
-                      <span className="text-accent/40 block md:hidden text-xl italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
+                      <span className="text-accent/40 block md:hidden text-base italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
                       <span>+{formatter.format(amount * res.max)}</span>
                     </div>
                   </div>
