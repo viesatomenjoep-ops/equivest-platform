@@ -90,15 +90,15 @@ const t = useTranslations(lang);
                       
                       <!-- Financial Trajectory Summary (Fallback Display) -->
                       <div class="mb-10 p-6 bg-white border border-primary/5 shadow-sm hidden">
-                         <span class="text-xs uppercase tracking-widest text-primary/50 font-bold mb-4 block">Financial Trajectory</span>
+                         <span class="text-xs uppercase tracking-widest text-primary/50 font-bold mb-4 block">{t('portfolio.financial_trajectory')}</span>
                          <div class="flex items-center justify-between">
                             <div>
-                               <span class="text-xs text-primary/70 uppercase block mb-1">Acquisition</span>
+                               <span class="text-xs text-primary/70 uppercase block mb-1">{t('portfolio.acquisition')}</span>
                                <span class="text-xl md:text-2xl font-bold text-primary">{horse.data.specs?.purchase_price || '-'}</span>
                             </div>
                             <div class="text-accent/50 text-2xl">→</div>
                             <div class="text-right">
-                               <span class="text-xs text-primary/70 uppercase block mb-1">Target Sale</span>
+                               <span class="text-xs text-primary/70 uppercase block mb-1">{t('portfolio.target_sale')}</span>
                                <span class="text-xl md:text-2xl font-bold text-accent">{horse.data.specs?.target_sale || '-'}</span>
                             </div>
                          </div>
