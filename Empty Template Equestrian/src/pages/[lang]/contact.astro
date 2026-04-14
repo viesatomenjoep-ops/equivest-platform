@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
-import ReferencesModule from '../../components/References.astro';
+import ContactModule from '../../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -17,12 +17,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="References | Equivest Elite Investments" lang={lang}>
+<Layout title="Contact | Placeholder Brand Elite Investments" lang={lang}>
 	<Header />
 	
-	<div id="main-content" class="min-h-screen bg-bg-subtle">
-		<div class="reveal reveal-up delay-200">
-			<ReferencesModule />
+	<div id="main-content" class="min-h-screen bg-bg-light flex flex-col justify-between">
+		<div class="flex-grow reveal reveal-up delay-200">
+			<ContactModule />
 		</div>
 	</div>
 </Layout>

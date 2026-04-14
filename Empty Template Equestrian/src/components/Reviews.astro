@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="py-12 md:py-20 bg-bg-subtle border-t border-gray-100 overflow-hidden flex items-center justify-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center space-y-6">
+    <span class="text-accent text-sm md:text-base font-bold uppercase tracking-[0.3em] block reveal reveal-up">Trust & Verification</span>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal reveal-up delay-200">
+      <span class="text-primary/90 text-xl font-bold uppercase tracking-widest">Excellent</span>
+      <div class="flex space-x-1">
+        {[...Array(5)].map(() => (
+          <div class="w-10 h-10 bg-[#00b67a] flex items-center justify-center shadow-md transform hover:-translate-y-1 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+        ))}
+      </div>
+      <span class="text-primary font-bold text-xl ml-2">Trustpilot</span>
+    </div>
+    
+    {/* TrustPilot Code Injector Area Below */}
+    <div class="w-full max-w-4xl mx-auto mt-8 Trustpilot-Injector-Area">
+      <!-- Plak hier in de toekomst de Trustpilot Widget HTML code -->
+    </div>
+  </div>
+</section>

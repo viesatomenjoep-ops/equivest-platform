@@ -5,7 +5,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const whatsappNumber = "+115613010984"; // Normalized for link
-const email = "equivestbv@gmail.com";
+const email = "Placeholder Brandbv@gmail.com";
 ---
 
 <section id="contact" class="pt-6 pb-8 md:pt-8 md:pb-10 bg-primary text-white relative overflow-hidden scroll-mt-24">
@@ -113,5 +113,29 @@ const email = "equivestbv@gmail.com";
       </div>
     </div>
 
+    <div class="mt-8 pt-6 md:mt-12 md:pt-8 border-t border-white/5">
+       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="flex items-center space-x-4">
+             <img 
+               src="/images/logo.png" 
+               alt="Placeholder Brand Logo" 
+               loading="lazy"
+               width="48"
+               height="48"
+               class="w-10 h-10 md:w-12 md:h-12 object-contain brightness-0 invert animate-[spin_15s_linear_infinite]" 
+             />
+             <div class="flex flex-col text-left">
+               <span class="text-lg md:text-xl font-serif font-bold tracking-tight text-white uppercase leading-none">Placeholder Brand</span>
+               <span class="text-xs md:text-sm font-bold tracking-[0.2em] text-accent-light uppercase mt-1">Elite Investments</span>
+             </div>
+          </div>
+          <p class="text-white/60 text-xs md:text-sm uppercase tracking-widest text-center md:text-right">© 2026 Placeholder Brand Portfolio Management. All Rights Reserved.</p>
+       </div>
+    </div>
   </div>
+
+  <!-- Interactive Subtle Scroll to Top Logo -->
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute bottom-8 right-8 z-0 w-16 h-16 opacity-[0.03] hover:opacity-[0.10] transition-all duration-700 cursor-pointer focus:outline-none hidden sm:block">
+    <img src="/images/logo.png" alt={t('ui.scroll_top')} width="64" height="64" loading="lazy" class="w-full h-full object-contain brightness-0 invert" />
+  </button>
 </section>

@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-primary text-white z-[9999] transform translate-y-full transition-transform duration-700 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] border-t border-accent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+    <div class="flex items-center gap-4 text-center md:text-left self-center md:self-auto">
+       <span class="text-accent shrink-0 hidden md:block">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm-3-9a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zm-2 5a3 3 0 01-2-1 1 1 0 10-1.732 1V16a5.002 5.002 0 005.464 0 1 1 0 10-1.732-1z"></path></svg>
+       </span>
+       <p class="text-sm md:text-base text-white/90">
+         {t('cookie.message')}
+       </p>
+    </div>
+    <div class="flex shrink-0 w-full md:w-auto">
+      <button id="accept-cookies" class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] w-full text-center">
+        {t('cookie.accept')}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+
+    if (banner && acceptBtn) {
+      if (!localStorage.getItem('Placeholder Brand_cookies_accepted')) {
+        setTimeout(() => {
+          banner.classList.remove('translate-y-full');
+        }, 1500);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('Placeholder Brand_cookies_accepted', 'true');
+        banner.classList.add('translate-y-full');
+      }, { once: true });
+    }
+  }
+
+  // Initialize on full page load
+  document.addEventListener('DOMContentLoaded', initCookieBanner);
+  
+  // Re-initialize for Astro View Transitions if applicable
+  document.addEventListener('astro:after-swap', initCookieBanner);
+</script>

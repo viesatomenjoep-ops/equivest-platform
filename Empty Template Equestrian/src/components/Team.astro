@@ -1,0 +1,184 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Mock placeholders until real images are provided
+const mockImgHeather = "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=800&q=80";
+const mockImgRider = "https://images.unsplash.com/photo-1553285991-4c7cb1ab82ca?w=800&q=80";
+---
+
+<div class="pt-24 mt-16 md:mt-24 border-t border-gray-100 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+      <div class="max-w-2xl reveal reveal-up">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-primary mb-6 leading-tight">
+          {t("team.title")}
+        </h2>
+        <p class="text-lg md:text-xl text-primary/80 font-medium leading-relaxed">
+          {t("team.intro1")}
+        </p>
+        <p class="text-base text-primary/70 leading-relaxed mt-4">
+          {t("team.intro2")}
+        </p>
+      </div>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+      
+      <!-- Team Member 1 -->
+      <div class="group reveal reveal-up delay-100">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex flex-col items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Heather Field" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role1")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name1")}
+              <span class="text-2xl" title="USA">🇺🇸</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc1")}
+          </p>
+          <p class="text-primary italic font-medium pt-2">
+             {t("team.fact1")}
+          </p>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="group reveal reveal-up delay-200">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Tyler Petrie" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role2")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name2")}
+              <span class="text-2xl" title="USA">🇺🇸</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc2")}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Team Member 3 -->
+      <div class="group reveal reveal-up delay-100">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Christelle Littunen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role3")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name3")}
+              <span class="text-2xl" title="Finland">🇫🇮</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc3")}
+          </p>
+          <p class="text-primary italic font-medium pt-2">
+            {t("team.fact3")}
+          </p>
+        </div>
+      </div>
+
+      <!-- Team Member 4 -->
+      <div class="group reveal reveal-up delay-200">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Aurelie Mordefroy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role4")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name4")}
+              <span class="text-2xl" title="France">🇫🇷</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc4")}
+          </p>
+          <p class="text-primary italic font-medium pt-2">
+             {t("team.fact4")}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Team Member 5 -->
+      <div class="group reveal reveal-up delay-100">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Kyara Murreli" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role5")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-2">
+              {t("team.name5")}
+              <span class="text-2xl ml-1" title="Italy">🇮🇹</span>
+              <span class="text-2xl" title="Belgium">🇧🇪</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc5")}
+          </p>
+        </div>
+      </div>
+
+      <!-- Team Member 6 -->
+      <div class="group reveal reveal-up delay-200">
+        <div class="relative w-1/2 md:w-5/12 aspect-square mb-8 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5">
+          <img src="/images/placeholder.png" alt="Eveline van Gruisen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4">
+          <div>
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em]">{t("team.role6")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center gap-3">
+              {t("team.name6")}
+              <span class="text-2xl" title="Belgium">🇧🇪</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc6")}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Team Member 7 -->
+      <div class="group reveal reveal-up delay-100 lg:col-span-2 max-w-2xl mx-auto w-full mt-8 border-t border-gray-100 pt-16">
+        <div class="relative w-1/2 md:w-[200px] mx-auto md:mx-0 aspect-square mb-8 md:mb-0 overflow-hidden rounded-full shadow-premium bg-primary/5 flex items-center justify-center border-4 border-white/80 ring-1 ring-black/5 shrink-0">
+          <img src="/images/placeholder.png" alt="Lorem Ipsum" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onerror="this.parentElement.style.display='none'" />
+        </div>
+        <div class="space-y-4 text-center md:text-left md:flex gap-12 items-center">
+          <div class="shrink-0 mb-4 md:mb-0">
+            <span class="text-accent text-sm font-bold uppercase tracking-[0.2em] block">{t("team.role7")}</span>
+            <h3 class="text-2xl md:text-3xl font-serif text-primary mt-1 flex items-center justify-center md:justify-start gap-3">
+              {t("team.name7")}
+              <span class="text-2xl" title="Netherlands">🇳🇱</span>
+            </h3>
+          </div>
+          <p class="text-primary/70 leading-relaxed text-base">
+            {t("team.desc7")}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Closing Statement -->
+    <div class="mt-20 md:mt-32 max-w-4xl mx-auto text-center reveal reveal-up bg-bg-subtle p-8 md:p-14 border border-primary/5 rounded-sm">
+      <p class="text-xl md:text-2xl font-serif leading-relaxed text-primary/90 italic">
+        "{t("team.closing")}"
+      </p>
+    </div>
+  </div>
+</div>

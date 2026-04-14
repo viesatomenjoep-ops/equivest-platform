@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import AboutModule from '../../components/About.astro';
-import Contact from '../../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -24,10 +23,6 @@ const t = useTranslations(lang);
 	<div id="main-content" class="min-h-screen bg-white">
 		<div class="reveal reveal-up delay-200">
 			<AboutModule />
-		</div>
-		
-		<div class="mt-24 reveal reveal-up">
-			<Contact />
 		</div>
 	</div>
 </Layout>

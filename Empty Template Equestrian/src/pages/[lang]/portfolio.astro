@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
-import ReferencesModule from '../../components/References.astro';
+import PortfolioGallery from '../../components/PortfolioGallery.astro';
+import Contact from '../../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -17,12 +18,18 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="References | Equivest Elite Investments" lang={lang}>
+<Layout title="Portfolio | Placeholder Brand Elite Investments" lang={lang}>
 	<Header />
 	
 	<div id="main-content" class="min-h-screen bg-bg-subtle">
+		<!-- The Full Gallery -->
 		<div class="reveal reveal-up delay-200">
-			<ReferencesModule />
+			<!-- Note: We use the existing PortfolioGallery but with an override to ensure it looks good as a standalone page -->
+			<PortfolioGallery />
+		</div>
+		
+		<div class="mt-24 reveal reveal-up">
+			<Contact />
 		</div>
 	</div>
 </Layout>

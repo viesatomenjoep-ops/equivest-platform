@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import RoiCalculatorTabs from '../../components/RoiCalculatorTabs.jsx';
+import Contact from '../../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -17,7 +18,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="ROI Calculators | Equivest Elite Investments" lang={lang}>
+<Layout title="ROI Calculators | Placeholder Brand Elite Investments" lang={lang}>
 	<Header />
 	
 	<div id="main-content" class="min-h-screen bg-bg-light">
@@ -29,6 +30,10 @@ const t = useTranslations(lang);
                </div>
 			 <RoiCalculatorTabs lang={lang} client:load />
 		   </div>
+		</div>
+		
+		<div class="mt-12 reveal reveal-up">
+			<Contact />
 		</div>
 	</div>
 </Layout>

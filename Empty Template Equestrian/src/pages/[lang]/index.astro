@@ -1,6 +1,17 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
+import About from "../../components/About.astro";
+import VideoShowcase from "../../components/VideoShowcase.astro";
+import PortfolioGallery from "../../components/PortfolioGallery.astro";
+
+import References from "../../components/References.astro";
+import Partners from "../../components/Partners.astro";
+import Reviews from "../../components/Reviews.astro";
+import RoiCalculatorTabs from "../../components/RoiCalculatorTabs.jsx";
+import News from "../../components/News.astro";
+import Contact from "../../components/Contact.astro";
+import Faq from "../../components/Faq.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { Image } from "astro:assets";
 import heroImg from "../../assets/images/hero.webp";
@@ -81,13 +92,13 @@ const t = useTranslations(lang);
 					class="pt-10 flex flex-col sm:flex-row items-center justify-center gap-4 reveal reveal-up delay-300"
 				>
 					<a
-						href={`/${lang}/portfolio`}
+						href="#portfolio"
 						class="bg-accent text-white px-6 py-3 text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-xl"
 					>
 						{t("nav.viewPortfolio")}
 					</a>
 					<a
-						href={`/${lang}/roi`}
+						href="#roi"
 						class="bg-accent text-white px-6 py-3 text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-xl"
 					>
 						{t("nav.roi")}
@@ -102,6 +113,51 @@ const t = useTranslations(lang);
 				</div>
 			</div>
 		</section>
+
+		<div class="reveal reveal-up">
+			<About />
+		</div>
+
+		<div class="bg-bg-subtle">
+			<PortfolioGallery />
+		</div>
+
+		<div class="reveal reveal-up">
+			<References />
+		</div>
+
+		<div class="reveal reveal-up">
+			<Partners />
+		</div>
+
+		<div class="reveal reveal-up">
+			<Reviews />
+		</div>
+
+		<section
+			id="roi"
+			class="pt-0 pb-12 md:pb-16 bg-white reveal reveal-up border-t-0 scroll-mt-24"
+		>
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<RoiCalculatorTabs lang={lang} client:load />
+			</div>
+		</section>
+
+		<div class="reveal reveal-up">
+			<VideoShowcase />
+		</div>
+
+		<div class="reveal reveal-up">
+			<News lang={lang} />
+		</div>
+
+		<div class="reveal reveal-up pb-24 lg:pb-0">
+			<Faq lang={lang} />
+		</div>
+
+		<div class="reveal reveal-up">
+			<Contact />
+		</div>
 	</div>
 </Layout>
 

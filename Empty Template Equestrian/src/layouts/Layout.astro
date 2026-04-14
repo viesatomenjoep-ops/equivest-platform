@@ -4,7 +4,6 @@ import "../styles/global.css";
 
 import Chatbot from "../components/Chatbot";
 import CookieBanner from "../components/CookieBanner.astro";
-import Footer from "../components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -15,7 +14,7 @@ interface Props {
 const { 
   title, 
   lang, 
-  description = "Equivest - Premium investment platform for elite showjumpers from the Netherlands, Germany, and Belgium." 
+  description = "Placeholder Brand - Premium investment platform for elite showjumpers from the Netherlands, Germany, and Belgium." 
 } = Astro.props;
 
 const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' | 'nl' | 'de' | 'es';
@@ -34,9 +33,9 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" />
 		
 		<!-- SEO -->
-		<title>{title} | Equivest</title>
+		<title>{title} | Placeholder Brand</title>
 		<meta name="description" content={description} />
-		<meta name="author" content="Equivest" />
+		<meta name="author" content="Placeholder Brand" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -55,12 +54,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		</noscript>
 	</head>
 	<body class="bg-white text-primary selection:bg-accent selection:text-white overflow-x-clip overscroll-x-none relative">
-		<div class="min-h-screen flex flex-col">
-			<main class="flex-1">
-				<slot />
-			</main>
-			<Footer />
-		</div>
+		<slot />
 		
 		<Chatbot client:idle lang={botLang} />
 		<CookieBanner />
@@ -77,8 +71,8 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 
 				try {
 					// Clean up previous observer if it exists
-					if (window.equivestObserver) {
-						window.equivestObserver.disconnect();
+					if (window.Placeholder BrandObserver) {
+						window.Placeholder BrandObserver.disconnect();
 					}
 
 					const observerOptions = {
@@ -87,7 +81,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 						threshold: 0
 					};
 
-					window.equivestObserver = new IntersectionObserver((entries, observer) => {
+					window.Placeholder BrandObserver = new IntersectionObserver((entries, observer) => {
 						entries.forEach(entry => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add('active');
@@ -97,7 +91,7 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 						});
 					}, observerOptions);
 
-					revealElements.forEach(el => window.equivestObserver.observe(el));
+					revealElements.forEach(el => window.Placeholder BrandObserver.observe(el));
 				} catch (e) {
 					console.warn('IntersectionObserver failed, falling back to instant reveal', e);
 					revealElements.forEach(el => el.classList.add('active'));

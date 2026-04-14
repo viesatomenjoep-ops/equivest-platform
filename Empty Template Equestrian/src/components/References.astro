@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const horses = await getCollection('portfolio');
+const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
+---
+
+  <section id="references" class="pt-8 pb-12 md:pt-12 md:pb-24 bg-white relative overflow-hidden border-t-4 border-gray-100 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 md:mb-16 space-y-4 max-w-2xl mx-auto">
+        <span class="text-primary/70 text-xl font-bold uppercase tracking-[0.3em] block">Past Successes</span>
+        <h2 class="text-4xl md:text-5xl font-serif text-primary leading-tight">
+          Recent Results & References
+        </h2>
+        <p class="text-primary/90 text-xl font-medium leading-relaxed">
+           A record of absolute excellence. These elite athletes have been successfully placed with international riders and syndicated networks.
+        </p>
+      </div>
+
+      <!-- Instagram Highlights Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 md:mb-24">
+        {[
+          'DWuMkF0CYL_',
+          'DVoJ-2rDuFR',
+          'DUwJutMkift',
+          'DU-u5JCjsUO'
+        ].map((id, index) => (
+          <div class={`bg-white p-2 shadow-premium border border-gray-100 rounded-xl overflow-hidden reveal reveal-up`} style={`transition-delay: ${index * 150}ms`}>
+             <iframe 
+               src={`https://www.instagram.com/p/${id}/embed`} 
+               width="100%" 
+               frameborder="0" 
+               scrolling="no" 
+               allowtransparency="true" 
+               class="w-full h-[580px] rounded-lg">
+             </iframe>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
+        {soldHorses.map((horse, index) => (
+          <div class="horse-card reveal reveal-scale bg-gray-50 group overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full grayscale-[30%] hover:grayscale-0 transition-all relative" style={`transition-duration: 1200ms; transition-delay: ${index * 150}ms`}>
+            <div class="aspect-[16/10] overflow-hidden relative">
+              {typeof horse.data.image === 'string' ? (
+                <img 
+                  src={horse.data.image} 
+                  alt={horse.data.title} 
+                  onerror="this.onerror=null; this.src='/images/placeholder.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
+                  class="w-full h-full object-cover"
+                />
+              ) : (
+                <Image 
+                  src={horse.data.image} 
+                  alt={horse.data.title} 
+                  class="w-full h-full object-cover"
+                />
+              )}
+              
+              <div class="absolute inset-0 bg-primary/40 flex items-center justify-center">
+                 <div class="border-2 border-accent-light text-accent-light px-8 py-3 bg-primary/90 text-lg font-bold uppercase tracking-[0.4em] transform -rotate-12 shadow-2xl">
+                    Sold
+                 </div>
+              </div>
+            </div>
+            
+            <div class="p-8 flex-grow flex flex-col">
+              <div class="flex items-center space-x-3 mb-3">
+                <img src="/images/logo.png" alt="Placeholder Brand" loading="lazy" width="64" height="64" class="w-16 h-16 object-contain brightness-0 animate-slow-spin" />
+                <h3 class="text-2xl font-serif text-primary">{horse.data.title}</h3>
+              </div>
+              <p class="text-primary/80 text-lg font-medium line-clamp-2">
+                {horse.data.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>

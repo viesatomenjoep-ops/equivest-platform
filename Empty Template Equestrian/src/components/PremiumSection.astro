@@ -1,0 +1,256 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allHorses = await getCollection('portfolio');
+const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold && h.id.startsWith(lang + '/'));
+---
+
+<section id="premium" class="bg-bg-subtle relative border-t border-gray-100 scroll-mt-24">
+	<!-- THE PREMIUM CONTENT WRAPPER -->
+	<div class="relative min-h-[60vh] py-8 md:py-16">
+		
+		<div id="premium-lock" class="absolute inset-0 z-[50] flex flex-col items-center justify-start bg-white w-full transition-all duration-700 px-4">
+			<!-- STICKY BOX to ensure it stays in view while scrolling the massive overlay on mobile -->
+			<div class="sticky top-1/4 mt-10 md:mt-24 max-w-md w-full space-y-6 md:space-y-8 text-center reveal reveal-up bg-white p-8 md:p-14 shadow-2xl border border-gray-100">
+				<img src="/images/logo.png" alt="Placeholder Brand Premium" loading="lazy" width="80" height="80" class="w-16 h-16 md:w-20 md:h-20 mx-auto object-contain brightness-0 animate-slow-spin" />
+				<h2 class="text-3xl md:text-4xl font-serif text-primary">{t("portfolio.private_access")}</h2>
+				<p class="text-primary/70 text-base md:text-lg">{t("portfolio.access_desc")}</p>
+				
+				<form id="premium-form" class="mt-8 space-y-4">
+					<div>
+						<input 
+							type="text" 
+							id="premium-user"
+							required
+							class="w-full bg-bg-subtle border border-primary/20 p-4 text-center tracking-[0.2em] font-bold text-primary focus:outline-none focus:border-accent transition-colors mb-4"
+							placeholder={t("portfolio.username")}
+						/>
+						<input 
+							type="password" 
+							id="access-code"
+							required
+							class="w-full bg-bg-subtle border border-primary/20 p-4 text-center tracking-[0.2em] font-bold text-primary focus:outline-none focus:border-accent transition-colors"
+							placeholder={t("portfolio.password")}
+						/>
+						<p id="error-msg" class="text-red-500 mt-2 text-sm font-bold uppercase tracking-widest hidden">{t("portfolio.invalid")}</p>
+					</div>
+					<button type="submit" class="w-full bg-primary text-white font-bold uppercase tracking-[0.2em] py-4 hover:bg-accent transition-colors">
+						{t("portfolio.unlock")}
+					</button>
+				</form>
+				
+				<p class="text-xs md:text-sm text-primary/70 mt-6">{t("portfolio.request_access")}</p>
+			</div>
+		</div>
+
+		<!-- THE PREMIUM CONTENT (Blurred by default) -->
+		<div id="premium-content" class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto opacity-30 select-none pointer-events-none transition-all duration-1000 h-[500px] overflow-hidden">
+			<div class="max-w-3xl space-y-4 reveal reveal-up mb-12">
+				<span class="text-accent text-xl font-bold uppercase tracking-[0.4em]">{t("premium.unlocked")}</span>
+				<h2 class="text-4xl md:text-6xl font-serif text-primary leading-tight">
+					{t("premium.private_collection")}
+				</h2>
+				<p class="text-lg font-medium text-primary/90 leading-relaxed max-w-2xl">
+					{t("premium.welcome")}
+				</p>
+			</div>
+
+			{premiumHorses.length === 0 ? (
+				<div class="text-center py-10 md:py-20 border border-primary/10 bg-white">
+					<p class="text-2xl font-serif text-primary">{t("portfolio.request_access")}</p>
+				</div>
+			) : (
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+				{premiumHorses.map((horse, index) => (
+					<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2">
+						<div class="aspect-[16/10] overflow-hidden relative">
+							{typeof horse.data.image === 'string' ? (
+							<img 
+								src={horse.data.image} 
+								alt={horse.data.title} 
+								loading="lazy" 
+								decoding="async"
+								onerror="this.onerror=null; this.src='/images/placeholder.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+							) : (
+							<Image 
+								src={horse.data.image} 
+								alt={horse.data.title} 
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+							)}
+							{horse.data.youtube_url && (
+							<span title="Video Coming Soon" class="absolute inset-0 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-not-allowed">
+								<div class="w-16 h-16 bg-white flex items-center justify-center rounded-full text-primary/70 scale-90 group-hover:scale-100 transition-transform">
+									<svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+								</div>
+							</span>
+							)}
+						</div>
+						
+						<div class="p-8 flex-grow flex flex-col">
+							<h3 class="text-3xl font-serif text-primary group-hover:text-accent transition-colors mb-4">{horse.data.title}</h3>
+							<p class="text-primary/70 text-lg font-medium mb-8">
+							{horse.data.description}
+							</p>
+							
+							<div class="mt-auto flex flex-col space-y-6 border-t border-gray-100 pt-6 bg-bg-subtle -mx-8 px-8 pb-8">
+									<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+										<div>
+										<span class="text-[10px] uppercase tracking-widest text-primary/70 font-bold block mb-1">{t("ui.age")}</span>
+										<span class="text-base font-serif text-primary">{horse.data.specs?.age}</span>
+										</div>
+										<div>
+										<span class="text-[10px] uppercase tracking-widest text-primary/70 font-bold block mb-1">{t("ui.level")}</span>
+										<span class="text-base font-serif text-primary">{horse.data.specs?.level}</span>
+										</div>
+										<div>
+										<span class="text-[10px] uppercase tracking-widest text-primary/70 font-bold block mb-1">{t("ui.gender")}</span>
+										<span class="text-base font-serif text-primary">{horse.data.specs?.gender}</span>
+										</div>
+										<div>
+										<span class="text-[10px] uppercase tracking-widest text-primary/70 font-bold block mb-1">{t("ui.height")}</span>
+										<span class="text-base font-serif text-primary">{horse.data.specs?.height}</span>
+										</div>
+									</div>
+							
+							<div class="pt-6 border-t border-primary/10">
+								<span class="text-sm uppercase tracking-widest text-primary/50 font-bold mb-4 block">Financial Projection</span>
+								<div class="flex items-center justify-between bg-white/50 p-4 rounded border border-primary/5">
+									<div>
+									<span class="text-[0.65rem] text-primary/70 uppercase block mb-1">Acquisition</span>
+									<span class="text-lg md:text-xl font-bold text-primary">{horse.data.specs?.purchase_price || '-'}</span>
+									</div>
+									<div class="text-accent/50 text-xl font-serif px-2">→</div>
+									<div class="text-right">
+									<span class="text-[0.65rem] text-primary/70 uppercase block mb-1">Target Sale</span>
+									<span class="text-lg md:text-xl font-bold text-accent">{horse.data.specs?.target_sale || '-'}</span>
+									</div>
+								</div>
+							</div>
+							
+							<div class="pt-2">
+								  <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-accent block mb-3">{t("portfolio.docs")}</span>
+								  <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+									 <a href={horse.data.documents?.vet_check || "#contact"} target={horse.data.documents?.vet_check ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-3 bg-bg-subtle hover:bg-white border transition-all group rounded ${horse.data.documents?.vet_check ? 'border-primary/5 hover:border-accent hover:shadow-md' : 'border-transparent opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.vet_check ? "View" : "Request Document"}>
+										<svg class="w-6 h-6 text-primary/40 group-hover:text-accent mb-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+										<span class="text-[9px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.vet_check")}</span>
+									 </a>
+		  
+									 <a href={horse.data.documents?.xrays || "#contact"} target={horse.data.documents?.xrays ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-3 bg-bg-subtle hover:bg-white border transition-all group rounded ${horse.data.documents?.xrays ? 'border-primary/5 hover:border-accent hover:shadow-md' : 'border-transparent opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.xrays ? "View" : "Request Document"}>
+										<svg class="w-6 h-6 text-primary/40 group-hover:text-accent mb-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+										<span class="text-[9px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.xrays")}</span>
+									 </a>
+		  
+									 <a href={horse.data.documents?.passport || "#contact"} target={horse.data.documents?.passport ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-3 bg-bg-subtle hover:bg-white border transition-all group rounded ${horse.data.documents?.passport ? 'border-primary/5 hover:border-accent hover:shadow-md' : 'border-transparent opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.passport ? "View" : "Request Document"}>
+										<svg class="w-6 h-6 text-primary/40 group-hover:text-accent mb-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+										<span class="text-[9px] font-bold uppercase tracking-widest text-primary text-center">{t("portfolio.passport")}</span>
+									 </a>
+		  
+									 <a href={horse.data.documents?.fei_data || "#contact"} target={horse.data.documents?.fei_data ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-3 transition-all group rounded ${horse.data.documents?.fei_data ? 'bg-green-50 border-2 border-green-500 hover:bg-green-100 hover:shadow-md' : 'bg-bg-subtle border-transparent opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.fei_data ? "View Data" : "Request Document"}>
+										<svg class={`w-6 h-6 mb-1 transition-colors ${horse.data.documents?.fei_data ? 'text-green-600 group-hover:text-green-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+										<span class={`text-[9px] font-bold uppercase tracking-widest text-center transition-colors ${horse.data.documents?.fei_data ? 'text-green-700' : 'text-primary'}`}>{t("portfolio.fei")}</span>
+									 </a>
+								  </div>
+							  </div>
+							
+							<div class="pt-6 mt-4 border-t border-primary/10">
+								<a href="https://wa.me/15613010984" target="_blank" class="block w-full text-center py-4 text-xl font-bold uppercase tracking-[0.2em] bg-accent text-white hover:bg-primary transition-all">
+									{t("portfolio.secure_investment")}
+								</a>
+							</div>
+						</div>
+					</div>
+				))}
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<script>
+	const VALID_CODES = ['1111'];
+
+  function unlockPortfolio(immediate = false) {
+    const lockScreen = document.getElementById('premium-lock');
+    const content = document.getElementById('premium-content');
+
+    if (!lockScreen || !content) return;
+    
+    if (immediate) {
+       lockScreen.classList.add('hidden');
+    } else {
+       lockScreen.classList.add('opacity-0', 'pointer-events-none');
+       setTimeout(() => {
+         lockScreen.classList.add('hidden');
+       }, 700);
+    }
+    
+    content.classList.remove('opacity-10', 'opacity-30', 'pointer-events-none', 'h-[500px]', 'overflow-hidden');
+    content.classList.add('opacity-100');
+
+    if (typeof (window as any).initReveal === 'function') {
+      (window as any).initReveal();
+    }
+  }
+
+  function initLock() {
+    if (localStorage.getItem('Placeholder Brand_v2_unlocked') === 'true') {
+       unlockPortfolio(true);
+       return;
+    }
+
+    const form = document.getElementById('premium-form');
+    const input = document.getElementById('access-code') as HTMLInputElement;
+    const errorMsg = document.getElementById('error-msg');
+
+    if (form && input && errorMsg) {
+      // Remove old listeners by cloning to be safe (though on swap it's a new node anyway)
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const user = (document.getElementById('premium-user') as HTMLInputElement).value.trim();
+        const code = input.value.trim();
+
+        if (user === 'Placeholder Brand11' && code === '1111') {
+          errorMsg.classList.add('hidden');
+          localStorage.setItem('Placeholder Brand_v2_unlocked', 'true');
+          unlockPortfolio();
+        } else {
+          errorMsg.classList.remove('hidden');
+          input.classList.add('border-red-500');
+          (document.getElementById('premium-user') as HTMLInputElement).classList.add('border-red-500');
+          input.value = '';
+          form.classList.add('animate-shake');
+          setTimeout(() => form.classList.remove('animate-shake'), 500);
+        }
+      });
+    }
+  }
+
+  if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
+  initLock();
+  
+  document.addEventListener('astro:after-swap', () => {
+      if (typeof initGalleryFilters === 'function') { initGalleryFilters(); }
+      initLock();
+  });
+</script>
+
+<style>
+	.animate-shake {
+		animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+	}
+	@keyframes shake {
+		10%, 90% { transform: translate3d(-1px, 0, 0); }
+		20%, 80% { transform: translate3d(2px, 0, 0); }
+		30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+		40%, 60% { transform: translate3d(4px, 0, 0); }
+	}
+</style>

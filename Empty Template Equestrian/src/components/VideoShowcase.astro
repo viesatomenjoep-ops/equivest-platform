@@ -1,0 +1,37 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Specific video requested by user
+const videoId = '_cCHewe-EiY';
+---
+
+<section id="video-showcase" class="py-12 md:py-24 bg-primary relative overflow-hidden text-white scroll-mt-24">
+  <!-- Subtle background glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent-light/10 rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-8 md:mb-16 space-y-4">
+      <span class="text-accent-light text-xl font-bold uppercase tracking-[0.3em] block reveal reveal-up">Experience Excellence</span>
+      <h2 class="text-4xl md:text-5xl font-serif leading-tight reveal reveal-up delay-100">
+        World-Class Performance
+      </h2>
+      <p class="text-white/90 text-xl font-medium leading-relaxed max-w-2xl mx-auto reveal reveal-up delay-200">
+        Watch our elite athletes in action. True quality reveals itself in the arena.
+      </p>
+    </div>
+
+    <div class="w-full max-w-5xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 reveal reveal-scale delay-300 relative group bg-black">
+      <iframe 
+        class="w-full h-full absolute inset-0" 
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&showinfo=0`} 
+        title="Placeholder Brand Elite Showjumper" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
