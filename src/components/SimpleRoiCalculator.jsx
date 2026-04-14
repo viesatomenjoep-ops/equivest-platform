@@ -202,7 +202,7 @@ const SimpleRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurre
                     <button
                       key={idx}
                       onClick={() => setActiveYear(idx)}
-                      className={`flex-1 py-2 px-3 md:py-3 md:px-5 lg:px-6 rounded-lg lg:rounded-xl text-[11px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg scale-[1.02]' : 'text-white/50 hover:text-white/90 hover:bg-white/5'}`}
+                      className={`flex-1 py-3 px-3 md:py-4 md:px-5 lg:px-6 rounded-lg lg:rounded-xl text-sm md:text-base lg:text-lg font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] transition-all ${activeYear === idx ? 'bg-accent text-white shadow-lg scale-[1.02]' : 'text-white/50 hover:text-white/90 hover:bg-white/5'}`}
                     >
                       {r.year}
                     </button>
