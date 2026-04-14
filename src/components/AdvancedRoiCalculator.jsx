@@ -222,7 +222,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.purchase}</label>
               <div className="flex items-center w-full justify-start mt-auto">
                 <CurrencyDropdown currency={purchaseCurr} setCurrency={setPurchaseCurr} id="adv-drop-1" />
-                <input type="number" name="purchasePrice" value={data.purchasePrice === 0 ? '' : data.purchasePrice} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
+                <input type="number" name="purchasePrice" value={data.purchasePrice === 0 ? '' : data.purchasePrice} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
             
@@ -230,7 +230,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.expectedSale}</label>
               <div className="flex items-center w-full justify-start mt-auto">
                 <CurrencyDropdown currency={saleCurr} setCurrency={setSaleCurr} id="adv-drop-2" />
-                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice === 0 ? '' : data.expectedSalePrice} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-accent outline-none w-full tabular-nums" />
+                <input type="number" name="expectedSalePrice" value={data.expectedSalePrice === 0 ? '' : data.expectedSalePrice} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-accent outline-none w-full tabular-nums" />
               </div>
             </div>
 
@@ -238,7 +238,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
               <label className="text-white/60 text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full">{t.duration}</label>
               <div className="flex items-center w-full justify-start mt-auto">
                 <span className="text-white/50 text-xl font-serif mr-3">#</span>
-                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
+                <input type="number" name="monthsHeld" value={data.monthsHeld || ''} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
 
@@ -247,7 +247,7 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
               <label className="text-accent text-[11px] md:text-sm font-bold uppercase tracking-[0.25em] w-full ml-1">{t.syndicateShare}</label>
               <div className="flex items-center w-full justify-start mt-auto ml-1">
                 <span className="text-accent/50 text-xl font-serif mr-3">%</span>
-                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left text-xl md:text-2xl lg:text-3xl font-serif text-white outline-none w-full tabular-nums" />
+                <input type="number" name="ownershipPercentage" value={data.ownershipPercentage || ''} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full tabular-nums" />
               </div>
             </div>
           </div>
@@ -257,19 +257,19 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
                 <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.training.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
-                <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+                <input type="number" name="monthlyBoardingTraining" value={data.monthlyBoardingTraining === 0 ? '' : data.monthlyBoardingTraining} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
                 <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.vet.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
-                <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+                <input type="number" name="monthlyVetFarrier" value={data.monthlyVetFarrier === 0 ? '' : data.monthlyVetFarrier} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
                 <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.shows.replace(/[€$£]/, inputSymbol)}{t.mo}</label>
-                <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+                <input type="number" name="monthlyShowTransport" value={data.monthlyShowTransport === 0 ? '' : data.monthlyShowTransport} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
               <div className="bg-white/5 border border-white/5 p-4 flex flex-col justify-between focus-within:border-accent/50 transition-colors">
                 <label className="text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 leading-relaxed">{t.insurance}</label>
-                <input type="number" step="0.1" name="insuranceRateYearly" value={data.insuranceRateYearly === 0 ? '' : data.insuranceRateYearly} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
+                <input type="number" step="0.1" name="insuranceRateYearly" value={data.insuranceRateYearly === 0 ? '' : data.insuranceRateYearly} onChange={handleChange} className="bg-transparent text-left text-lg md:text-xl lg:text-2xl font-serif text-white outline-none w-full border-b border-white/20 pb-1 focus:border-accent transition-colors tabular-nums" />
               </div>
             </div>
           </div>
@@ -285,29 +285,29 @@ const AdvancedRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCur
             <div className="space-y-4">
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourPurchase}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myPurchasePriceBase * rates[outputCurrency])}</span>
+                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatOutput.format(calc.myPurchasePriceBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em]">{t.yourTco}</span>
-                <span className="text-lg md:text-xl font-serif text-white tabular-nums">{formatOutput.format(calc.myOperationalCostsBase * rates[outputCurrency])}</span>
+                <span className="text-lg md:text-xl lg:text-2xl font-serif text-white tabular-nums">{formatOutput.format(calc.myOperationalCostsBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end border-b border-white/30 pb-4 mt-4">
                 <span className="text-white font-bold text-[10px] md:text-[11px] uppercase tracking-[0.2em] flex items-center">{t.totalInvestment}</span>
-                <span className="text-lg md:text-xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-3" /> {formatOutput.format(calc.myTotalInvestmentBase * rates[outputCurrency])}</span>
+                <span className="text-xl md:text-2xl lg:text-3xl font-serif text-white font-bold tabular-nums flex items-center"><CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-3" /> {formatOutput.format(calc.myTotalInvestmentBase * rates[outputCurrency])}</span>
               </div>
               
               <div className="flex justify-between items-end pt-4">
                 <span className="text-white/80 font-bold uppercase tracking-[0.2em] text-[10px] md:text-[11px] mb-1 flex items-center">{t.netProfit}</span>
-                <span className={`text-xl md:text-2xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfitBase >= 0 ? 'text-accent' : 'text-red-400'}`}>
+                <span className={`text-xl md:text-2xl lg:text-3xl font-serif font-bold tabular-nums flex items-center ${calc.myNetProfitBase >= 0 ? 'text-accent' : 'text-red-400'}`}>
                   <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="adv-drop-4" /> {calc.myNetProfitBase >= 0 ? '+' : ''}{formatOutput.format(calc.myNetProfitBase * rates[outputCurrency])}
                 </span>
               </div>
               
               <div className="mt-6 pt-5 border-t border-accent/20 text-center bg-white/5 rounded-xl border border-white/10 p-5">
                 <span className="block text-white/50 text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-bold mb-2">{t.expectedRoi}</span>
-                <div className={`text-2xl md:text-3xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
+                <div className={`text-2xl md:text-3xl lg:text-4xl font-serif font-bold tracking-tighter ${calc.roiPercentage >= 0 ? 'text-white' : 'text-red-400'}`}>
                   {calc.roiPercentage.toFixed(1)}%
                 </div>
               </div>

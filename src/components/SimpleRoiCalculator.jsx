@@ -149,7 +149,7 @@ const SimpleRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurre
                 type="text" 
                 value={amount.toLocaleString(lang === 'nl' ? 'nl-NL' : 'en-US')}
                 onChange={handleInputChange}
-                className="bg-transparent border-none text-white text-xl md:text-2xl lg:text-3xl font-serif tabular-nums outline-none w-32 md:w-48 text-right p-0 focus:ring-0"
+                className="bg-transparent border-none text-white text-lg md:text-xl lg:text-2xl font-serif tabular-nums outline-none w-32 md:w-48 text-right p-0 focus:ring-0"
               />
             </div>
           </div>
@@ -189,7 +189,7 @@ const SimpleRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurre
                 
                 <div className="text-center space-y-3 pb-10 border-b border-white/10">
                   <span className="text-accent/80 text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] flex justify-center items-center gap-2">{t.totalReturn} <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="simple-drop-2" /></span>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 drop-shadow-lg tabular-nums leading-tight">
+                  <div className="text-xl md:text-2xl lg:text-3xl font-serif text-white flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 drop-shadow-lg tabular-nums leading-tight">
                     <span>{formatOutput.format((amount + (amount * res.min)) * conversionRate)}</span>
                     <span className="text-white/30 hidden md:block">—</span>
                     <span className="text-white/30 block md:hidden text-lg italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
@@ -212,7 +212,7 @@ const SimpleRoiCalculator = ({ lang = 'en', inputCurrency = 'USD', setInputCurre
                 <div className="flex flex-col lg:flex-row justify-between items-center bg-accent/10 border border-accent/20 rounded-2xl p-6 lg:p-10 gap-6">
                   <div className="text-center lg:text-left w-full">
                     <span className="text-accent text-[11px] md:text-sm lg:text-base font-bold uppercase tracking-[0.25em] mb-2 flex items-center justify-center lg:justify-start gap-2">{t.range} (Net Profit) <CurrencyDropdown currency={outputCurrency} setCurrency={setOutputCurrency} id="simple-drop-3" /></span>
-                    <div className="text-xl md:text-2xl lg:text-3xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 md:gap-3 tabular-nums">
+                    <div className="text-lg md:text-xl lg:text-2xl font-serif text-accent flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 md:gap-3 tabular-nums">
                       <span>+{formatOutput.format((amount * res.min) * conversionRate)}</span>
                       <span className="text-accent/40 hidden md:block">—</span>
                       <span className="text-accent/40 block md:hidden text-base italic">{lang === 'nl' ? 'tot' : lang === 'de' ? 'bis' : lang === 'es' ? 'a' : 'to'}</span>
