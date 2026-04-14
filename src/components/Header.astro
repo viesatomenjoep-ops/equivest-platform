@@ -7,6 +7,11 @@ import logoImg from "../../public/images/logo.webp";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const currentPath = Astro.url.pathname;
+const getLocalizedPath = (targetLang) => {
+  return currentPath.replace(new RegExp(`^\\/${lang}(?=\\/|$)`), `/${targetLang}`);
+};
+
 const navItems = [
   { href: `/${lang}/portfolio`, label: "Login" },
   { href: `/${lang}/about`, label: t("nav.about") },
@@ -69,7 +74,7 @@ const navItems = [
             {
               Object.entries(languages).map(([l, _]) => (
                 <a
-                  href={`/${l}/`}
+                  href={getLocalizedPath(l)}
                   class={`text-lg font-bold uppercase tracking-tighter w-8 h-8 flex items-center justify-center rounded-full transition-all ${lang === l ? "bg-primary text-white" : "text-primary/70 hover:text-accent hover:bg-bg-subtle"}`}
                 >
                   {l}
@@ -136,13 +141,13 @@ const navItems = [
       <p
         class="text-lg font-bold uppercase tracking-[0.2em] text-primary/70 mb-6"
       >
-        Select Language
+        {t("ui.select_language")}
       </p>
       <div class="grid grid-cols-2 gap-3">
         {
           Object.entries(languages).map(([l, name]) => (
             <a
-              href={`/${l}/`}
+              href={getLocalizedPath(l)}
               class={`flex flex-col items-center justify-center p-4 rounded-xl border transition-all ${lang === l ? "border-accent bg-accent/5 text-primary" : "border-gray-100 text-primary/90 hover:border-accent/40"}`}
             >
               <span class="text-lg font-bold uppercase mb-1">{l}</span>

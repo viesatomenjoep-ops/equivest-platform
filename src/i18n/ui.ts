@@ -110,6 +110,7 @@ export const ui = {
     'cookie.message': 'We use essential cookies to ensure you get the best experience on our website.',
     'cookie.accept': 'Accept',
     'ui.scroll_top': 'Scroll to top',
+    'ui.select_language': 'Select Language',
   },
   nl: {
     'nav.home': 'Home',
@@ -201,6 +202,7 @@ export const ui = {
 
     'ui.scroll': 'Scroll',
     'ui.scroll_top': 'Scroll naar boven',
+    'ui.select_language': 'Taal Selecteren',
   },
   de: {
     'nav.home': 'Startseite',
@@ -292,6 +294,7 @@ export const ui = {
 
     'ui.scroll': 'Scrollen',
     'ui.scroll_top': 'Nach oben scrollen',
+    'ui.select_language': 'Sprache Wählen',
   },
   es: {
     'nav.home': 'Inicio',
@@ -383,5 +386,6 @@ export const ui = {
 
     'ui.scroll': 'Desplazar',
     'ui.scroll_top': 'Desplazarse hacia arriba',
+    'ui.select_language': 'Seleccionar Idioma',
   },
 } as const;
