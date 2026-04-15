@@ -4,7 +4,6 @@ import Header from "../../components/Header.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { Image } from "astro:assets";
 import heroImg from "../../assets/images/hero.webp";
-import AboutModule from "../../components/About.astro";
 
 export function getStaticPaths() {
 	return [
@@ -103,7 +102,6 @@ const t = useTranslations(lang);
 				</div>
 			</div>
 		</section>
-		<AboutModule />
 	</div>
 </Layout>
 
