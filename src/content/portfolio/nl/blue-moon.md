@@ -1,7 +1,7 @@
 ---
 title: "Blue Moon"
 description: "Grote maat pony - Ruin"
-image: "https://placehold.co/600x400.png"
+image: "/images/blue-moon.jpg"
 premium: false
 youtube_url: ""
 featured: false

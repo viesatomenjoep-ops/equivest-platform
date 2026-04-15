@@ -1,7 +1,7 @@
 ---
 title: "Patrick Junior"
 description: "Pony grande - Castrado"
-image: "https://placehold.co/600x400.png"
+image: "/images/patrick-junior.jpg"
 premium: false
 youtube_url: ""
 featured: false

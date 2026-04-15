@@ -1,7 +1,7 @@
 ---
 title: "Unique"
 description: "Großes Pony - Wallach"
-image: "https://placehold.co/600x400.png"
+image: "/images/unique.jpg"
 premium: false
 youtube_url: ""
 featured: false

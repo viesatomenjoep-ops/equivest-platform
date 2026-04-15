@@ -1,7 +1,7 @@
 ---
 title: "Patrick Junior"
 description: "Large pony - Gelding"
-image: "https://placehold.co/600x400.png"
+image: "/images/patrick-junior.jpg"
 premium: false
 youtube_url: ""
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: "Blue Moon"
 description: "Large pony - Gelding"
-image: "https://placehold.co/600x400.png"
+image: "/images/blue-moon.jpg"
 premium: false
 youtube_url: ""
 featured: false

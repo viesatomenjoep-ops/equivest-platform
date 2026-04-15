@@ -1,7 +1,7 @@
 ---
 title: "Blue Moon"
 description: "Pony grande - Castrado"
-image: "https://placehold.co/600x400.png"
+image: "/images/blue-moon.jpg"
 premium: false
 youtube_url: ""
 featured: false
