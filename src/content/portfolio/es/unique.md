@@ -1,7 +1,7 @@
 ---
 title: "Unique"
 description: "Pony grande - Castrado"
-image: "/images/unique.jpg"
+image: "../../../assets/images/unique.jpg"
 premium: false
 youtube_url: ""
 featured: false

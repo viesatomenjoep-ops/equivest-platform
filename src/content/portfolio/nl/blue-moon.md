@@ -1,7 +1,7 @@
 ---
 title: "Blue Moon"
 description: "Grote maat pony - Ruin"
-image: "/images/blue-moon.jpg"
+image: "../../../assets/images/blue-moon.jpg"
 premium: false
 youtube_url: ""
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: "Unique"
 description: "Large pony - Gelding"
-image: "/images/unique.jpg"
+image: "../../../assets/images/unique.jpg"
 premium: false
 youtube_url: ""
 featured: false

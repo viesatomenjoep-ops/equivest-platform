@@ -1,7 +1,7 @@
 ---
 title: "Patrick Junior"
 description: "Großes Pony - Wallach"
-image: "/images/patrick-junior.jpg"
+image: "../../../assets/images/patrick-junior.jpg"
 premium: false
 youtube_url: ""
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: "Patrick Junior"
 description: "Large pony - Gelding"
-image: "/images/patrick-junior.jpg"
+image: "../../../assets/images/patrick-junior.jpg"
 premium: false
 youtube_url: ""
 featured: false

@@ -1,7 +1,7 @@
 ---
 title: "Unique"
 description: "Großes Pony - Wallach"
-image: "/images/unique.jpg"
+image: "../../../assets/images/unique.jpg"
 premium: false
 youtube_url: ""
 featured: false
