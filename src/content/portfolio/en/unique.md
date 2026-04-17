@@ -1,7 +1,7 @@
 ---
 title: Unique
 description: Large pony - Gelding
-image: /images/portfolio/unique-1776451763135.jpg
+image: "../../../assets/images/unique-1776451763135.jpg"
 premium: false
 youtube_url: ''
 featured: false
