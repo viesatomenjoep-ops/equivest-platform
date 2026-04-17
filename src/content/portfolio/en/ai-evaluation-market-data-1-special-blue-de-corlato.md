@@ -1,5 +1,5 @@
 ---
-title: Special Blue de Corlato
+title: Special Blue de Corlatooo
 description: Zirocco Blue VDL x I'm Special de Muze - Mare
 image: >-
   https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png
@@ -28,5 +28,4 @@ As a developing 7-year-old mare (Zirocco Blue VDL x I'm Special de Muze) current
 | **Asset Purchase Price** | **€ 185.000** |
 | **Expected Sale Price** *(3-6 Mos)* | € 220.000 |
 | **Expected Sale Price** *(6-12 Mos)* | € 265.000 |
-| **Expected Sale Price** *(12-36 Mos)* | € 500000 
-
+| **Expected Sale Price** *(12-36 Mos)* | € 5000000
