@@ -18,4 +18,4 @@ documents:
 horsetelex_url: ''
 ---
 
-Unique is a stunning 4-year-old large pony gelding, available for an investment of € 30.000.
+Unique is a stunning 4-year-old large pony gelding, available for an investment of € 35000
