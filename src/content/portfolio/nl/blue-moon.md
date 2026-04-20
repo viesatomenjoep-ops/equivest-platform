@@ -5,11 +5,11 @@ image: ../../../assets/images/blue-moon.jpg
 premium: false
 youtube_url: ''
 featured: false
-category: Ponys
+category: Pony's
 specs:
   age: 5
-  gender: Ruin
-  height: Grote maat pony
+  gender: Gelding
+  height: Large pony
   purchase_price: € 30.000
   target_sale: TBD
   level: TBD
@@ -19,4 +19,3 @@ horsetelex_url: ''
 ---
 
 Blue Moon is een fantastische 5-jarige grote maat pony ruin, beschikbaar voor een investering van € 40000
-
