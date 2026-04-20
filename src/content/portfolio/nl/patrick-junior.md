@@ -16,6 +16,9 @@ specs:
 documents:
   fei_data: ''
 horsetelex_url: ''
+gallery:
+  - ../../../assets/images/gallery-patrick-junior-1776701528841.jpg
+  - ../../../assets/images/gallery-patrick-junior-1776701530243.jpg
 ---
 
 Patrick Junior is een fantastische 4-jarige grote maat pony ruin, beschikbaar voor een investering van € 30.000.
