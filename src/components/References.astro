@@ -2,9 +2,15 @@
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { Image } from 'astro:assets';
+import instagramIds from '../data/instagram.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const igs = (instagramIds || []).map(i => typeof i === 'string' ? {id: i, date: null} : i);
+igs.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+const latestPost = igs.length > 0 ? igs[0] : null;
+const archivePosts = igs.slice(1);
 
 const horses = await getCollection('portfolio');
 const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
@@ -22,29 +28,52 @@ const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featur
         </p>
       </div>
 
-      <!-- Instagram Highlights Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 md:mb-24">
-        {[
-          'DWuMkF0CYL_',
-          'DVoJ-2rDuFR',
-          'DUwJutMkift',
-          'DU-u5JCjsUO'
-        ].map((id, index) => (
-          <div class={`group relative bg-white shadow-xl hover:shadow-2xl ring-1 ring-primary/5 rounded-2xl overflow-hidden transition-all duration-700 reveal reveal-up transform hover:-translate-y-2`} style={`transition-delay: ${index * 150}ms`}>
-             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
-             <div class="p-1 bg-gradient-to-b from-gray-50 to-white h-full">
+      {latestPost && (
+        <div class="mb-16 reveal reveal-up max-w-4xl mx-auto">
+           <div class="flex items-center justify-between mb-6">
+              <h3 class="text-3xl font-serif text-primary">Latest Post</h3>
+              {latestPost.date && <span class="bg-primary/5 text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-wider">{latestPost.date.split('-').reverse().join('-')}</span>}
+           </div>
+           <div class="group relative bg-white shadow-2xl ring-1 ring-primary/5 rounded-3xl overflow-hidden transition-all duration-700 hover:-translate-y-2">
+             <div class="p-2 bg-gradient-to-b from-gray-50 to-white">
                <iframe 
-                 src={`https://www.instagram.com/p/${id}/embed/captioned`} 
+                 src={`https://www.instagram.com/p/${latestPost.id}/embed/captioned`} 
                  width="100%" 
                  frameborder="0" 
                  scrolling="no" 
                  allowtransparency="true" 
-                 class="w-full h-[820px] bg-white rounded-xl">
+                 class="w-full h-[880px] bg-white rounded-2xl">
                </iframe>
              </div>
-          </div>
-        ))}
-      </div>
+           </div>
+        </div>
+      )}
+
+      <!-- Instagram Archive Grid -->
+      {archivePosts.length > 0 && (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-10 md:mb-24">
+          {archivePosts.map((post, index) => (
+            <div class={`group relative bg-white shadow-xl hover:shadow-2xl ring-1 ring-primary/5 rounded-2xl overflow-hidden transition-all duration-700 reveal reveal-up transform hover:-translate-y-2`} style={`transition-delay: ${index * 150}ms`}>
+               <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+               {post.date && (
+                   <div class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur shadow-sm px-3 py-1 rounded-md">
+                       <span class="text-xs font-bold text-gray-600">{post.date.split('-').reverse().join('-')}</span>
+                   </div>
+               )}
+               <div class="p-1 bg-gradient-to-b from-gray-50 to-white h-full pt-12">
+                 <iframe 
+                   src={`https://www.instagram.com/p/${post.id}/embed/captioned`} 
+                   width="100%" 
+                   frameborder="0" 
+                   scrolling="no" 
+                   allowtransparency="true" 
+                   class="w-full h-[820px] bg-white rounded-xl">
+                 </iframe>
+               </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
         {soldHorses.map((horse, index) => (
