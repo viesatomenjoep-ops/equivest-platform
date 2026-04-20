@@ -1,7 +1,7 @@
 ---
 title: Unique
 description: Grote maat pony - Ruin
-image: ../../../assets/images/unique.jpg
+image: /images/unique-1776696820707.jpg
 premium: false
 youtube_url: ''
 featured: false
