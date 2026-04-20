@@ -3,7 +3,7 @@ title: Vickyyy
 description: ''
 youtube_url: ''
 horsetelex_url: ''
-image: 0
+image: ''
 specs:
   age: 0
   gender: ''
