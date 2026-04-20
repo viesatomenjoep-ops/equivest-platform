@@ -10,6 +10,6 @@ specs:
   height: ''
   level: ''
   purchase_price: ''
-  target_sale: '200000'
+  target_sale: '2000000'
 ---
 
