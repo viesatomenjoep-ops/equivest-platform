@@ -1,7 +1,7 @@
 ---
 title: Unique
 description: Großes Pony - Wallach
-image: /images/unique-1776698584619.jpg
+image: ../../../assets/images/unique-1776698584619.jpg
 premium: false
 youtube_url: ''
 featured: false
