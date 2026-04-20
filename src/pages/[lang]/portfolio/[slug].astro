@@ -99,8 +99,8 @@ const t = useTranslations(lang);
                                         <span class="text-white/90 text-xs md:text-sm font-bold uppercase tracking-widest relative z-10 group-hover:text-white">Watch Video</span>
                                      </button>
                                   )}
-                                  {horse.data.gallery.map((gImg) => (
-                                      <div class="overflow-hidden bg-gray-50/50 flex items-center justify-center rounded-sm">
+                                  {horse.data.gallery.map((gImg, idx) => (
+                                      <div class="overflow-hidden bg-gray-50/50 flex items-center justify-center rounded-sm cursor-pointer gallery-item" data-index={idx}>
                                         {typeof gImg === 'string' ? (
                                            <img src={gImg} alt="Gallery image" class="w-full aspect-[4/3] object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
                                         ) : (
@@ -203,9 +203,43 @@ const t = useTranslations(lang);
             </div>
         </dialog>
     )}
+
+    {/* Gallery Lightbox */}
+    {horse.data.gallery && horse.data.gallery.length > 0 && (
+        <dialog id="gallery-modal" class="fixed inset-0 w-screen h-screen bg-black/95 m-0 p-0 max-w-none max-h-none overflow-hidden backdrop-blur-md z-[9999] hidden items-center justify-center">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <button id="close-gallery-modal" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[10000] p-4 cursor-pointer">
+                    <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <button id="gallery-prev" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-[10000] p-4 cursor-pointer">
+                    <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <div class="max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+                    <img id="gallery-main-img" src="" alt="Gallery Preview" class="max-w-full max-h-[85vh] object-contain shadow-2xl transition-opacity duration-300" />
+                </div>
+
+                <button id="gallery-next" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-[10000] p-4 cursor-pointer">
+                    <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+            {/* Inject images source array to window scope */}
+            <script define:vars={{ images: horse.data.gallery.map(img => typeof img === 'string' ? img : img.src) }}>
+                window.galleryImagesData = images;
+            </script>
+        </dialog>
+    )}
 </Layout>
 
 <script>
+    // Video Modal Logic
     const modal = document.getElementById('video-modal');
     const openBtn = document.getElementById('open-video-btn');
     const closeBtn = document.getElementById('close-video-modal');
@@ -234,6 +268,83 @@ const t = useTranslations(lang);
         closeBtn.addEventListener('click', closeAll);
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target === modal.firstElementChild) closeAll();
+        });
+    }
+
+    // Gallery Lightbox Logic
+    const galModal = document.getElementById('gallery-modal');
+    const galCloseBtn = document.getElementById('close-gallery-modal');
+    const galPrevBtn = document.getElementById('gallery-prev');
+    const galNextBtn = document.getElementById('gallery-next');
+    const galMainImg = document.getElementById('gallery-main-img') as HTMLImageElement;
+    
+    let currentGalleryIndex = 0;
+    
+    // Check if gallery info exists
+    const gallItems = document.querySelectorAll('.gallery-item');
+    if (galModal && gallItems.length > 0 && galMainImg) {
+        
+        const updateImage = (index: number) => {
+            // @ts-ignore
+            const images = window.galleryImagesData || [];
+            if (images.length === 0) return;
+            
+            // Handle looping
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            
+            currentGalleryIndex = index;
+            galMainImg.style.opacity = '0.5';
+            setTimeout(() => {
+                galMainImg.src = images[currentGalleryIndex];
+                galMainImg.style.opacity = '1';
+            }, 100);
+        };
+
+        gallItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const idx = parseInt(item.getAttribute('data-index') || '0', 10);
+                updateImage(idx);
+                
+                galModal.classList.remove('hidden');
+                galModal.style.display = 'flex';
+                if (typeof (galModal as HTMLDialogElement).showModal === 'function') {
+                    try { (galModal as HTMLDialogElement).showModal(); } catch(e){}
+                }
+            });
+        });
+
+        const closeGal = () => {
+            galModal.classList.add('hidden');
+            galModal.style.display = 'none';
+            if (typeof (galModal as HTMLDialogElement).close === 'function') {
+                try { (galModal as HTMLDialogElement).close(); } catch(e){}
+            }
+        };
+
+        galCloseBtn?.addEventListener('click', closeGal);
+        galModal.addEventListener('click', (e) => {
+            if (e.target === galModal || e.target === galModal.firstElementChild) closeGal();
+        });
+
+        galPrevBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateImage(currentGalleryIndex - 1);
+        });
+        
+        galNextBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateImage(currentGalleryIndex + 1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!galModal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') updateImage(currentGalleryIndex - 1);
+                if (e.key === 'ArrowRight') updateImage(currentGalleryIndex + 1);
+                if (e.key === 'Escape') closeGal();
+            }
         });
     }
 </script>
