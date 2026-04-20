@@ -5,7 +5,7 @@ youtube_url: ''
 horsetelex_url: ''
 image: ''
 specs:
-  age: 0
+  age: 5
   gender: ''
   height: ''
   level: ''
