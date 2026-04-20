@@ -5,7 +5,7 @@ image: ../../../assets/images/blue-moon.jpg
 premium: false
 youtube_url: ''
 featured: false
-category: Ponys
+category: Pony's
 specs:
   age: 5
   gender: Gelding
