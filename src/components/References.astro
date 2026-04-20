@@ -7,7 +7,7 @@ import instagramIds from '../data/instagram.json';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const igs = instagramIds || [];
+const igs = (instagramIds || []).map(item => typeof item === 'object' ? item.id : item);
 const latestPostId = igs.length > 0 ? igs[0] : null;
 const archivePostIds = igs.slice(1);
 
