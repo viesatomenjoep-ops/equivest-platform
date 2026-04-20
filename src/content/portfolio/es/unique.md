@@ -1,19 +1,21 @@
 ---
-title: "Unique"
-description: "Pony grande - Castrado"
-image: "../../../assets/images/unique.jpg"
+title: Unique
+description: Pony grande - Castrado
+image: ../../../assets/images/unique.jpg
 premium: false
-youtube_url: ""
+youtube_url: ''
 featured: false
-category: "Ponys"
+category: Pony's
 specs:
   age: 4
-  gender: "Castrado"
-  height: "Pony grande"
-  purchase_price: "€ 30.000"
-  target_sale: "TBD"
-  level: "TBD"
+  gender: Gelding
+  height: Large pony
+  purchase_price: € 30.000
+  target_sale: TBD
+  level: TBD
 documents:
-  fei_data: ""
+  fei_data: ''
+horsetelex_url: ''
 ---
+
 Unique es un impresionante poni grande castrado de 4 años, disponible por una inversión de 30.000 €.
