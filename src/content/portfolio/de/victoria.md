@@ -3,7 +3,7 @@ title: Victoria
 description: ''
 youtube_url: ''
 horsetelex_url: ''
-image: 0
+image: ''
 specs:
   age: 4
   gender: ''
