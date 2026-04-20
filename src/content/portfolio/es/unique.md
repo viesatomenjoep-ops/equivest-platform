@@ -1,7 +1,7 @@
 ---
 title: Unique
 description: Pony grande - Castrado
-image: /images/unique-1776696820707.jpg
+image: ../../../assets/images/unique-1776696820707.jpg
 premium: false
 youtube_url: ''
 featured: false
