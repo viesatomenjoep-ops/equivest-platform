@@ -16,6 +16,9 @@ specs:
 documents:
   fei_data: ''
 horsetelex_url: ''
+gallery:
+  - ../../../assets/images/gallery-patrick-junior-1776701528841.jpg
+  - ../../../assets/images/gallery-patrick-junior-1776701530243.jpg
 ---
 
 Patrick Junior ist ein atemberaubender 4-jähriger Groß-Pony-Wallach, der für eine Investition von € 30.000 zur Verfügung steht.
