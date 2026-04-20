@@ -1,23 +1,25 @@
 ---
-
-title: "Night Blue de la Roque"
-description: "Chaccoon blue x Odermus R - Mare"
-image: "https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png"
+title: Night Blue de la Roque
+description: Chaccoon blue x Odermus R - Mare
+image: >-
+  https://primary.jwwb.nl/public/x/u/l/temp-exgfvmevdfqypkiyhati/jumping-horses-high.png
 premium: true
-youtube_url: "https://www.youtube.com/watch?v=F3aOq0M9l8g"
+youtube_url: https://www.youtube.com/watch?v=F3aOq0M9l8g
 featured: true
-category: "Jumpers"
+category: Jumpers
 specs:
   age: 7
-  gender: "Mare"
-  height: "TBD"
-  purchase_price: "€ 145.000"
-  target_sale: "€ 275.000"
-  level: "1.30m - 1.35m Developing"
+  gender: Mare
+  height: TBD
+  purchase_price: € 145.000
+  target_sale: € 275.000
+  level: 1.30m - 1.35m Developing
 documents:
-  fei_data: "https://data.fei.org/Horse/Performance.aspx?p=EBF8624EC4328A857BF1157FFE0C8FAC"
-
+  fei_data: >-
+    https://data.fei.org/Horse/Performance.aspx?p=EBF8624EC4328A857BF1157FFE0C8FAC
+horsetelex_url: ''
 ---
+
 Directly descending from Chaccoon Blue and Odermus R, this 7-year-old mare is an explosive and highly competitive asset in the 1.30m - 1.35m developing classes. Her extreme blood and light-footed reflexes make her an ideal speed prospect. Secured at an entry valuation of € 145.000, she provides an aggressive and highly liquid path to a € 275.000 target sale for buyers seeking immediate 1.40m performance.
 
 ### Financial Prospectus
