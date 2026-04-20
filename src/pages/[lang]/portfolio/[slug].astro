@@ -48,10 +48,19 @@ const t = useTranslations(lang);
                     <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
                  )}
                  <div class="absolute top-6 left-6">
-                     <a href={`/${lang}/portfolio`} class="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 font-bold uppercase tracking-widest text-xs text-primary hover:bg-primary hover:text-white transition-colors shadow-lg cursor-pointer">
+                     <a href={`/${lang}/portfolio`} class="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 font-bold uppercase tracking-widest text-xs text-primary hover:bg-primary hover:text-white transition-colors shadow-lg cursor-pointer z-10">
                         ← Back
                      </a>
                  </div>
+
+                 {horse.data.gallery && horse.data.gallery.length > 0 && (
+                     <div class="absolute bottom-6 right-6">
+                         <button class="gallery-item bg-white/90 backdrop-blur-md text-primary px-4 md:px-6 py-2 md:py-3 font-bold uppercase tracking-widest text-[10px] md:text-xs shadow-xl flex items-center gap-2 md:gap-3 hover:scale-105 hover:bg-white transition-all cursor-pointer border-0 z-10" data-index="0">
+                             <svg class="w-4 h-4 md:w-5 md:h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                             View more pictures ({horse.data.gallery.length})
+                         </button>
+                     </div>
+                 )}
                </div>
 
                <!-- Right: Content -->
@@ -88,35 +97,7 @@ const t = useTranslations(lang);
                           <Content />
                       </div>
 
-                      {horse.data.gallery && horse.data.gallery.length > 0 ? (
-                          <div class="mb-12">
-                              <span class="text-accent text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-4 md:mb-6 block">{t("portfolio.gallery") || "Gallery"}</span>
-                              <div class="flex flex-col md:flex-row gap-4">
-                                  {/* Single Cover Photo for Gallery */}
-                                  <div class="relative overflow-hidden bg-gray-50/50 flex items-center justify-center rounded-sm cursor-pointer gallery-item group flex-[2] aspect-video" data-index="0">
-                                    {typeof horse.data.gallery[0] === 'string' ? (
-                                       <img src={horse.data.gallery[0]} alt="Gallery cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                                    ) : (
-                                       <Image src={horse.data.gallery[0]} alt="Gallery cover" format="webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                                    )}
-                                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                                       <span class="bg-white/95 backdrop-blur-md text-primary px-6 py-3 font-bold uppercase tracking-widest text-xs md:text-sm shadow-xl flex items-center gap-3 transition-transform group-hover:scale-105">
-                                          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                          View Gallery ({horse.data.gallery.length})
-                                       </span>
-                                    </div>
-                                  </div>
-
-                                  {horse.data.local_video && (
-                                     <button id="open-video-btn" class="group relative overflow-hidden bg-primary flex flex-col items-center justify-center rounded-sm flex-1 aspect-video md:aspect-auto shadow-premium hover:shadow-2xl transition-all duration-500 cursor-pointer border-0">
-                                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <svg class="w-12 h-12 text-white/90 mb-3 group-hover:scale-110 group-hover:text-white transition-transform duration-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6l8 4-8 4v-8z"/></svg>
-                                        <span class="text-white/90 text-xs md:text-sm font-bold uppercase tracking-widest relative z-10 group-hover:text-white">Watch Video</span>
-                                     </button>
-                                  )}
-                              </div>
-                          </div>
-                      ) : horse.data.local_video && (
+                      {horse.data.local_video && (
                           <div class="mb-12">
                               <span class="text-accent text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-4 md:mb-6 block">Video</span>
                               <button id="open-video-btn" class="group relative overflow-hidden bg-primary flex flex-col items-center justify-center rounded-sm w-full lg:w-1/2 aspect-[4/3] lg:aspect-video shadow-premium hover:shadow-2xl transition-all duration-500 cursor-pointer border-0">
