@@ -1,19 +1,21 @@
 ---
-title: "Unique"
-description: "Großes Pony - Wallach"
-image: "../../../assets/images/unique.jpg"
+title: Unique
+description: Großes Pony - Wallach
+image: ../../../assets/images/unique.jpg
 premium: false
-youtube_url: ""
+youtube_url: ''
 featured: false
-category: "Ponys"
+category: Pony's
 specs:
   age: 4
-  gender: "Wallach"
-  height: "Großes Pony"
-  purchase_price: "€ 30.000"
-  target_sale: "TBD"
-  level: "TBD"
+  gender: Gelding
+  height: Large pony
+  purchase_price: € 30.000
+  target_sale: TBD
+  level: TBD
 documents:
-  fei_data: ""
+  fei_data: ''
+horsetelex_url: ''
 ---
+
 Unique ist ein atemberaubender 4-jähriger Groß-Pony-Wallach, der für eine Investition von € 30.000 zur Verfügung steht.
