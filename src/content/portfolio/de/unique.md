@@ -16,7 +16,7 @@ specs:
 documents:
   fei_data: ''
 horsetelex_url: ''
-local_video: ../../../assets/videos/unique-1776698976004.mp4
+local_video: /videos/unique-1776698976004.mp4
 ---
 
 Unique ist ein atemberaubender 4-jähriger Groß-Pony-Wallach, der für eine Investition von € 30.000 zur Verfügung steht.

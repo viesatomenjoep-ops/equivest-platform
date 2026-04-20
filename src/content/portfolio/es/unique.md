@@ -16,7 +16,7 @@ specs:
 documents:
   fei_data: ''
 horsetelex_url: ''
-local_video: ../../../assets/videos/unique-1776698976004.mp4
+local_video: /videos/unique-1776698976004.mp4
 ---
 
 Unique es un impresionante poni grande castrado de 4 años, disponible por una inversión de 30.000 €.

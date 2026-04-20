@@ -16,7 +16,7 @@ specs:
 documents:
   fei_data: ''
 horsetelex_url: ''
-local_video: ../../../assets/videos/unique-1776698976004.mp4
+local_video: /videos/unique-1776698976004.mp4
 ---
 
 Unique is a stunning 4-year-old large pony gelding, available for an investment of € 35k
