@@ -3,9 +3,9 @@ title: Vickyyy
 description: ''
 youtube_url: ''
 horsetelex_url: ''
-image: ''
+image: 0
 specs:
-  age: ''
+  age: 0
   gender: ''
   height: ''
   level: ''
