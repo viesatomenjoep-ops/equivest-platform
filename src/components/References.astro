@@ -3,8 +3,6 @@ import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { Image } from 'astro:assets';
 
-import stories from '../data/stories.json';
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -24,35 +22,29 @@ const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featur
         </p>
       </div>
 
-      <!-- Equivest Stories Highlights Grid -->
-      {stories && stories.length > 0 && (
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-24">
-            {stories.map((story, index) => (
-              <div class={`group relative bg-black shadow-xl hover:shadow-2xl ring-1 ring-primary/5 rounded-2xl overflow-hidden transition-all duration-700 reveal reveal-up transform hover:-translate-y-2 cursor-pointer aspect-[9/16]`} style={`transition-delay: ${index * 150}ms`}>
-                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none"></div>
-                 <video 
-                     src={typeof story === 'string' ? story : story.url} 
-                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 scale-[1.01]"
-                     autoplay 
-                     loop 
-                     muted 
-                     playsinline 
-                     preload="metadata">
-                 </video>
-                 <div class="absolute top-4 left-4 z-20 flex items-center space-x-2 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                    <img src="/images/logo.png" alt="Equivest" class="w-5 h-5 object-contain brightness-0 invert" onerror="this.src='/images/logo.webp'" />
-                    <span class="text-white text-xs font-bold tracking-widest uppercase">Equivest</span>
-                 </div>
-                 <div class="absolute bottom-4 left-0 w-full px-4 z-20 flex justify-between items-end">
-                    <div class="flex items-center text-white/90">
-                        <svg class="w-5 h-5 mr-1 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span class="text-xs font-bold uppercase tracking-wider">Play</span>
-                    </div>
-                 </div>
-              </div>
-            ))}
+      <!-- Instagram Highlights Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 md:mb-24">
+        {[
+          'DWuMkF0CYL_',
+          'DVoJ-2rDuFR',
+          'DUwJutMkift',
+          'DU-u5JCjsUO'
+        ].map((id, index) => (
+          <div class={`group relative bg-white shadow-xl hover:shadow-2xl ring-1 ring-primary/5 rounded-2xl overflow-hidden transition-all duration-700 reveal reveal-up transform hover:-translate-y-2`} style={`transition-delay: ${index * 150}ms`}>
+             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+             <div class="p-1 bg-gradient-to-b from-gray-50 to-white h-full">
+               <iframe 
+                 src={`https://www.instagram.com/p/${id}/embed/captioned`} 
+                 width="100%" 
+                 frameborder="0" 
+                 scrolling="no" 
+                 allowtransparency="true" 
+                 class="w-full h-[820px] bg-white rounded-xl">
+               </iframe>
+             </div>
           </div>
-      )}
+        ))}
+      </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 opacity-80 hover:opacity-100 transition-opacity duration-700">
         {soldHorses.map((horse, index) => (
