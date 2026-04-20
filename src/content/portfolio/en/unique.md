@@ -5,7 +5,7 @@ image: ../../../assets/images/unique.jpg
 premium: false
 youtube_url: ''
 featured: false
-category: Ponys
+category: Pony's
 specs:
   age: 4
   gender: Gelding
