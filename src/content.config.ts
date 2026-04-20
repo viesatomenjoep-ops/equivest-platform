@@ -15,6 +15,7 @@ const portfolio = defineCollection({
     sold: z.boolean().default(false),
     category: z.string().optional(),
     local_video: z.string().optional(),
+    gallery: z.array(z.union([image(), z.string()])).optional(),
     specs: z.object({
       age: z.number(),
       gender: z.string(),
