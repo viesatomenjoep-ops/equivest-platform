@@ -19,6 +19,7 @@ horsetelex_url: ''
 gallery:
   - ../../../assets/images/gallery-patrick-junior-1776701528841.jpg
   - ../../../assets/images/gallery-patrick-junior-1776701530243.jpg
+upload_date: '2026-04-21'
 ---
 
 Patrick Junior es un impresionante poni grande castrado de 4 años, disponible por una inversión de 30.000 €.
