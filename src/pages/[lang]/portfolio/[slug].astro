@@ -16,6 +16,9 @@ export async function getStaticPaths() {
   const { data: horses } = await supabase.from('horses').select('*');
   
   return (horses || []).map(horse => {
+    if (horse.image && horse.image.startsWith('/images/horses/')) {
+        horse.image = horse.image.replace('/images/horses/', '/images/');
+    }
     return {
       params: { lang: horse.lang, slug: horse.slug },
       props: { horse: {
