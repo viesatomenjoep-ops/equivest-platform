@@ -10,7 +10,7 @@ specs:
   age: 5
   gender: Gelding
   height: Large pony
-  purchase_price: € 350000
+  purchase_price: € 3500002
   target_sale: TBD
   level: TBD
 documents:
