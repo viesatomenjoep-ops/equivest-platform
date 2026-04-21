@@ -19,6 +19,7 @@ horsetelex_url: ''
 gallery:
   - ../../../assets/images/gallery-patrick-junior-1776701528841.jpg
   - ../../../assets/images/gallery-patrick-junior-1776701530243.jpg
+upload_date: '2026-04-21'
 ---
 
 Patrick Junior is a stunning 4-year-old large pony gelding, available for an investment of € 30.000.
