@@ -1,35 +1,38 @@
 ---
-import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import { Image } from 'astro:assets';
+import { marked } from 'marked';
+import { getHorses } from '../../../lib/supabase';
 
 export async function getStaticPaths() {
-  const horses = await getCollection('portfolio');
+  // We use getHorses with no lang arg so it fetches all (or we'll just query supabase directly here to guarantee we get all langs)
+  const { createClient } = await import('@supabase/supabase-js');
+  const SUPABASE_URL = 'https://tvdydhmbvuhpbcxsvxmf.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2ZHlkaG1idnVocGJjeHN2eG1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MDA4ODgsImV4cCI6MjA5MjI3Njg4OH0.d433eTXjtuFKp4YpJKwZuk3nR4SqV_QZKWTiU088dUs';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
   
-  return horses.map(horse => {
-    // The id is e.g. 'en/ai-evaluation-market-data-1-special-blue-de-corlato.md'
-    // but in Astro v3+ content collections, .id usually omits extension or keeps it based on config.
-    // Astro docs standard for collections: id="en/slug"
-    let idStr = horse.id;
-    // Strip extension if it exists
-    if (idStr.endsWith('.md')) {
-        idStr = idStr.replace(/\.md$/, '');
-    }
-    const parts = idStr.split('/');
-    const lang = parts[0];
-    const slug = parts.slice(1).join('/');
-
+  const { data: horses } = await supabase.from('horses').select('*');
+  
+  return (horses || []).map(horse => {
     return {
-      params: { lang, slug },
-      props: { horse },
+      params: { lang: horse.lang, slug: horse.slug },
+      props: { horse: {
+          data: {
+             ...horse,
+             specs: horse.specs || {},
+             gallery: horse.gallery || [],
+             documents: horse.documents || {}
+          },
+          body: horse.body || ''
+      } },
     };
   });
 }
 
 const { horse } = Astro.props;
-const { Content } = await render(horse);
+const htmlContent = marked.parse(horse.body || '');
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -94,7 +97,7 @@ const t = useTranslations(lang);
 
                       <!-- Markdown Tables & Content -->
                       <div class="prose prose-sm md:prose-base lg:prose-lg prose-primary max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-strong:text-primary/90 mb-12">
-                          <Content />
+                          <div set:html={htmlContent} />
                       </div>
 
                       {horse.data.local_video && (

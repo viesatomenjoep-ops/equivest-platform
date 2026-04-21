@@ -1,13 +1,23 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { getCollection } from 'astro:content';
+import { getHorses } from '../lib/supabase';
 import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const allHorses = await getCollection('portfolio');
-const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold && h.id.startsWith(lang + '/'));
+const allHorsesRaw = await getHorses(lang);
+const allHorses = allHorsesRaw.map(horse => ({
+  id: horse.lang + '/' + horse.slug + '.md',
+  data: {
+    ...horse,
+    specs: horse.specs || {},
+    documents: horse.documents || {},
+    gallery: horse.gallery || []
+  },
+  body: horse.body || ''
+}));
+const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 ---
 
 <section id="premium" class="bg-bg-subtle relative border-t border-gray-100 scroll-mt-24">

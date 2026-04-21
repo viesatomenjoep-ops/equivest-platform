@@ -1,18 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
+import { getHorses } from '../lib/supabase';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { Image } from 'astro:assets';
-import instagramIds from '../data/instagram.json';
+import { getInstagramPosts } from '../lib/supabase';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const igs = (instagramIds || []).map(item => typeof item === 'object' ? item.id : item);
+const supabasePosts = await getInstagramPosts();
+const igs = supabasePosts.map(post => post.post_id);
 const latestPostId = igs.length > 0 ? igs[0] : null;
 const archivePostIds = igs.slice(1);
 
-const horses = await getCollection('portfolio');
-const soldHorses = horses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
+const allHorsesRaw = await getHorses(lang);
+const allHorses = allHorsesRaw.map(horse => ({
+  id: horse.lang + '/' + horse.slug + '.md',
+  data: {
+    ...horse,
+    specs: horse.specs || {},
+    documents: horse.documents || {},
+    gallery: horse.gallery || []
+  },
+  body: horse.body || ''
+}));
+const soldHorses = allHorses.filter(h => h.data.sold).sort((a, b) => (b.data.featured ? 1 : -1));
 ---
 
   <section id="references" class="pt-8 pb-12 md:pt-12 md:pb-24 bg-white relative overflow-hidden border-t-4 border-gray-100 scroll-mt-24">

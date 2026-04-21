@@ -1,28 +1,25 @@
 ---
-import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { Image } from 'astro:assets';
+import { getHorses } from '../lib/supabase';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const horses = await getCollection('portfolio');
-const allHorses = horses
-  .filter(h => !h.data.sold && h.id.startsWith(lang + '/'))
+const allHorsesRaw = await getHorses(lang);
+const allHorsesWithContent = allHorsesRaw
+  .map(horse => ({
+      id: horse.slug,
+      data: {
+          ...horse,
+          specs: horse.specs || {},
+          documents: horse.documents || {},
+          gallery: horse.gallery || []
+      },
+      category: horse.category || '',
+      body: horse.body || ''
+  }))
+  .filter(h => !h.data.sold)
   .sort((a, b) => (b.data.premium ? 1 : -1));
-
-
-const allHorsesWithContent = await Promise.all(
-  allHorses.map(async (horse) => {
-    const { Content } = await render(horse);
-    return {
-      id: horse.id,
-      data: horse.data,
-      category: horse.data.category || '',
-      Content
-    };
-  })
-);
 ---
 
 <section id="portfolio" class="pt-8 pb-12 md:pt-12 md:pb-24 bg-bg-subtle relative overflow-hidden scroll-mt-24">

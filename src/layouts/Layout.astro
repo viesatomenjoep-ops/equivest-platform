@@ -65,9 +65,9 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<Chatbot client:idle lang={botLang} />
 		<CookieBanner />
 
-		<script is:inline>
+		<script>
 			// Scroll Reveal Logic
-			function initReveal() {
+			window.initReveal = function() {
 				const revealElements = document.querySelectorAll('.reveal');
 				
 				if (!('IntersectionObserver' in window)) {
@@ -102,14 +102,14 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 					console.warn('IntersectionObserver failed, falling back to instant reveal', e);
 					revealElements.forEach(el => el.classList.add('active'));
 				}
-			}
+			};
 
 			// Run on initial load
-			initReveal();
+			window.initReveal();
 
 			// Run on Astro View Transitions swap
 			document.addEventListener('astro:after-swap', () => {
-				initReveal();
+				window.initReveal();
 			});
 		</script>
 	</body>
