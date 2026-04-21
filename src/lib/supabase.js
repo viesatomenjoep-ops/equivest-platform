@@ -49,5 +49,11 @@ export async function getHorses(lang = 'en') {
         console.error('Supabase error loading horses:', error.message);
         return [];
     }
-    return data || [];
+    
+    return (data || []).map(horse => {
+        if (horse.image && horse.image.startsWith('/images/horses/')) {
+            horse.image = horse.image.replace('/images/horses/', '/images/');
+        }
+        return horse;
+    });
 }
