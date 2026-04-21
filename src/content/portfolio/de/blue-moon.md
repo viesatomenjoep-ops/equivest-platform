@@ -10,12 +10,13 @@ specs:
   age: 5
   gender: Gelding
   height: Large pony
-  purchase_price: € 30.000
+  purchase_price: € 350000
   target_sale: TBD
   level: TBD
 documents:
   fei_data: ''
 horsetelex_url: ''
+upload_date: '2026-04-21'
 ---
 
 Blue Moon ist ein atemberaubender 5-jähriger Groß-Pony-Wallach, der für eine Investition von € 30.000 zur Verfügung steht.
