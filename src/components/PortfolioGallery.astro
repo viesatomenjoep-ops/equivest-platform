@@ -1,25 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
 import { getHorses } from '../lib/supabase';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const allHorsesRaw = await getHorses(lang);
-const allHorsesWithContent = allHorsesRaw
-  .map(horse => ({
-      id: horse.slug,
-      data: {
-          ...horse,
-          specs: horse.specs || {},
-          documents: horse.documents || {},
-          gallery: horse.gallery || []
-      },
-      category: horse.category || '',
-      body: horse.body || ''
-  }))
-  .filter(h => !h.data.sold)
-  .sort((a, b) => (b.data.premium ? 1 : -1));
+const horses = await getHorses(lang);
+const allHorsesWithContent = horses.filter(h => !h.sold);
 ---
 
 <section id="portfolio" class="pt-8 pb-12 md:pt-12 md:pb-24 bg-bg-subtle relative overflow-hidden scroll-mt-24">
@@ -72,54 +60,57 @@ const allHorsesWithContent = allHorsesRaw
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
         {allHorsesWithContent.map((horse, index) => (
-          <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id}'`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
-            <div class="relative cursor-pointer overflow-hidden bg-gray-50/50 flex items-center justify-center" onclick={`window.location.href='/${lang}/portfolio/${horse.id}'`}>
-              {!horse.data.image ? (
-                <div class="w-full aspect-[4/3] bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
-              ) : typeof horse.data.image === 'string' ? (
+          <div class="horse-card relative reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
+            <a href={`/${lang}/portfolio/${horse.slug}`} class="absolute inset-0 z-10" aria-label={`View ${horse.title}`}></a>
+            <div class="relative overflow-hidden bg-gray-50/50 flex items-center justify-center">
+              {horse.image && typeof horse.image === 'string' ? (
                 <img 
-                  src={horse.data.image} 
-                  alt={horse.data.title} 
+                  src={horse.image} 
+                  alt={horse.title} 
                   loading="lazy" 
                   decoding="async"
                   onerror="this.onerror=null; this.src='/images/logo.webp'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
                   class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              ) : (
+              ) : horse.image ? (
                 <Image 
-                  src={horse.data.image} 
-                  alt={horse.data.title} 
+                  src={horse.image} 
+                  alt={horse.title} 
                   format="webp"
                   class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+              ) : (
+                <div class="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+                   <img src="/images/logo.webp" alt="Equivest" class="w-16 h-16 opacity-20 object-contain brightness-0" />
+                </div>
               )}
         </div>
         
         <div class="p-5 md:p-6 flex-grow flex flex-col">
-          <div class="flex items-center space-x-3 mb-3 cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id}'`}>
+          <div class="flex items-center space-x-3 mb-3">
             <img src="/images/logo.webp" alt="Equivest" loading="lazy" width="64" height="64" class="w-10 h-10 object-contain brightness-0" />
-            <h3 class="text-xl font-serif text-primary group-hover:text-accent transition-colors">{horse.data.title}</h3>
+            <h3 class="text-xl font-serif text-primary group-hover:text-accent transition-colors">{horse.title}</h3>
           </div>
           <p class="text-primary/70 text-sm font-medium mb-4 line-clamp-2">
-            {horse.data.description}
+            {horse.description}
           </p>
           
           <div class="mt-auto grid grid-cols-2 gap-4 border-t border-gray-50 pt-4">
             <div class="space-y-1">
               <span class="text-[0.65rem] uppercase tracking-widest text-primary/70 font-bold block">{t('ui.age')}</span>
-              <span class="text-sm font-serif text-primary">{horse.data.specs?.age}</span>
+              <span class="text-sm font-serif text-primary">{horse.specs?.age}</span>
             </div>
             <div class="space-y-1">
               <span class="text-[0.65rem] uppercase tracking-widest text-primary/70 font-bold block">{t('ui.level')}</span>
-              <span class="text-sm font-serif text-primary">{horse.data.specs?.level}</span>
+              <span class="text-sm font-serif text-primary">{horse.specs?.level}</span>
             </div>
             <div class="space-y-1">
               <span class="text-[0.65rem] uppercase tracking-widest text-primary/70 font-bold block">{t('ui.gender')}</span>
-              <span class="text-sm font-serif text-primary">{horse.data.specs?.gender}</span>
+              <span class="text-sm font-serif text-primary">{horse.specs?.gender}</span>
             </div>
             <div class="space-y-1">
               <span class="text-[0.65rem] uppercase tracking-widest text-primary/70 font-bold block">{t('ui.height')}</span>
-              <span class="text-sm font-serif text-primary">{horse.data.specs?.height}</span>
+              <span class="text-sm font-serif text-primary">{horse.specs?.height}</span>
             </div>
           </div>
           
@@ -128,30 +119,30 @@ const allHorsesWithContent = allHorsesRaw
              <div class="flex items-center justify-between">
                 <div>
                    <span class="text-[0.60rem] text-primary/70 uppercase block">{t('portfolio.acquisition')}</span>
-                   <span class="text-base font-bold text-primary">{horse.data.specs?.purchase_price || '-'}</span>
+                   <span class="text-base font-bold text-primary">{horse.specs?.purchase_price || '-'}</span>
                 </div>
                 <div class="text-accent/50">→</div>
                 <div class="text-right">
                    <span class="text-[0.60rem] text-primary/70 uppercase block">{t('portfolio.target_sale')}</span>
-                   <span class="text-base font-bold text-accent">{horse.data.specs?.target_sale || '-'}</span>
+                   <span class="text-base font-bold text-accent">{horse.specs?.target_sale || '-'}</span>
                 </div>
              </div>
           </div>
         </div>
         
-        <div class="border-t border-gray-100 grid grid-cols-2">
-           {horse.data.youtube_url ? (
+        <div class="border-t border-gray-100 grid grid-cols-2 relative z-20">
+           {horse.youtube_url ? (
              <>
-               <span title="Video Coming Soon" class="flex items-center justify-center gap-2 py-3 bg-red-600/10 text-red-600/50 cursor-not-allowed border-r border-gray-100 transition-colors">
+               <span title="Video" class="flex items-center justify-center gap-2 py-3 bg-red-600/10 text-red-600/50 border-r border-gray-100 transition-colors">
                   <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                   <span class="text-xs font-bold uppercase tracking-widest">Video</span>
                </span>
-               <a href={`/${lang}/portfolio/${horse.id}`}  class="w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+               <a href={`/${lang}/portfolio/${horse.slug}`} class="w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                   Plan
                </a>
              </>
            ) : (
-             <a href={`/${lang}/portfolio/${horse.id}`}  class="col-span-2 w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
+             <a href={`/${lang}/portfolio/${horse.slug}`} class="col-span-2 w-full text-center py-3 text-sm font-bold group-hover:bg-primary group-hover:text-white uppercase tracking-widest bg-bg-subtle hover:bg-primary hover:text-white transition-all text-primary/90">
                   Investment Plan
                </a>
            )}

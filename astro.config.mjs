@@ -11,6 +11,7 @@ export default defineConfig({
   },
 
   integrations: [react()],
+  trailingSlash: 'ignore',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'nl', 'de', 'es'],

@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/quicksand";
 import "../styles/global.css";
 
@@ -48,6 +49,8 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		
+		<ClientRouter />
+		
 		<noscript>
 			<style>
 				.reveal { opacity: 1 !important; transform: none !important; }
@@ -65,9 +68,9 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 		<Chatbot client:idle lang={botLang} />
 		<CookieBanner />
 
-		<script>
+		<script is:inline>
 			// Scroll Reveal Logic
-			window.initReveal = function() {
+			function initReveal() {
 				const revealElements = document.querySelectorAll('.reveal');
 				
 				if (!('IntersectionObserver' in window)) {
@@ -102,14 +105,14 @@ const botLang = (['en', 'nl', 'de', 'es'].includes(lang) ? lang : 'en') as 'en' 
 					console.warn('IntersectionObserver failed, falling back to instant reveal', e);
 					revealElements.forEach(el => el.classList.add('active'));
 				}
-			};
+			}
 
 			// Run on initial load
-			window.initReveal();
+			initReveal();
 
 			// Run on Astro View Transitions swap
 			document.addEventListener('astro:after-swap', () => {
-				window.initReveal();
+				initReveal();
 			});
 		</script>
 	</body>

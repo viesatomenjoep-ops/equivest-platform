@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Contact from '../../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import { getCollection } from 'astro:content';
+import { getHorses } from '../../lib/supabase';
 import { Image } from 'astro:assets';
 
 export function getStaticPaths() {
@@ -18,8 +18,8 @@ export function getStaticPaths() {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const allHorses = await getCollection('portfolio');
-const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
+const allHorses = await getHorses(lang);
+const premiumHorses = allHorses.filter(h => h.premium && !h.sold);
 ---
 
 <Layout title="Premium Access | Equivest Elite Investments" lang={lang}>
@@ -82,27 +82,30 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 				) : (
 					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
 					{premiumHorses.map((horse, index) => (
-						<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2 cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`}>
+						<div class="horse-card relative reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2 cursor-pointer">
+							<a href={`/${lang}/portfolio/${horse.slug}`} class="absolute inset-0 z-10" aria-label={`View ${horse.title}`}></a>
 							<div class="aspect-[16/10] overflow-hidden relative">
-								{!horse.data.image ? (
-									<div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
-								) : typeof horse.data.image === 'string' ? (
+								{horse.image && typeof horse.image === 'string' ? (
 								<img 
-									src={horse.data.image} 
-									alt={horse.data.title} 
+									src={horse.image} 
+									alt={horse.title} 
 									onerror="this.onerror=null; this.src='/images/logo.png'; this.style.objectFit='contain'; this.style.padding='3rem'; this.style.opacity='0.2';"
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
-								) : (
+								) : horse.image ? (
 								<Image 
-									src={horse.data.image} 
-									alt={horse.data.title} 
+									src={horse.image} 
+									alt={horse.title} 
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
+								) : (
+								<div class="w-full h-full bg-gray-100 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+									<img src="/images/logo.webp" alt="Equivest" class="w-16 h-16 opacity-20 object-contain brightness-0" />
+								</div>
 								)}
 								<!-- YouTube Overlay -->
-								{horse.data.youtube_url && (
-								<a href={horse.data.youtube_url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+								{horse.youtube_url && (
+								<a href={horse.youtube_url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-primary/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
 									<div class="w-16 h-16 bg-white flex items-center justify-center rounded-full text-primary scale-90 group-hover:scale-100 transition-transform">
 										<svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
 									</div>
@@ -111,32 +114,32 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 							</div>
 							
 							<div class="p-8 flex-grow flex flex-col">
-								<h3 class="text-3xl font-serif text-primary group-hover:text-accent transition-colors mb-4">{horse.data.title}</h3>
+								<h3 class="text-3xl font-serif text-primary group-hover:text-accent transition-colors mb-4">{horse.title}</h3>
 								<p class="text-primary/70 text-lg font-medium mb-8">
-								{horse.data.description}
+								{horse.description}
 								</p>
 								
 								<div class="mt-auto grid grid-cols-2 gap-y-6 border-t border-gray-100 pt-6 bg-bg-subtle -mx-8 px-8 pb-8">
 								<div class="space-y-1">
 									<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Age</span>
-									<span class="text-xl font-serif text-primary">{horse.data.specs?.age} Years</span>
+									<span class="text-xl font-serif text-primary">{horse.specs?.age} Years</span>
 								</div>
 								<div class="space-y-1">
 									<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Level</span>
-									<span class="text-xl font-serif text-primary">{horse.data.specs?.level}</span>
+									<span class="text-xl font-serif text-primary">{horse.specs?.level}</span>
 								</div>
 								<div class="space-y-1">
 									<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Gender</span>
-									<span class="text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
+									<span class="text-xl font-serif text-primary">{horse.specs?.gender}</span>
 								</div>
 								<div class="space-y-1">
 									<span class="text-lg uppercase tracking-widest text-primary/60 font-bold block">Height</span>
-									<span class="text-xl font-serif text-primary">{horse.data.specs?.height}</span>
+									<span class="text-xl font-serif text-primary">{horse.specs?.height}</span>
 								</div>
 								</div>
 								
-								<div class="pt-6">
-									<a href={`/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}`} class="block w-full text-center py-4 text-xl font-bold uppercase tracking-[0.2em] bg-accent text-white hover:bg-primary transition-all">
+								<div class="pt-6 relative z-20">
+									<a href={`/${lang}/portfolio/${horse.slug}`} class="block w-full text-center py-4 text-xl font-bold uppercase tracking-[0.2em] bg-accent text-white hover:bg-primary transition-all">
 										Investment Plan
 									</a>
 								</div>

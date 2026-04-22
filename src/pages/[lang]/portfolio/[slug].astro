@@ -3,43 +3,36 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import { Image } from 'astro:assets';
-import { marked } from 'marked';
 import { getHorses } from '../../../lib/supabase';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
-  // We use getHorses with no lang arg so it fetches all (or we'll just query supabase directly here to guarantee we get all langs)
-  const { createClient } = await import('@supabase/supabase-js');
-  const SUPABASE_URL = 'https://tvdydhmbvuhpbcxsvxmf.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2ZHlkaG1idnVocGJjeHN2eG1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MDA4ODgsImV4cCI6MjA5MjI3Njg4OH0.d433eTXjtuFKp4YpJKwZuk3nR4SqV_QZKWTiU088dUs';
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const languages = ['en', 'nl', 'de', 'es'];
+  let paths = [];
+
+  for (const lang of languages) {
+      const horses = await getHorses(lang);
+      const langPaths = horses.map((horse) => {
+          return {
+              params: { lang, slug: horse.slug },
+              props: { horse },
+          };
+      });
+      paths.push(...langPaths);
+  }
   
-  const { data: horses } = await supabase.from('horses').select('*');
-  
-  return (horses || []).map(horse => {
-    if (horse.image && horse.image.startsWith('/images/horses/')) {
-        horse.image = horse.image.replace('/images/horses/', '/images/');
-    }
-    return {
-      params: { lang: horse.lang, slug: horse.slug },
-      props: { horse: {
-          data: {
-             ...horse,
-             specs: horse.specs || {},
-             gallery: horse.gallery || [],
-             documents: horse.documents || {}
-          },
-          body: horse.body || ''
-      } },
-    };
-  });
+  return paths;
 }
 
 const { horse } = Astro.props;
-const htmlContent = marked.parse(horse.body || '');
+
+// Parse the CMS body content from Markdown to HTML
+const horseContent = horse.body ? marked.parse(horse.body) : '';
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<Layout title={`${horse.data.title} | Equivest Elite Investments`} lang={lang}>
+<Layout title={`${horse.title} | Equivest Elite Investments`} lang={lang}>
 	<Header />
 	
 	<main class="min-h-screen bg-bg-subtle pt-24 pb-20">
@@ -48,12 +41,14 @@ const t = useTranslations(lang);
                 
                <!-- Left: Hero Image (Sticky Editorial Layout) -->
                <div class="w-full lg:w-2/5 lg:sticky lg:top-24 relative shrink-0 overflow-hidden group flex items-center justify-center bg-gray-50/50">
-                 {!horse.data.image ? (
-                     <div class="w-full h-[50vh] lg:h-[85vh] bg-gray-200 flex items-center justify-center text-gray-400">No Image Available</div>
-                 ) : typeof horse.data.image === 'string' ? (
-                    <img src={horse.data.image} alt={horse.data.title} class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" loading="eager" />
+                 {horse.image && typeof horse.image === 'string' ? (
+                    <img src={horse.image} alt={horse.title} class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" loading="eager" />
+                 ) : horse.image ? (
+                    <Image src={horse.image} alt={horse.title} format="webp" loading="eager" class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
                  ) : (
-                    <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" />
+                    <div class="w-full h-[50vh] lg:h-[85vh] bg-gray-100 flex items-center justify-center transition-transform duration-1000 group-hover:scale-105">
+                       <img src="/images/logo.webp" alt="Equivest" class="w-24 h-24 opacity-20 object-contain brightness-0" />
+                    </div>
                  )}
                  <div class="absolute top-6 left-6">
                      <a href={`/${lang}/portfolio`} class="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 font-bold uppercase tracking-widest text-xs text-primary hover:bg-primary hover:text-white transition-colors shadow-lg cursor-pointer z-10">
@@ -61,11 +56,11 @@ const t = useTranslations(lang);
                      </a>
                  </div>
 
-                 {horse.data.gallery && horse.data.gallery.length > 0 && (
+                 {horse.gallery && horse.gallery.length > 0 && (
                      <div class="absolute bottom-6 right-6">
                          <button class="gallery-item bg-white/90 backdrop-blur-md text-primary px-4 md:px-6 py-2 md:py-3 font-bold uppercase tracking-widest text-[10px] md:text-xs shadow-xl flex items-center gap-2 md:gap-3 hover:scale-105 hover:bg-white transition-all cursor-pointer border-0 z-10" data-index="0">
                              <svg class="w-4 h-4 md:w-5 md:h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                             View more pictures ({horse.data.gallery.length})
+                             View more pictures ({horse.gallery.length})
                          </button>
                      </div>
                  )}
@@ -76,36 +71,37 @@ const t = useTranslations(lang);
                   <div class="max-w-3xl">
                       <div class="mb-8 md:mb-12">
                          <span class="text-accent text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-3 block">{t("portfolio.prospectus") || "Financial Prospectus"}</span>
-                         <h1 class="text-3xl md:text-5xl lg:text-7xl font-serif text-primary leading-tight">{horse.data.title}</h1>
-                         <p class="text-primary/70 mt-4 md:mt-6 text-base md:text-lg leading-relaxed">{horse.data.description}</p>
+                         <h1 class="text-3xl md:text-5xl lg:text-7xl font-serif text-primary leading-tight">{horse.title}</h1>
+                         <p class="text-primary/70 mt-4 md:mt-6 text-base md:text-lg leading-relaxed">{horse.description}</p>
                       </div>
                       
                       <!-- Specs -->
                       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 pb-10 border-b border-primary/10">
                         <div class="space-y-2">
                           <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.age")}</span>
-                          <span class="text-base md:text-xl font-serif text-primary">{horse.data.specs?.age}</span>
+                          <span class="text-base md:text-xl font-serif text-primary">{horse.specs?.age}</span>
                         </div>
                         <div class="space-y-2">
                           <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.level")}</span>
-                          <span class="text-base md:text-xl font-serif text-primary">{horse.data.specs?.level}</span>
+                          <span class="text-base md:text-xl font-serif text-primary">{horse.specs?.level}</span>
                         </div>
                         <div class="space-y-2">
                           <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.gender")}</span>
-                          <span class="text-base md:text-xl font-serif text-primary">{horse.data.specs?.gender}</span>
+                          <span class="text-base md:text-xl font-serif text-primary">{horse.specs?.gender}</span>
                         </div>
                         <div class="space-y-2">
                           <span class="text-xs uppercase tracking-widest text-primary/70 font-bold block">{t("ui.height")}</span>
-                          <span class="text-base md:text-xl font-serif text-primary">{horse.data.specs?.height}</span>
+                          <span class="text-base md:text-xl font-serif text-primary">{horse.specs?.height}</span>
                         </div>
                       </div>
 
-                      <!-- Markdown Tables & Content -->
-                      <div class="prose prose-sm md:prose-base lg:prose-lg prose-primary max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-strong:text-primary/90 mb-12">
-                          <div set:html={htmlContent} />
-                      </div>
+                      <!-- HTML Table Content -->
+                      {horseContent && (
+                          <div class="prose prose-sm md:prose-base lg:prose-lg prose-primary max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-accent prose-strong:text-primary/90 mb-12" set:html={horseContent}>
+                          </div>
+                      )}
 
-                      {horse.data.local_video && (
+                      {horse.local_video && (
                           <div class="mb-12">
                               <span class="text-accent text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-4 md:mb-6 block">Video</span>
                               <button id="open-video-btn" class="group relative overflow-hidden bg-primary flex flex-col items-center justify-center rounded-sm w-full lg:w-1/2 aspect-[4/3] lg:aspect-video shadow-premium hover:shadow-2xl transition-all duration-500 cursor-pointer border-0">
@@ -122,12 +118,12 @@ const t = useTranslations(lang);
                          <div class="flex items-center justify-between">
                             <div>
                                <span class="text-xs text-primary/70 uppercase block mb-1">{t('portfolio.acquisition')}</span>
-                               <span class="text-xl md:text-2xl font-bold text-primary">{horse.data.specs?.purchase_price || '-'}</span>
+                               <span class="text-xl md:text-2xl font-bold text-primary">{horse.specs?.purchase_price || '-'}</span>
                             </div>
                             <div class="text-accent/50 text-2xl">→</div>
                             <div class="text-right">
                                <span class="text-xs text-primary/70 uppercase block mb-1">{t('portfolio.target_sale')}</span>
-                               <span class="text-xl md:text-2xl font-bold text-accent">{horse.data.specs?.target_sale || '-'}</span>
+                               <span class="text-xl md:text-2xl font-bold text-accent">{horse.specs?.target_sale || '-'}</span>
                             </div>
                          </div>
                       </div>
@@ -136,37 +132,37 @@ const t = useTranslations(lang);
                       <div class="mb-12">
                            <span class="text-accent text-sm font-bold uppercase tracking-[0.3em] mb-6 block">{t("portfolio.docs")}</span>
                            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-                              <a href={horse.data.documents?.vet_check || "#contact"} target={horse.data.documents?.vet_check ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.data.documents?.vet_check ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.vet_check ? "View" : "Request Document"}>
+                              <a href={horse.documents?.vet_check || "#contact"} target={horse.documents?.vet_check ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.documents?.vet_check ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.documents?.vet_check ? "View" : "Request Document"}>
                                  <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                                  <span class="w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-primary text-center leading-tight break-words hyphens-auto px-0.5">{t("portfolio.vet_check")}</span>
                               </a>
 
-                              <a href={horse.data.documents?.xrays || "#contact"} target={horse.data.documents?.xrays ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.data.documents?.xrays ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.xrays ? "View" : "Request Document"}>
+                              <a href={horse.documents?.xrays || "#contact"} target={horse.documents?.xrays ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.documents?.xrays ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.documents?.xrays ? "View" : "Request Document"}>
                                  <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                  <span class="w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-primary text-center leading-tight break-words hyphens-auto px-0.5">{t("portfolio.xrays")}</span>
                               </a>
 
-                              <a href={horse.data.documents?.passport || "#contact"} target={horse.data.documents?.passport ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.data.documents?.passport ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.passport ? "View" : "Request Document"}>
+                              <a href={horse.documents?.passport || "#contact"} target={horse.documents?.passport ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 bg-white border border-primary/10 transition-all group rounded-sm ${horse.documents?.passport ? 'hover:border-accent hover:shadow-premium' : 'opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.documents?.passport ? "View" : "Request Document"}>
                                  <svg class="w-8 h-8 text-primary/40 group-hover:text-accent mb-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
                                  <span class="w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-primary text-center leading-tight break-words hyphens-auto px-0.5">{t("portfolio.passport")}</span>
                               </a>
 
-                              <a href={horse.data.documents?.fei_data || "#contact"} target="_self" class={`flex flex-col items-center justify-center p-6 transition-all group rounded-sm ${horse.data.documents?.fei_data ? 'bg-green-50 border border-green-500 hover:bg-green-100 hover:shadow-premium' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.documents?.fei_data ? "View" : "Request Document"}>
-                                 <svg class={`w-8 h-8 mb-4 transition-colors ${horse.data.documents?.fei_data ? 'text-green-600 group-hover:text-green-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                                 <span class={`w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-center leading-tight break-words hyphens-auto px-0.5 transition-colors ${horse.data.documents?.fei_data ? 'text-green-700' : 'text-primary'}`}>{t("portfolio.fei")}</span>
+                              <a href={horse.documents?.fei_data || "#contact"} target="_self" class={`flex flex-col items-center justify-center p-6 transition-all group rounded-sm ${horse.documents?.fei_data ? 'bg-green-50 border border-green-500 hover:bg-green-100 hover:shadow-premium' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.documents?.fei_data ? "View" : "Request Document"}>
+                                 <svg class={`w-8 h-8 mb-4 transition-colors ${horse.documents?.fei_data ? 'text-green-600 group-hover:text-green-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                                 <span class={`w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-center leading-tight break-words hyphens-auto px-0.5 transition-colors ${horse.documents?.fei_data ? 'text-green-700' : 'text-primary'}`}>{t("portfolio.fei")}</span>
                               </a>
                               
-                              <a href={horse.data.horsetelex_url || "#contact"} target={horse.data.horsetelex_url ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 transition-all group rounded-sm ${horse.data.horsetelex_url ? 'bg-orange-50 border border-orange-400 hover:bg-orange-100 hover:shadow-premium' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.data.horsetelex_url ? "View on HorseTelex" : "Request Documentation"}>
-                                 <svg class={`w-8 h-8 mb-4 transition-colors ${horse.data.horsetelex_url ? 'text-orange-600 group-hover:text-orange-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path></svg>
-                                 <span class={`w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-center leading-tight break-words hyphens-auto px-0.5 transition-colors ${horse.data.horsetelex_url ? 'text-orange-700' : 'text-primary'}`}>HorseTelex</span>
+                              <a href={horse.horsetelex_url || "#contact"} target={horse.horsetelex_url ? "_blank" : "_self"} class={`flex flex-col items-center justify-center p-6 transition-all group rounded-sm ${horse.horsetelex_url ? 'bg-orange-50 border border-orange-400 hover:bg-orange-100 hover:shadow-premium' : 'bg-white border border-primary/10 opacity-60 hover:opacity-100 hover:border-primary/30'}`} title={horse.horsetelex_url ? "View on HorseTelex" : "Request Documentation"}>
+                                 <svg class={`w-8 h-8 mb-4 transition-colors ${horse.horsetelex_url ? 'text-orange-600 group-hover:text-orange-700' : 'text-primary/40 group-hover:text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path></svg>
+                                 <span class={`w-full text-[9px] sm:text-[10px] lg:text-xs font-bold uppercase tracking-wider md:tracking-widest text-center leading-tight break-words hyphens-auto px-0.5 transition-colors ${horse.horsetelex_url ? 'text-orange-700' : 'text-primary'}`}>HorseTelex</span>
                               </a>
                            </div>
                       </div>
                       
                       <!-- Video / Action Buttons -->
                       <div class="mt-12 pt-10 border-t border-primary/10 flex flex-col sm:flex-row gap-6">
-                         {horse.data.youtube_url ? (
-                             <a href={horse.data.youtube_url} target="_blank" class="flex-1 text-center px-6 py-5 border border-primary bg-transparent text-primary hover:bg-primary hover:text-white uppercase font-bold text-sm tracking-widest transition-colors flex items-center justify-center gap-3 rounded-sm shadow-sm hover:shadow-xl">
+                         {horse.youtube_url ? (
+                             <a href={horse.youtube_url} target="_blank" class="flex-1 text-center px-6 py-5 border border-primary bg-transparent text-primary hover:bg-primary hover:text-white uppercase font-bold text-sm tracking-widest transition-colors flex items-center justify-center gap-3 rounded-sm shadow-sm hover:shadow-xl">
                                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                                 View Video
                              </a>
@@ -186,7 +182,7 @@ const t = useTranslations(lang);
         </div>
 	</main>
 
-    {horse.data.local_video && (
+    {horse.local_video && (
         <dialog id="video-modal" class="fixed inset-0 w-screen h-screen bg-black/95 m-0 p-0 max-w-none max-h-none overflow-hidden backdrop-blur-md z-[9999] hidden items-center justify-center">
             <div class="relative w-full h-full flex flex-col items-center justify-center">
                 <button id="close-video-modal" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[10000] p-4 cursor-pointer">
@@ -194,13 +190,13 @@ const t = useTranslations(lang);
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <video id="modal-video-player" src={horse.data.local_video} controls playsinline preload="metadata" class="w-full h-full max-w-[1400px] max-h-[85vh] object-contain shadow-2xl"></video>
+                <video id="modal-video-player" src={horse.local_video} controls playsinline preload="metadata" class="w-full h-full max-w-[1400px] max-h-[85vh] object-contain shadow-2xl"></video>
             </div>
         </dialog>
     )}
 
     {/* Gallery Lightbox */}
-    {horse.data.gallery && horse.data.gallery.length > 0 && (
+    {horse.gallery && horse.gallery.length > 0 && (
         <dialog id="gallery-modal" class="fixed inset-0 w-screen h-screen bg-black/95 m-0 p-0 max-w-none max-h-none overflow-hidden backdrop-blur-md z-[9999] hidden items-center justify-center">
             <div class="relative w-full h-full flex items-center justify-center">
                 <button id="close-gallery-modal" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[10000] p-4 cursor-pointer">
@@ -226,7 +222,7 @@ const t = useTranslations(lang);
                 </button>
             </div>
             {/* Inject images source array to window scope */}
-            <script define:vars={{ images: horse.data.gallery.map(img => typeof img === 'string' ? img : img.src) }}>
+            <script define:vars={{ images: horse.gallery.map(img => typeof img === 'string' ? img : img.src) }}>
                 window.galleryImagesData = images;
             </script>
         </dialog>

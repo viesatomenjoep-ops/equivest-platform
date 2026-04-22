@@ -14,31 +14,17 @@
   "dependencies": {
     "@astrojs/react": "^5.0.3",
     "@fontsource-variable/quicksand": "^5.2.10",
-    "@supabase/supabase-js": "^2.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.1.4",
-    "axios": "^1.15.2",
     "luxon": "^3.7.2",
-    "marked": "^11.1.1",
+    "marked": "^12.0.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "@supabase/supabase-js": "^2.42.0",
     "swiper": "^12.1.3",
     "tailwindcss": "^4.2.2"
-  },
-  "description": "```sh npm create astro@latest -- --template minimal ```",
-  "main": "convert_images.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/viesatomenjoep-ops/equivest-platform.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/viesatomenjoep-ops/equivest-platform/issues"
-  },
-  "homepage": "https://github.com/viesatomenjoep-ops/equivest-platform#readme"
+  }
 }
