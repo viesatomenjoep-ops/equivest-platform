@@ -20,6 +20,6 @@ export default defineConfig({
     },
   },
   image: {
-    domains: ['images.unsplash.com', 'primary.jwwb.nl'],
+    domains: ['images.unsplash.com', 'primary.jwwb.nl', 'tvdydhmbvuhpbcxsvxmf.supabase.co'],
   },
 });
