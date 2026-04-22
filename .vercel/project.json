@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_pphmGICsAKqk8dBiHdiVH6hg7gJ8",
+  "orgId": "team_2rGYjesMYPT2jyeGjxL08u7q",
+  "projectName": "astro-tmp",
+  "settings": {
+    "createdAt": 1776705963031,
+    "framework": "astro",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}

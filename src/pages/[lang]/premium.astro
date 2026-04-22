@@ -84,7 +84,9 @@ const premiumHorses = allHorses.filter(h => h.data.premium && !h.data.sold);
 					{premiumHorses.map((horse, index) => (
 						<div class="horse-card reveal bg-white group overflow-hidden border border-primary/10 shadow-premium transition-transform flex flex-col h-full hover:-translate-y-2 cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id.replace('.md','').split('/').slice(1).join('/')}'`}>
 							<div class="aspect-[16/10] overflow-hidden relative">
-								{typeof horse.data.image === 'string' ? (
+								{!horse.data.image ? (
+									<div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
+								) : typeof horse.data.image === 'string' ? (
 								<img 
 									src={horse.data.image} 
 									alt={horse.data.title} 

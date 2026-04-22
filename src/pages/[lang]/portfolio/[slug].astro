@@ -48,7 +48,9 @@ const t = useTranslations(lang);
                 
                <!-- Left: Hero Image (Sticky Editorial Layout) -->
                <div class="w-full lg:w-2/5 lg:sticky lg:top-24 relative shrink-0 overflow-hidden group flex items-center justify-center bg-gray-50/50">
-                 {typeof horse.data.image === 'string' ? (
+                 {!horse.data.image ? (
+                     <div class="w-full h-[50vh] lg:h-[85vh] bg-gray-200 flex items-center justify-center text-gray-400">No Image Available</div>
+                 ) : typeof horse.data.image === 'string' ? (
                     <img src={horse.data.image} alt={horse.data.title} class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" loading="eager" />
                  ) : (
                     <Image src={horse.data.image} alt={horse.data.title} format="webp" loading="eager" class="w-full h-[50vh] lg:h-[85vh] object-cover object-top transition-transform duration-1000 group-hover:scale-105" />

@@ -74,7 +74,9 @@ const allHorsesWithContent = allHorsesRaw
         {allHorsesWithContent.map((horse, index) => (
           <div class="horse-card reveal reveal-scale bg-white group overflow-hidden shadow-sm hover:shadow-premium transition-shadow flex flex-col h-full cursor-pointer" onclick={`window.location.href='/${lang}/portfolio/${horse.id}'`} style={`transition-delay: ${(index % 3) * 75}ms`} data-category={horse.category}>
             <div class="relative cursor-pointer overflow-hidden bg-gray-50/50 flex items-center justify-center" onclick={`window.location.href='/${lang}/portfolio/${horse.id}'`}>
-              {typeof horse.data.image === 'string' ? (
+              {!horse.data.image ? (
+                <div class="w-full aspect-[4/3] bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>
+              ) : typeof horse.data.image === 'string' ? (
                 <img 
                   src={horse.data.image} 
                   alt={horse.data.title} 
